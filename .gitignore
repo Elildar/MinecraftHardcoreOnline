@@ -1,0 +1,4 @@
+*
+!.gitignore
+#!forge/mcp/src/minecraft/mho/*
+#!forge/mcp/src/minecraft/assets/mho/*
