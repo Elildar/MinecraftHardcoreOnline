@@ -1,4 +1,13 @@
-*
-!.gitignore
-!forge/mcp/src/minecraft/mho/*
-!forge/mcp/src/minecraft/assets/mho/*
+.git
+1.6.4
+forge/*
+!forge/mcp
+forge/mcp/*
+!forge/mcp/src
+forge/mcp/src/*
+!forge/mcp/src/minecraft
+forge/mcp/src/minecraft/*
+!forge/mcp/src/minecraft/mho
+!forge/mcp/src/minecraft/assets
+forge/mcp/src/minecraft/assets/*
+!forge/mcp/src/minecraft/assets/mho
