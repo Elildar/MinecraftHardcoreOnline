@@ -1,6 +1,7 @@
 package mho.block.generic;
 
 import java.util.List;
+import java.util.Random;
 
 import mho.Mho;
 import net.minecraft.block.Block;
@@ -24,15 +25,27 @@ public class BlockStepMho extends BlockStep {
 		this.modelBlock = par2Block;
 		this.metadata = meta;
 		this.setCreativeTab(Mho.tabMhoStairs);
-		this.setLightOpacity(5);
+		this.setLightOpacity(1);
 		this.setResistance(1.0F);
 		this.setHardness(1.0F);
 		this.setUnlocalizedName("MHO"+name);
 	}
 
     @SideOnly(Side.CLIENT)
+
+    /**
+     * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
+     */
+    public int getRenderBlockPass()
+    {
+        return this.modelBlock.getRenderBlockPass();
+    }
+
+    @SideOnly(Side.CLIENT)
     public Icon getIcon(int side, int meta)
     {
+        if (modelBlock == Block.grass)
+            return this.modelBlock.getIcon(1, metadata);
 		return this.modelBlock.getIcon(side, metadata);
     }
 
@@ -91,4 +104,13 @@ public class BlockStepMho extends BlockStep {
     {
         return this.blockID;
     }
+
+    /**
+     * Returns the ID of the items to drop on destruction.
+     */
+    public int idDropped(int par1, Random par2Random, int par3)
+    {
+        return this.blockID;
+    }
+
 }

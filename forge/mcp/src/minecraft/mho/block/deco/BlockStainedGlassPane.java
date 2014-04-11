@@ -21,9 +21,16 @@ public class BlockStainedGlassPane extends BlockPane {
 	public BlockStainedGlassPane(int par1) {
 		super(par1, "vitrail_0", "vitrail_0", Material.glass, true);
 		this.setHardness(0.3F);
+		this.setLightOpacity(0);
 		this.setStepSound(Block.soundGlassFootstep); 
 		this.setCreativeTab(Mho.tabMhoDecorations);
 	}
+
+    @SideOnly(Side.CLIENT)
+    public int getRenderBlockPass()
+    {
+        return 0; //TODO Should be 1, but a bug appears
+    }
 
 	public int damageDropped(int i) //Tells it what block it drops and also for creative mode pick block
 	{
@@ -50,7 +57,6 @@ public class BlockStainedGlassPane extends BlockPane {
     }
 	
 	@SideOnly(Side.CLIENT)
-
     /**
      * Returns the texture index of the thin side of the pane.
      */

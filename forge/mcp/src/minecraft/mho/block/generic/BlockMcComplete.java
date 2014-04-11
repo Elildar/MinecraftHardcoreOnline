@@ -2,6 +2,7 @@ package mho.block.generic;
 
 import mho.Mho;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,4 +29,12 @@ public class BlockMcComplete extends Block
     {
 		return this.modelBlock.getIcon(2, metadata);
     }
+
+
+    /**
+     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
+     * is the only chance you get to register icons.
+     */
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister par1IconRegister) {}
 }

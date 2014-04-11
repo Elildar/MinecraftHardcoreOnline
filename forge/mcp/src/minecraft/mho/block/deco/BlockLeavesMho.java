@@ -29,7 +29,7 @@ public class BlockLeavesMho extends BlockLeaves {
      */
     public Icon getIcon(int par1, int par2)
     {
-    	// TODO renvoyer une icone différente en fonction du détail des graphismes
+    	// TODO renvoyer une icone differente en fonction du detail des graphismes
         return this.blockIcon;
     }
 

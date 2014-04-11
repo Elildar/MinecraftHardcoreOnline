@@ -32,7 +32,7 @@ public class BlockTransparent extends BlockGlass {
 	@SideOnly(Side.CLIENT)
 	public int getRenderBlockPass() //Put 0 for fully transparent or opaque blocks, and 1 for semi-transparent
 	{
-	         return 1;
+        return 1;
 	}
 
     /**

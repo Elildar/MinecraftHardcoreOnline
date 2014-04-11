@@ -21,7 +21,7 @@ public class BlockWallMho extends BlockWall {
 		this.modelBlock = par2Block;
 		this.metadata = meta;
 		this.setCreativeTab(Mho.tabMhoFences);
-		this.setLightOpacity(6);
+		this.setLightOpacity(1);
 		this.setUnlocalizedName("MHO"+name);
 	}
 	

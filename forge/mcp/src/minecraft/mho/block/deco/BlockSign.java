@@ -6,6 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
@@ -23,6 +24,27 @@ public class BlockSign extends Block {
 		setUnlocalizedName("MHO"+name);
 		setTextureName(name);
 	}
+
+    /**
+     * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
+     * cleared to be reused)
+     */
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    {
+        this.setBlockBoundsBasedOnState(par1World, par2, par3, par4);
+        return super.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
+    }
+
+    @SideOnly(Side.CLIENT)
+
+    /**
+     * Returns the bounding box of the wired rectangular prism to render.
+     */
+    public AxisAlignedBB getSelectedBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
+    {
+        this.setBlockBoundsBasedOnState(par1World, par2, par3, par4);
+        return super.getSelectedBoundingBoxFromPool(par1World, par2, par3, par4);
+    }
 
     /**
      * Updates the blocks bounds based on its current state. Args: world, x, y, z

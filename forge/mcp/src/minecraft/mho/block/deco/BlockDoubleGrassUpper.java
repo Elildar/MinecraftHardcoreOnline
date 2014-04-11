@@ -57,8 +57,8 @@ public class BlockDoubleGrassUpper extends Block {
     {
         if (par1World.getBlockId(x, y - 1, z) != this.blockID - 1)
         {
-        	par1World.setBlock(x, y, z, this.blockID - 1);
-    		par1World.setBlock(x, y + 1, z, this.blockID);
+        	par1World.setBlock(x, y, z, this.blockID - 1, 0, 3);
+    		par1World.setBlock(x, y + 1, z, this.blockID, 0, 3);
         }
     }
 
@@ -73,7 +73,7 @@ public class BlockDoubleGrassUpper extends Block {
      */
     public void onNeighborBlockChange(World par1World, int x, int y, int z, int neighbor)
     {
-        if (par1World.getBlockId(x, y - 1, z) != this.blockID - 1)
+        if (par1World.getBlockId(x, y - 1, z) != this.blockID - 1 && par1World.getBlockId(x, y - 1, z) != this.blockID)
         {
             par1World.setBlockToAir(x, y, z);
         }

@@ -260,97 +260,59 @@ public class ConfigCore {
 	/** ==================== Blocks ==================== **/
 	
 	/** Sets Of Material **/
-	/** Whitestone **/
+	public static int stoneID;
 	public static int whiteStoneID;
-	public static int whiteCobblestoneID;
-	public static int whiteStonebrickID;
-	public static int whiteStonebrickRoundID;
-	public static int whiteStoneDoubleSlabID;
-	public static int whiteColumnID;
-	public static int whiteColumnHeadID;
-	
-	/** Stone **/
-	public static int stoneColumnID;
-	public static int stoneColumnHeadID;
-
-	/** Sandstone **/
-	public static int sandstoneStonebrickID;
-	public static int sandstoneStonebrickRoundID;
-	public static int sandstoneDoubleSlabID;
-	public static int sandstoneColumnID;
-	public static int sandstoneColumnHeadID;
-
-	/** Ancient stone **/
-	public static int ancientCobblestoneID;
+	public static int sandstoneID;
 	public static int ancientStoneID;
-	public static int ancientStonebrickID;
-	public static int ancientStonebrickRoundID;
-	public static int ancientDoubleSlabID;
-	public static int ancientColumnID;
-	public static int ancientColumnHeadID;
-
-	/** White Marble **/
-	public static int marbleWhiteCobblestoneID;
-	public static int marbleWhiteStoneID;
-	public static int marbleWhiteStonebrickID;
-	public static int marbleWhiteStonebrickRoundID;
-	public static int marbleWhiteDoubleSlabID;
-	public static int marbleWhiteColumnID;
-	public static int marbleWhiteColumnHeadID;
-
-	/** Black Marble **/
-	public static int marbleBlackCobblestoneID;
-	public static int marbleBlackStoneID;
-	public static int marbleBlackStonebrickID;
-	public static int marbleBlackStonebrickRoundID;
-	public static int marbleBlackDoubleSlabID;
-	public static int marbleBlackColumnID;
-	public static int marbleBlackColumnHeadID;
-
-	public static int marbleCheckID;
-
-	/** Ice **/
-	public static int iceCobblestoneID;
-	public static int iceStonebrickID;
-	public static int iceStonebrickRoundID;
-	public static int iceDoubleSlabID;
-	public static int iceColumnHeadID;
-	public static int iceColumnID;
-
-	/** Wood **/
-	public static int woodenStoneID;
-	public static int woodenStonebrickID;
-	public static int woodenStonebrickRoundID;
-	public static int woodenDoubleSlabID;
-	public static int woodenColumnID;
-	public static int woodenColumnHeadID;
-	
-	/** Wood light **/
-	public static int woodenLightStoneID;
-	public static int woodenLightStonebrickID;
-	public static int woodenLightStonebrickRoundID;
-	public static int woodenLightDoubleSlabID;
-	public static int woodenLightColumnID;
-	public static int woodenLightColumnHeadID;
-
-	/** Metal **/
-	public static int metalCheckID;
-	public static int metalStonebrickRoundID;
-	public static int metalDoubleSlabID;
-
-	/**Basalt**/
+	public static int iceID;
+	public static int marbleWhiteID;
+	public static int marbleBlackID;
+	public static int woodenDarkID;
+	public static int woodenLightID;
+	public static int metalID;
 	public static int basaltID;
-	public static int basaltCobblestoneID;
-	public static int basaltStonebrickID;
 
+	public static int cobblestoneRank = 1;
+	public static int stonebrickRank = 2;
+	public static int stonebrickRoundRank = 3;
+	public static int doubleSlabRank = 4;
+	public static int columnRank = 5;
+	public static int columnHeadRank = 6;
+	public static int checkRank = 7;
+	public static int stairStoneRank = 8;
+	public static int stairCobblestoneRank = 9;
+	public static int stairStonebrickRank = 10;
+	public static int stairCheckRank = 11;
+	public static int stepStoneRank = 12;
+	public static int stepCobblestoneRank = 13;
+	public static int stepStonebrickRank = 14;
+	public static int stepDoubleSlabRank = 15;
+	public static int stepColumnRank = 16;
+	public static int stepColumnHeadRank = 17;
+	public static int stepCheckRank = 18;
+	public static int wallStoneRank = 19;
+	public static int wallCobblestoneRank = 20;
+	public static int wallStonebrickRank = 21;
+	public static int fenceStoneRank = 22;
+	public static int fenceCobblestoneRank = 23;
+	public static int fenceStonebrickRank = 24;
+	public static int anvilStoneRank = 25;
+	public static int anvilStonebrickRank = 26;
+	
 	/** Sets Of Natural Blocks **/
-	/** Ice **/
+	public static int naturalIceID;
+	public static int naturalDarkID;
+	public static int naturalMysteriousID;
+	public static int naturalRedRockID;
+	public static int naturalRocksID;
+
+	/* Ice */
 	public static int iceLogID;
 	public static int iceLeavesLightID;
 	public static int iceLeavesID;
 	public static int icePlankID;
 	
-	/** Dark **/
+	/* Dark */
 	public static int darkStoneID;
 	public static int darkCobblestoneID;
 	public static int darkDirtID;
@@ -358,7 +320,7 @@ public class ConfigCore {
 	public static int darkLogID;
 	public static int darkLeavesID;
 	
-	/** Mysterious **/
+	/* Mysterious */
 	public static int mysteriousStoneID;
 	public static int mysteriousDirtID;
 	public static int mysteriousGrassBlockID;
@@ -374,14 +336,14 @@ public class ConfigCore {
 	public static int mysteriousReedID;
 	public static int mysteriousGrassID;
 	
-	/** Red Rock **/
+	/* Red Rock */
 	public static int redGrassBlockID;
 	public static int redGravelID;
 	public static int redRockLinesID;
 	public static int redRockBigLineID;
 	public static int redSilverID;
 
-	/** Rocks **/
+	/* Rocks */
 	public static int greyRockID;
 	public static int greyRockGrassID;
 	public static int brownRockID;
@@ -393,6 +355,9 @@ public class ConfigCore {
 	public static int lavaRockRedID;
 
 	/** Colombages **/
+	public static int timberedLightID;
+	public static int timberedDarkID;
+	
 	public static int timberedSquareID;
 	public static int timberedCrossID;
 	public static int timberedVerticalID;
@@ -408,6 +373,8 @@ public class ConfigCore {
 	public static int timberedRightDarkID;
 
 	/** Signs **/
+	public static int signsID;
+	
 	public static int signAlchemyID;
 	public static int signBankID;
 	public static int signForgeID;
@@ -436,8 +403,6 @@ public class ConfigCore {
 	public static int coralBlockSpongeID;
 
 	/** Double Blocks **/
-	public static int doubleCrateBotID;
-	public static int doubleCrateTopID;
 	public static int doubleCrateBlockID;
 	public static int doubleCrateItemBlockID;
 	
@@ -486,6 +451,8 @@ public class ConfigCore {
 	public static int shojiID;
 	public static int cristalBlockID;
 
+	public static int tileID;
+	
 	public static int tileArdoiseID;
 	public static int tileRedID;
 	public static int tileBlackID;
@@ -533,6 +500,7 @@ public class ConfigCore {
 	public static int cristalBigID;
 	public static int cakeLieBlockID;
 	public static int meatCakeBlockID;
+	public static int eternalIceBlockID;
 
 	/** Secret **/ 
     public static int secretDoorWoodBlockID;
@@ -543,6 +511,32 @@ public class ConfigCore {
     public static int secretDoorIronItemBlockID;
     
 	/** Stairs **/
+    public static int setStone;
+    public static int setGrass;
+    public static int setDirt;
+    public static int setGravel;
+    public static int setSand;
+    public static int setSandstone;
+    public static int setWoodOak;
+    public static int setWoodSpruce;
+    public static int setWoodBirch;
+    public static int setWoodJungle;
+    public static int setPlanksOak;
+    public static int setPlanksSpruce;
+    public static int setPlanksBirch;
+    public static int setPlanksJungle;
+    public static int setMossyCobble;
+    public static int setStonebrick;
+    public static int setStonebrickMossy;
+    public static int setStonebrickCracked;
+    public static int setBrick;
+    public static int setObsidian;
+    public static int setIce;
+    public static int setSnow;
+    public static int setEnderstone;
+    public static int setNetherbrick;
+    public static int setStraw;
+	
 	public static int stairStoneID;
 	public static int stairGrassID;
 	public static int stairDirtID;
@@ -553,10 +547,12 @@ public class ConfigCore {
 	public static int stairSnowID;
 	public static int stairStonebrickMossyID;
 	public static int stairStonebrickCrackedID;
-	public static int stairEnderstoneID;
 	public static int stairSandID;
+	public static int stairEnderstoneID;
 	public static int stairStrawID;
 
+	public static int stairWoolID;
+	
 	public static int stairWoolWhiteID;
 	public static int stairWoolOrangeID;
 	public static int stairWoolMagentaID;
@@ -574,6 +570,8 @@ public class ConfigCore {
 	public static int stairWoolRedID;
 	public static int stairWoolBlackID;
 
+	public static int stairWoolLightID;
+	
 	public static int stairWoolWhiteLightID;
 	public static int stairWoolOrangeLightID;
 	public static int stairWoolMagentaLightID;
@@ -591,33 +589,7 @@ public class ConfigCore {
 	public static int stairWoolRedLightID;
 	public static int stairWoolBlackLightID;
 
-	public static int stairWhiteStoneID;
-	public static int stairWhiteStonebrickID;
-	public static int stairWhiteCobblestoneID;
-
-	public static int stairSandstoneStonebrickID;
-	
-	public static int stairAncientStoneID;
-	public static int stairAncientStonebrickID;
-	public static int stairAncientCobblestoneID;
-
-	public static int stairIceCobblestoneID;
-	public static int stairIceStonebrickID;
-
-	public static int stairMarbleWhiteStoneID;
-	public static int stairMarbleWhiteStonebrickID;
-	public static int stairMarbleWhiteCobblestoneID;
-
-	public static int stairMarbleBlackStoneID;
-	public static int stairMarbleBlackStonebrickID;
-	public static int stairMarbleBlackCobblestoneID;
-	public static int stairMarbleCheckID;
-
-	public static int stairWoodenStoneID;
-	public static int stairWoodenStonebrickID;
-
-	public static int stairWoodenLightStoneID;
-	public static int stairWoodenLightStonebrickID;
+	public static int stairTileID;
 	
 	public static int stairArdoiseID;
 	public static int stairTileRedID;
@@ -642,7 +614,6 @@ public class ConfigCore {
 	public static int stepSnowID;
 	public static int stepStonebrickMossyID;
 	public static int stepStonebrickCrackedID;
-	public static int stepNetherbrickID;
 	public static int stepEndstoneID;
 	public static int stepSandID;
 	public static int stepStrawID;
@@ -681,64 +652,6 @@ public class ConfigCore {
 	public static int stepWoolRedLightID;
 	public static int stepWoolBlackLightID;
 
-	public static int stepWhiteStoneID;
-	public static int stepWhiteCobblestoneID;
-	public static int stepWhiteStonebrickID;
-	public static int stepWhiteDoubleSlabID;
-	public static int stepWhiteColumnID;
-	public static int stepWhiteColumnHeadID;
-
-	public static int stepStoneColumnID;
-	public static int stepStoneColumnHeadID;
-	
-	public static int stepSandstoneStonebrickID;
-	public static int stepSandstoneDoubleSlabID;
-	public static int stepSandstoneColumnID;
-	public static int stepSandstoneColumnHeadID;
-
-	public static int stepAncientCobblestoneID;
-	public static int stepAncientStoneID;
-	public static int stepAncientStonebrickID;
-	public static int stepAncientDoubleSlabID;
-	public static int stepAncientColumnID;
-	public static int stepAncientColumnHeadID;
-
-	public static int stepIceCobblestoneID;
-	public static int stepIceStonebrickID;
-	public static int stepIceDoubleSlabID;
-	public static int stepIceColumnID;
-	public static int stepIceColumnHeadID;
-	
-	public static int stepMarbleWhiteCobblestoneID;
-	public static int stepMarbleWhiteStoneID;
-	public static int stepMarbleWhiteStonebrickID;
-	public static int stepMarbleWhiteDoubleSlabID;
-	public static int stepMarbleWhiteColumnID;
-	public static int stepMarbleWhiteColumnHeadID;
-
-	public static int stepMarbleBlackCobblestoneID;
-	public static int stepMarbleBlackStoneID;
-	public static int stepMarbleBlackStonebrickID;
-	public static int stepMarbleBlackDoubleSlabID;
-	public static int stepMarbleBlackColumnID;
-	public static int stepMarbleBlackColumnHeadID;
-
-	public static int stepMarbleCheckID;
-
-	public static int stepWoodenStoneID;
-	public static int stepWoodenStonebrickID;
-	public static int stepWoodenDoubleSlabID;
-	public static int stepWoodenColumnID;
-	public static int stepWoodenColumnHeadID;
-
-	public static int stepWoodenLightStoneID;
-	public static int stepWoodenLightStonebrickID;
-	public static int stepWoodenLightDoubleSlabID;
-	public static int stepWoodenLightColumnID;
-	public static int stepWoodenLightColumnHeadID;
-
-	public static int stepMetalID;
-
 	public static int stepArdoiseID;
 	public static int stepTileRedID;
 	public static int stepTileBlueID;
@@ -758,78 +671,13 @@ public class ConfigCore {
 	public static int wallStonebrickID;
 	public static int wallNetherbrickID;
 	public static int wallWoodOakID;
-	public static int wallWoodFirID;
+	public static int wallWoodSpruceID;
 	public static int wallWoodBirchID;
 	public static int wallWoodJungleID;
 
-	public static int wallWhiteStoneID;
-	public static int wallWhiteCobblestoneID;
-	public static int wallWhiteStonebrickID;
-
-	public static int wallMarbleWhiteStoneID;
-	public static int wallMarbleWhiteStonebrickID;
-	public static int wallMarbleWhiteCobblestoneID;
-
-	public static int wallMarbleBlackStoneID;
-	public static int wallMarbleBlackStonebrickID;
-	public static int wallMarbleBlackCobblestoneID;
-
-	public static int wallAncientStoneID;
-	public static int wallAncientStonebrickID;
-	public static int wallAncientCobblestoneID;
-
-	public static int wallWoodenStoneID;
-	public static int wallWoodenStonebrickID;
-
-	public static int wallWoodenLightStoneID;
-	public static int wallWoodenLightStonebrickID;
-
-	public static int wallIceCobblestoneID;
-	public static int wallIceStonebrickID;
-	
 	/** Fence **/
-	public static int fenceWhiteStoneID;
-	public static int fenceWhiteStonebrickID;
-	public static int fenceWhiteCobblestoneID;
-	
-	public static int fenceMarbleWhiteStoneID;
-	public static int fenceMarbleWhiteStonebrickID;
-	public static int fenceMarbleWhiteCobblestoneID;
-	
-	public static int fenceMarbleBlackStoneID;
-	public static int fenceMarbleBlackStonebrickID;
-	public static int fenceMarbleBlackCobblestoneID;
-	
-	public static int fenceAncientStoneID;
-	public static int fenceAncientStonebrickID;
-	public static int fenceAncientCobblestoneID;
-	
-	public static int fenceWoodenStoneID;
-	public static int fenceWoodenStonebrickID;
-	
-	public static int fenceWoodenLightStoneID;
-	public static int fenceWoodenLightStonebrickID;
-	
-	public static int fenceIceCobblestoneID;
-	public static int fenceIceStonebrickID;
 	
 	/** Balustrades **/
-	public static int anvilWhiteStoneID;
-	public static int anvilWhiteStonebrickID;
-	public static int anvilSandstoneStonebrickID;
-	public static int anvilAncientStoneID;
-	public static int anvilAncientStonebrickID;
-	public static int anvilIceStonebrickID;
-	public static int anvilMarbleWhiteID;
-	public static int anvilMarbleWhiteStonebrickID;
-	public static int anvilMarbleBlackID;
-	public static int anvilMarbleBlackStonebrickID;
-	
-	public static int anvilWoodenStoneID;
-	public static int anvilWoodenStonebrickID;
-	public static int anvilWoodenLightStoneID;
-	public static int anvilWoodenLightStonebrickID;
-
 	public static int anvilWoodOakID;
 	public static int anvilPlankJungleID;
 	public static int anvilPlankOakID;
@@ -846,7 +694,6 @@ public class ConfigCore {
 	public static int carpetPlankSpruceID;
 	public static int carpetLogOakID;
 	public static int carpetLogSpruceID;
-	public static int carpetPlankOakTempID;
 
 	/** Unused **/
 	public static int seedHoublonID;
@@ -867,859 +714,674 @@ public class ConfigCore {
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile()); //Gets the file
 		config.load(); //Loads it
 
-
 		/** ==================== Items ==================== **/
 
 		/** Item Quest **/
-		boulonID = config.getItem("Boulon - Quete", 27300).getInt();
-		briqueDeSableID = config.getItem("Brique de sable - Quete", 27301).getInt();
-		buchetteID = config.getItem("Buchette - Quete", 27302).getInt();
-		buchetteSombreID = config.getItem("Buchette sombre - Quete", 27303).getInt();
-		caisseID = config.getItem("Caisse - Quete", 27304).getInt();
-		liquideBleuID = config.getItem("Liquide bleu - Quete", 27305).getInt();
-		liquideCyanID = config.getItem("Liquide cyan - Quete", 27306).getInt();
-		liquideJauneID = config.getItem("Liquide jaune - Quete", 27307).getInt();
-		liquideOrangeID = config.getItem("Liquide orange - Quete", 27308).getInt();
-		liquideRoseID = config.getItem("Liquide rose - Quete", 27309).getInt();
-		liquideRougeID = config.getItem("Liquide rouge - Quete", 27310).getInt();
-		liquideVertID = config.getItem("Liquide vert - Quete", 27311).getInt();
-		liquideVioletID = config.getItem("Liquide violet - Quete", 27312).getInt();
-		tuyauID = config.getItem("Tuyau - Quete", 27313).getInt();
-		visID = config.getItem("Vis - Quete", 27314).getInt();
-		couponTutoID = config.getItem("Coupon tutoriel - Quete", 27315).getInt();
-		bandageID = config.getItem("Bandage - Quete", 27316).getInt();
-		sceptreOrID = config.getItem("Sceptre dor - Quete", 27317).getInt();
-		epeeBlancheID = config.getItem("Relique - Quete", 27318).getInt();
-		sucreriesID = config.getItem("Sucreries - Quete", 27319).getInt();
-		grimoireSethID = config.getItem("Grimoire de Seth - Quete", 27320).getInt();
-		totemMageID = config.getItem("Totem de Mage - Quete", 27321).getInt();
-		grimoireTelgaradID = config.getItem("Grimoire de Telgarad - Quete", 27322).getInt();
-		grimoireTelsalorID = config.getItem("Grimoire de Telsalor - Quete", 27323).getInt();
-		recommandationHakathID = config.getItem("Recommandation Hakath - Quete", 27324).getInt();
-		recommandationLomakothID = config.getItem("Recommandation Lomakoth - Quete", 27325).getInt();
-		pistoletID = config.getItem("Pistolet - Quete", 27326).getInt();
-		jambeBoisID = config.getItem("Jambe de bois - Quete", 27327).getInt();
-		medaillonID = config.getItem("Medaillon de pirate - Quete", 27328).getInt();
-		longuevueID = config.getItem("Longue-vue - Quete", 27329).getInt();
-		clePrisonValysID = config.getItem("Cle prison Valys - Quete", 27330).getInt();
-		boursePetiteID = config.getItem("Petite bourse HC - Quete", 27331).getInt();
-		bourseMoyenneID = config.getItem("Moyenne bourse HC - Quete", 27332).getInt();
-		bourseGrandeID = config.getItem("Grande bourse HC - Quete", 27333).getInt();
-		grimoireApprentiID = config.getItem("Grimoire Apprenti - Quete", 27334).getInt();
-		vanishID = config.getItem("Vanish - Quete", 27335).getInt();
-		enveloppeID = config.getItem("Enveloppe - Quete", 27336).getInt();
-		batonAdaoldanID = config.getItem("Baton Adaoldan - Quete", 27337).getInt();
-		batonAdaoldanEnchantID = config.getItem("Baton Adaoldan Enchant - Quete", 27338).getInt();
-		fragmentAdaoldanID = config.getItem("Fragment Adaoldan - Quete", 27339).getInt();
-		projectileArcaniqueID = config.getItem("Projectile arcanique - Quete", 27340).getInt();
-		marteauForgeronID = config.getItem("Marteau forgeron - Quete", 27341).getInt();
-		lameRuniqueEmeraudeID = config.getItem("Lame Runique Emeraude - Quete", 27342).getInt();
-		nezarilJarID = config.getItem("Urne de Nezaril (vide)", 30250).getInt();
-		nezarilJarFullID = config.getItem("Urne de Nezaril (pleine)", 30251).getInt();
-		redDragonEggID = config.getItem("Oeuf de dragon rouge", 30252).getInt();
+		boulonID = config.get("Item IDs - 1 : Quete", "Boulon", 27300).getInt();
+		briqueDeSableID = config.get("Item IDs - 1 : Quete", "Brique de sable", 27301).getInt();
+		buchetteID = config.get("Item IDs - 1 : Quete", "Buchette", 27302).getInt();
+		buchetteSombreID = config.get("Item IDs - 1 : Quete", "Buchette sombre", 27303).getInt();
+		caisseID = config.get("Item IDs - 1 : Quete", "Caisse", 27304).getInt();
+		liquideBleuID = config.get("Item IDs - 1 : Quete", "Liquide bleu", 27305).getInt();
+		liquideCyanID = config.get("Item IDs - 1 : Quete", "Liquide cyan", 27306).getInt();
+		liquideJauneID = config.get("Item IDs - 1 : Quete", "Liquide jaune", 27307).getInt();
+		liquideOrangeID = config.get("Item IDs - 1 : Quete", "Liquide orange", 27308).getInt();
+		liquideRoseID = config.get("Item IDs - 1 : Quete", "Liquide rose", 27309).getInt();
+		liquideRougeID = config.get("Item IDs - 1 : Quete", "Liquide rouge", 27310).getInt();
+		liquideVertID = config.get("Item IDs - 1 : Quete", "Liquide vert", 27311).getInt();
+		liquideVioletID = config.get("Item IDs - 1 : Quete", "Liquide violet", 27312).getInt();
+		tuyauID = config.get("Item IDs - 1 : Quete", "Tuyau", 27313).getInt();
+		visID = config.get("Item IDs - 1 : Quete", "Vis", 27314).getInt();
+		couponTutoID = config.get("Item IDs - 1 : Quete", "Coupon tutoriel", 27315).getInt();
+		bandageID = config.get("Item IDs - 1 : Quete", "Bandage", 27316).getInt();
+		sceptreOrID = config.get("Item IDs - 1 : Quete", "Sceptre d'or", 27317).getInt();
+		epeeBlancheID = config.get("Item IDs - 1 : Quete", "Relique", 27318).getInt();
+		sucreriesID = config.get("Item IDs - 1 : Quete", "Sucreries", 27319).getInt();
+		grimoireSethID = config.get("Item IDs - 1 : Quete", "Grimoire de Seth", 27320).getInt();
+		totemMageID = config.get("Item IDs - 1 : Quete", "Totem de Mage", 27321).getInt();
+		grimoireTelgaradID = config.get("Item IDs - 1 : Quete", "Grimoire de Tel'garad", 27322).getInt();
+		grimoireTelsalorID = config.get("Item IDs - 1 : Quete", "Grimoire de Tel'salor", 27323).getInt();
+		recommandationHakathID = config.get("Item IDs - 1 : Quete", "Recommandation d'Hakath", 27324).getInt();
+		recommandationLomakothID = config.get("Item IDs - 1 : Quete", "Recommandation de Lomakoth", 27325).getInt();
+		pistoletID = config.get("Item IDs - 1 : Quete", "Pistolet", 27326).getInt();
+		jambeBoisID = config.get("Item IDs - 1 : Quete", "Jambe de bois", 27327).getInt();
+		medaillonID = config.get("Item IDs - 1 : Quete", "Medaillon de pirate", 27328).getInt();
+		longuevueID = config.get("Item IDs - 1 : Quete", "Longue-vue", 27329).getInt();
+		clePrisonValysID = config.get("Item IDs - 1 : Quete", "Clef de la prison de Valys", 27330).getInt();
+		boursePetiteID = config.get("Item IDs - 1 : Quete", "Petite bourse de Hardcoin", 27331).getInt();
+		bourseMoyenneID = config.get("Item IDs - 1 : Quete", "Moyenne bourse de Hardcoin", 27332).getInt();
+		bourseGrandeID = config.get("Item IDs - 1 : Quete", "Grande bourse de Hardcoin", 27333).getInt();
+		grimoireApprentiID = config.get("Item IDs - 1 : Quete", "Grimoire de l'apprenti", 27334).getInt();
+		vanishID = config.get("Item IDs - 1 : Quete", "Vanish", 27335).getInt();
+		enveloppeID = config.get("Item IDs - 1 : Quete", "Enveloppe", 27336).getInt();
+		batonAdaoldanID = config.get("Item IDs - 1 : Quete", "Baton d'Adaoldan", 27337).getInt();
+		batonAdaoldanEnchantID = config.get("Item IDs - 1 : Quete", "Baton d'Adaoldan enchante", 27338).getInt();
+		fragmentAdaoldanID = config.get("Item IDs - 1 : Quete", "Fragment du baton d'Adaoldan", 27339).getInt();
+		projectileArcaniqueID = config.get("Item IDs - 1 : Quete", "Projectile arcanique", 27340).getInt();
+		marteauForgeronID = config.get("Item IDs - 1 : Quete", "Marteau du forgeron", 27341).getInt();
+		lameRuniqueEmeraudeID = config.get("Item IDs - 1 : Quete", "Lame Runique en Emeraude", 27342).getInt();
+		nezarilJarID = config.get("Item IDs - 1 : Quete", "Urne de Nezaril (vide)", 30250).getInt();
+		nezarilJarFullID = config.get("Item IDs - 1 : Quete", "Urne de Nezaril (pleine)", 30251).getInt();
+		redDragonEggID = config.get("Item IDs - 1 : Quete", "Oeuf de dragon rouge", 30252).getInt();
 		
 		/** Item gris **/
-		batWingID = config.getItem("Ailes de chauve-souris", 30267).getInt();
-		boarHornID = config.getItem("Defense de sanglier", 30274).getInt();
-		bugWingID = config.getItem("Aile d'insecte", 30289).getInt();
-		cricketLegID = config.getItem("Patte de criquet", 30290).getInt();
-		bigcatHairID = config.getItem("Criniere feline", 30277).getInt();
-		deerWoodID = config.getItem("Bois de cerf", 30278).getInt();
-	   	duckLegID = config.getItem("Patte de canard", 30276).getInt();
-	   	ectoplasmID = config.getItem("Ectoplasme", 30280).getInt();
-	   	elephantSkinID = config.getItem("Peau d'elephant", 30295).getInt();
-	   	enderJawID = config.getItem("Machoire d'enderman",30263).getInt();
-	   	enderParticlesID = config.getItem("Particule d'enderman", 30264).getInt();
-	   	foxTailID = config.getItem("Queue de renard", 30282).getInt();
-	   	ghastTentacleID = config.getItem("Tentacule de ghast", 30262).getInt();
-	   	goatHornID = config.getItem("Corne de chevre", 30287).getInt();
-		heartID = config.getItem("Coeur", 30000).getInt();
-	   	honeyPotID = config.getItem("Pot de miel", 30275).getInt();
-	   	horseHairID = config.getItem("Crin de cheval", 30273).getInt();
-	   	jellyJamID = config.getItem("Confiture de meduse", 30286).getInt();
-	   	mouseMustacheID = config.getItem("Moustache de souris",30271).getInt();
-	   	ostrichFeatherID = config.getItem("Plume d'autruche", 31741).getInt();
-	   	pigLegID = config.getItem("Pied de porc",30294).getInt();
-	   	rabbitFootID = config.getItem("Patte de lapin", 30268).getInt();
-	   	redFabricID = config.getItem("Bout de tissu rouge",30279).getInt();
-	   	reptileToothID = config.getItem("Dent de reptile", 30285).getInt();
-	   	scorpionStingID = config.getItem("Dard de scorpion", 30284).getInt();
-	   	sharkFinID = config.getItem("Nageoire de requin",30283).getInt();
-	   	skinCreeperID = config.getItem("Lambeau de creeper", 30260).getInt();
-	   	smallFlameID = config.getItem("Flammeche",30266).getInt();
-	   	snailShellID = config.getItem("Coquille d'escargot", 30291).getInt();
-	   	snakeTongueID = config.getItem("Langue de vipere",30269).getInt();
-	   	spiderLegsID = config.getItem("Pattes d'araignee",30261).getInt();
-	   	spiderVenomID = config.getItem("Glande a venin", 30265).getInt();
-	   	turtleShellID = config.getItem("Carapace de tortue",30270).getInt();
-	   	whiteClothID = config.getItem("Drap blanc",30281).getInt();
-		zombieBrainID = config.getItem("Cerveau de zombie", 30001).getInt();
-		zombieArmID = config.getItem("Bras de zombie", 30002).getInt();
+		batWingID = config.get("Item IDs - 2 : Gris", "Ailes de chauve-souris", 30267).getInt();
+		bigcatHairID = config.get("Item IDs - 2 : Gris", "Criniere feline", 30277).getInt();
+		boarHornID = config.get("Item IDs - 2 : Gris", "Defense de sanglier", 30274).getInt();
+		bugWingID = config.get("Item IDs - 2 : Gris", "Aile d'insecte", 30289).getInt();
+		cricketLegID = config.get("Item IDs - 2 : Gris", "Patte de criquet", 30290).getInt();
+		deerWoodID = config.get("Item IDs - 2 : Gris", "Bois de cerf", 30278).getInt();
+	   	duckLegID = config.get("Item IDs - 2 : Gris", "Patte de canard", 30276).getInt();
+	   	ectoplasmID = config.get("Item IDs - 2 : Gris", "Ectoplasme", 30280).getInt();
+	   	elephantSkinID = config.get("Item IDs - 2 : Gris", "Peau d'elephant", 30295).getInt();
+	   	enderJawID = config.get("Item IDs - 2 : Gris", "Machoire d'enderman",30263).getInt();
+	   	enderParticlesID = config.get("Item IDs - 2 : Gris", "Particule d'enderman", 30264).getInt();
+	   	foxTailID = config.get("Item IDs - 2 : Gris", "Queue de renard", 30282).getInt();
+	   	ghastTentacleID = config.get("Item IDs - 2 : Gris", "Tentacule de ghast", 30262).getInt();
+	   	goatHornID = config.get("Item IDs - 2 : Gris", "Corne de chevre", 30287).getInt();
+		heartID = config.get("Item IDs - 2 : Gris", "Coeur", 30000).getInt();
+	   	honeyPotID = config.get("Item IDs - 2 : Gris", "Pot de miel", 30275).getInt();
+	   	horseHairID = config.get("Item IDs - 2 : Gris", "Crin de cheval", 30273).getInt();
+	   	jellyJamID = config.get("Item IDs - 2 : Gris", "Confiture de meduse", 30286).getInt();
+	   	mouseMustacheID = config.get("Item IDs - 2 : Gris", "Moustache de souris",30271).getInt();
+	   	ostrichFeatherID = config.get("Item IDs - 2 : Gris", "Plume d'autruche", 31741).getInt();
+	   	pigLegID = config.get("Item IDs - 2 : Gris", "Pied de porc",30294).getInt();
+	   	rabbitFootID = config.get("Item IDs - 2 : Gris", "Patte de lapin", 30268).getInt();
+	   	redFabricID = config.get("Item IDs - 2 : Gris", "Bout de tissu rouge",30279).getInt();
+	   	reptileToothID = config.get("Item IDs - 2 : Gris", "Dent de reptile", 30285).getInt();
+	   	scorpionStingID = config.get("Item IDs - 2 : Gris", "Dard de scorpion", 30284).getInt();
+	   	sharkFinID = config.get("Item IDs - 2 : Gris", "Nageoire de requin",30283).getInt();
+	   	skinCreeperID = config.get("Item IDs - 2 : Gris", "Lambeau de creeper", 30260).getInt();
+	   	smallFlameID = config.get("Item IDs - 2 : Gris", "Flammeche",30266).getInt();
+	   	snailShellID = config.get("Item IDs - 2 : Gris", "Coquille d'escargot", 30291).getInt();
+	   	snakeTongueID = config.get("Item IDs - 2 : Gris", "Langue de vipere",30269).getInt();
+	   	spiderLegsID = config.get("Item IDs - 2 : Gris", "Pattes d'araignee",30261).getInt();
+	   	spiderVenomID = config.get("Item IDs - 2 : Gris", "Glande a venin", 30265).getInt();
+	   	turtleShellID = config.get("Item IDs - 2 : Gris", "Carapace de tortue",30270).getInt();
+	   	whiteClothID = config.get("Item IDs - 2 : Gris", "Drap blanc",30281).getInt();
+		zombieArmID = config.get("Item IDs - 2 : Gris", "Bras de zombie", 30002).getInt();
+		zombieBrainID = config.get("Item IDs - 2 : Gris", "Cerveau de zombie", 30001).getInt();
 		
 		/** Poupee **/
-		dollBlueID = config.getItem("Poupee bleu", 30181).getInt();
-		dollBlackID = config.getItem("Poupee noire", 30182).getInt();
-		pelucheMisterxfrID = config.getItem("Peluche MisterXFr", 30183).getInt();
-		pelucheJolirougeID = config.getItem("Peluche Jolirouge", 30184).getInt();
-		pelucheIplayID = config.getItem("Peluche Iplay4You", 30185).getInt();
-		pelucheMikefraiseID = config.getItem("Peluche Mikefraise", 30186).getInt();
-		pelucheDeezID = config.getItem("Peluche Deez", 30187).getInt();
-		pelucheNicodelpraID = config.getItem("Peluche Nicodelpra", 30188).getInt();
-		pelucheDilandaufrID = config.getItem("Peluche DilandauFr", 30189).getInt();
-		pelucheNissanID = config.getItem("Peluche Nissan8", 30190).getInt();
-		pelucheBbphokID = config.getItem("Peluche BBphok", 30191).getInt();
-		pelucheBenditoID = config.getItem("Peluche Bendito78", 30192).getInt();
-		pelucheSoenguyID = config.getItem("Peluche SoEnguy", 30193).getInt();
-		pelucheChtimarchosID = config.getItem("Peluche Chtimarchos", 30194).getInt();
-		pelucheXdakotaID = config.getItem("Peluche xDakota", 30195).getInt();
-		pelucheLoupfeucgID = config.getItem("Peluche Loupfeucg", 30196).getInt();
-		pelucheTedrakID = config.getItem("Peluche Tedrak50", 30197).getInt();
+		dollBlueID = config.get("Item IDs - 3 : Peluches", "Poupee bleu", 30181).getInt();
+		dollBlackID = config.get("Item IDs - 3 : Peluches", "Poupee noire", 30182).getInt();
+		pelucheMisterxfrID = config.get("Item IDs - 3 : Peluches", "Peluche MisterXFr", 30183).getInt();
+		pelucheJolirougeID = config.get("Item IDs - 3 : Peluches", "Peluche Jolirouge", 30184).getInt();
+		pelucheIplayID = config.get("Item IDs - 3 : Peluches", "Peluche Iplay4You", 30185).getInt();
+		pelucheMikefraiseID = config.get("Item IDs - 3 : Peluches", "Peluche Mikefraise", 30186).getInt();
+		pelucheDeezID = config.get("Item IDs - 3 : Peluches", "Peluche Deez", 30187).getInt();
+		pelucheNicodelpraID = config.get("Item IDs - 3 : Peluches", "Peluche Nicodelpra", 30188).getInt();
+		pelucheDilandaufrID = config.get("Item IDs - 3 : Peluches", "Peluche DilandauFr", 30189).getInt();
+		pelucheNissanID = config.get("Item IDs - 3 : Peluches", "Peluche Nissan8", 30190).getInt();
+		pelucheBbphokID = config.get("Item IDs - 3 : Peluches", "Peluche BBphok", 30191).getInt();
+		pelucheBenditoID = config.get("Item IDs - 3 : Peluches", "Peluche Bendito78", 30192).getInt();
+		pelucheSoenguyID = config.get("Item IDs - 3 : Peluches", "Peluche SoEnguy", 30193).getInt();
+		pelucheChtimarchosID = config.get("Item IDs - 3 : Peluches", "Peluche Chtimarchos", 30194).getInt();
+		pelucheXdakotaID = config.get("Item IDs - 3 : Peluches", "Peluche xDakota", 30195).getInt();
+		pelucheLoupfeucgID = config.get("Item IDs - 3 : Peluches", "Peluche Loupfeucg", 30196).getInt();
+		pelucheTedrakID = config.get("Item IDs - 3 : Peluches", "Peluche Tedrak50", 30197).getInt();
 
 		/** Enchant **/
-		enchantSharpnessSmallID = config.getItem("Petite rune de puissance mineure",10259).getInt();
-		enchantSharpnessMediumID = config.getItem("Petite rune de puissance",10260).getInt();
-		enchantSharpnessBigID = config.getItem("Petite rune de puissance majeure",10261).getInt();
+		enchantSharpnessSmallID = config.get("Item IDs - 4 : Runes", "Rune de puissance mineure",10259).getInt();
+		enchantSharpnessMediumID = config.get("Item IDs - 4 : Runes", "Rune de puissance",10260).getInt();
+		enchantSharpnessBigID = config.get("Item IDs - 4 : Runes", "Rune de puissance majeure",10261).getInt();
 		
-		enchantSmiteSmallID = config.getItem("Petite rune de chatiment mineure",10268).getInt();
-		enchantSmiteMediumID = config.getItem("Petite rune de chatiment",10269).getInt();
-		enchantSmiteBigID = config.getItem("Petite rune de chatiment majeure",10270).getInt();
+		enchantSmiteSmallID = config.get("Item IDs - 4 : Runes", "Rune de chatiment mineure",10268).getInt();
+		enchantSmiteMediumID = config.get("Item IDs - 4 : Runes", "Rune de chatiment",10269).getInt();
+		enchantSmiteBigID = config.get("Item IDs - 4 : Runes", "Rune de chatiment majeure",10270).getInt();
 		
-		enchantProtectionSmallID = config.getItem("Petite rune de protection mineure",10277).getInt();
-		enchantProtectionBigID = config.getItem("Petite rune de protection majeure",10278).getInt();
+		enchantProtectionSmallID = config.get("Item IDs - 4 : Runes", "Rune de protection mineure",10277).getInt();
+		enchantProtectionBigID = config.get("Item IDs - 4 : Runes", "Rune de protection majeure",10278).getInt();
 		
-		enchantBaneofSmallID = config.getItem("Petite rune du fleau mineure",10283).getInt();
-		enchantBaneofMediumID = config.getItem("Petite rune du fleau",10284).getInt();
-		enchantBaneofBigID = config.getItem("Petite rune du fleau majeure",10285).getInt();
+		enchantBaneofSmallID = config.get("Item IDs - 4 : Runes", "Rune du fleau mineure",10283).getInt();
+		enchantBaneofMediumID = config.get("Item IDs - 4 : Runes", "Rune du fleau",10284).getInt();
+		enchantBaneofBigID = config.get("Item IDs - 4 : Runes", "Rune du fleau majeure",10285).getInt();
 		
-		enchantEfficacitySmallID = config.getItem("Petite rune de rapidite mineure",10292).getInt();
-		enchantEfficacityMediumID = config.getItem("Petite rune de rapidite",10293).getInt();
-		enchantEfficacityBigID = config.getItem("Petite rune de rapidite majeure",10294).getInt();
+		enchantEfficacitySmallID = config.get("Item IDs - 4 : Runes", "Rune de rapidite mineure",10292).getInt();
+		enchantEfficacityMediumID = config.get("Item IDs - 4 : Runes", "Rune de rapidite",10293).getInt();
+		enchantEfficacityBigID = config.get("Item IDs - 4 : Runes", "Rune de rapidite majeure",10294).getInt();
 		
-		enchantDurabilitySmallID = config.getItem("Petite rune de solidite mineure",10301).getInt();
-		enchantDurabilityMediumID = config.getItem("Petite rune de solidite",10302).getInt();
-		enchantDurabilityBigID = config.getItem("Petite rune de solidite majeure",10303).getInt();
+		enchantDurabilitySmallID = config.get("Item IDs - 4 : Runes", "Rune de solidite mineure",10301).getInt();
+		enchantDurabilityMediumID = config.get("Item IDs - 4 : Runes", "Rune de solidite",10302).getInt();
+		enchantDurabilityBigID = config.get("Item IDs - 4 : Runes", "Rune de solidite majeure",10303).getInt();
 		
-		enchantFlameSmallID = config.getItem("Petite rune d embrasement mineure",10310).getInt();
-		enchantFlameBigID = config.getItem("Petite rune d embrasement majeure",10311).getInt();
+		enchantFlameSmallID = config.get("Item IDs - 4 : Runes", "Rune d'embrasement mineure",10310).getInt();
+		enchantFlameBigID = config.get("Item IDs - 4 : Runes", "Rune d'embrasement majeure",10311).getInt();
 		
-		enchantKnockbackSmallID = config.getItem("Petite rune de repulsion mineure",10316).getInt();
-		enchantKnockbackBigID = config.getItem("Petite rune de repulsion majeure",10317).getInt();
+		enchantKnockbackSmallID = config.get("Item IDs - 4 : Runes", "Rune de repulsion mineure",10316).getInt();
+		enchantKnockbackBigID = config.get("Item IDs - 4 : Runes", "Rune de repulsion majeure",10317).getInt();
 			
 		/** Insignes **/
-		badgeValysID = config.getItem("Insigne de Valys", 30130).getInt();
-		badgeChasseID = config.getItem("Insigne de chasse", 30131).getInt();
-		badgeGuerreID = config.getItem("Insigne d guerre", 30132).getInt();
-		badgeAgricultureID = config.getItem("Insigne d agriculture", 30133).getInt();
-		badgeGastronomieID = config.getItem("Insigne de gastronomie", 30134).getInt();
-		badgeMinageID = config.getItem("Insigne de minage", 30135).getInt();
-		badgeArtisanatID = config.getItem("Insigne d artisanat", 30136).getInt();
-		badgeVilleID = config.getItem("Insigne de ville", 30137).getInt();
-		badgePecheID = config.getItem("Insigne de peche", 30138).getInt();
-		badgeExplorationID = config.getItem("Insigne d exploration", 30139).getInt();
-		badgeConstructionID = config.getItem("Insigne de construction", 30140).getInt();
-		badgeGuildeID = config.getItem("Insigne de guilde", 30141).getInt();
-		badgeVictoireID = config.getItem("Insigne de victoire", 30142).getInt();
-		badgeParticipationID = config.getItem("Insigne de participation", 30143).getInt();
-		badgeMagieID = config.getItem("Insigne de magie", 30144).getInt();
+		badgeValysID = config.get("Item IDs - 5 : Insignes", "Insigne de Valys", 30130).getInt();
+		badgeChasseID = config.get("Item IDs - 5 : Insignes", "Insigne de chasse", 30131).getInt();
+		badgeGuerreID = config.get("Item IDs - 5 : Insignes", "Insigne de guerre", 30132).getInt();
+		badgeAgricultureID = config.get("Item IDs - 5 : Insignes", "Insigne d'agriculture", 30133).getInt();
+		badgeGastronomieID = config.get("Item IDs - 5 : Insignes", "Insigne de gastronomie", 30134).getInt();
+		badgeMinageID = config.get("Item IDs - 5 : Insignes", "Insigne de minage", 30135).getInt();
+		badgeArtisanatID = config.get("Item IDs - 5 : Insignes", "Insigne d'artisanat", 30136).getInt();
+		badgeVilleID = config.get("Item IDs - 5 : Insignes", "Insigne de ville", 30137).getInt();
+		badgePecheID = config.get("Item IDs - 5 : Insignes", "Insigne de peche", 30138).getInt();
+		badgeExplorationID = config.get("Item IDs - 5 : Insignes", "Insigne d'exploration", 30139).getInt();
+		badgeConstructionID = config.get("Item IDs - 5 : Insignes", "Insigne de construction", 30140).getInt();
+		badgeGuildeID = config.get("Item IDs - 5 : Insignes", "Insigne de guilde", 30141).getInt();
+		badgeVictoireID = config.get("Item IDs - 5 : Insignes", "Insigne de victoire", 30142).getInt();
+		badgeParticipationID = config.get("Item IDs - 5 : Insignes", "Insigne de participation", 30143).getInt();
+		badgeMagieID = config.get("Item IDs - 5 : Insignes", "Insigne de magie", 30144).getInt();
 
 		
 		/** Food **/
-		mugID = config.getItem("Chope", 1663).getInt();
-		beerID = config.getItem("Biere", 1664).getInt();
-		foodHamburgerID = config.getItem("Hamburger", 30200).getInt();
-		foodFriesID = config.getItem("Frites", 30201).getInt();
-		foodKfcID = config.getItem("Nuggets", 30202).getInt();
-		foodEggID = config.getItem("Oeufs", 30203).getInt();
-		foodBaconID = config.getItem("Bacon", 30204).getInt();
-		foodCheeseID = config.getItem("Fromage", 30205).getInt();
-		foodMakiID = config.getItem("Maki", 30206).getInt();
-		foodSushiID = config.getItem("Sushi", 30207).getInt();
-		foodSkewerID = config.getItem("Brochette", 30208).getInt();
-		rhumID = config.getItem("Rhum", 30209).getInt();
+		mugID = config.get("Item IDs - 6 : Nourriture", "Chope vide", 1663).getInt();
+		beerID = config.get("Item IDs - 6 : Nourriture", "Chope de biere", 1664).getInt();
+		foodHamburgerID = config.get("Item IDs - 6 : Nourriture", "Hamburger", 30200).getInt();
+		foodFriesID = config.get("Item IDs - 6 : Nourriture", "Frites", 30201).getInt();
+		foodKfcID = config.get("Item IDs - 6 : Nourriture", "Nuggets", 30202).getInt();
+		foodEggID = config.get("Item IDs - 6 : Nourriture", "Oeufs", 30203).getInt();
+		foodBaconID = config.get("Item IDs - 6 : Nourriture", "Bacon", 30204).getInt();
+		foodCheeseID = config.get("Item IDs - 6 : Nourriture", "Fromage", 30205).getInt();
+		foodMakiID = config.get("Item IDs - 6 : Nourriture", "Maki", 30206).getInt();
+		foodSushiID = config.get("Item IDs - 6 : Nourriture", "Sushi", 30207).getInt();
+		foodSkewerID = config.get("Item IDs - 6 : Nourriture", "Brochette", 30208).getInt();
+		rhumID = config.get("Item IDs - 6 : Nourriture", "Rhum", 30209).getInt();
 
 		/** ProjectileNPC **/
-		npcProjectileWhiteID = config.getItem("Projectile NPC Blanc", 30174).getInt();
-		npcProjectileYellowID = config.getItem("Projectile NPC Jaune", 30175).getInt();
-		npcProjectileGreenID = config.getItem("Projectile NPC Vert", 30176).getInt();
-		npcProjectilePurpleID = config.getItem("Projectile NPC Violet", 30177).getInt();
-		npcProjectileRedID = config.getItem("Projectile NPC Rouge", 30178).getInt();
-		npcProjectileGreyID = config.getItem("Projectile NPC Gris", 30179).getInt();
-		npcProjectileBlueID = config.getItem("Projectile NPC Bleu", 30180).getInt();
+		npcProjectileWhiteID = config.get("Item IDs - 7 : Combat", "Projectile NPC Blanc", 30174).getInt();
+		npcProjectileYellowID = config.get("Item IDs - 7 : Combat", "Projectile NPC Jaune", 30175).getInt();
+		npcProjectileGreenID = config.get("Item IDs - 7 : Combat", "Projectile NPC Vert", 30176).getInt();
+		npcProjectilePurpleID = config.get("Item IDs - 7 : Combat", "Projectile NPC Violet", 30177).getInt();
+		npcProjectileRedID = config.get("Item IDs - 7 : Combat", "Projectile NPC Rouge", 30178).getInt();
+		npcProjectileGreyID = config.get("Item IDs - 7 : Combat", "Projectile NPC Gris", 30179).getInt();
+		npcProjectileBlueID = config.get("Item IDs - 7 : Combat", "Projectile NPC Bleu", 30180).getInt();
 		
 		/** Legendary **/
-		legendaryNocturnalID = config.getItem("Baton nocturne", 30100).getInt();
-		legendaryDiurnalID = config.getItem("Baton de jour", 30101).getInt();
+		legendaryNocturnalID = config.get("Item IDs - 7 : Combat", "Baton nocturne", 30100).getInt();
+		legendaryDiurnalID = config.get("Item IDs - 7 : Combat", "Baton du jour", 30101).getInt();
 		
 		/** Sword **/
-		stoveID = config.getItem("Poele a frire", 30158).getInt();
-		scepterRedID = config.getItem("Sceptre Rouge", 30230).getInt();
-		scepterBlueID = config.getItem("Sceptre Bleu", 30231).getInt();
-		scepterGreenID = config.getItem("Sceptre Vert", 30232).getInt();
-		hammerWoodID = config.getItem("Marteau en bois", 30233).getInt();
-		hammerStoneID = config.getItem("Marteau en pierre", 30234).getInt();
-		hammerIronID = config.getItem("Marteau en fer", 30235).getInt();
-		rapierID = config.getItem("Rapier", 30236).getInt();
-		runebladeID = config.getItem("Lame runique", 30238).getInt();
+		stoveID = config.get("Item IDs - 7 : Combat", "Poele a frire", 30158).getInt();
+		scepterRedID = config.get("Item IDs - 7 : Combat", "Sceptre Rouge", 30230).getInt();
+		scepterBlueID = config.get("Item IDs - 7 : Combat", "Sceptre Bleu", 30231).getInt();
+		scepterGreenID = config.get("Item IDs - 7 : Combat", "Sceptre Vert", 30232).getInt();
+		hammerWoodID = config.get("Item IDs - 7 : Combat", "Marteau en bois", 30233).getInt();
+		hammerStoneID = config.get("Item IDs - 7 : Combat", "Marteau en pierre", 30234).getInt();
+		hammerIronID = config.get("Item IDs - 7 : Combat", "Marteau en fer", 30235).getInt();
+		rapierID = config.get("Item IDs - 7 : Combat", "Rapier", 30236).getInt();
+		runebladeID = config.get("Item IDs - 7 : Combat", "Lame runique", 30238).getInt();
 		
 		
 		/** Potions **/
-		potionCelerityID = config.getItem("Potion de celerite", 30160).getInt();
-		potionFatigueID = config.getItem("Potion de fatigue", 30161).getInt();
-		potionJumpID = config.getItem("Potion de saut", 30162).getInt();
-		potionConfusionID = config.getItem("Potion de confusion", 30163).getInt();
-		potionResistanceID = config.getItem("Potion de resistance", 30164).getInt();
-		potionApneaID = config.getItem("Potion d apnee", 30165).getInt();
-		potionBlindnessID = config.getItem("Potion de cecite", 30166).getInt();
-		potionHungerID = config.getItem("Potion de faim", 30167).getInt();
-		potionWitherID = config.getItem("Potion de wither", 30168).getInt();
+		potionCelerityID = config.get("Item IDs - 8 : Potions", "Potion de celerite", 30160).getInt();
+		potionFatigueID = config.get("Item IDs - 8 : Potions", "Potion de fatigue", 30161).getInt();
+		potionJumpID = config.get("Item IDs - 8 : Potions", "Potion de saut", 30162).getInt();
+		potionConfusionID = config.get("Item IDs - 8 : Potions", "Potion de confusion", 30163).getInt();
+		potionResistanceID = config.get("Item IDs - 8 : Potions", "Potion de resistance", 30164).getInt();
+		potionApneaID = config.get("Item IDs - 8 : Potions", "Potion d'apnee", 30165).getInt();
+		potionBlindnessID = config.get("Item IDs - 8 : Potions", "Potion de cecite", 30166).getInt();
+		potionHungerID = config.get("Item IDs - 8 : Potions", "Potion de faim", 30167).getInt();
+		potionWitherID = config.get("Item IDs - 8 : Potions", "Potion de wither", 30168).getInt();
 
-		potionCustomEffectWaterWalkID = config.getItem("Potion de marche sur eau", 30170).getInt();
-		potionCustomEffectLavaWalkID = config.getItem("Potion de marche sur lave", 30171).getInt();
-		potionCustomEffectNoFallID = config.getItem("Potion de resistance a la chute", 30172).getInt();
+		potionCustomEffectWaterWalkID = config.get("Item IDs - 8 : Potions", "Potion de marche sur l'eau", 30170).getInt();
+		potionCustomEffectLavaWalkID = config.get("Item IDs - 8 : Potions", "Potion de marche sur la lave", 30171).getInt();
+		potionCustomEffectNoFallID = config.get("Item IDs - 8 : Potions", "Potion de resistance a la chute", 30172).getInt();
 
-		testSplashID = config.getItem("EnDev", 30169).getInt();
+		//testSplashID = config.get("Item IDs - 8 : Potions", "EnDev", 30169).getInt();
 
 		/** Scroll **/
-		minorValysScrollID = config.getItem("Parchemin de t\u00E9l\u00E9portation mineur (Valys)", 10000).getInt();
-		mediumValysScrollID = config.getItem("Parchemin de t\u00E9l\u00E9portation moyen (Valys)", 10001).getInt();
-		majorValysScrollID = config.getItem("Parchemin de t\u00E9l\u00E9portation majeur (Valys)", 10002).getInt();
+		minorValysScrollID = config.get("Item IDs - 9 : Others", "Parchemin de teleportation mineur (Valys)", 10000).getInt();
+		mediumValysScrollID = config.get("Item IDs - 9 : Others", "Parchemin de teleportation moyen (Valys)", 10001).getInt();
+		majorValysScrollID = config.get("Item IDs - 9 : Others", "Parchemin de teleportation majeur (Valys)", 10002).getInt();
 
 		/** Key **/
-		goldKeyID = config.getItem("Cle de donjon d or", 30145).getInt();
-		silverKeyID = config.getItem("Cle de donjon d argent", 30146).getInt();
-		bronzeKeyID = config.getItem("Cle de donjon de bronze", 30147).getInt();
-		goldSmallKeyID = config.getItem("Cle d or", 30148).getInt();
-		silverSmallKeyID = config.getItem("Cle d argent", 30149).getInt();
-		bronzeSmallKeyID = config.getItem("Cle de bronze", 30150).getInt();
+		goldKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en or", 30145).getInt();
+		silverKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en argent", 30146).getInt();
+		bronzeKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en bronze", 30147).getInt();
+		goldSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en or", 30148).getInt();
+		silverSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en argent", 30149).getInt();
+		bronzeSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en bronze", 30150).getInt();
 
 		/** Coin **/
-		bronzeCoinID = config.getItem("Hardcoin de bronze", 30151).getInt();
-		silverCoinID = config.getItem("Hardcoin d argent", 30152).getInt();
-		goldCoinID = config.getItem("Hardcoin d or", 30153).getInt();
-		diamondCoinID = config.getItem("Hardcoin de diamant", 30154).getInt();
+		bronzeCoinID = config.get("Item IDs - 9 : Others", "Hardcoin de bronze", 30151).getInt();
+		silverCoinID = config.get("Item IDs - 9 : Others", "Hardcoin d'argent", 30152).getInt();
+		goldCoinID = config.get("Item IDs - 9 : Others", "Hardcoin d'or", 30153).getInt();
+		diamondCoinID = config.get("Item IDs - 9 : Others", "Hardcoin de diamant", 30154).getInt();
 		
 		/** Trophee **/
-		trophyGoldID = config.getItem("Trophee d or", 30400).getInt();
-		trophySilverID = config.getItem("Trophee d argent", 30401).getInt();
-		trophyBronzeID = config.getItem("Trophee de bronze", 30402).getInt();
-		trophyGoldChipID = config.getItem("Trophee d or ebreche", 30403).getInt();
+		trophyGoldID = config.get("Item IDs - 9 : Others", "Trophee en or", 30400).getInt();
+		trophySilverID = config.get("Item IDs - 9 : Others", "Trophee en argent", 30401).getInt();
+		trophyBronzeID = config.get("Item IDs - 9 : Others", "Trophee en bronze", 30402).getInt();
+		trophyGoldChipID = config.get("Item IDs - 9 : Others", "Trophee en or ebreche", 30403).getInt();
 
 		/** Specials **/
-		eyeCoverID = config.getItem("Cache Oeil", 30404).getInt();
-		pocketCraftingTableID = config.getItem("Table de craft portable", 30156).getInt();
-		magicPowderID = config.getItem("Poudre de magie", 30003).getInt();
-		teddyBearID = config.getItem("Ours en peluche", 30102).getInt();
+		eyeCoverID = config.get("Item IDs - 9 : Others", "Cache Oeil", 30404).getInt();
+		pocketCraftingTableID = config.get("Item IDs - 9 : Others", "Table de craft portable", 30156).getInt();
+		magicPowderID = config.get("Item IDs - 9 : Others", "Poudre de magie", 30003).getInt();
+		teddyBearID = config.get("Item IDs - 9 : Others", "Ours en peluche", 30102).getInt();
 
 		/** Classics **/
-		diamondShineID = config.getItem("Eclat de diamant", 30155).getInt();
-		cardsID = config.getItem("Cartes de jeu", 30237).getInt();
-		magicDustID = config.getItem("Poussiere magique", 30004).getInt();
+		diamondShineID = config.get("Item IDs - 9 : Others", "Eclat de diamant", 30155).getInt();
+		cardsID = config.get("Item IDs - 9 : Others", "Cartes de jeu", 30237).getInt();
+		magicDustID = config.get("Item IDs - 9 : Others", "Poussiere magique", 30004).getInt();
 
 		
 		/** ==================== Blocks ==================== **/
 
 		/** Sets Of Material **/
-		/** Whitestone **/
-		whiteStoneID = config.getBlock("Stone blanche", 2880).getInt();
-		whiteCobblestoneID = config.getBlock("Cobblestone blanche", 2881).getInt();
-		whiteStonebrickID = config.getBlock("Stonebrick blanche", 2882).getInt();
-		whiteStonebrickRoundID = config.getBlock("Stonebrick taillee blanche", 2883).getInt();
-		whiteStoneDoubleSlabID = config.getBlock("Dalle lisse blanche", 2884).getInt();
-		whiteColumnID = config.getBlock("Colonne blanche", 2885).getInt();
-		whiteColumnHeadID = config.getBlock("Tete de colonne blanche", 2886).getInt();
-		
-		/** Stone **/
-		stoneColumnID = config.getBlock("Colonne en pierre", 2856).getInt();
-		stoneColumnHeadID = config.getBlock("Chapeau de colonne en pierre", 2857).getInt();
-		
-		/** Sandstone **/
-		sandstoneStonebrickID = config.getBlock("Brique de sandstone", 2641).getInt();
-		sandstoneStonebrickRoundID = config.getBlock("Brique de sandstone taillee", 2642).getInt();
-		sandstoneDoubleSlabID = config.getBlock("Dalle de sandstone lisse", 2643).getInt();
-		sandstoneColumnID = config.getBlock("Colonne de sandstone",2644).getInt();
-		sandstoneColumnHeadID = config.getBlock("Tete de colonne de sandstone", 2645).getInt();
-
-		/** Ancient stone **/
-		ancientCobblestoneID = config.getBlock("Pierre ancienne fragmentee", 2820).getInt();
-		ancientStoneID = config.getBlock("Pierre ancienne", 2821).getInt();
-		ancientStonebrickID = config.getBlock("Brique de pierre ancienne", 2822).getInt();
-		ancientStonebrickRoundID = config.getBlock("Brique de pierre ancienne taillee", 2823).getInt();
-		ancientDoubleSlabID = config.getBlock("Dalle de pierre ancienne", 2824).getInt();
-		ancientColumnID = config.getBlock("Colonne en pierre ancienne", 2825).getInt();
-		ancientColumnHeadID = config.getBlock("Chapeau de colonne en pierre ancienne", 2826).getInt();
-
-		/** White Marble **/
-		marbleWhiteCobblestoneID = config.getBlock("Marbre blanc fragmente", 2810).getInt();
-		marbleWhiteStoneID = config.getBlock("Marbre blanc", 2811).getInt();
-		marbleWhiteStonebrickID = config.getBlock("Brique de Marbre blanc", 2812).getInt();
-		marbleWhiteStonebrickRoundID = config.getBlock("Brique taille de Marbre blanc", 2813).getInt();
-		marbleWhiteDoubleSlabID = config.getBlock("Dalle de Marbre blanc", 2814).getInt();
-		marbleWhiteColumnID = config.getBlock("Colonne de Marbre blanc", 2815).getInt();
-		marbleWhiteColumnHeadID = config.getBlock("Chapeau de colonne de Marbre blanc", 2816).getInt();
-
-		/** Black Marble **/
-		marbleBlackCobblestoneID = config.getBlock("Marbre noir fragmente", 2830).getInt();
-		marbleBlackStoneID = config.getBlock("Marbre noir", 2831).getInt();
-		marbleBlackStonebrickID = config.getBlock("Brique de Marbre noir", 2832).getInt();
-		marbleBlackStonebrickRoundID = config.getBlock("Brique taillee de Marbre noir", 2833).getInt();
-		marbleBlackDoubleSlabID = config.getBlock("Dalle de Marbre noir", 2834).getInt();
-		marbleBlackColumnID = config.getBlock("Colonne en Marbre noir", 2835).getInt();
-		marbleBlackColumnHeadID = config.getBlock("Chapeau de Colonne en Marbre noir", 2836).getInt();
-
-		marbleCheckID = config.getBlock("Damier de marbre", 2846).getInt();
-
-		/** Ice **/
-		iceCobblestoneID = config.getBlock("Cobblestone de glace", 2800).getInt();
-		iceStonebrickID = config.getBlock("Stonebrick de glace", 2801).getInt();
-		iceStonebrickRoundID = config.getBlock("Stonebrick taillee de glace", 2802).getInt();
-		iceDoubleSlabID = config.getBlock("Dalle lisse de glace", 2803).getInt();
-		iceColumnID = config.getBlock("Colonne de glace", 2804).getInt();
-		iceColumnHeadID = config.getBlock("Tete de colonne en glace", 2805).getInt();
-
-		/** Wood **/
-		woodenStoneID = config.getBlock("Bois lisse", 2840).getInt();
-		woodenStonebrickID = config.getBlock("Brique de bois lisse", 2841).getInt();
-		woodenStonebrickRoundID = config.getBlock("Bois lisse taille", 2842).getInt();
-		woodenDoubleSlabID = config.getBlock("Dalle de bois lisse", 2843).getInt();
-		woodenColumnID = config.getBlock("Colonne en bois lisse", 2844).getInt();
-		woodenColumnHeadID = config.getBlock("Chapeau de colonne en bois lisse", 2845).getInt();
-
-		/** Wood light **/
-		woodenLightStoneID = config.getBlock("Bois clair lisse", 2850).getInt();
-		woodenLightStonebrickID = config.getBlock("Brique de bois clair lisse", 2851).getInt();
-		woodenLightStonebrickRoundID = config.getBlock("Bois clair lisse taille", 2852).getInt();
-		woodenLightDoubleSlabID = config.getBlock("Dalle de bois clair lisse", 2853).getInt();
-		woodenLightColumnID = config.getBlock("Colonne en bois clair lisse", 2854).getInt();
-		woodenLightColumnHeadID = config.getBlock("Chapeau de colonne en bois clair lisse", 2855).getInt();
-
-		/** Metal **/
-		metalCheckID = config.getBlock("Damier en acier", 2861).getInt();
-		metalStonebrickRoundID = config.getBlock("Acier taille", 2862).getInt();
-		metalDoubleSlabID = config.getBlock("Dalle en acier", 2863).getInt();
-		
-		/**Basalt**/
-		basaltID = config.getBlock("Basalt", 4088).getInt();
-		basaltCobblestoneID = config.getBlock("Cobblestone de basalt", 4089).getInt();
-		basaltStonebrickID = config.getBlock("Brique de basalt", 4090).getInt();
+		stoneID = config.get("Block IDs - 01 : Sets Of Material", "Pierre normale (30 IDs large, def:2500)", 2500).getInt();
+		whiteStoneID = config.get("Block IDs - 01 : Sets Of Material", "Pierre blanche (30 IDs large, def:2530)", 2530).getInt();
+		sandstoneID = config.get("Block IDs - 01 : Sets Of Material", "Sandstone (30 IDs large, def:2560)", 2560).getInt();
+		ancientStoneID = config.get("Block IDs - 01 : Sets Of Material", "Pierre ancienne (30 IDs large, def:2590)", 2590).getInt();
+		iceID = config.get("Block IDs - 01 : Sets Of Material", "Glace (30 IDs large, def:2620)", 2620).getInt();
+		marbleWhiteID = config.get("Block IDs - 01 : Sets Of Material", "Marbre blanc (30 IDs large, def:2650)", 2650).getInt();
+		marbleBlackID = config.get("Block IDs - 01 : Sets Of Material", "Marbre noir (30 IDs large, def:2680)", 2680).getInt();
+		woodenDarkID = config.get("Block IDs - 01 : Sets Of Material", "Bois lisse fonce (30 IDs large, def:2710)", 2710).getInt();
+		woodenLightID = config.get("Block IDs - 01 : Sets Of Material", "Bois lisse clair (30 IDs large, def:2740)", 2740).getInt();
+		metalID = config.get("Block IDs - 01 : Sets Of Material", "Acier (30 IDs large, def:2770)", 2770).getInt();
+		basaltID = config.get("Block IDs - 01 : Sets Of Material", "Basalt (30 IDs large, def:2800)", 2800).getInt();
 
 		/** Sets Of Natural Blocks **/
-		/** Ice **/
-		iceLogID = config.getBlock("Buche glacee", 3160).getInt();
-		iceLeavesLightID = config.getBlock("Feuilles clair glacee", 3161).getInt();
-		iceLeavesID = config.getBlock("Feuille glacee", 3162).getInt();
-		icePlankID = config.getBlock("Planche glacee", 3163).getInt();
-		
-		/** Dark **/
-		darkStoneID = config.getBlock("Pierre sombre", 3280).getInt();
-		darkCobblestoneID = config.getBlock("Cobblestone sombre", 3281).getInt();
-		darkDirtID = config.getBlock("Terre sombre", 3283).getInt();
-		darkGrassID = config.getBlock("Herbe sombre", 3284).getInt();
-		darkLogID = config.getBlock("Bois sombre", 3285).getInt();
-		darkLeavesID = config.getBlock("Feuilles sombres", 3282).getInt();
-		
-		/** Mysterious **/
-		mysteriousStoneID = config.getBlock("Pierre mysterieuse", 3116).getInt();
-		mysteriousDirtID = config.getBlock("Terre mysterieuse", 3117).getInt();
-		mysteriousGrassBlockID = config.getBlock("Bloc d'herbe mysterieuse", 3118).getInt();
-		mysteriousLogID = config.getBlock("Buche mysterieuse", 2707).getInt();
-		mysteriousLeavesID = config.getBlock("Feuilles mysterieuses", 2708).getInt();;
-		mysteriousLeavesPurpleID = config.getBlock("Feuilles mysterieuses violettes", 2709).getInt();
+		naturalIceID = config.get("Block IDs - 02 : Sets Of Natural Blocks", "Glace (10 IDs large, def:2900)", 2900).getInt();
+		naturalDarkID = config.get("Block IDs - 02 : Sets Of Natural Blocks", "Dark (10 IDs large, def:2910)", 2910).getInt();
+		naturalMysteriousID = config.get("Block IDs - 02 : Sets Of Natural Blocks", "Mysterieux (20 IDs large, def:2920)", 2920).getInt();
+		naturalRedRockID = config.get("Block IDs - 02 : Sets Of Natural Blocks", "Roche rouge (10 IDs large, def:2940)", 2940).getInt();
+		naturalRocksID = config.get("Block IDs - 02 : Sets Of Natural Blocks", "Roches (10 IDs large, def:2950)", 2950).getInt();
 
-		mysteriousFlowerID = config.getBlock("Fleur mysterieuse", 2702).getInt();
-		mysteriousPlantPurpleID = config.getBlock("Plante mysterieuse", 2703).getInt();
-		mysteriousCoralID = config.getBlock("Corail mysterieux", 2704).getInt();
-		mysteriousAlgueID = config.getBlock("Algue mysterieuse", 2705).getInt();
-		mysteriousPlantID = config.getBlock("Herbe mysterieuse", 2706).getInt();
-		mysteriousGrassID = config.getBlock("Herbe mysterieuse 2", 2714).getInt();
-		mysteriousReedID = config.getBlock("Canne a sucre mysterieuse", 3119).getInt();
-
-		/** Red Rock **/
-		redGrassBlockID = config.getBlock("Roche rouge herbeuse", 3260).getInt();
-		redGravelID = config.getBlock("Gravier de roche rouge", 3261).getInt();
-		redRockLinesID = config.getBlock("Strates beiges fines", 3262).getInt();
-		redRockBigLineID = config.getBlock("Roche beige", 3263).getInt();
-		redSilverID = config.getBlock("Minerai d argent", 3264).getInt();
+		/* Ice */
+		iceLogID = naturalIceID + 1;
+		iceLeavesID = naturalIceID + 2;
+		iceLeavesLightID = naturalIceID + 3;
+		icePlankID = naturalIceID + 4;
 		
-		/** Rocks **/
-		greyRockID = config.getBlock("Roche grise", 3270).getInt();
-		greyRockGrassID = config.getBlock("Roche grise herbeuse", 3271).getInt();
-		brownRockID = config.getBlock("Roche brune", 3272).getInt();
-		brownRockGrassID = config.getBlock("Roche brune herbeuse", 3273).getInt();
-		darkRockID = config.getBlock("Roche sombre", 3274).getInt();
-		darkRockGrassID = config.getBlock("Roche sombre herbeuse", 3275).getInt();
-		blackRockID = config.getBlock("Roche noire", 3276).getInt();
-		lavaRockID = config.getBlock("Roche volcanique", 3277).getInt();
-		lavaRockRedID = config.getBlock("Roche volcanique rouge", 3278).getInt();
+		/* Dark */
+		darkStoneID = naturalDarkID;
+		darkCobblestoneID = naturalDarkID + 1;
+		darkDirtID = naturalDarkID + 2;
+		darkGrassID = naturalDarkID + 3;
+		darkLogID = naturalDarkID + 4;
+		darkLeavesID = naturalDarkID + 5;
+		
+		/* Mysterious */
+		mysteriousStoneID = naturalMysteriousID;
+		mysteriousDirtID = naturalMysteriousID + 1;
+		mysteriousGrassBlockID = naturalMysteriousID + 2;
+		mysteriousLogID = naturalMysteriousID + 3;
+		mysteriousLeavesID = naturalMysteriousID + 4;
+		mysteriousLeavesPurpleID = naturalMysteriousID + 5;
+
+		mysteriousFlowerID = naturalMysteriousID + 10;
+		mysteriousPlantPurpleID = naturalMysteriousID + 11;
+		mysteriousCoralID = naturalMysteriousID + 12;
+		mysteriousAlgueID = naturalMysteriousID + 13;
+		mysteriousPlantID = naturalMysteriousID + 14;
+		mysteriousReedID = naturalMysteriousID + 15;
+		mysteriousGrassID = naturalMysteriousID + 16;
+
+		/* Red Rock */
+		redGrassBlockID = naturalRedRockID;
+		redGravelID = naturalRedRockID + 1;
+		redRockBigLineID = naturalRedRockID + 2;
+		redRockLinesID = naturalRedRockID + 3;
+		redSilverID = naturalRedRockID + 4;
+		
+		/* Rocks */
+		greyRockID = naturalRocksID;
+		greyRockGrassID = naturalRocksID + 1;
+		brownRockID = naturalRocksID + 2;
+		brownRockGrassID = naturalRocksID + 3;
+		darkRockID = naturalRocksID + 4;
+		darkRockGrassID = naturalRocksID + 5;
+		blackRockID = naturalRocksID + 6;
+		lavaRockID = naturalRocksID + 7;
+		lavaRockRedID = naturalRocksID + 8;
 
 		/** Colombages **/
-		timberedSquareID = config.getBlock("Colombage carre", 2686).getInt();
-		timberedCrossID = config.getBlock("Colombage croise", 2687).getInt();
-		timberedVerticalID = config.getBlock("Colombage vertical", 2688).getInt();
-		timberedHorizontalID = config.getBlock("Colombage horizontal", 2689).getInt();
-		timberedLeftID = config.getBlock("Colombage gauche", 2690).getInt();
-		timberedRightID = config.getBlock("Colombage droite", 2691).getInt();
+		timberedLightID = config.get("Block IDs - 03 : Colombages", "Colombages clairs (10 IDs large, def:3000)", 3000).getInt();
+		timberedDarkID = config.get("Block IDs - 03 : Colombages", "Colombages fonces (10 IDs large, def:3010)", 3010).getInt();
+		
+		timberedSquareID = timberedLightID;
+		timberedCrossID = timberedLightID + 1;
+		timberedVerticalID = timberedLightID + 2;
+		timberedHorizontalID = timberedLightID + 3;
+		timberedLeftID = timberedLightID + 4;
+		timberedRightID = timberedLightID + 5;
 
-		timberedSquareDarkID = config.getBlock("Colombage carre fonce", 2693).getInt();
-		timberedCrossDarkID = config.getBlock("Colombage croise fonce", 2694).getInt();
-		timberedVerticalDarkID = config.getBlock("Colombage vertical fonce", 2695).getInt();
-		timberedHorizontalDarkID = config.getBlock("Colombage horizontal fonce", 2696).getInt();
-		timberedLeftDarkID = config.getBlock("Colombage gauche fonce", 2697).getInt();
-		timberedRightDarkID = config.getBlock("Colombage droite fonce", 2698).getInt();
+		timberedSquareDarkID = timberedDarkID;
+		timberedCrossDarkID = timberedDarkID + 1;
+		timberedVerticalDarkID = timberedDarkID + 2;
+		timberedHorizontalDarkID = timberedDarkID + 3;
+		timberedLeftDarkID = timberedDarkID + 4;
+		timberedRightDarkID = timberedDarkID + 5;
 
 		/** Signs **/
-		signAlchemyID = config.getBlock("Enseigne d'Alchimie", 2600).getInt();
-		signBankID = config.getBlock("Enseigne de Banque", 2601).getInt();
-		signForgeID = config.getBlock("Enseigne de Forge", 2602).getInt();
-		signShieldID = config.getBlock("Enseigne de Bouclier", 2603).getInt();
-		signSanctuaryID = config.getBlock("Enseigne de Sanctuaire", 2604).getInt();
-		signArmoryID = config.getBlock("Enseigne d'Armurerie", 2605).getInt();
-		signLibraryID = config.getBlock("Enseigne de Librairie", 2606).getInt();
-		signRestaurantID = config.getBlock("Enseigne de Restaurant", 2607).getInt();
-		signTavernID = config.getBlock("Enseigne de Taverne", 2608).getInt();
-		signMaterialsID = config.getBlock("Enseigne de Materiaux", 2609).getInt();
-		signHostelID = config.getBlock("Enseigne d'Auberge", 2610).getInt();
-		signDiamondID = config.getBlock("Enseigne de Diamant", 2611).getInt();
-		signPhoID = config.getBlock("Enseigne de PHO", 2612).getInt();
-		signStableID = config.getBlock("Enseigne d'Ecurie", 2613).getInt();
-		signCrystalID = config.getBlock("Enseigne de cristal", 2614).getInt();
+		signsID = config.get("Block IDs - 04 : Enseignes", "Enseignes (20 IDs large, def:3020)", 3020).getInt();
+		
+		signAlchemyID = signsID;
+		signBankID = signsID + 1;
+		signForgeID = signsID + 2;
+		signShieldID = signsID + 3;
+		signSanctuaryID = signsID + 4;
+		signArmoryID = signsID + 5;
+		signLibraryID = signsID + 6;
+		signRestaurantID = signsID + 7;
+		signTavernID = signsID + 8;
+		signMaterialsID = signsID + 9;
+		signHostelID = signsID + 10;
+		signDiamondID = signsID + 11;
+		signPhoID = signsID + 12;
+		signStableID = signsID + 13;
+		signCrystalID = signsID + 14;
 
 		/** Corals **/
-		coralOrangeID = config.getBlock("Corail orange", 3810).getInt();
-		coralGreenID = config.getBlock("Corail vert", 3811).getInt();
-		coralPurpleID = config.getBlock("Corail violet", 3812).getInt();
-		coralRoseID = config.getBlock("Corail rose", 3813).getInt();
-		coralBlackID = config.getBlock("Corail noir", 3814).getInt();
-		coralBlueID = config.getBlock("Corail bleu", 3815).getInt();
+		coralOrangeID = config.get("Block IDs - 05 : Coraux", "Corail orange (def:3040)", 3040).getInt();
+		coralGreenID = config.get("Block IDs - 05 : Coraux", "Corail vert (def:3041)", 3041).getInt();
+		coralPurpleID = config.get("Block IDs - 05 : Coraux", "Corail violet (def:3042)", 3042).getInt();
+		coralRoseID = config.get("Block IDs - 05 : Coraux", "Corail rose (def:3043)", 3043).getInt();
+		coralBlackID = config.get("Block IDs - 05 : Coraux", "Corail noir (def:3044)", 3044).getInt();
+		coralBlueID = config.get("Block IDs - 05 : Coraux", "Corail bleu (def:3045)", 3045).getInt();
 		
-		coralBlockReefID = config.getBlock("Corail recif", 3816).getInt();
-		coralBlockSpongeID = config.getBlock("Corail eponge", 3817).getInt();
+		coralBlockReefID = config.get("Block IDs - 05 : Coraux", "Corail recif (def:3046)", 3046).getInt();
+		coralBlockSpongeID = config.get("Block IDs - 05 : Coraux", "Corail eponge (def:3047)", 3047).getInt();
 
 		/** Double Blocks **/
-		doubleCrateBotID = config.getBlock("Grande caisse", 2404).getInt();
-		doubleCrateTopID = config.getBlock("Grande caisse (haut)", 2405).getInt();
-/* TODO
-		doubleCrateBlockID = config.getBlock("Grande caisse (bloc)", 2404).getInt();
-		doubleCrateItemBlockID = config.getBlock("Grande caisse (item)", ?).getInt();
-		*/
-		doubleTorchLowerID = config.getBlock("Baton lumineux", 2406).getInt();
-		doubleTorchUpperID = config.getBlock("Baton lumineux (haut)", 2407).getInt();
-		doubleCandleLowerID = config.getBlock("Baton de bougie lumineux", 2408).getInt();
-		doubleCandleUpperID = config.getBlock("Baton de bougie lumineux (haut)", 2409).getInt();
-		doubleLanternLowerID = config.getBlock("Baton de lanterne lumineux", 2410).getInt();
-		doubleLanternUpperID = config.getBlock("Baton de lanterne lumineux (haut)", 2411).getInt();
+		doubleCrateBlockID = config.get("Block IDs - 06 : Blocs doubles", "Grande caisse (bloc, def:3050)", 3050).getInt();
+		doubleCrateItemBlockID = config.get("Block IDs - 06 : Blocs doubles", "Grande caisse (item, def:30500)", 30500).getInt();
+		
+		doubleTorchLowerID = config.get("Block IDs - 06 : Blocs doubles", "Grande torche (2 IDs large, def:3051)", 3051).getInt();
+		doubleTorchUpperID = doubleTorchLowerID + 1;
+		doubleCandleLowerID = config.get("Block IDs - 06 : Blocs doubles", "Grande bougie (2 IDs large, def:3053)", 3053).getInt();
+		doubleCandleUpperID = doubleCandleLowerID + 1;
+		doubleLanternLowerID = config.get("Block IDs - 06 : Blocs doubles", "Lampadaire (2 IDs large, def:3055)", 3055).getInt();
+		doubleLanternUpperID = doubleLanternLowerID + 1;
 
-		normalDoubleGrassLowerID = config.getBlock("Herbe haute (bas)", 2398).getInt();
-		normalDoubleGrassUpperID = config.getBlock("Herbe haute (haut)", 2399).getInt();
-		savanaDoubleGrassLowerID = config.getBlock("Herbe haute de savanne (bas)", 2400).getInt();
-		savanaDoubleGrassUpperID = config.getBlock("Herbe haute de savanne (haut)", 2401).getInt();
-		mysteriousDoubleGrassLowerID = config.getBlock("Herbe haute magique (bas)", 2402).getInt();
-		mysteriousDoubleGrassUpperID = config.getBlock("Herbe haute magique (haut)", 2403).getInt();
+		normalDoubleGrassLowerID = config.get("Block IDs - 06 : Blocs doubles", "Hautes herbes (2 IDs large, def:3057)", 3057).getInt();
+		normalDoubleGrassUpperID = normalDoubleGrassLowerID + 1;
+		savanaDoubleGrassLowerID = config.get("Block IDs - 06 : Blocs doubles", "Hautes herbes de savanne (2 IDs large, def:3059)", 3059).getInt();
+		savanaDoubleGrassUpperID = savanaDoubleGrassLowerID + 1;
+		mysteriousDoubleGrassLowerID = config.get("Block IDs - 06 : Blocs doubles", "Hautes herbes mysterieuses (2 IDs large, def:3060)", 3061).getInt();
+		mysteriousDoubleGrassUpperID = mysteriousDoubleGrassLowerID + 1;
 
 		/** Meta **/
-		metaWoolLightID = config.getBlock("Laines lumineuses", 2799).getInt();
-		metaVitrailID = config.getBlock("Vitraux", 2798).getInt();
-		metaVitrailPaneID = config.getBlock("Vitraux plats", 2797).getInt();
+		metaWoolLightID = config.get("Block IDs - 07 : Meta", "Laines lumineuses (def:3070)", 3070).getInt();
+		metaVitrailID = config.get("Block IDs - 07 : Meta", "Vitraux (def:3071)", 3071).getInt();
+		metaVitrailPaneID = config.get("Block IDs - 07 : Meta", "Vitraux plats (def:3072)", 3072).getInt();
 
 		/** Lumineux **/
-		lanternWoodID = config.getBlock("Lanterne en bois", 3200).getInt();
-		lanternIronID = config.getBlock("Lanterne en fer", 3201).getInt();
+		lanternWoodID = config.get("Block IDs - 08 : Lumineux", "Lanterne en bois (def:3080)", 3080).getInt();
+		lanternIronID = config.get("Block IDs - 08 : Lumineux", "Lanterne en fer (def:3081)", 3081).getInt();
 
-		lampionBlancID = config.getBlock("Lampion blanc", 3202).getInt();
-		lampionBleuID = config.getBlock("Lampion bleu", 3203).getInt();
-		lampionJauneID = config.getBlock("Lampion jaune", 3204).getInt();
-		lampionVertID = config.getBlock("Lampion vert", 3205).getInt();
-		lampionRougeID = config.getBlock("Lampion rouge", 3206).getInt();
+		lampionBlancID = config.get("Block IDs - 08 : Lumineux", "Lampion blanc (def:3082)", 3082).getInt();
+		lampionBleuID = config.get("Block IDs - 08 : Lumineux", "Lampion bleu (def:3083)", 3083).getInt();
+		lampionJauneID = config.get("Block IDs - 08 : Lumineux", "Lampion jaune (def:3084)", 3084).getInt();
+		lampionVertID = config.get("Block IDs - 08 : Lumineux", "Lampion vert (def:3085)", 3085).getInt();
+		lampionRougeID = config.get("Block IDs - 08 : Lumineux", "Lampion rouge (def:3086)", 3086).getInt();
 
-		lightCandleID = config.getBlock("Bougie", 4082).getInt();
-		lightLanternID = config.getBlock("Lanterne", 4083).getInt();
-		lightSkullCandleID = config.getBlock("Bougie en crane", 4084).getInt();
-		lightSkullSpikeID = config.getBlock("Bougie simple en crane", 4085).getInt();
+		lightCandleID = config.get("Block IDs - 08 : Lumineux", "Bougie (def:3087)", 3087).getInt();
+		lightLanternID = config.get("Block IDs - 08 : Lumineux", "Lanterne (def:3088)", 3088).getInt();
+		lightSkullCandleID = config.get("Block IDs - 08 : Lumineux", "Bougie sur crane (def:3089)", 3089).getInt();
+		lightSkullSpikeID = config.get("Block IDs - 08 : Lumineux", "Crane lumineux (def:3090)", 3090).getInt();
 
-		/** Classic Blocks **/
-		crossCrateID = config.getBlock("Caisse en bois", 2499).getInt();
-		barredCrateID = config.getBlock("Caisse", 4087).getInt();
-		leatherBlockID = config.getBlock("Bloc de cuir", 3800).getInt();
-		PHOnoirID = config.getBlock("Pierre noire du PHO", 3213).getInt();
-		PHOblancID = config.getBlock("Pierre blanche du PHO", 3214).getInt();
-		silverBlockID = config.getBlock("Bloc d argent de Reder", 3265).getInt();
-		obsidianBlockID = config.getBlock("Bloc d'obsidienne cuite", 3210).getInt();
-		shojiID = config.getBlock("Mur en papier Shoji", 3212).getInt();
-		cristalBlockID = config.getBlock("Bloc de cristal", 2837).getInt();
+		/** Simple Blocks **/
+		crossCrateID = config.get("Block IDs - 09 : Blocs simples", "Caisse croisee (def:3110)", 3110).getInt();
+		barredCrateID = config.get("Block IDs - 09 : Blocs simples", "Caisse barree (def:3111)", 3111).getInt();
+		leatherBlockID = config.get("Block IDs - 09 : Blocs simples", "Bloc de cuir (def:3126)", 3126).getInt();
+		PHOnoirID = config.get("Block IDs - 09 : Blocs simples", "Pierre noire du PHO (def:3118)", 3118).getInt();
+		PHOblancID = config.get("Block IDs - 09 : Blocs simples", "Pierre blanche du PHO (def:3119)", 3119).getInt();
+		silverBlockID = config.get("Block IDs - 09 : Blocs simples", "Bloc d'argent de Reder (def:3123)", 3123).getInt();
+		obsidianBlockID = config.get("Block IDs - 09 : Blocs simples", "Bloc d'obsidienne en fusion (def:3124)", 3124).getInt();
+		shojiID = config.get("Block IDs - 09 : Blocs simples", "Mur en papier Shoji (def:3125)", 3125).getInt();
 
-		tileArdoiseID = config.getBlock("Tuiles en ardoise", 3209).getInt();
-		tileRedID = config.getBlock("Tuile rouge", 2864).getInt();
-		tileBlackID = config.getBlock("Tuile noire", 2865).getInt();
-		tileBlueID = config.getBlock("Tuile bleu", 2866).getInt();
-		tileRedBigID = config.getBlock("Tuile rouge grande", 2867).getInt();
-		tileBlackBigID = config.getBlock("Tuile noire grande", 2868).getInt();
-		tileBlueBigID = config.getBlock("Tuile bleu grande", 2869).getInt();
-		tileBlackAltID = config.getBlock("Tuile noire dechaussee", 2870).getInt();
+		tileID = config.get("Block IDs - 09 : Blocs simples", "Tuiles (10 IDs large, def:3100)", 3100).getInt();
+		tileArdoiseID = tileID;
+		tileRedID = tileID + 1;
+		tileBlackID = tileID + 2;
+		tileBlueID = tileID + 3;
+		tileRedBigID = tileID + 4;
+		tileBlackBigID = tileID + 5;
+		tileBlueBigID = tileID + 6;
+		tileBlackAltID = tileID + 7;
 
 		/** Special Blocks **/
-		meatBlockID = config.getBlock("Bloc de viande", 3207).getInt();
-		fossileBlockID = config.getBlock("Bloc Fossile", 4086).getInt();
+		meatBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc de viande (def:3129)", 3129).getInt();
+		fossileBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Fossile (def:3127)", 3127).getInt();
 
-		simpleDirtBlockID = config.getBlock("Terre classique", 3809).getInt();
-		completeLogOakID = config.getBlock("Buche complete", 4091).getInt();
-		completeLogSpruceID = config.getBlock("Buche fonce complete", 4092).getInt();
+		simpleDirtBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Terre classique (def:3128)", 3128).getInt();
+		completeLogOakID = config.get("Block IDs - 10 : Blocs speciaux", "Buche de chene complete (def:3114)", 3114).getInt();
+		completeLogSpruceID = config.get("Block IDs - 10 : Blocs speciaux", "Buche de pin complete (def:3115)", 3115).getInt();
 
-		vaillantCrateID = config.getBlock("Caisse du Vaillant", 3208).getInt();
+		vaillantCrateID = config.get("Block IDs - 10 : Blocs speciaux", "Caisse du Vaillant (def:3112)", 3112).getInt();
 
-		ironWindowID = config.getBlock("Fenetre en fer", 2692).getInt();
-		metalGridID = config.getBlock("Grille fine en acier", 2860).getInt();
+		ironWindowID = config.get("Block IDs - 10 : Blocs speciaux", "Fenetre en fer (def:3135)", 3135).getInt();
+		metalGridID = config.get("Block IDs - 10 : Blocs speciaux", "Grille fine en acier (def:3134)", 3134).getInt();
 
-		woeBlockID = config.getBlock("Bloc du War of Emperium", 3215).getInt();
+		woeBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc du War of Emperium (def:3120)", 3120).getInt();
 
-		lavaBlockID = config.getBlock("Bloc de lave", 3801).getInt();
-		waterBlockID = config.getBlock("Bloc d eau", 3802).getInt();
-		logRedID = config.getBlock("Buche Rouge", 2436).getInt();
-		logCherryID = config.getBlock("Bois de cerisier", 2435).getInt();
-		barrelID = config.getBlock("Tonneau", 3803).getInt();
+		lavaBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc de lave (def:3121)", 3121).getInt();
+		waterBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc d'eau (def:3122)", 3122).getInt();
+		
+		logCherryID = config.get("Block IDs - 10 : Blocs speciaux", "Buche de cerisier (def:3116)", 3116).getInt();
+		logRedID = config.get("Block IDs - 10 : Blocs speciaux", "Buche Rouge (def:3117)", 3117).getInt();
+		barrelID = config.get("Block IDs - 10 : Blocs speciaux", "Tonneau (def:3113)", 3113).getInt();
 
-		ironWindowPaneID = config.getBlock("Fenetre en fer plate", 2713).getInt();
+		ironWindowPaneID = config.get("Block IDs - 10 : Blocs speciaux", "Fenetre plate en fer (def:3136)", 3136).getInt();
 
-		grisouBlockID = config.getBlock("Bloc grisou", 4081).getInt();
-		slimeBlockID = config.getBlock("Bloc de slime", 3805).getInt();
-		invisibleBlockID = config.getBlock("Bloc invisble", 4095).getInt();
-		portalPurpleID = config.getBlock("Portail violet", 2900).getInt();
-		bookBlockID = config.getBlock("Block livre", 3279).getInt();
-		chainIronID = config.getBlock("Chaine en fer", 3251).getInt();
-		chainRopeID = config.getBlock("Corde", 3252).getInt();
-		ropeRailID = config.getBlock("Cordage", 3253).getInt();
-		spikesID = config.getBlock("Pique", 4080).getInt();
-		climbingLadderID = config.getBlock("Bloc d escalade", 3804).getInt();
-		roseVinesID = config.getBlock("Vignes de roses", 3806).getInt();
-		cristalLittleID = config.getBlock("Petit cristal", 2838).getInt();
-		cristalBigID = config.getBlock("Gros cristal", 2839).getInt();
-		cakeLieBlockID = config.getBlock("Cake", 3807).getInt();
-		meatCakeBlockID = config.getBlock("Viande", 3808).getInt();
+		grisouBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc de grisou (def:3130)", 3130).getInt();
+		slimeBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc de slime (def:3131)", 3131).getInt();
+		invisibleBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc invisble (def:3133)", 3133).getInt();
+		portalPurpleID = config.get("Block IDs - 10 : Blocs speciaux", "Portail violet (def:3132)", 3132).getInt();
+		bookBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Livre (def:3146)", 3146).getInt();
+		chainIronID = config.get("Block IDs - 10 : Blocs speciaux", "Chaine en fer (def:3140)", 3140).getInt();
+		chainRopeID = config.get("Block IDs - 10 : Blocs speciaux", "Corde (def:3141)", 3141).getInt();
+		ropeRailID = config.get("Block IDs - 10 : Blocs speciaux", "Cordage (def:3142)", 3142).getInt();
+		spikesID = config.get("Block IDs - 10 : Blocs speciaux", "Piques (def:3143)", 3143).getInt();
+		climbingLadderID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc d'escalade (def:3144)", 3144).getInt();
+		roseVinesID = config.get("Block IDs - 10 : Blocs speciaux", "Vignes de roses (def:3145)", 3145).getInt();
+		cristalLittleID = config.get("Block IDs - 10 : Blocs speciaux", "Petit cristal (def:3138)", 3138).getInt();
+		cristalBigID = config.get("Block IDs - 10 : Blocs speciaux", "Gros cristal (def:3139)", 3139).getInt();
+		cristalBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc de cristal (def:3137)", 3137).getInt();
+		cakeLieBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Cake (def:3147)", 3147).getInt();
+		meatCakeBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Viande (def:3148)", 3148).getInt();
+		eternalIceBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Glace eternelle (def:3154)", 3154).getInt();
 
 		/** Secret **/ 
-		secretDoorWoodBlockID = config.getBlock("Secret Wooden Door", 1699).getInt();
-		secretDoorIronBlockID = config.getBlock("Secret Iron Door", 1698).getInt();
-		secretTrapDoorBlockID = config.getBlock("Secret Trap Door", 1697).getInt();
+		secretDoorWoodBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Porte secrete en bois (bloc, def:3150)", 3150).getInt();
+		secretDoorIronBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Porte secrete en fer (bloc, def:3151)", 3151).getInt();
+		secretTrapDoorBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Trappe secrete (def:3149)", 3149).getInt();
 		
-		secretDoorWoodItemBlockID = config.getItem("Secret Wooden Door Item", 16099).getInt();
-		secretDoorIronItemBlockID = config.getItem("Secret Iron Door Item", 16098).getInt();
+		secretDoorWoodItemBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Porte secrete en bois (item, def:3152)", 3152).getInt();
+		secretDoorIronItemBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Porte secrete en fer (item, def:3153)", 3153).getInt();
 		
-		/** Stairs **/
-		stairStoneID = config.getBlock("Escalier en roche", 3040).getInt();
-		stairGrassID = config.getBlock("Escalier d'herbe", 3041).getInt();
-		stairDirtID = config.getBlock("Escalier de terre", 3042).getInt();
-		stairGravelID = config.getBlock("Escalier de gravier", 3043).getInt();
-		stairMossyCobbleID = config.getBlock("Pierre moussue", 3048).getInt();
-		stairObsidianID = config.getBlock("Escalier d'obsidienne", 3049).getInt();
-		stairIceID = config.getBlock("Escalier de glace", 3050).getInt();
-		stairSnowID = config.getBlock("Escalier de neige", 3051).getInt();
-		stairStonebrickMossyID = config.getBlock("Escalier en stonebrick moussue", 3052).getInt();
-		stairStonebrickCrackedID = config.getBlock("Escalier en stonebrick craquee", 3053).getInt();
-		stairEnderstoneID = config.getBlock("Escalier en pierre de l'ender", 3055).getInt();
-		stairSandID = config.getBlock("Escalier en sable", 3056).getInt();
-		stairStrawID = config.getBlock("Escalier en paille", 2754).getInt();
+		/** Stairs + Steps **/
+		stairWoolID = config.get("Block IDs - 11 : Escaliers et demi-dalles", "Laines (32 IDs large, def:3200)", 3200).getInt();
+		stairWoolWhiteID = stairWoolID;
+		stairWoolOrangeID = stairWoolID + 2;
+		stairWoolMagentaID = stairWoolID + 4;
+		stairWoolLightBlueID = stairWoolID + 6;
+		stairWoolYellowID = stairWoolID + 8;
+		stairWoolLightGreenID = stairWoolID + 10;
+		stairWoolPinkID = stairWoolID + 12;
+		stairWoolGrayID = stairWoolID + 14;
+		stairWoolLightGrayID = stairWoolID + 16;
+		stairWoolCyanID = stairWoolID + 18;
+		stairWoolPurpleID = stairWoolID + 20;
+		stairWoolBlueID = stairWoolID + 22;
+		stairWoolBrownID = stairWoolID + 24;
+		stairWoolGreenID = stairWoolID + 26;
+		stairWoolRedID = stairWoolID + 28;
+		stairWoolBlackID = stairWoolID + 30;
+
+		stepWoolWhiteID = stairWoolWhiteID + 1;
+		stepWoolOrangeID = stairWoolOrangeID + 1;
+		stepWoolMagentaID = stairWoolMagentaID + 1;
+		stepWoolLightBlueID = stairWoolLightBlueID + 1;
+		stepWoolYellowID = stairWoolYellowID + 1;
+		stepWoolLightGreenID = stairWoolLightGreenID + 1;
+		stepWoolPinkID = stairWoolPinkID + 1;
+		stepWoolGrayID = stairWoolGrayID + 1;
+		stepWoolLightGrayID = stairWoolLightGrayID + 1;
+		stepWoolCyanID = stairWoolCyanID + 1;
+		stepWoolPurpleID = stairWoolPurpleID + 1;
+		stepWoolBlueID = stairWoolBlueID + 1;
+		stepWoolBrownID = stairWoolBrownID + 1;
+		stepWoolGreenID = stairWoolGreenID + 1;
+		stepWoolRedID = stairWoolRedID + 1;
+		stepWoolBlackID = stairWoolBlackID + 1;
+
+		stairWoolLightID = config.get("Block IDs - 11 : Escaliers et demi-dalles", "Laines lumineuses (32 IDs large, def:3240)", 3240).getInt();
+		stairWoolWhiteLightID = stairWoolLightID;
+		stairWoolOrangeLightID = stairWoolLightID + 2;
+		stairWoolMagentaLightID = stairWoolLightID + 4;
+		stairWoolLightBlueLightID = stairWoolLightID + 6;
+		stairWoolYellowLightID = stairWoolLightID + 8;
+		stairWoolLightGreenLightID = stairWoolLightID + 10;
+		stairWoolPinkLightID = stairWoolLightID + 12;
+		stairWoolGrayLightID = stairWoolLightID + 14;
+		stairWoolLightGrayLightID = stairWoolLightID + 16;
+		stairWoolCyanLightID = stairWoolLightID + 18;
+		stairWoolPurpleLightID = stairWoolLightID + 20;
+		stairWoolBlueLightID = stairWoolLightID + 22;
+		stairWoolBrownLightID = stairWoolLightID + 24;
+		stairWoolGreenLightID = stairWoolLightID + 26;
+		stairWoolRedLightID = stairWoolLightID + 28;
+		stairWoolBlackLightID = stairWoolLightID + 30;
+
+		stepWoolWhiteLightID = stairWoolWhiteLightID + 1;
+		stepWoolOrangeLightID = stairWoolOrangeLightID + 1;
+		stepWoolMagentaLightID = stairWoolMagentaLightID + 1;
+		stepWoolLightBlueLightID = stairWoolLightBlueLightID + 1;
+		stepWoolYellowLightID = stairWoolYellowLightID + 1;
+		stepWoolLightGreenLightID = stairWoolLightGreenLightID + 1;
+		stepWoolPinkLightID = stairWoolPinkLightID + 1;
+		stepWoolGrayLightID = stairWoolGrayLightID + 1;
+		stepWoolLightGrayLightID = stairWoolLightGrayLightID + 1;
+		stepWoolCyanLightID = stairWoolCyanLightID + 1;
+		stepWoolPurpleLightID = stairWoolPurpleLightID + 1;
+		stepWoolBlueLightID = stairWoolBlueLightID + 1;
+		stepWoolBrownLightID = stairWoolBrownLightID + 1;
+		stepWoolGreenLightID = stairWoolGreenLightID + 1;
+		stepWoolRedLightID = stairWoolRedLightID + 1;
+		stepWoolBlackLightID = stairWoolBlackLightID + 1;
+
+		stairTileID = config.get("Block IDs - 11 : Escaliers et demi-dalles", "Tuiles (20 IDs large, def:3280)", 3280).getInt();
+		stairArdoiseID = stairTileID;
+		stairTileRedID = stairTileID + 2;
+		stairTileBlackID = stairTileID + 4;
+		stairTileBlueID = stairTileID + 6;
+		stairTileRedBigID = stairTileID + 8;
+		stairTileBlackBigID = stairTileID + 10;
+		stairTileBlueBigID = stairTileID + 12;
+		stairTileBlackAltID = stairTileID + 14;
 		
-		stairWoolWhiteID = config.getBlock("Escalier de laine blanche", 3000).getInt();
-		stairWoolOrangeID = config.getBlock("Escalier de laine orange", 3001).getInt();
-		stairWoolMagentaID = config.getBlock("Escalier de laine magenta", 3002).getInt();
-		stairWoolLightBlueID = config.getBlock("Escalier de laine bleu claire", 3003).getInt();
-		stairWoolYellowID = config.getBlock("Escalier en laine jaune", 3004).getInt();
-		stairWoolLightGreenID = config.getBlock("Escalier en laine verte claire", 3005).getInt();
-		stairWoolPinkID = config.getBlock("Escalier en laine rose", 3006).getInt();
-		stairWoolGrayID = config.getBlock("Escalier en laine grise", 3007).getInt();
-		stairWoolLightGrayID = config.getBlock("Escalier en laine grise claire", 3008).getInt();
-		stairWoolCyanID = config.getBlock("Escalier en laine cyan", 3009).getInt();
-		stairWoolPurpleID = config.getBlock("Escalier en laine violette", 3010).getInt();
-		stairWoolBlueID = config.getBlock("Escalier en laine bleu", 3011).getInt();
-		stairWoolBrownID = config.getBlock("Escalier en laine marron", 3012).getInt();
-		stairWoolGreenID = config.getBlock("Escalier en laine verte", 3013).getInt();
-		stairWoolRedID = config.getBlock("Escalier en laine rouge", 3014).getInt();
-		stairWoolBlackID = config.getBlock("Escalier en laine noire", 3015).getInt();
+		stepArdoiseID = stairArdoiseID + 1;
+		stepTileRedID = stairTileRedID + 1;
+		stepTileBlackID = stairTileBlackID + 1;
+		stepTileBlueID = stairTileBlueID + 1;
+		stepTileRedBigID = stairTileRedBigID + 1;
+		stepTileBlackBigID = stairTileBlackBigID + 1;
+		stepTileBlueBigID = stairTileBlueBigID + 1;
+		stepTileBlackAltID = stairTileBlackAltID + 1;
 
-		stairWoolWhiteLightID = config.getBlock("Escalier de laine blanche lumineuse", 3100).getInt();
-		stairWoolOrangeLightID = config.getBlock("Escalier de laine orange lumineuse", 3101).getInt();
-		stairWoolMagentaLightID = config.getBlock("Escalier de laine magenta lumineuse", 3102).getInt();
-		stairWoolLightBlueLightID = config.getBlock("Escalier de laine bleu claire lumineuse", 3103).getInt();
-		stairWoolYellowLightID = config.getBlock("Escalier en laine jaune lumineuse", 3104).getInt();
-		stairWoolLightGreenLightID = config.getBlock("Escalier en laine verte claire lumineuse", 3105).getInt();
-		stairWoolPinkLightID = config.getBlock("Escalier en laine rose lumineuse", 3106).getInt();
-		stairWoolGrayLightID = config.getBlock("Escalier en laine grise lumineuse", 3107).getInt();
-		stairWoolLightGrayLightID = config.getBlock("Escalier en laine grise claire lumineuse", 3108).getInt();
-		stairWoolCyanLightID = config.getBlock("Escalier en laine cyan lumineuse", 3109).getInt();
-		stairWoolPurpleLightID = config.getBlock("Escalier en laine violette lumineuse", 3110).getInt();
-		stairWoolBlueLightID = config.getBlock("Escalier en laine bleu lumineuse", 3111).getInt();
-		stairWoolBrownLightID = config.getBlock("Escalier en laine marron lumineuse", 3112).getInt();
-		stairWoolGreenLightID = config.getBlock("Escalier en laine verte lumineuse", 3113).getInt();
-		stairWoolRedLightID = config.getBlock("Escalier en laine rouge lumineuse", 3114).getInt();
-		stairWoolBlackLightID = config.getBlock("Escalier en laine noire lumineuse", 3115).getInt();
+		stepLanternWoodID = config.get("Block IDs - 11 : Escaliers et demi-dalles", "Demi-dalle de lanterne en bois (def:3300)", 3300).getInt();
+		stepLanternIronID = config.get("Block IDs - 11 : Escaliers et demi-dalles", "Demi-dalle de lanterne en fer (def:3301)", 3301).getInt();
 
-		stairWhiteStoneID = config.getBlock("Escalier en pierre blanche", 2725).getInt();
-		stairWhiteCobblestoneID = config.getBlock("Escalier en pierre blanche fragmente", 2726).getInt();
-		stairWhiteStonebrickID = config.getBlock("Escalier en brique de pierre blanche", 2727).getInt();
+		/** Classic Stairs + Steps + Walls + Balustrades **/
+		setStone = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Pierre (5 IDs large, def:2350)", 2350).getInt();
+		setGrass = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Herbe (5 IDs large, def:2355)", 2355).getInt();
+		setDirt = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Terre (5 IDs large, def:2360)", 2360).getInt();
+		setGravel = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Gravier (5 IDs large, def:2365)", 2365).getInt();
+		setSand = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Sable (5 IDs large, def:2370)", 2370).getInt();
+		setSandstone = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Sandstone (5 IDs large, def:2375)", 2375).getInt();
+		setWoodOak = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Bois de chene (5 IDs large, def:2400)", 2400).getInt();
+		setWoodSpruce = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Bois de pin (5 IDs large, def:2405)", 2405).getInt();
+		setWoodBirch = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Bois de bouleau (5 IDs large, def:2410)", 2410).getInt();
+		setWoodJungle = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Bois de la jungle (5 IDs large, def:2415)", 2415).getInt();
+		setPlanksOak = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Planches de chene (5 IDs large, def:2420)", 2420).getInt();
+		setPlanksSpruce = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Planches de pin (5 IDs large, def:2425)", 2425).getInt();
+		setPlanksBirch = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Planches de bouleau (5 IDs large, def:2430)", 2430).getInt();
+		setPlanksJungle = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Planches de la jungle (5 IDs large, def:2435)", 2435).getInt();
+		setMossyCobble = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "MossyCobble (5 IDs large, def:2440)", 2440).getInt();
+		setStonebrick = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Stonebrick (5 IDs large, def:2445)", 2445).getInt();
+		setStonebrickMossy = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "StonebrickMossy (5 IDs large, def:2450)", 2450).getInt();
+		setStonebrickCracked = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "StonebrickCracked (5 IDs large, def:2455)", 2455).getInt();
+		setBrick = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Brique (5 IDs large, def:2460)", 2460).getInt();
+		setObsidian = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Obsidienne (5 IDs large, def:2465)", 2465).getInt();
+		setIce = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Glace (5 IDs large, def:2470)", 2470).getInt();
+		setSnow = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Neige (5 IDs large, def:2475)", 2475).getInt();
+		setNetherbrick = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Pierre du nether (5 IDs large, def:2480)", 2480).getInt();
+		setEnderstone = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Pierre de l'end (5 IDs large, def:2485)", 2485).getInt();
+		setStraw = config.get("Block IDs - 11 : Escaliers, demi-dalles, murets et balustrades classiques", "Paille (5 IDs large, def:2490)", 2490).getInt();
 
-		stairSandstoneStonebrickID = config.getBlock("Escalier en brique de sandstone", 2753).getInt();
+		stairStoneID = setStone;
+		stairGrassID = setGrass;
+		stairDirtID = setDirt;
+		stairGravelID = setGravel;
+		stairSandID = setSand;
+		stairMossyCobbleID = setMossyCobble;
+		stairStonebrickMossyID = setStonebrickMossy;
+		stairStonebrickCrackedID = setStonebrickCracked;
+		stairObsidianID = setObsidian;
+		stairIceID = setIce;
+		stairSnowID = setSnow;
+		stairEnderstoneID = setEnderstone;
+		stairStrawID = setStraw;
 
-		stairAncientStoneID = config.getBlock("Escalier en pierre ancienne", 2720).getInt();
-		stairAncientStonebrickID = config.getBlock("Escalier en brique de pierre ancienne", 2722).getInt();
-		stairAncientCobblestoneID = config.getBlock("Escalier en pierre ancienne fragmente", 2721).getInt();
+		stepGrassID = setGrass + 1;
+		stepDirtID = setDirt + 1;
+		stepGravelID = setGravel + 1;
+		stepSandID = setSand + 1;
+		stepWoodOakID = setWoodOak + 1;
+		stepWoodSpruceID = setWoodSpruce + 1;
+		stepWoodBirchID = setWoodBirch + 1;
+		stepWoodJungleID = setWoodJungle + 1;
+		stepCobbleMossyID = setMossyCobble + 1;
+		stepStonebrickMossyID = setStonebrickMossy + 1;
+		stepStonebrickCrackedID = setStonebrickCracked + 1;
+		stepObsidianID = setObsidian + 1;
+		stepIceID = setIce + 1;
+		stepSnowID = setSnow + 1;
+		stepEndstoneID = setEnderstone + 1;
+		stepStrawID = setStraw + 1;
 
-		stairIceStonebrickID = config.getBlock("Escalier en brique de glace", 2701).getInt();
-		stairIceCobblestoneID = config.getBlock("Escalier en glace fragmente", 2700).getInt();
-
-		stairMarbleWhiteStoneID = config.getBlock("Escalier en marbre blanc", 2710).getInt();
-		stairMarbleWhiteStonebrickID = config.getBlock("Escalier en brique de marbre blanc", 2712).getInt();
-		stairMarbleWhiteCobblestoneID = config.getBlock("Escalier en marbre blanc fragmente", 2711).getInt();
-
-		stairMarbleBlackStoneID = config.getBlock("Escalier en marbre noir", 2730).getInt();
-		stairMarbleBlackStonebrickID = config.getBlock("Escalier en brique de marbre noir", 2732).getInt();
-		stairMarbleBlackCobblestoneID = config.getBlock("Escalier en marbre noir fragmente", 2731).getInt();
-		stairMarbleCheckID = config.getBlock("Escalier de marbre en damier", 2752).getInt();
-
-		stairWoodenStoneID = config.getBlock("Escalier en bois lisse", 2740).getInt();
-		stairWoodenStonebrickID = config.getBlock("Escalier en brique de bois lisse", 2741).getInt();
-
-		stairWoodenLightStoneID = config.getBlock("Escalier en bois clair lisse", 2750).getInt();
-		stairWoodenLightStonebrickID = config.getBlock("Escalier en brique de bois clair lisse", 2751).getInt();
-		
-		stairArdoiseID = config.getBlock("Escalier en Ardoise", 3229).getInt();
-		stairTileRedID = config.getBlock("Escalier de tuile rouge", 3136).getInt();
-		stairTileBlackID = config.getBlock("Escalier de tuile noire", 3137).getInt();
-		stairTileBlueID = config.getBlock("Escalier de tuile bleue", 3138).getInt();
-		stairTileRedBigID = config.getBlock("Escalier de grande tuile rouge", 3139).getInt();
-		stairTileBlackBigID = config.getBlock("Escalier de grande tuile noire", 3140).getInt();
-		stairTileBlueBigID = config.getBlock("Escalier de grande tuile bleu", 3141).getInt();
-		stairTileBlackAltID = config.getBlock("Escalier de tuile noire dechaussee", 3142).getInt();
-
-		/** Steps **/
-		stepGrassID = config.getBlock("Dalle en herbe", 3061).getInt();
-		stepDirtID = config.getBlock("Dalle en terre", 3062).getInt();
-		stepGravelID = config.getBlock("Dalle en gravier", 3063).getInt();
-		stepWoodOakID = config.getBlock("Dalle en bois (chene)", 3064).getInt();
-		stepWoodSpruceID = config.getBlock("Dalle en bois (pin)", 3065).getInt();
-		stepWoodBirchID = config.getBlock("Dalle en bois (bouleau)", 3066).getInt();
-		stepWoodJungleID = config.getBlock("Dalle en bois (jungle)",3067).getInt();
-		stepCobbleMossyID = config.getBlock("Dalle en cobblestone moussue",3068).getInt();
-		stepObsidianID = config.getBlock("Dalle en obsidienne", 3069).getInt();
-		stepIceID = config.getBlock("Dalle en glace",3070).getInt();
-		stepSnowID = config.getBlock("Dalle en neige",3071).getInt();
-		stepStonebrickMossyID = config.getBlock("Dalle en stonebrick moussue",3072).getInt();
-		stepStonebrickCrackedID = config.getBlock("Dalle en stonebrick craquee",3073).getInt();
-		stepNetherbrickID = config.getBlock("Dalle en netherbrick", 3074).getInt();
-		stepEndstoneID = config.getBlock("Dalle en pierre du neant",3075).getInt();
-		stepSandID = config.getBlock("Dalle en sable",3076).getInt();
-		stepStrawID = config.getBlock("Demi-dalle en paille", 2964).getInt();
-
-		stepWoolWhiteID = config.getBlock("Dalle de laine blanche", 3020).getInt();
-		stepWoolOrangeID = config.getBlock("Dalle de laine orange",3021).getInt();
-		stepWoolMagentaID = config.getBlock("Dalle de laine magenta",3022).getInt();
-		stepWoolLightBlueID = config.getBlock("Dalle de laine bleu claire",3023).getInt();
-		stepWoolYellowID = config.getBlock("Dalle de laine jaune",3024).getInt();
-		stepWoolLightGreenID = config.getBlock("Dalle de laine verte claire",3025).getInt();
-		stepWoolPinkID = config.getBlock("Dalle de laine rose",3026).getInt();
-		stepWoolGrayID = config.getBlock("Dalle de laine grise",3027).getInt();
-		stepWoolLightGrayID = config.getBlock("Dalle de laine grise claire",3028).getInt();
-		stepWoolCyanID = config.getBlock("Dalle de laine cyan",3029).getInt();
-		stepWoolPurpleID = config.getBlock("Dalle de laine violette",3030).getInt();
-		stepWoolBlueID = config.getBlock("Dalle de laine bleu",3031).getInt();
-		stepWoolBrownID = config.getBlock("Dalle de laine marron",3032).getInt();
-		stepWoolGreenID = config.getBlock("Dalle de laine verte",3033).getInt();
-		stepWoolRedID = config.getBlock("Dalle de laine rouge", 3034).getInt();
-		stepWoolBlackID = config.getBlock("Dalle de laine noire", 3035).getInt();
-
-		stepWoolWhiteLightID = config.getBlock("Dalle de laine blanche lumineuse",3120).getInt();
-		stepWoolOrangeLightID = config.getBlock("Dalle de laine orange lumineuse",3121).getInt();
-		stepWoolMagentaLightID = config.getBlock("Dalle de laine magenta lumineuse",3122).getInt();
-		stepWoolLightBlueLightID = config.getBlock("Dalle de laine bleu claire lumineuse",3123).getInt();
-		stepWoolYellowLightID = config.getBlock("Dalle de laine jaune lumineuse",3124).getInt();
-		stepWoolLightGreenLightID = config.getBlock("Dalle de laine verte claire lumineuse",3125).getInt();
-		stepWoolPinkLightID = config.getBlock("Dalle de laine rose lumineuse",3126).getInt();
-		stepWoolGrayLightID = config.getBlock("Dalle de laine grise lumineuse",3127).getInt();
-		stepWoolLightGrayLightID = config.getBlock("Dalle de laine grise claire lumineuse",3128).getInt();
-		stepWoolCyanLightID = config.getBlock("Dalle de laine cyan lumineuse",3129).getInt();
-		stepWoolPurpleLightID = config.getBlock("Dalle de laine violette lumineuse",3130).getInt();
-		stepWoolBlueLightID = config.getBlock("Dalle de laine bleu lumineuse",3131).getInt();
-		stepWoolBrownLightID = config.getBlock("Dalle de laine marron lumineuse",3132).getInt();
-		stepWoolGreenLightID = config.getBlock("Dalle de laine verte lumineuse",3133).getInt();
-		stepWoolRedLightID = config.getBlock("Dalle de laine rouge lumineuse",3134).getInt();
-		stepWoolBlackLightID = config.getBlock("Dalle de laine noire lumineuse", 3135).getInt();
-
-		stepStoneColumnID = config.getBlock("Demi-dalle de colonne en stonebrick", 2962).getInt();
-		stepStoneColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en stonebrick", 2963).getInt();
-
-		stepWhiteStoneID = config.getBlock("Demi-dalle de pierre blanche", 2981).getInt();
-		stepWhiteCobblestoneID = config.getBlock("Demi-dalle de pierre blanche fragmentee", 2980).getInt();
-		stepWhiteStonebrickID = config.getBlock("Demi-dalle de brique de pierre blanche", 2982).getInt();
-		stepWhiteDoubleSlabID = config.getBlock("Demi-dalle de dalle de pierre blanche", 2983).getInt();
-		stepWhiteColumnID = config.getBlock("Demi-dalle de colonne en pierre blanche", 2984).getInt();
-		stepWhiteColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en pierre blanche", 2985).getInt();
-
-		stepSandstoneStonebrickID = config.getBlock("Demi-dalle de brique de sandstone", 2972).getInt();
-		stepSandstoneDoubleSlabID = config.getBlock("Demi-dalle de dalle en sandstone", 2973).getInt();
-		stepSandstoneColumnID = config.getBlock("Demi-dalle de colonne de sandstone", 2974).getInt();
-		stepSandstoneColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en sandstone", 2975).getInt();
-
-		stepAncientCobblestoneID = config.getBlock("Demi-dalle de pierre ancienne fragmentee", 2920).getInt();
-		stepAncientStoneID = config.getBlock("Demi-dalle de pierre ancienne", 2921).getInt();
-		stepAncientStonebrickID = config.getBlock("Demi-dalle de brique de pierre ancienne", 2922).getInt();
-		stepAncientDoubleSlabID = config.getBlock("Demi-dalle de dalle de pierre ancienne", 2924).getInt();
-		stepAncientColumnID = config.getBlock("Demi-dalle de colonne en pierre ancienne", 2925).getInt();
-		stepAncientColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en pierre ancienne", 2926).getInt();
-
-		stepIceCobblestoneID = config.getBlock("Demi-dalle de glace fragmente", 2901).getInt();
-		stepIceStonebrickID = config.getBlock("Demi-dalle de briques de glace", 2902).getInt();
-		stepIceDoubleSlabID = config.getBlock("Demi-dalle de dalle en glace", 2903).getInt();
-		stepIceColumnID = config.getBlock("Demi-dalle de colonne de glace", 2904).getInt();
-		stepIceColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en glace", 2905).getInt();
-
-		stepMarbleWhiteCobblestoneID = config.getBlock("Demi-dalle de marbre blanc fragmente", 2910).getInt();
-		stepMarbleWhiteStoneID = config.getBlock("Demi-dalle de marbre blanc", 2911).getInt();
-		stepMarbleWhiteStonebrickID = config.getBlock("Demi-dalle de brique de Marbre blanc", 2912).getInt();
-		stepMarbleWhiteDoubleSlabID = config.getBlock("Demi-dalle de dalle de Marbre blanc", 2914).getInt();
-		stepMarbleWhiteColumnID = config.getBlock("Demi-dalle de colonne de Marbre blanc", 2915).getInt();
-		stepMarbleWhiteColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne de Marbre blanc", 2916).getInt();
-
-		stepMarbleBlackCobblestoneID = config.getBlock("Demi-dalle de marbre noir fragmente", 2930).getInt();
-		stepMarbleBlackStoneID = config.getBlock("Demi-dalle de marbre noir", 2931).getInt();
-		stepMarbleBlackStonebrickID = config.getBlock("Demi-dalle de brique de Marbre noir", 2932).getInt();
-		stepMarbleBlackDoubleSlabID = config.getBlock("Demi-dalle de dalle de Marbre noir", 2934).getInt();
-		stepMarbleBlackColumnID = config.getBlock("Demi-dalle de colonne en Marbre noir", 2935).getInt();
-		stepMarbleBlackColumnHeadID = config.getBlock("Demi-dalle de chapeau de Colonne en Marbre noir", 2936).getInt();
-
-		stepMarbleCheckID = config.getBlock("Demi-dalle de marbre en damier", 2960).getInt();
-
-		stepWoodenStoneID = config.getBlock("Demi-dalle de bois lisse", 2940).getInt();
-		stepWoodenStonebrickID = config.getBlock("Demi-dalle de brique de bois lisse", 2941).getInt();
-		stepWoodenDoubleSlabID = config.getBlock("Demi-dalle de dalle de bois lisse", 2943).getInt();
-		stepWoodenColumnID = config.getBlock("Demi-dalle de colonne en bois lisse", 2944).getInt();
-		stepWoodenColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en bois lisse", 2945).getInt();
-
-		stepWoodenLightStoneID = config.getBlock("Demi-dalle de bois clair lisse", 2950).getInt();
-		stepWoodenLightStonebrickID = config.getBlock("Demi-dalle de brique de bois clair lisse", 2951).getInt();
-		stepWoodenLightDoubleSlabID = config.getBlock("Demi-dalle de dalle de bois clair lisse", 2953).getInt();
-		stepWoodenLightColumnID = config.getBlock("Demi-dalle de colonne en bois clair lisse", 2954).getInt();
-		stepWoodenLightColumnHeadID = config.getBlock("Demi-dalle de chapeau de colonne en bois clair lisse", 2955).getInt();
-
-		stepMetalID = config.getBlock("Demi-dalle en acier", 2961).getInt();
-
-		stepArdoiseID = config.getBlock("Demi-dalle en Ardoise", 3249).getInt();
-		stepTileRedID = config.getBlock("Demi-dalle de tuile rouge", 3143).getInt();
-		stepTileBlackID = config.getBlock("Demi-dalle de tuile noire", 3144).getInt();
-		stepTileBlueID = config.getBlock("Demi-dalle de tuile bleu", 3145).getInt();
-		stepTileRedBigID = config.getBlock("Demi-dalle de grande tuile rouge", 3146).getInt();
-		stepTileBlackBigID = config.getBlock("Demi-dalle de grande tuile noire", 3147).getInt();
-		stepTileBlueBigID = config.getBlock("Demi-dalle de grande tuile bleu", 3148).getInt();
-		stepTileBlackAltID = config.getBlock("Demi-dalle de tuile noire dechaussee", 3149).getInt();
-
-		stepLanternWoodID = config.getBlock("Demi-dalle de lanterne en bois", 3150).getInt();
-		stepLanternIronID = config.getBlock("Demi-dalle de lanterne en fer", 3151).getInt();
-		
 		/** Walls **/
-		wallSandstoneID = config.getBlock("Muret en sandstone", 1500).getInt();
-		wallPlankOakID = config.getBlock("Muret en planche (chene)", 1501).getInt();
-		wallBrickID = config.getBlock("Muret en brique", 1505).getInt();
-		wallStonebrickID = config.getBlock("Muret en stonebrick", 1506).getInt();
-		wallNetherbrickID = config.getBlock("Muret en netherbrick", 1510).getInt();
-		wallWoodOakID = config.getBlock("Muret en bois (chene)", 1511).getInt();
-		wallWoodFirID = config.getBlock("Muret en bois (sapin)", 1512).getInt();
-		wallWoodBirchID = config.getBlock("Muret en bois (bouleau)", 1513).getInt();
-		wallWoodJungleID = config.getBlock("Muret en bois (jungle)", 1514).getInt();
-
-		wallWhiteStoneID = config.getBlock("Muret en pierre blanche", 1800).getInt();
-		wallWhiteCobblestoneID = config.getBlock("Muret en cobblestone blanche", 1801).getInt();
-		wallWhiteStonebrickID = config.getBlock("Muret en stonebrick blanche", 1802).getInt();
-
-		wallAncientStoneID = config.getBlock("Muret en pierre ancienne", 1809).getInt();
-		wallAncientStonebrickID = config.getBlock("Muret en brique de pierre ancienne", 1810).getInt();
-		wallAncientCobblestoneID = config.getBlock("Muret en pierre ancienne fragmente", 1811).getInt();
-
-		wallIceCobblestoneID = config.getBlock("Muret en glace fragmente", 1816).getInt();
-		wallIceStonebrickID = config.getBlock("Muret en briques de glace", 1817).getInt();
-		
-		wallMarbleWhiteStoneID = config.getBlock("Muret en marbre blanc", 1803).getInt();
-		wallMarbleWhiteStonebrickID = config.getBlock("Muret en brique de marbre blanc", 1804).getInt();
-		wallMarbleWhiteCobblestoneID = config.getBlock("Muret en marbre blanc fragmente", 1805).getInt();
-
-		wallMarbleBlackStoneID = config.getBlock("Muret en marbre noir", 1806).getInt();
-		wallMarbleBlackStonebrickID = config.getBlock("Muret en brique de marbre noir", 1807).getInt();
-		wallMarbleBlackCobblestoneID = config.getBlock("Muret en marbre noir fragmente", 1808).getInt();
-
-		wallWoodenStoneID = config.getBlock("Muret en bois lisse", 1812).getInt();
-		wallWoodenStonebrickID = config.getBlock("Muret en brique de bois lisse", 1813).getInt();
-
-		wallWoodenLightStoneID = config.getBlock("Muret en bois clair lisse", 1814).getInt();
-		wallWoodenLightStonebrickID = config.getBlock("Muret en brique de bois clair lisse", 1815).getInt();
+		wallSandstoneID = setSandstone + 2;
+		wallPlankOakID = setPlanksOak + 2;
+		wallBrickID = setBrick + 2;
+		wallStonebrickID = setStonebrick + 2;
+		wallNetherbrickID = setNetherbrick + 2;
+		wallWoodOakID = setWoodOak + 2;
+		wallWoodSpruceID = setWoodSpruce + 2;
+		wallWoodBirchID = setWoodBirch + 2;
+		wallWoodJungleID = setWoodJungle + 2;
 
 		/** Fence **/
-		fenceWhiteStoneID = config.getBlock("Barriere en pierre blanche", 2760).getInt();
-		fenceWhiteStonebrickID = config.getBlock("Barriere en pierre blanche taille", 2761).getInt();
-		fenceWhiteCobblestoneID = config.getBlock("Barriere en pierre blanche fragmentee", 2762).getInt();
-
-		fenceAncientStoneID = config.getBlock("Barriere en pierre ancienne", 2769).getInt();
-		fenceAncientStonebrickID = config.getBlock("Barriere en pierre ancienne taillee", 2770).getInt();
-		fenceAncientCobblestoneID = config.getBlock("Barriere en pierre ancienne fragmentee", 2771).getInt();
-	
-		fenceIceCobblestoneID = config.getBlock("Barriere en glace fragmente", 2776).getInt();
-		fenceIceStonebrickID = config.getBlock("Barriere en glace taille", 2777).getInt();
 		
-		fenceMarbleWhiteStoneID = config.getBlock("Barriere en marbre blanc", 2763).getInt();
-		fenceMarbleWhiteStonebrickID = config.getBlock("Barriere en marbre blanc taille", 2764).getInt();
-		fenceMarbleWhiteCobblestoneID = config.getBlock("Barriere en marbre blanc fragmente", 2765).getInt();
-		
-		fenceMarbleBlackStoneID = config.getBlock("Barriere en marbre noir", 2766).getInt();
-		fenceMarbleBlackStonebrickID = config.getBlock("Barriere en marbre noir taille", 2767).getInt();
-		fenceMarbleBlackCobblestoneID = config.getBlock("Barriere en marbre noir fragmente", 2768).getInt();
-		
-		fenceWoodenStoneID = config.getBlock("Barriere en bois lisse", 2772).getInt();
-		fenceWoodenStonebrickID = config.getBlock("Barriere en bois lisse taille", 2773).getInt();
-		
-		fenceWoodenLightStoneID = config.getBlock("Barriere en bois clair lisse", 2774).getInt();
-		fenceWoodenLightStonebrickID = config.getBlock("Barriere en bois clair lisse taille", 2775).getInt();
-
 		/** Balustrades **/
-		anvilWhiteStoneID = config.getBlock("Balustrade en pierre blanche", 2654).getInt();
-		anvilWhiteStonebrickID = config.getBlock("Balustrade en brique de pierre blanche", 2655).getInt();
-		anvilSandstoneStonebrickID = config.getBlock("Balustrade en brique de sandstone", 2658).getInt();
-		anvilAncientStoneID = config.getBlock("Balustrade en pierre ancienne", 2656).getInt();
-		anvilAncientStonebrickID = config.getBlock("Balustrade en brique de pierre ancienne", 2657).getInt();
-		anvilIceStonebrickID = config.getBlock("Balustrade en brique de glace", 2664).getInt();
-		anvilMarbleWhiteID = config.getBlock("Balustrade en marbre blanc", 2652).getInt();
-		anvilMarbleWhiteStonebrickID = config.getBlock("Balustrade en brique de marbre blanc", 2653).getInt();
-		anvilMarbleBlackID = config.getBlock("Balustarde en marbre noir", 2650).getInt();
-		anvilMarbleBlackStonebrickID = config.getBlock("Balustrade en brique de marbre noir", 2651).getInt();
-
-		anvilWoodenStoneID = config.getBlock("Balustrade en bois lisse", 2665).getInt();
-		anvilWoodenStonebrickID = config.getBlock("Balustrade en brique de bois lisse", 2666).getInt();
-		anvilWoodenLightStoneID = config.getBlock("Balustrade en bois lisse clair", 2667).getInt();
-		anvilWoodenLightStonebrickID = config.getBlock("Balustrade en brique de bois lisse clair", 2668).getInt();
-
-		anvilWoodOakID = config.getBlock("Balustrade en bois", 2659).getInt();
-		anvilPlankJungleID = config.getBlock("Balustrade en bois normal", 2660).getInt();
-		anvilPlankOakID = config.getBlock("Balustrade en bois blanc", 2661).getInt();
-		anvilPlankBirchID = config.getBlock("Balustrade en bois brun", 2662).getInt();
-		anvilPlankSpruceID = config.getBlock("Balustrade en bois fonce", 2663).getInt();
+		anvilWoodOakID = setWoodOak + 4;
+		anvilPlankOakID = setPlanksOak + 4;
+		anvilPlankSpruceID = setPlanksSpruce + 4;
+		anvilPlankBirchID = setPlanksBirch + 4;
+		anvilPlankJungleID = setPlanksJungle + 4;
 		
 		/** Carpet **/
-		carpetDirtID = config.getBlock("Surface en terre", 2505).getInt();
-		carpetGravelID = config.getBlock("Surface en gravier", 2506).getInt();
-		carpetStoneID = config.getBlock("Surface en pierre", 2507).getInt();
-		carpetStonebrickID = config.getBlock("Surface en stonebrick", 2512).getInt();
-		carpetLogOakTopID = config.getBlock("Surface en buche de chene", 2508).getInt();
-		carpetPlankOakID = config.getBlock("Tapis en planche", 2513).getInt();
-		carpetPlankSpruceID = config.getBlock("Tapis en planche sombre", 2514).getInt();
-		carpetLogOakID = config.getBlock("Tapis en buche", 2515).getInt();
-		carpetLogSpruceID = config.getBlock("Tapis en buche sombre", 2516).getInt();
-		carpetPlankOakTempID = config.getBlock("Surface de planche en chene", 2500).getInt();
+		carpetDirtID = config.get("Block IDs - 12 : Tapis", "Tapis en terre", 3310).getInt();
+		carpetGravelID = config.get("Block IDs - 12 : Tapis", "Tapis en gravier", 3311).getInt();
+		carpetStoneID = config.get("Block IDs - 12 : Tapis", "Tapis en pierre", 3312).getInt();
+		carpetStonebrickID = config.get("Block IDs - 12 : Tapis", "Tapis en stonebrick", 3313).getInt();
+		
+		carpetPlankOakID = config.get("Block IDs - 12 : Tapis", "Tapis en planches de chene", 3314).getInt();
+		carpetPlankSpruceID = config.get("Block IDs - 12 : Tapis", "Tapis en planches de pin", 3315).getInt();
+		carpetLogOakTopID = config.get("Block IDs - 12 : Tapis", "Tapis en buche de chene", 3316).getInt();
+		carpetLogOakID = config.get("Block IDs - 12 : Tapis", "Tapis en bois de chene", 3317).getInt();
+		carpetLogSpruceID = config.get("Block IDs - 12 : Tapis", "Tapis en bois de pin", 3318).getInt();
 
 		/** Unused **/
-		seedHoublonID = config.getItem("Graine de houblon", 30220).getInt();
-		houblonID = config.getItem("Houblon", 30221).getInt();
-		//cropHoublonID = config.getItem("Pousse de houblon", 3820).getInt();
-		rotatorID = config.getItem("Le Rotationnator", 30159).getInt();
-		cannepecheID = config.getItem("Canne a peche", 30157).getInt();
-		liquideVertFlowingID = config.getBlock("Liquide vert", 3300).getInt();
-		liquideVertStillID = config.getBlock("Liquide vert (stationnaire)", 3301).getInt();
-		liquideVioletFlowingID = config.getBlock("Liquide violet", 3302).getInt();
-		liquideVioletStillID = config.getBlock("Liquide violet (stationnaire)", 3303).getInt();
+		//seedHoublonID = config.get("Block IDs - 99 : Unused", "Graine de houblon", 30220).getInt();
+		//houblonID = config.get("Block IDs - 99 : Unused", "Houblon", 30221).getInt();
+		//cropHoublonID = config.get("Block IDs - 99 : Unused", "Pousse de houblon", 3820).getInt();
+		//rotatorID = config.get("Block IDs - 99 : Unused", "Le Rotationnator", 30159).getInt();
+		//cannepecheID = config.get("Block IDs - 99 : Unused", "Canne a peche", 30157).getInt();
+		//liquideVertFlowingID = config.get("Block IDs - 99 : Unused", "Liquide vert", 3300).getInt();
+		//liquideVertStillID = config.get("Block IDs - 99 : Unused", "Liquide vert (stationnaire)", 3301).getInt();
+		//liquideVioletFlowingID = config.get("Block IDs - 99 : Unused", "Liquide violet", 3302).getInt();
+		//liquideVioletStillID = config.get("Block IDs - 99 : Unused", "Liquide violet (stationnaire)", 3303).getInt();
 		
-
-		config.save(); //Saves the file
+		config.save();
 	}
 }

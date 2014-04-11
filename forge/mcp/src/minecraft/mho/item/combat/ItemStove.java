@@ -30,6 +30,7 @@ public class ItemStove extends ItemSwordMho {
 			antiBug = false;
 		}
         sword.damageItem(1, player);
+        player.playSound(Mho.modid + ":item.bong", 1.0F, 0.8F);
         return true;
     }
 }

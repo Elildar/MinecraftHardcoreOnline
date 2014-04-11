@@ -30,7 +30,7 @@ public class BlockAnvilMho extends BlockAnvil {
         this.setResistance(par2Block.blockResistance / 2.0F);
         this.setStepSound(par2Block.stepSound);
         this.setCreativeTab(Mho.tabMhoFences);
-		this.setLightOpacity(4);
+		this.setLightOpacity(1);
 		this.setUnlocalizedName("MHO"+name);
     }
 

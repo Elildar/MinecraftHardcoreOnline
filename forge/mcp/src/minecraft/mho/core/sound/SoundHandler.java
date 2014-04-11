@@ -11,7 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class SoundHandler 
 {
-	static String[] soundFiles = { Mho.modid + ":item/peluche.ogg" };
+	static String[] soundFiles = { Mho.modid + ":item/peluche.ogg", Mho.modid + ":item/bong.ogg" };
 	
 	@SideOnly(Side.CLIENT)
     @ForgeSubscribe

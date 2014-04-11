@@ -5,9 +5,9 @@ import java.lang.reflect.Modifier;
 
 import mho.block.build.BlockColumnHead;
 import mho.block.build.BlockCristalMho;
-import mho.block.build.BlockDoubleCrateBot;
-import mho.block.build.BlockDoubleCrateTop;
+import mho.block.build.BlockDoubleCrate;
 import mho.block.build.BlockGrisou;
+import mho.block.build.BlockIceMho;
 import mho.block.build.BlockInvisible;
 import mho.block.build.BlockMetaWoolLight;
 import mho.block.build.BlockRedRockLines;
@@ -89,6 +89,7 @@ import mho.item.potion.PotionNoFall;
 import mho.item.potion.PotionWaterWalk;
 import mho.item.quest.ItemQuest;
 import mho.item.quest.ItemQuestNezarilJar;
+import mho.itemblock.ItemBlockDoubleCrate;
 import mho.itemblock.ItemBlockSecretDoor;
 import mho.itemblock.ItemBlockStainedGlass;
 import mho.itemblock.ItemBlockStainedGlassPane;
@@ -114,7 +115,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.0")
+@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.3")
 
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
@@ -578,8 +579,6 @@ public class Mho
 	public static Block coralBlockSponge;
 
 	/** Double Blocks **/
-	public static Block doubleCrateBot;
-	public static Block doubleCrateTop;
 	public static Block doubleCrateBlock;
 	public static Item doubleCrateItemBlock;
 	
@@ -601,10 +600,10 @@ public class Mho
 	public static Block metaWoolLight;
 	public static Block metaVitrail;
 	public static Block metaVitrailPane;
-	private static final String[] dyeFemNames = { "blanche", "orange", "violette", "bleue claire", "jaune", "verte claire",
-		"rose", "grise", "grise claire", "cyan", "magenta", "bleue", "marron", "verte", "rouge", "noire"};
-	private static final String[] dyeMalNames = { "blanc", "orange", "violet", "bleu clair", "jaune", "vert clair",
-		"rose", "gris", "gris clair", "cyan", "magenta", "bleu", "marron", "vert", "rouge", "noir"};
+	private static final String[] dyeFemNames = { "blanche", "orange", "magenta", "bleue claire", "jaune", "verte claire",
+		"rose", "grise", "grise claire", "cyan", "violette", "bleue", "marron", "verte", "rouge", "noire"};
+	private static final String[] dyeMalNames = { "blanc", "orange", "magenta", "bleu clair", "jaune", "vert clair",
+		"rose", "gris", "gris clair", "cyan", "violet", "bleu", "marron", "vert", "rouge", "noir"};
 	
 	/** Lumineux **/
 	public static Block lanternWood;
@@ -679,6 +678,7 @@ public class Mho
 	public static Block cristalBig;
 	public static Block cakeLieBlock;
 	public static Block meatCakeBlock;
+	public static Block eternalIceBlock;
 
 	/** Secret **/ 
     public static Block blockSecretDoorWood;
@@ -738,25 +738,25 @@ public class Mho
 	public static Block stairWoolBlackLight;
 
 	public static Block stairWhiteStone;
-	public static Block stairWhiteStonebrick;
 	public static Block stairWhiteCobblestone;
+	public static Block stairWhiteStonebrick;
 
 	public static Block stairSandstoneStonebrick;
 
+	public static Block stairAncientStone;
 	public static Block stairAncientCobblestone;
 	public static Block stairAncientStonebrick;
-	public static Block stairAncientStone;
 
 	public static Block stairIceCobblestone;
 	public static Block stairIceStonebrick;
 
 	public static Block stairMarbleWhiteStone;
-	public static Block stairMarbleWhiteStonebrick;
 	public static Block stairMarbleWhiteCobblestone;
+	public static Block stairMarbleWhiteStonebrick;
 
 	public static Block stairMarbleBlackStone;
-	public static Block stairMarbleBlackStonebrick;
 	public static Block stairMarbleBlackCobblestone;
+	public static Block stairMarbleBlackStonebrick;
 	public static Block stairMarbleCheck;
 
 	public static Block stairWoodenStone;
@@ -788,7 +788,6 @@ public class Mho
 	public static Block stepSnow;
 	public static Block stepStonebrickMossy;
 	public static Block stepStonebrickCracked;
-	public static Block stepNetherbrick;
 	public static Block stepEnderstone;
 	public static Block stepSand;
 	public static Block stepStraw;
@@ -992,7 +991,6 @@ public class Mho
 	public static Block carpetPlankSpruce;
 	public static Block carpetLogOak;
 	public static Block carpetLogSpruce;
-	public static Block carpetPlankOakTemp;
 
 	/** Unused **/
 	public static Item seedHoublon;
@@ -1005,7 +1003,7 @@ public class Mho
 	public static Block liquideVioletFlowing;
 	public static Block liquideVioletStill;
 
-	// TODO Présentoire de virtine 197
+	// TODO Presentoire de vitrine 197
 	
 	/**Achievement**/
 	public static CraftEventHandler craftHandler = new CraftEventHandler();
@@ -1208,7 +1206,7 @@ public class Mho
 		/** Meta **/
 		addRecipeMetaBlocks();
 		
-		/** Lumières **/
+		/** Lumineux **/
 		addRecipeBrightBlocks();
 
 		/** Classic Blocks **/
@@ -1269,13 +1267,13 @@ public class Mho
 		pistolet = new ItemQuest(cc.pistoletID, "pistolet", 1, null, false);
 		jambeBois = new ItemQuest(cc.jambeBoisID, "jambeBois", 1, null, false);
 		medaillon = new ItemQuest(cc.medaillonID, "medaillon", 64, null, false);
-		longuevue = new ItemQuest(cc.longuevueID, "longueVue", 1, "On voit loooooooin !", false);
+		longuevue = new ItemQuest(cc.longuevueID, "longuevue", 1, "On voit loooooooin !", false);
 		clePrisonValys = new ItemQuest(cc.clePrisonValysID, "clePrisonValys", 16, null, false);
 		boursePetite = new ItemQuest(cc.boursePetiteID, "boursePetite", 64, null, false);
 		bourseMoyenne = new ItemQuest(cc.bourseMoyenneID, "bourseMoyenne", 64, null, false);
 		bourseGrande = new ItemQuest(cc.bourseGrandeID, "bourseGrande", 64, null, false);
 		grimoireApprenti = new ItemQuest(cc.grimoireApprentiID, "grimoireApprenti", 1, null, false);
-		vanish = new ItemQuest(cc.vanishID, "vanish", 1, "Et les taches s\u0027evanouissent !", false);
+		vanish = new ItemQuest(cc.vanishID, "Vanish", 1, "Et les taches s\u0027evanouissent !", false);
 		enveloppe = new ItemQuest(cc.enveloppeID, "enveloppe", 64, "A livrer sans regarder !", false);
 		batonAdaoldan = new ItemQuest(cc.batonAdaoldanID, "batonAdaoldan", 1, null, false);
 		batonAdaoldanEnchant = new ItemQuest(cc.batonAdaoldanEnchantID, "batonAdaoldanEnchant", 1, null, true);
@@ -1419,17 +1417,17 @@ public class Mho
 		dollBlack = new ItemDoll(cc.dollBlackID, "dollBlack");
 		pelucheMisterxfr = new ItemDoll(cc.pelucheMisterxfrID, "pelucheMisterxfr");
 		pelucheJolirouge = new ItemDoll(cc.pelucheJolirougeID, "pelucheJolirouge");
-		pelucheIplay = new ItemDoll(cc.pelucheIplayID, "pelucheIplay");
+		pelucheIplay = new ItemDoll(cc.pelucheIplayID, "pelucheIPlay");
 		pelucheMikefraise = new ItemDoll(cc.pelucheMikefraiseID, "pelucheMikefraise");
 		pelucheDeez = new ItemDoll(cc.pelucheDeezID, "pelucheDeez");
 		pelucheNicodelpra = new ItemDoll(cc.pelucheNicodelpraID, "pelucheNicodelpra");
 		pelucheDilandaufr = new ItemDoll(cc.pelucheDilandaufrID, "pelucheDilandaufr");
 		pelucheNissan = new ItemDoll(cc.pelucheNissanID, "pelucheNissan");
-		pelucheBbphok = new ItemDoll(cc.pelucheBbphokID, "pelucheBbphok");
+		pelucheBbphok = new ItemDoll(cc.pelucheBbphokID, "pelucheBBphok");
 		pelucheBendito = new ItemDoll(cc.pelucheBenditoID, "pelucheBendito");
-		pelucheSoenguy = new ItemDoll(cc.pelucheSoenguyID, "pelucheSoenguy");
+		pelucheSoenguy = new ItemDoll(cc.pelucheSoenguyID, "pelucheSoEnguy");
 		pelucheChtimarchos = new ItemDoll(cc.pelucheChtimarchosID, "pelucheChtimarchos");
-		pelucheXdakota = new ItemDoll(cc.pelucheXdakotaID, "pelucheXdakota");
+		pelucheXdakota = new ItemDoll(cc.pelucheXdakotaID, "peluchexDakota");
 		pelucheLoupfeucg = new ItemDoll(cc.pelucheLoupfeucgID, "pelucheLoupfeucg");
 		pelucheTedrak = new ItemDoll(cc.pelucheTedrakID, "pelucheTedrak50");
 
@@ -1494,9 +1492,9 @@ public class Mho
 		LanguageRegistry.addName(enchantProtectionSmall, "Rune de protection mineure");
 		LanguageRegistry.addName(enchantProtectionBig, "Rune de protection majeure");
 
-		LanguageRegistry.addName(enchantBaneofSmall, "Rune du fleau mineure");
-		LanguageRegistry.addName(enchantBaneofMedium, "Rune du fleau");
-		LanguageRegistry.addName(enchantBaneofBig, "Rune du fleau majeure");
+		LanguageRegistry.addName(enchantBaneofSmall, "Rune du fl\u00e9au mineure");
+		LanguageRegistry.addName(enchantBaneofMedium, "Rune du fl\u00e9au");
+		LanguageRegistry.addName(enchantBaneofBig, "Rune du fl\u00e9au majeure");
 
 		LanguageRegistry.addName(enchantEfficacitySmall, "Rune de rapidit\u00e9 mineure");
 		LanguageRegistry.addName(enchantEfficacityMedium, "Rune de rapidit\u00e9");
@@ -1705,10 +1703,10 @@ public class Mho
 		trophyBronze = new ItemMho(cc.trophyBronzeID, "trophyBronze", 64, null, 2, true);
 		trophyGoldChip = new ItemMho(cc.trophyGoldChipID, "trophyGoldChip", 64, null, 2, true);
 
-		LanguageRegistry.addName(trophyGold, "Troph\u00e9e d\u0027or");
-		LanguageRegistry.addName(trophySilver, "Troph\u00e9e d\u0027argent");
-		LanguageRegistry.addName(trophyBronze, "Troph\u00e9e de bronze");
-		LanguageRegistry.addName(trophyGoldChip, "Troph\u00e9e d\u0027or \u00E9br\u00E9ch\u00E9");
+		LanguageRegistry.addName(trophyGold, "Troph\u00e9e en or");
+		LanguageRegistry.addName(trophySilver, "Troph\u00e9e en argent");
+		LanguageRegistry.addName(trophyBronze, "Troph\u00e9e en bronze");
+		LanguageRegistry.addName(trophyGoldChip, "Troph\u00e9e en or \u00E9br\u00E9ch\u00E9");
 
 		/**Specials**/
 		eyeCover = new ItemArmorMho(cc.eyeCoverID, eyeCoverArmor, 0, 0, "eyeCover");
@@ -1736,14 +1734,24 @@ public class Mho
 	
 	public void initSetsOfMaterial(ConfigCore cc)
 	{
+		/** Stone **/
+		stoneColumn = new BlockDirectionalSimple(cc.stoneID + cc.columnRank, Material.rock, "stoneColumn");
+		stoneColumnHead = new BlockColumnHead(cc.stoneID + cc.columnHeadRank, Material.rock, "stone");
+		
+		GameRegistry.registerBlock(stoneColumn, "MHOstoneColumn");
+		GameRegistry.registerBlock(stoneColumnHead, "MHOstone");
+		
+		LanguageRegistry.addName(stoneColumn, "Colonne en pierre");
+		LanguageRegistry.addName(stoneColumnHead, "Chapeau de colonne en pierre");
+		
 		/** White blocs **/
-		whiteStone = new BlockStoneMho(cc.whiteStoneID, Material.rock, "whiteStone", cc.whiteCobblestoneID);
-		whiteCobblestone = new BlockMho(cc.whiteCobblestoneID, Material.rock, "whiteCobblestone");
-		whiteStonebrick = new BlockMho(cc.whiteStonebrickID, Material.rock, "whiteStonebrick");
-		whiteStonebrickRound = new BlockMho(cc.whiteStonebrickRoundID, Material.rock, "whiteStonebrickRound");
-		whiteStoneDoubleSlab = new BlockDirectionalSimple(cc.whiteStoneDoubleSlabID, Material.rock, "whiteStoneDoubleSlab");
-		whiteStoneColumn = new BlockDirectionalSimple(cc.whiteColumnID, Material.rock, "whiteStoneColumn");
-		whiteStoneColumnHead = new BlockColumnHead(cc.whiteColumnHeadID, Material.rock, "whiteStone");
+		whiteStone = new BlockStoneMho(cc.whiteStoneID, Material.rock, "whiteStone", cc.whiteStoneID + cc.cobblestoneRank);
+		whiteCobblestone = new BlockMho(cc.whiteStoneID + cc.cobblestoneRank, Material.rock, "whiteCobblestone");
+		whiteStonebrick = new BlockMho(cc.whiteStoneID + cc.stonebrickRank, Material.rock, "whiteStonebrick");
+		whiteStonebrickRound = new BlockMho(cc.whiteStoneID + cc.stonebrickRoundRank, Material.rock, "whiteStonebrickRound");
+		whiteStoneDoubleSlab = new BlockDirectionalSimple(cc.whiteStoneID + cc.doubleSlabRank, Material.rock, "whiteStoneDoubleSlab");
+		whiteStoneColumn = new BlockDirectionalSimple(cc.whiteStoneID + cc.columnRank, Material.rock, "whiteStoneColumn");
+		whiteStoneColumnHead = new BlockColumnHead(cc.whiteStoneID + cc.columnHeadRank, Material.rock, "whiteStone");
 		
 		GameRegistry.registerBlock(whiteStone, "MHOwhiteStone");
 		GameRegistry.registerBlock(whiteCobblestone, "MHOwhiteCobblestone");
@@ -1755,28 +1763,18 @@ public class Mho
 		
 		LanguageRegistry.addName(whiteStone, "Pierre blanche");
 		LanguageRegistry.addName(whiteCobblestone, "Pierre blanche fragment\u00e9e");
-		LanguageRegistry.addName(whiteStonebrick, "Brique en pierre blanche");
+		LanguageRegistry.addName(whiteStonebrick, "Briques en pierre blanche");
 		LanguageRegistry.addName(whiteStonebrickRound, "Brique taill\u00e9e en pierre blanche");
 		LanguageRegistry.addName(whiteStoneDoubleSlab, "Dalle en pierre blanche");
 		LanguageRegistry.addName(whiteStoneColumn, "Colonne en pierre blanche");
 		LanguageRegistry.addName(whiteStoneColumnHead, "Chapeau de colonne en pierre blanche");
 		
-		/** Stone **/
-		stoneColumn = new BlockDirectionalSimple(cc.stoneColumnID, Material.rock, "stoneColumn");
-		stoneColumnHead = new BlockColumnHead(cc.stoneColumnHeadID, Material.rock, "stone");
-		
-		GameRegistry.registerBlock(stoneColumn, "MHOstoneColumn");
-		GameRegistry.registerBlock(stoneColumnHead, "MHOstone");
-		
-		LanguageRegistry.addName(stoneColumn, "Colonne en pierre");
-		LanguageRegistry.addName(stoneColumnHead, "Chapeau de colonne en pierre");
-		
 		/** Sandstone new **/
-		sandstoneStonebrick = new BlockMho(cc.sandstoneStonebrickID, Material.rock, "sandstoneStonebrick");
-		sandstoneStonebrickRound = new BlockMho(cc.sandstoneStonebrickRoundID, Material.rock, "sandstoneStonebrickRound");
-		sandstoneDoubleSlab = new BlockDirectionalSimple(cc.sandstoneDoubleSlabID, Material.rock, "sandstoneDoubleSlab");
-		sandstoneColumn = new BlockDirectionalSimple(cc.sandstoneColumnID, Material.rock, "sandstoneColumn");
-		sandstoneColumnHead = new BlockColumnHead(cc.sandstoneColumnHeadID, Material.rock, "sandstone");
+		sandstoneStonebrick = new BlockMho(cc.sandstoneID + cc.stonebrickRank, Material.rock, "sandstoneStonebrick");
+		sandstoneStonebrickRound = new BlockMho(cc.sandstoneID + cc.stonebrickRoundRank, Material.rock, "sandstoneStonebrickRound");
+		sandstoneDoubleSlab = new BlockDirectionalSimple(cc.sandstoneID + cc.doubleSlabRank, Material.rock, "sandstoneDoubleSlab");
+		sandstoneColumn = new BlockDirectionalSimple(cc.sandstoneID + cc.columnRank, Material.rock, "sandstoneColumn");
+		sandstoneColumnHead = new BlockColumnHead(cc.sandstoneID + cc.columnHeadRank, Material.rock, "sandstone");
 
 		GameRegistry.registerBlock(sandstoneStonebrick, "MHOsandstoneStonebrick");
 		GameRegistry.registerBlock(sandstoneStonebrickRound, "MHOsandstoneStonebrickRound");
@@ -1791,13 +1789,13 @@ public class Mho
 		LanguageRegistry.addName(sandstoneColumnHead, "Chapeau de colonne en sandstone");
 
 		/** Ancient stone **/
-		ancientStone = new BlockStoneMho(cc.ancientStoneID, Material.rock, "ancientStone", cc.ancientCobblestoneID);
-		ancientCobblestone = new BlockMho(cc.ancientCobblestoneID, Material.rock, "ancientCobblestone");
-		ancientStonebrick = new BlockMho(cc.ancientStonebrickID, Material.rock, "ancientStonebrick");
-		ancientStonebrickRound = new BlockMho(cc.ancientStonebrickRoundID, Material.rock, "ancientStonebrickRound");
-		ancientDoubleSlab = new BlockDirectionalSimple(cc.ancientDoubleSlabID, Material.rock, "ancientDoubleSlab");
-		ancientColumn = new BlockDirectionalSimple(cc.ancientColumnID, Material.rock, "ancientColumn");
-		ancientColumnHead = new BlockColumnHead(cc.ancientColumnHeadID, Material.rock, "ancient");
+		ancientStone = new BlockStoneMho(cc.ancientStoneID, Material.rock, "ancientStone", cc.ancientStoneID + cc.cobblestoneRank);
+		ancientCobblestone = new BlockMho(cc.ancientStoneID + cc.cobblestoneRank, Material.rock, "ancientCobblestone");
+		ancientStonebrick = new BlockMho(cc.ancientStoneID + cc.stonebrickRank, Material.rock, "ancientStonebrick");
+		ancientStonebrickRound = new BlockMho(cc.ancientStoneID + cc.stonebrickRoundRank, Material.rock, "ancientStonebrickRound");
+		ancientDoubleSlab = new BlockDirectionalSimple(cc.ancientStoneID + cc.doubleSlabRank, Material.rock, "ancientDoubleSlab");
+		ancientColumn = new BlockDirectionalSimple(cc.ancientStoneID + cc.columnRank, Material.rock, "ancientColumn");
+		ancientColumnHead = new BlockColumnHead(cc.ancientStoneID + cc.columnHeadRank, Material.rock, "ancient");
 
 		GameRegistry.registerBlock(ancientStone, "MHOancientStone");
 		GameRegistry.registerBlock(ancientCobblestone, "MHOancientCobblestone");
@@ -1816,12 +1814,12 @@ public class Mho
 		LanguageRegistry.addName(ancientColumnHead, "Chapeau de colonne en pierre ancienne");
 
 		/** Ice blocks **/
-		iceCobblestone = new BlockMho(cc.iceCobblestoneID, Material.ice, "iceCobblestone").setStepSound(Block.soundGlassFootstep);
-		iceStonebrick = new BlockMho(cc.iceStonebrickID, Material.ice, "iceStonebrick").setStepSound(Block.soundGlassFootstep);
-		iceStonebrickRound = new BlockMho(cc.iceStonebrickRoundID, Material.ice, "iceStonebrickRound").setStepSound(Block.soundGlassFootstep);
-		iceDoubleSlab = new BlockDirectionalSimple(cc.iceDoubleSlabID, Material.ice, "iceDoubleSlab").setStepSound(Block.soundGlassFootstep);
-		iceColumn = new BlockDirectionalSimple(cc.iceColumnID, Material.ice, "iceColumn").setStepSound(Block.soundGlassFootstep);
-		iceColumnHead = new BlockColumnHead(cc.iceColumnHeadID, Material.ice, "ice").setStepSound(Block.soundGlassFootstep);
+		iceCobblestone = new BlockMho(cc.iceID + cc.cobblestoneRank, Material.ice, "iceCobblestone").setStepSound(Block.soundGlassFootstep);
+		iceStonebrick = new BlockMho(cc.iceID + cc.stonebrickRank, Material.ice, "iceStonebrick").setStepSound(Block.soundGlassFootstep);
+		iceStonebrickRound = new BlockMho(cc.iceID + cc.stonebrickRoundRank, Material.ice, "iceStonebrickRound").setStepSound(Block.soundGlassFootstep);
+		iceDoubleSlab = new BlockDirectionalSimple(cc.iceID + cc.doubleSlabRank, Material.ice, "iceDoubleSlab").setStepSound(Block.soundGlassFootstep);
+		iceColumn = new BlockDirectionalSimple(cc.iceID + cc.columnRank, Material.ice, "iceColumn").setStepSound(Block.soundGlassFootstep);
+		iceColumnHead = new BlockColumnHead(cc.iceID + cc.columnHeadRank, Material.ice, "ice").setStepSound(Block.soundGlassFootstep);
 
 		GameRegistry.registerBlock(iceCobblestone, "MHOiceCobblestone");
 		GameRegistry.registerBlock(iceStonebrick, "MHOiceStonebrick");
@@ -1838,13 +1836,13 @@ public class Mho
 		LanguageRegistry.addName(iceColumnHead, "Chapeau de colonne en glace");
 
 		/** White Marble **/
-		marbleWhiteStone = new BlockStoneMho(cc.marbleWhiteStoneID, Material.rock, "marbleWhiteStone", cc.marbleWhiteCobblestoneID);
-		marbleWhiteCobblestone = new BlockMho(cc.marbleWhiteCobblestoneID, Material.rock, "marbleWhiteCobblestone");
-		marbleWhiteStonebrick = new BlockMho(cc.marbleWhiteStonebrickID, Material.rock, "marbleWhiteStonebrick");
-		marbleWhiteStonebrickRound = new BlockMho(cc.marbleWhiteStonebrickRoundID, Material.rock, "marbleWhiteStonebrickRound");
-		marbleWhiteDoubleSlab = new BlockDirectionalSimple(cc.marbleWhiteDoubleSlabID, Material.rock, "marbleWhiteDoubleSlab");
-		marbleWhiteColumn = new BlockDirectionalSimple(cc.marbleWhiteColumnID, Material.rock, "marbleWhiteColumn");
-		marbleWhiteColumnHead = new BlockColumnHead(cc.marbleWhiteColumnHeadID, Material.rock, "marbleWhite");
+		marbleWhiteStone = new BlockStoneMho(cc.marbleWhiteID, Material.rock, "marbleWhiteStone", cc.marbleWhiteID + cc.cobblestoneRank);
+		marbleWhiteCobblestone = new BlockMho(cc.marbleWhiteID + cc.cobblestoneRank, Material.rock, "marbleWhiteCobblestone");
+		marbleWhiteStonebrick = new BlockMho(cc.marbleWhiteID + cc.stonebrickRank, Material.rock, "marbleWhiteStonebrick");
+		marbleWhiteStonebrickRound = new BlockMho(cc.marbleWhiteID + cc.stonebrickRoundRank, Material.rock, "marbleWhiteStonebrickRound");
+		marbleWhiteDoubleSlab = new BlockDirectionalSimple(cc.marbleWhiteID + cc.doubleSlabRank, Material.rock, "marbleWhiteDoubleSlab");
+		marbleWhiteColumn = new BlockDirectionalSimple(cc.marbleWhiteID + cc.columnRank, Material.rock, "marbleWhiteColumn");
+		marbleWhiteColumnHead = new BlockColumnHead(cc.marbleWhiteID + cc.columnHeadRank, Material.rock, "marbleWhite");
 
 		GameRegistry.registerBlock(marbleWhiteStone, "MHOmarbleWhiteStone");
 		GameRegistry.registerBlock(marbleWhiteCobblestone, "MHOmarbleWhiteCobblestone");
@@ -1863,14 +1861,14 @@ public class Mho
 		LanguageRegistry.addName(marbleWhiteColumnHead, "Chapeau de colonne en marbre blanc");
 		
 		/** Black Marble **/
-		marbleBlackStone = new BlockStoneMho(cc.marbleBlackStoneID, Material.rock, "marbleBlackStone", cc.marbleBlackCobblestoneID);
-		marbleBlackCobblestone = new BlockMho(cc.marbleBlackCobblestoneID, Material.rock, "marbleBlackCobblestone");
-		marbleBlackStonebrick = new BlockMho(cc.marbleBlackStonebrickID, Material.rock, "marbleBlackStonebrick");
-		marbleBlackStonebrickRound = new BlockMho(cc.marbleBlackStonebrickRoundID, Material.rock, "marbleBlackStonebrickRound");
-		marbleBlackDoubleSlab = new BlockDirectionalSimple(cc.marbleBlackDoubleSlabID, Material.rock, "marbleBlackDoubleSlab");
-		marbleBlackColumn = new BlockDirectionalSimple(cc.marbleBlackColumnID, Material.rock, "marbleBlackColumn");
-		marbleBlackColumnHead = new BlockColumnHead(cc.marbleBlackColumnHeadID, Material.rock, "marbleBlack");
-		marbleCheck = new BlockMho(cc.marbleCheckID, Material.rock, "marbleCheck");
+		marbleBlackStone = new BlockStoneMho(cc.marbleBlackID, Material.rock, "marbleBlackStone", cc.marbleBlackID + cc.cobblestoneRank);
+		marbleBlackCobblestone = new BlockMho(cc.marbleBlackID + cc.cobblestoneRank, Material.rock, "marbleBlackCobblestone");
+		marbleBlackStonebrick = new BlockMho(cc.marbleBlackID + cc.stonebrickRank, Material.rock, "marbleBlackStonebrick");
+		marbleBlackStonebrickRound = new BlockMho(cc.marbleBlackID + cc.stonebrickRoundRank, Material.rock, "marbleBlackStonebrickRound");
+		marbleBlackDoubleSlab = new BlockDirectionalSimple(cc.marbleBlackID + cc.doubleSlabRank, Material.rock, "marbleBlackDoubleSlab");
+		marbleBlackColumn = new BlockDirectionalSimple(cc.marbleBlackID + cc.columnRank, Material.rock, "marbleBlackColumn");
+		marbleBlackColumnHead = new BlockColumnHead(cc.marbleBlackID + cc.columnHeadRank, Material.rock, "marbleBlack");
+		marbleCheck = new BlockMho(cc.marbleBlackID + cc.checkRank, Material.rock, "marbleCheck");
 
 		GameRegistry.registerBlock(marbleBlackStone, "MHOmarbleBlackStone");
 		GameRegistry.registerBlock(marbleBlackCobblestone, "MHOmarbleBlackCobblestone");
@@ -1891,12 +1889,12 @@ public class Mho
 		LanguageRegistry.addName(marbleCheck, "Damier en marbre");
 
 		/** Wood **/
-		woodenStone = new BlockMho(cc.woodenStoneID, Material.wood, "woodenStone").setStepSound(Block.soundWoodFootstep);
-		woodenStonebrick = new BlockMho(cc.woodenStonebrickID, Material.wood, "woodenStonebrick").setStepSound(Block.soundWoodFootstep);
-		woodenStonebrickRound = new BlockMho(cc.woodenStonebrickRoundID, Material.wood, "woodenStonebrickRound").setStepSound(Block.soundWoodFootstep);
-		woodenDoubleSlab = new BlockDirectionalSimple(cc.woodenDoubleSlabID, Material.wood, "woodenDoubleSlab").setStepSound(Block.soundWoodFootstep);
-		woodenColumn = new BlockDirectionalSimple(cc.woodenColumnID, Material.wood, "woodenColumn").setStepSound(Block.soundWoodFootstep);
-		woodenColumnHead = new BlockColumnHead(cc.woodenColumnHeadID, Material.wood, "wooden").setStepSound(Block.soundWoodFootstep);
+		woodenStone = new BlockMho(cc.woodenDarkID, Material.wood, "woodenStone").setStepSound(Block.soundWoodFootstep);
+		woodenStonebrick = new BlockMho(cc.woodenDarkID + cc.stonebrickRank, Material.wood, "woodenStonebrick").setStepSound(Block.soundWoodFootstep);
+		woodenStonebrickRound = new BlockMho(cc.woodenDarkID + cc.stonebrickRoundRank, Material.wood, "woodenStonebrickRound").setStepSound(Block.soundWoodFootstep);
+		woodenDoubleSlab = new BlockDirectionalSimple(cc.woodenDarkID + cc.doubleSlabRank, Material.wood, "woodenDoubleSlab").setStepSound(Block.soundWoodFootstep);
+		woodenColumn = new BlockDirectionalSimple(cc.woodenDarkID + cc.columnRank, Material.wood, "woodenColumn").setStepSound(Block.soundWoodFootstep);
+		woodenColumnHead = new BlockColumnHead(cc.woodenDarkID + cc.columnHeadRank, Material.wood, "wooden").setStepSound(Block.soundWoodFootstep);
 
 		GameRegistry.registerBlock(woodenStone, "MHOwoodenStone");
 		GameRegistry.registerBlock(woodenStonebrick, "MHOwoodenStonebrick");
@@ -1913,12 +1911,12 @@ public class Mho
 		LanguageRegistry.addName(woodenColumnHead, "Chapeau de colonne en bois lisse fonc\u00e9");
 		
 		/** Wood light **/
-		woodenLightStone = new BlockMho(cc.woodenLightStoneID, Material.wood, "woodenLightStone").setStepSound(Block.soundWoodFootstep);
-		woodenLightStonebrick = new BlockMho(cc.woodenLightStonebrickID, Material.wood, "woodenLightStonebrick").setStepSound(Block.soundWoodFootstep);
-		woodenLightStonebrickRound = new BlockMho(cc.woodenLightStonebrickRoundID, Material.wood, "woodenLightStonebrickRound").setStepSound(Block.soundWoodFootstep);
-		woodenLightDoubleSlab = new BlockDirectionalSimple(cc.woodenLightDoubleSlabID, Material.wood, "woodenLightDoubleSlab").setStepSound(Block.soundWoodFootstep);
-		woodenLightColumn = new BlockDirectionalSimple(cc.woodenLightColumnID, Material.wood, "woodenLightColumn").setStepSound(Block.soundWoodFootstep);
-		woodenLightColumnHead = new BlockColumnHead(cc.woodenLightColumnHeadID, Material.wood, "woodenLight").setStepSound(Block.soundWoodFootstep);
+		woodenLightStone = new BlockMho(cc.woodenLightID, Material.wood, "woodenLightStone").setStepSound(Block.soundWoodFootstep);
+		woodenLightStonebrick = new BlockMho(cc.woodenLightID + cc.stonebrickRank, Material.wood, "woodenLightStonebrick").setStepSound(Block.soundWoodFootstep);
+		woodenLightStonebrickRound = new BlockMho(cc.woodenLightID + cc.stonebrickRoundRank, Material.wood, "woodenLightStonebrickRound").setStepSound(Block.soundWoodFootstep);
+		woodenLightDoubleSlab = new BlockDirectionalSimple(cc.woodenLightID + cc.doubleSlabRank, Material.wood, "woodenLightDoubleSlab").setStepSound(Block.soundWoodFootstep);
+		woodenLightColumn = new BlockDirectionalSimple(cc.woodenLightID + cc.columnRank, Material.wood, "woodenLightColumn").setStepSound(Block.soundWoodFootstep);
+		woodenLightColumnHead = new BlockColumnHead(cc.woodenLightID + cc.columnHeadRank, Material.wood, "woodenLight").setStepSound(Block.soundWoodFootstep);
 
 		GameRegistry.registerBlock(woodenLightStone, "MHOwoodenLightStone");
 		GameRegistry.registerBlock(woodenLightStonebrick, "MHOwoodenLightStonebrick");
@@ -1935,9 +1933,9 @@ public class Mho
 		LanguageRegistry.addName(woodenLightColumnHead, "Chapeau de colonne en bois lisse clair");
 		
 		/** Metal **/
-		metalStonebrickRound = new BlockMho(cc.metalStonebrickRoundID, Material.iron, "metalStonebrickRound").setStepSound(Block.soundMetalFootstep);
-		metalDoubleSlab = new BlockDirectionalSimple(cc.metalDoubleSlabID, Material.iron, "metalDoubleSlab").setStepSound(Block.soundMetalFootstep);
-		metalCheck = new BlockMho(cc.metalCheckID, Material.iron, "metalCheck").setStepSound(Block.soundMetalFootstep);
+		metalStonebrickRound = new BlockMho(cc.metalID + cc.stonebrickRoundRank, Material.iron, "metalStonebrickRound").setStepSound(Block.soundMetalFootstep);
+		metalDoubleSlab = new BlockDirectionalSimple(cc.metalID + cc.doubleSlabRank, Material.iron, "metalDoubleSlab").setStepSound(Block.soundMetalFootstep);
+		metalCheck = new BlockMho(cc.metalID + cc.checkRank, Material.iron, "metalCheck").setStepSound(Block.soundMetalFootstep);
 
 		GameRegistry.registerBlock(metalCheck, "MHOmetalCheck");
 		GameRegistry.registerBlock(metalStonebrickRound, "MHOmetalStonebrickRound");
@@ -1948,9 +1946,9 @@ public class Mho
 		LanguageRegistry.addName(metalDoubleSlab, "Dalle en acier");
 		
 		/** Basalt **/
-		basalt = new BlockStoneMho(cc.basaltID, Material.rock, "basalt", cc.basaltCobblestoneID);
-		basaltCobblestone = new BlockMho(cc.basaltCobblestoneID, Material.rock, "basaltCobblestone");
-		basaltStonebrick = new BlockMho(cc.basaltStonebrickID, Material.rock, "basaltBrick");
+		basalt = new BlockStoneMho(cc.basaltID, Material.rock, "basalt", cc.basaltID + cc.cobblestoneRank);
+		basaltCobblestone = new BlockMho(cc.basaltID + cc.cobblestoneRank, Material.rock, "basaltCobblestone");
+		basaltStonebrick = new BlockMho(cc.basaltID + cc.stonebrickRank, Material.rock, "basaltBrick");
 
 		GameRegistry.registerBlock(basalt, "MHObasalt");
 		GameRegistry.registerBlock(basaltCobblestone, "MHObasaltCobblestone");
@@ -2062,8 +2060,8 @@ public class Mho
 		
 		LanguageRegistry.addName(redGrassBlock, "Roche rouge herbeuse");
 		LanguageRegistry.addName(redGravel, "Gravier de pierre rouge");
-		LanguageRegistry.addName(redRockBigLine, "Pierre rouge \u00e0 strate clacaire");
-		LanguageRegistry.addName(redRockLines, "Pierre rouge \u00e0 strates fines clacaire");
+		LanguageRegistry.addName(redRockBigLine, "Pierre rouge \u00e0 strate calcaire");
+		LanguageRegistry.addName(redRockLines, "Pierre rouge \u00e0 strates fines calcaire");
 		LanguageRegistry.addName(redSilver, "Minerai d'argent");
 
 		/** Rocks **/
@@ -2239,10 +2237,79 @@ public class Mho
 		LanguageRegistry.addName(coralBlockSponge, "Corail \u00E9ponge");
 	}
 
+	public void initDoubleBlocks(ConfigCore cc)
+	{
+		doubleCrateBlock = new BlockDoubleCrate(cc.doubleCrateBlockID, "doubleCrate");
+		doubleCrateItemBlock = new ItemBlockDoubleCrate(cc.doubleCrateItemBlockID);
+		
+		doubleTorchLower = new BlockDoubleBrightLower(cc.doubleTorchLowerID, Material.wood,"doubleTorch").setStepSound(Block.soundWoodFootstep);
+		doubleTorchUpper = new BlockDoubleBrightUpper(cc.doubleTorchUpperID, Material.wood,"doubleTorch").setStepSound(Block.soundWoodFootstep);
+		doubleCandleLower = new BlockDoubleBrightLower(cc.doubleCandleLowerID, Material.wood,"doubleCandle").setStepSound(Block.soundWoodFootstep);
+		doubleCandleUpper = new BlockDoubleBrightUpper(cc.doubleCandleUpperID, Material.wood,"doubleCandle").setStepSound(Block.soundWoodFootstep);
+		doubleLanternLower = new BlockDoubleBrightLower(cc.doubleLanternLowerID, Material.iron,"doubleLantern").setStepSound(Block.soundMetalFootstep);
+		doubleLanternUpper = new BlockDoubleBrightUpper(cc.doubleLanternUpperID, Material.iron,"doubleLantern").setStepSound(Block.soundMetalFootstep);
+		
+		normalDoubleGrassLower = new BlockDoubleGrassLower(cc.normalDoubleGrassLowerID, "normalDoubleGrass");
+		normalDoubleGrassUpper = new BlockDoubleGrassUpper(cc.normalDoubleGrassUpperID, "normalDoubleGrass");
+		savanaDoubleGrassLower = new BlockDoubleGrassLower(cc.savanaDoubleGrassLowerID, "savanaDoubleGrass");
+		savanaDoubleGrassUpper = new BlockDoubleGrassUpper(cc.savanaDoubleGrassUpperID, "savanaDoubleGrass");
+		mysteriousDoubleGrassLower = new BlockDoubleGrassLower(cc.mysteriousDoubleGrassLowerID, "mysteriousDoubleGrass");
+		mysteriousDoubleGrassUpper = new BlockDoubleGrassUpper(cc.mysteriousDoubleGrassUpperID, "mysteriousDoubleGrass").setLightValue(0.3F);
+
+		GameRegistry.registerBlock(doubleCrateBlock, "MHOdoubleCrateBlock");
+
+		GameRegistry.registerBlock(doubleTorchLower, "MHOdoubleTorchLower");
+		GameRegistry.registerBlock(doubleTorchUpper, "MHOdoubleTorchUpper");
+		GameRegistry.registerBlock(doubleCandleLower, "MHOdoubleCandleLower");
+		GameRegistry.registerBlock(doubleCandleUpper, "MHOdoubleCandleUpper");
+		GameRegistry.registerBlock(doubleLanternLower, "MHOdoubleLanternLower");
+		GameRegistry.registerBlock(doubleLanternUpper, "MHOdoubleLanternUpper");
+
+		GameRegistry.registerBlock(normalDoubleGrassLower, "MHOnormalDoubleGrassLower");
+		GameRegistry.registerBlock(normalDoubleGrassUpper, "MHOnormalDoubleGrassUpper");
+		GameRegistry.registerBlock(savanaDoubleGrassLower, "MHOsavanaDoubleGrassLower");
+		GameRegistry.registerBlock(savanaDoubleGrassUpper, "MHOsavanaDoubleGrassUpper");
+		GameRegistry.registerBlock(mysteriousDoubleGrassLower, "MHOmysteriousDoubleGrassLower");
+		GameRegistry.registerBlock(mysteriousDoubleGrassUpper, "MHOmysteriousDoubleGrassUpper");
+
+		LanguageRegistry.addName(doubleCrateItemBlock, "Grande caisse");
+		
+		LanguageRegistry.addName(doubleTorchUpper, "Grande torche");
+		LanguageRegistry.addName(doubleCandleUpper, "Grande bougie");
+		LanguageRegistry.addName(doubleLanternUpper, "Lampadaire");
+
+		LanguageRegistry.addName(normalDoubleGrassUpper, "Hautes herbes");
+		LanguageRegistry.addName(savanaDoubleGrassUpper, "Hautes herbes de savanne");
+		LanguageRegistry.addName(mysteriousDoubleGrassUpper, "Hautes herbes myst\u00e9rieuses");
+	}
+
+	public void initMetaBlocks(ConfigCore cc)
+	{
+		metaWoolLight = new BlockMetaWoolLight(cc.metaWoolLightID).setUnlocalizedName("MHOwoolColoredLight");
+		metaVitrail = new BlockStainedGlass(cc.metaVitrailID).setUnlocalizedName("MHOvitrail");
+		metaVitrailPane = new BlockStainedGlassPane(cc.metaVitrailPaneID).setUnlocalizedName("MHOvitrailPane");
+
+		GameRegistry.registerBlock(metaWoolLight, ItemBlockWoolLight.class,"MHOwoolColoredLight");
+		GameRegistry.registerBlock(Mho.metaVitrail, ItemBlockStainedGlass.class,"MHOvitrail");
+		GameRegistry.registerBlock(Mho.metaVitrailPane, ItemBlockStainedGlassPane.class,"MHOvitrailPane");
+
+		for (int ix = 0; ix < 16; ix++) {
+			LanguageRegistry.addName(new ItemStack(metaWoolLight, 1, ix), "Laine lumineuse " + dyeFemNames[ix]);
+		}
+
+		for (int ix = 0; ix < 16; ix++) {
+			LanguageRegistry.addName(new ItemStack(metaVitrail, 1, ix), "Vitrail " + dyeMalNames[ix]);
+		}
+
+		for (int ix = 0; ix < 16; ix++) {
+			LanguageRegistry.addName(new ItemStack(metaVitrailPane, 1, ix), "Vitrail plat " + dyeMalNames[ix]);
+		}
+	}
+
 	public void initBrightBlocks(ConfigCore cc)
 	{
-		lanternWood = new BlockMho(cc.lanternWoodID, Material.glass, "lanternWood").setLightValue(1.0F).setStepSound(Block.soundGlassFootstep);
-		lanternIron = new BlockMho(cc.lanternIronID, Material.glass, "lanternIron").setLightValue(1.0F).setStepSound(Block.soundGlassFootstep);
+		lanternWood = new BlockMho(cc.lanternWoodID, Material.wood, "lanternWood").setLightValue(1.0F).setStepSound(Block.soundGlassFootstep);
+		lanternIron = new BlockMho(cc.lanternIronID, Material.iron, "lanternIron").setLightValue(1.0F).setStepSound(Block.soundGlassFootstep);
 
 		lampionBlanc = new BlockDirectionalTopBot(cc.lampionBlancID, Material.cloth, "lampionBlanc").setLightValue(1.0F).setStepSound(Block.soundClothFootstep);
 		lampionBleu = new BlockDirectionalTopBot(cc.lampionBleuID, Material.cloth, "lampionBleu").setLightValue(1.0F).setStepSound(Block.soundClothFootstep);
@@ -2282,82 +2349,6 @@ public class Mho
 		LanguageRegistry.addName(lightLantern, "Lanterne");
 		LanguageRegistry.addName(lightSkullCandle, "Bougie sur cr\u00e2ne");
 		LanguageRegistry.addName(lightSkullSpike, "Cr\u00e2ne lumineux");
-	}
-	
-	public void initDoubleBlocks(ConfigCore cc)
-	{
-		doubleCrateBot = new BlockDoubleCrateBot(cc.doubleCrateBotID, "doubleCrate");
-		doubleCrateTop = new BlockDoubleCrateTop(cc.doubleCrateTopID, "doubleCrate");
-/* TODO doubleCrateBlock à mettre en nottant le changement d'ID
-		doubleCrateBlock = new BlockDoubleCrate(cc.doubleCrateBlockID, "doubleCrate");
-		doubleCrateItemBlock = new ItemBlockDoubleCrate(cc.doubleCrateItemBlockID);
-		GameRegistry.registerBlock(doubleCrateBlock, "MHOdoubleCrateBlock");
-		LanguageRegistry.addName(doubleCrateItemBlock, "Grande caisse");
-		*/
-		doubleTorchLower = new BlockDoubleBrightLower(cc.doubleTorchLowerID, Material.wood,"doubleTorch").setStepSound(Block.soundWoodFootstep);
-		doubleTorchUpper = new BlockDoubleBrightUpper(cc.doubleTorchUpperID, Material.wood,"doubleTorch").setStepSound(Block.soundWoodFootstep);
-		doubleCandleLower = new BlockDoubleBrightLower(cc.doubleCandleLowerID, Material.wood,"doubleCandle").setStepSound(Block.soundWoodFootstep);
-		doubleCandleUpper = new BlockDoubleBrightUpper(cc.doubleCandleUpperID, Material.wood,"doubleCandle").setStepSound(Block.soundWoodFootstep);
-		doubleLanternLower = new BlockDoubleBrightLower(cc.doubleLanternLowerID, Material.iron,"doubleLantern").setStepSound(Block.soundMetalFootstep);
-		doubleLanternUpper = new BlockDoubleBrightUpper(cc.doubleLanternUpperID, Material.iron,"doubleLantern").setStepSound(Block.soundMetalFootstep);
-		
-		normalDoubleGrassLower = new BlockDoubleGrassLower(cc.normalDoubleGrassLowerID, "normalDoubleGrass");
-		normalDoubleGrassUpper = new BlockDoubleGrassUpper(cc.normalDoubleGrassUpperID, "normalDoubleGrass");
-		savanaDoubleGrassLower = new BlockDoubleGrassLower(cc.savanaDoubleGrassLowerID, "savanaDoubleGrass");
-		savanaDoubleGrassUpper = new BlockDoubleGrassUpper(cc.savanaDoubleGrassUpperID, "savanaDoubleGrass");
-		mysteriousDoubleGrassLower = new BlockDoubleGrassLower(cc.mysteriousDoubleGrassLowerID, "mysteriousDoubleGrass");
-		mysteriousDoubleGrassUpper = new BlockDoubleGrassUpper(cc.mysteriousDoubleGrassUpperID, "mysteriousDoubleGrass").setLightValue(0.3F);
-
-		GameRegistry.registerBlock(doubleCrateBot, "MHOdoubleCrateBot");
-		GameRegistry.registerBlock(doubleCrateTop, "MHOdoubleCrateTop");
-
-		GameRegistry.registerBlock(doubleTorchLower, "MHOdoubleTorchLower");
-		GameRegistry.registerBlock(doubleTorchUpper, "MHOdoubleTorchUpper");
-		GameRegistry.registerBlock(doubleCandleLower, "MHOdoubleCandleLower");
-		GameRegistry.registerBlock(doubleCandleUpper, "MHOdoubleCandleUpper");
-		GameRegistry.registerBlock(doubleLanternLower, "MHOdoubleLanternLower");
-		GameRegistry.registerBlock(doubleLanternUpper, "MHOdoubleLanternUpper");
-
-		GameRegistry.registerBlock(normalDoubleGrassLower, "MHOnormalDoubleGrassLower");
-		GameRegistry.registerBlock(normalDoubleGrassUpper, "MHOnormalDoubleGrassUpper");
-		GameRegistry.registerBlock(savanaDoubleGrassLower, "MHOsavanaDoubleGrassLower");
-		GameRegistry.registerBlock(savanaDoubleGrassUpper, "MHOsavanaDoubleGrassUpper");
-		GameRegistry.registerBlock(mysteriousDoubleGrassLower, "MHOmysteriousDoubleGrassLower");
-		GameRegistry.registerBlock(mysteriousDoubleGrassUpper, "MHOmysteriousDoubleGrassUpper");
-		
-		LanguageRegistry.addName(doubleCrateBot,"Grande caisse");
-		LanguageRegistry.addName(doubleCrateTop, "Grande caisse (haut)");
-		
-		LanguageRegistry.addName(doubleTorchUpper, "Grande torche");
-		LanguageRegistry.addName(doubleCandleUpper, "Grande bougie");
-		LanguageRegistry.addName(doubleLanternUpper, "Lampadaire");
-
-		LanguageRegistry.addName(normalDoubleGrassUpper, "Hautes herbes");
-		LanguageRegistry.addName(savanaDoubleGrassUpper, "Hautes herbes de savanne");
-		LanguageRegistry.addName(mysteriousDoubleGrassUpper, "Hautes herbes myst\u00e9rieuses");
-	}
-
-	public void initMetaBlocks(ConfigCore cc)
-	{
-		metaWoolLight = new BlockMetaWoolLight(cc.metaWoolLightID).setUnlocalizedName("MHOwoolColoredLight");
-		metaVitrail = new BlockStainedGlass(cc.metaVitrailID).setUnlocalizedName("MHOvitrail");
-		metaVitrailPane = new BlockStainedGlassPane(cc.metaVitrailPaneID).setUnlocalizedName("MHOvitrailPane");
-
-		GameRegistry.registerBlock(metaWoolLight, ItemBlockWoolLight.class,"MHOwoolColoredLight");
-		GameRegistry.registerBlock(Mho.metaVitrail, ItemBlockStainedGlass.class,"MHOvitrail");
-		GameRegistry.registerBlock(Mho.metaVitrailPane, ItemBlockStainedGlassPane.class,"MHOvitrailPane");
-
-		for (int ix = 0; ix < 16; ix++) {
-			LanguageRegistry.addName(new ItemStack(metaWoolLight, 1, ix), "Laine lumineuse " + dyeFemNames[ix]);
-		}
-
-		for (int ix = 0; ix < 16; ix++) {
-			LanguageRegistry.addName(new ItemStack(metaVitrail, 1, ix), "Vitrail " + dyeMalNames[ix]);
-		}
-
-		for (int ix = 0; ix < 16; ix++) {
-			LanguageRegistry.addName(new ItemStack(metaVitrailPane, 1, ix), "Vitrail plat " + dyeMalNames[ix]);
-		}
 	}
 	
 	public void initSimpleBlocks(ConfigCore cc)
@@ -2408,14 +2399,14 @@ public class Mho
 		GameRegistry.registerBlock(tileBlueBig, "MHOtileBlueBig");
 		GameRegistry.registerBlock(tileBlackAlt, "MHOtileBlackAlt");
 		
-		LanguageRegistry.addName(tileArdoise, "Tuiles en ardoise");
-		LanguageRegistry.addName(tileRed, "Petites tuiles rouges");
-		LanguageRegistry.addName(tileBlack, "Petites tuiles noires");
-		LanguageRegistry.addName(tileBlue, "Petites tuiles bleues");
+		LanguageRegistry.addName(tileArdoise, "Ardoises");
+		LanguageRegistry.addName(tileRed, "Tuiles rouges");
+		LanguageRegistry.addName(tileBlack, "Tuiles noires");
+		LanguageRegistry.addName(tileBlue, "Tuiles bleues");
 		LanguageRegistry.addName(tileRedBig, "Grandes tuiles rouges");
 		LanguageRegistry.addName(tileBlackBig, "Grandes tuiles noires");
 		LanguageRegistry.addName(tileBlueBig, "Grandes tuiles bleues");
-		LanguageRegistry.addName(tileBlackAlt, "Petites tuiles noires dechauss\u00e9es");
+		LanguageRegistry.addName(tileBlackAlt, "Tuiles noires d\u00e9chauss\u00e9es");
 	}
 	
 	public void initSpecialBlocks(ConfigCore cc)
@@ -2479,8 +2470,8 @@ public class Mho
 		GameRegistry.registerBlock(logRed, "MHOlogRed");
 		GameRegistry.registerBlock(barrel, "MHObarrel");
 		
-		LanguageRegistry.addName(logCherry, "Bois de cerisier");
-		LanguageRegistry.addName(logRed, "Bois rouge");
+		LanguageRegistry.addName(logCherry, "B\u00fbche de cerisier");
+		LanguageRegistry.addName(logRed, "B\u00fbche rouge");
 		LanguageRegistry.addName(barrel, "Tonneau");
 		
 		ironWindowPane = new BlockPaneMho(cc.ironWindowPaneID, "ironWindow", "ironWindowPane");
@@ -2494,8 +2485,8 @@ public class Mho
 		invisibleBlock = new BlockInvisible(cc.invisibleBlockID, "invisible");
 		portalPurple = new BlockDragonPortal(cc.portalPurpleID, "portalPurple");
 		bookBlock = new BlockBook(cc.bookBlockID, "bookBlock");
-		chainIron = new BlockChain(cc.chainIronID, Material.iron, "chain");
-		chainRope = new BlockChain (cc.chainRopeID, Material.cloth, "rope"); 
+		chainIron = new BlockChain(cc.chainIronID, "chain");
+		chainRope = new BlockChain (cc.chainRopeID, "rope"); 
 		ropeRail = new BlockRopeRail(cc.ropeRailID, "rope");
 		spikes = new BlockPike(cc.spikesID, "spike").setStepSound(Block.soundMetalFootstep);
 		climbingLadder = new BlockLadderMho(cc.climbingLadderID, "climbingLadder").setStepSound(Block.soundStoneFootstep);
@@ -2505,6 +2496,7 @@ public class Mho
 		cristalBlock = new BlockCristalMho(cc.cristalBlockID, "cristalBlock");
 		cakeLieBlock = new BlockCakeLie(cc.cakeLieBlockID, Material.cake, "cakeLieBlock");
 		meatCakeBlock = new BlockCake(cc.meatCakeBlockID, "meatBlock");
+		eternalIceBlock = new BlockIceMho(cc.eternalIceBlockID, "eternalIce");
 
 		GameRegistry.registerBlock(grisouBlock, "MHOgrisouBlock");
 		GameRegistry.registerBlock(slimeBlock, "MHOslimeBlock");
@@ -2522,6 +2514,7 @@ public class Mho
 		GameRegistry.registerBlock(cristalBlock, "MHOcristalBlock");
 		GameRegistry.registerBlock(cakeLieBlock, "MHOcakeLieBlock");
 		GameRegistry.registerBlock(meatCakeBlock, "MHOmeatCakeBlock");
+		GameRegistry.registerBlock(eternalIceBlock, "MHOeternalIceBlock");
 		
 		LanguageRegistry.addName(grisouBlock, "Bloc de grisou");
 		LanguageRegistry.addName(slimeBlock, "Bloc de slime");
@@ -2539,6 +2532,7 @@ public class Mho
 		LanguageRegistry.addName(cristalBlock, "Bloc de cristal");
 		LanguageRegistry.addName(cakeLieBlock, "Cake");
 		LanguageRegistry.addName(meatCakeBlock, "Viande");
+		LanguageRegistry.addName(eternalIceBlock, "Glace \u00e9ternelle");
 
 		/** Secret **/ 
     	blockSecretDoorWood = new BlockSecretDoor(cc.secretDoorWoodBlockID, Material.wood, "secretDoorWood").setHardness(1.2F).setStepSound(Block.soundWoodFootstep);
@@ -2578,7 +2572,7 @@ public class Mho
 		stairGravel = new BlockStairsMho(cc.stairGravelID, Block.gravel, 0, "stairGravel");
 		stairMossyCobble = new BlockStairsMho(cc.stairMossyCobbleID, Block.cobblestoneMossy, 0, "stairMossyCobble");
 		stairObsidian = new BlockStairsMho(cc.stairObsidianID, Block.obsidian, 0, "stairObsidian");
-		stairIce = new BlockStairsMho(cc.stairIceID, Block.ice, 0, "stairIce");
+		stairIce = new BlockStairsMho(cc.stairIceID, Block.ice, 0, "stairIce").setLightOpacity(3);
 		stairSnow = new BlockStairsMho(cc.stairSnowID, Block.blockSnow, 0, "stairSnow");
 		stairStonebrickMossy = new BlockStairsMho(cc.stairStonebrickMossyID, Block.stoneBrick, 1, "stairStonebrickMossy");
 		stairStonebrickCracked = new BlockStairsMho(cc.stairStonebrickCrackedID, Block.stoneBrick, 2, "stairStonebrickCracked");
@@ -2719,55 +2713,57 @@ public class Mho
 		LanguageRegistry.addName(stairWoolBlackLight, "Escalier en laine noire lumineuse");
 		
 		/** Sets of materials **/
-		stairWhiteStone = new BlockStairsMho(cc.stairWhiteStoneID, Mho.whiteStone, 0, "stairWhiteStone");
-		stairWhiteCobblestone = new BlockStairsMho(cc.stairWhiteCobblestoneID, Mho.whiteCobblestone, 0, "stairWhiteCobblestone");
-		stairWhiteStonebrick = new BlockStairsMho(cc.stairWhiteStonebrickID, Mho.whiteStonebrick, 0, "stairWhiteStonebrick");
+		stairWhiteStone = new BlockStairsMho(cc.whiteStoneID + cc.stairStoneRank, Mho.whiteStone, 0, "stairWhiteStone");
+		stairWhiteCobblestone = new BlockStairsMho(cc.whiteStoneID + cc.stairCobblestoneRank, Mho.whiteCobblestone, 0, "stairWhiteCobblestone");
+		stairWhiteStonebrick = new BlockStairsMho(cc.whiteStoneID + cc.stairStonebrickRank, Mho.whiteStonebrick, 0, "stairWhiteStonebrick");
 
-		stairAncientStone = new BlockStairsMho(cc.stairAncientStoneID, Mho.ancientStone, 0, "stairAncientStone");
-		stairAncientStonebrick = new BlockStairsMho(cc.stairAncientStonebrickID, Mho.ancientStonebrick, 0, "stairAncientStonebrick");
-		stairAncientCobblestone = new BlockStairsMho(cc.stairAncientCobblestoneID, Mho.ancientCobblestone, 0, "stairAncientCobblestone");
+		stairSandstoneStonebrick = new BlockStairsMho(cc.sandstoneID + cc.stairStonebrickRank, Mho.sandstoneStonebrick, 0, "stairSandstoneStonebrick");
 
-		stairMarbleWhiteStone = new BlockStairsMho(cc.stairMarbleWhiteStoneID, Mho.marbleWhiteStone, 0, "stairMarbleWhiteStone");
-		stairMarbleWhiteStonebrick = new BlockStairsMho(cc.stairMarbleWhiteStonebrickID, Mho.marbleWhiteStonebrick, 0, "stairMarbleWhiteStonebrick");
-		stairMarbleWhiteCobblestone = new BlockStairsMho(cc.stairMarbleWhiteCobblestoneID, Mho.marbleWhiteCobblestone, 0, "stairMarbleWhiteCobblestone");
+		stairAncientStone = new BlockStairsMho(cc.ancientStoneID + cc.stairStoneRank, Mho.ancientStone, 0, "stairAncientStone");
+		stairAncientCobblestone = new BlockStairsMho(cc.ancientStoneID + cc.stairCobblestoneRank, Mho.ancientCobblestone, 0, "stairAncientCobblestone");
+		stairAncientStonebrick = new BlockStairsMho(cc.ancientStoneID + cc.stairStonebrickRank, Mho.ancientStonebrick, 0, "stairAncientStonebrick");
 
-		stairMarbleBlackStone = new BlockStairsMho(cc.stairMarbleBlackStoneID, Mho.marbleBlackStone, 0, "stairMarbleBlackStone");
-		stairMarbleBlackStonebrick = new BlockStairsMho(cc.stairMarbleBlackStonebrickID, Mho.marbleBlackStonebrick, 0, "stairMarbleBlackStonebrick");
-		stairMarbleBlackCobblestone = new BlockStairsMho(cc.stairMarbleBlackCobblestoneID, Mho.marbleBlackCobblestone, 0, "stairMarbleBlackCobblestone");
+		stairIceCobblestone = new BlockStairsMho(cc.iceID + cc.stairCobblestoneRank, Mho.iceCobblestone, 0, "stairIceCobblestone");
+		stairIceStonebrick = new BlockStairsMho(cc.iceID + cc.stairStonebrickRank, Mho.iceStonebrick, 0, "stairIceStonebrick");
 
-		stairMarbleCheck = new BlockStairsMho(cc.stairMarbleCheckID, Mho.marbleCheck, 0, "stairMarbleCheck");
+		stairMarbleWhiteStone = new BlockStairsMho(cc.marbleWhiteID + cc.stairStoneRank, Mho.marbleWhiteStone, 0, "stairMarbleWhiteStone");
+		stairMarbleWhiteCobblestone = new BlockStairsMho(cc.marbleWhiteID + cc.stairCobblestoneRank, Mho.marbleWhiteCobblestone, 0, "stairMarbleWhiteCobblestone");
+		stairMarbleWhiteStonebrick = new BlockStairsMho(cc.marbleWhiteID + cc.stairStonebrickRank, Mho.marbleWhiteStonebrick, 0, "stairMarbleWhiteStonebrick");
 
-		stairIceStonebrick = new BlockStairsMho(cc.stairIceStonebrickID, Mho.iceStonebrick, 0, "stairIceStonebrick");
-		stairIceCobblestone = new BlockStairsMho(cc.stairIceCobblestoneID, Mho.iceCobblestone, 0, "stairIceCobblestone");
+		stairMarbleBlackStone = new BlockStairsMho(cc.marbleBlackID + cc.stairStoneRank, Mho.marbleBlackStone, 0, "stairMarbleBlackStone");
+		stairMarbleBlackCobblestone = new BlockStairsMho(cc.marbleBlackID + cc.stairCobblestoneRank, Mho.marbleBlackCobblestone, 0, "stairMarbleBlackCobblestone");
+		stairMarbleBlackStonebrick = new BlockStairsMho(cc.marbleBlackID + cc.stairStonebrickRank, Mho.marbleBlackStonebrick, 0, "stairMarbleBlackStonebrick");
 
-		stairWoodenStone = new BlockStairsMho(cc.stairWoodenStoneID, Mho.woodenStone, 0, "stairWoodenStone");
-		stairWoodenStonebrick = new BlockStairsMho(cc.stairWoodenStonebrickID, Mho.woodenStonebrick, 0, "stairWoodenStonebrick");
+		stairMarbleCheck = new BlockStairsMho(cc.marbleBlackID + cc.stairCheckRank, Mho.marbleCheck, 0, "stairMarbleCheck");
 
-		stairWoodenLightStone = new BlockStairsMho(cc.stairWoodenLightStoneID, Mho.woodenLightStone, 0, "stairWoodenLightStone");
-		stairWoodenLightStonebrick = new BlockStairsMho(cc.stairWoodenLightStonebrickID, Mho.woodenLightStonebrick, 0, "stairWoodenLightStonebrick");
+		stairWoodenStone = new BlockStairsMho(cc.woodenDarkID + cc.stairStoneRank, Mho.woodenStone, 0, "stairWoodenStone");
+		stairWoodenStonebrick = new BlockStairsMho(cc.woodenDarkID + cc.stairStonebrickRank, Mho.woodenStonebrick, 0, "stairWoodenStonebrick");
 
-		stairSandstoneStonebrick = new BlockStairsMho(cc.stairSandstoneStonebrickID, Mho.sandstoneStonebrick, 0, "stairSandstoneStonebrick");
+		stairWoodenLightStone = new BlockStairsMho(cc.woodenLightID + cc.stairStoneRank, Mho.woodenLightStone, 0, "stairWoodenLightStone");
+		stairWoodenLightStonebrick = new BlockStairsMho(cc.woodenLightID + cc.stairStonebrickRank, Mho.woodenLightStonebrick, 0, "stairWoodenLightStonebrick");
 
 		GameRegistry.registerBlock(stairWhiteStone, "MHOstairWhiteStone");
 		GameRegistry.registerBlock(stairWhiteCobblestone, "MHOstairWhiteCobblestone");
 		GameRegistry.registerBlock(stairWhiteStonebrick, "MHOstairWhiteStonebrick");
 
+		GameRegistry.registerBlock(stairSandstoneStonebrick, "MHOstairSandstoneStonebrick");
+		
 		GameRegistry.registerBlock(stairAncientStone, "MHOstairAncientStone");
-		GameRegistry.registerBlock(stairAncientStonebrick, "MHOstairAncientStonebrick");
 		GameRegistry.registerBlock(stairAncientCobblestone, "MHOstairAncientCobblestone");
+		GameRegistry.registerBlock(stairAncientStonebrick, "MHOstairAncientStonebrick");
+
+		GameRegistry.registerBlock(stairIceCobblestone, "MHOstairIceCobblestone");
+		GameRegistry.registerBlock(stairIceStonebrick, "MHOstairIceStonebrick");
 
 		GameRegistry.registerBlock(stairMarbleWhiteStone, "MHOstairMarbleWhiteStone");
-		GameRegistry.registerBlock(stairMarbleWhiteStonebrick, "MHOstairMarbleWhiteStonebrick");
 		GameRegistry.registerBlock(stairMarbleWhiteCobblestone, "MHOstairMarbleWhiteCobblestone");
+		GameRegistry.registerBlock(stairMarbleWhiteStonebrick, "MHOstairMarbleWhiteStonebrick");
 
 		GameRegistry.registerBlock(stairMarbleBlackStone, "MHOstairMarbleBlackStone");
-		GameRegistry.registerBlock(stairMarbleBlackStonebrick, "MHOstairMarbleBlackStonebrick");
 		GameRegistry.registerBlock(stairMarbleBlackCobblestone, "MHOstairMarbleBlackCobblestone");
+		GameRegistry.registerBlock(stairMarbleBlackStonebrick, "MHOstairMarbleBlackStonebrick");
 
 		GameRegistry.registerBlock(stairMarbleCheck, "MHOstairMarbleCheck");
-
-		GameRegistry.registerBlock(stairIceStonebrick, "MHOstairIceStonebrick");
-		GameRegistry.registerBlock(stairIceCobblestone, "MHOstairIceCobblestone");
 
 		GameRegistry.registerBlock(stairWoodenStone, "MHOstairWoodenStone");
 		GameRegistry.registerBlock(stairWoodenStonebrick, "MHOstairWoodenStonebrick");
@@ -2775,36 +2771,34 @@ public class Mho
 		GameRegistry.registerBlock(stairWoodenLightStone, "MHOstairWoodenLightStone");
 		GameRegistry.registerBlock(stairWoodenLightStonebrick, "MHOstairWoodenLightStonebrick");
 
-		GameRegistry.registerBlock(stairSandstoneStonebrick, "MHOstairSandstoneStonebrick");
-		
 		LanguageRegistry.addName(stairWhiteStone, "Escalier en pierre blanche");
-		LanguageRegistry.addName(stairWhiteStonebrick, "Escalier en briques de pierre blanche");
 		LanguageRegistry.addName(stairWhiteCobblestone, "Escalier en pierre blanche fragment\u00e9e");
+		LanguageRegistry.addName(stairWhiteStonebrick, "Escalier en briques de pierre blanche");
+
+		LanguageRegistry.addName(stairSandstoneStonebrick, "Escalier en briques de sandstone");
 
 		LanguageRegistry.addName(stairAncientStone, "Escalier en pierre ancienne");
-		LanguageRegistry.addName(stairAncientStonebrick, "Escalier en briques de pierre ancienne");
 		LanguageRegistry.addName(stairAncientCobblestone, "Escalier en pierre ancienne fragment\u00e9e");
+		LanguageRegistry.addName(stairAncientStonebrick, "Escalier en briques de pierre ancienne");
+
+		LanguageRegistry.addName(stairIceCobblestone, "Escalier en glace fragment\u00e9");
+		LanguageRegistry.addName(stairIceStonebrick, "Escalier en briques de glace");
 
 		LanguageRegistry.addName(stairMarbleWhiteStone, "Escalier en marbre blanc");
-		LanguageRegistry.addName(stairMarbleWhiteStonebrick, "Escalier en brique de marbre blanc");
 		LanguageRegistry.addName(stairMarbleWhiteCobblestone, "Escalier en marbre blanc fragment\u00e9");
+		LanguageRegistry.addName(stairMarbleWhiteStonebrick, "Escalier en briques de marbre blanc");
 
 		LanguageRegistry.addName(stairMarbleBlackStone, "Escalier en marbre noir");
-		LanguageRegistry.addName(stairMarbleBlackStonebrick, "Escalier en brique de marbre noir");
 		LanguageRegistry.addName(stairMarbleBlackCobblestone, "Escalier en marbre noir fragment\u00e9");
+		LanguageRegistry.addName(stairMarbleBlackStonebrick, "Escalier en briques de marbre noir");
 
 		LanguageRegistry.addName(stairMarbleCheck, "Escalier de marbre en damier");
-
-		LanguageRegistry.addName(stairIceStonebrick, "Escalier en brique de glace");
-		LanguageRegistry.addName(stairIceCobblestone, "Escalier en glace fragment\u00e9");
 
 		LanguageRegistry.addName(stairWoodenStone, "Escalier en bois lisse fonc\u00e9");
 		LanguageRegistry.addName(stairWoodenStonebrick, "Escalier en briques de bois lisse fonc\u00e9");
 
 		LanguageRegistry.addName(stairWoodenLightStone, "Escalier en bois lisse clair");
 		LanguageRegistry.addName(stairWoodenLightStonebrick, "Escalier en briques de bois lisse clair");
-
-		LanguageRegistry.addName(stairSandstoneStonebrick, "Escalier en briques de sandstone");
 
 		/** Tiles **/
 		stairArdoise = new BlockStairsMho(cc.stairArdoiseID, Mho.tileArdoise, 0, "stairArdoise");
@@ -2825,14 +2819,14 @@ public class Mho
 		GameRegistry.registerBlock(stairTileBlueBig, "MHOstairTileBlueBig");
 		GameRegistry.registerBlock(stairTileBlackAlt, "MHOstairTileBlackAlt");
 
-		LanguageRegistry.addName(stairArdoise, "Escalier en ardoise");
-		LanguageRegistry.addName(stairTileRed, "Escalier de petites tuiles rouges");
-		LanguageRegistry.addName(stairTileBlack, "Escalier de petites tuiles noires");
-		LanguageRegistry.addName(stairTileBlue, "Escalier de petites tuiles bleues");
+		LanguageRegistry.addName(stairArdoise, "Escalier d'ardoises");
+		LanguageRegistry.addName(stairTileRed, "Escalier de tuiles rouges");
+		LanguageRegistry.addName(stairTileBlack, "Escalier de tuiles noires");
+		LanguageRegistry.addName(stairTileBlue, "Escalier de tuiles bleues");
 		LanguageRegistry.addName(stairTileRedBig, "Escalier de grandes tuiles rouges");
 		LanguageRegistry.addName(stairTileBlackBig, "Escalier de grandes tuiles noires");
 		LanguageRegistry.addName(stairTileBlueBig, "Escalier de grandes tuiles bleues");
-		LanguageRegistry.addName(stairTileBlackAlt, "Escalier de petites tuiles noires dechauss\u00e9es");
+		LanguageRegistry.addName(stairTileBlackAlt, "Escalier de tuiles noires d\u00e9chauss\u00e9es");
 	}
 	
 	public void initSteps(ConfigCore cc)
@@ -2849,13 +2843,12 @@ public class Mho
 		stepWoodSpruce = new BlockStepMho(cc.stepWoodSpruceID, Block.wood, 1, "stepWoodSpruce").setStepSound(Block.soundWoodFootstep);
 		stepWoodBirch = new BlockStepMho(cc.stepWoodBirchID, Block.wood, 2, "stepWoodBirch").setStepSound(Block.soundWoodFootstep);
 		stepWoodJungle = new BlockStepMho(cc.stepWoodJungleID, Block.wood, 3, "stepWoodJungle").setStepSound(Block.soundWoodFootstep);
-		stepObsidian = new BlockStepMho(cc.stepObsidianID, Block.obsidian, 0, "stepObsidian");
 		stepCobbleMossy = new BlockStepMho(cc.stepCobbleMossyID, Block.cobblestoneMossy, 0, "stepCobbleMossy");
+		stepObsidian = new BlockStepMho(cc.stepObsidianID, Block.obsidian, 0, "stepObsidian");
 		stepIce = new BlockStepMho(cc.stepIceID, Block.ice, 0, "stepIce").setStepSound(Block.soundGlassFootstep);
 		stepSnow = new BlockStepMho(cc.stepSnowID, Block.blockSnow, 0, "stepSnow").setStepSound(Block.soundSnowFootstep);
-		stepStonebrickMossy = new BlockStepMho(cc.stepStonebrickMossyID, Block.stoneBrick, 0, "stepStonebrickMossy");
-		stepStonebrickCracked = new BlockStepMho(cc.stepStonebrickCrackedID, Block.stoneBrick, 0, "stepStonebrickCracked");
-		stepNetherbrick = new BlockStepMho(cc.stepNetherbrickID, Block.netherBrick, 0, "stepNetherbrick");
+		stepStonebrickMossy = new BlockStepMho(cc.stepStonebrickMossyID, Block.stoneBrick, 1, "stepStonebrickMossy");
+		stepStonebrickCracked = new BlockStepMho(cc.stepStonebrickCrackedID, Block.stoneBrick, 2, "stepStonebrickCracked");
 		stepEnderstone = new BlockStepMho(cc.stepEndstoneID, Block.whiteStone, 0, "stepEnderstone");
 		stepSand = new BlockStepMho(cc.stepSandID, Block.sand, 0, "stepSand").setStepSound(Block.soundSandFootstep);
 		stepStraw = new BlockStepMho(cc.stepStrawID, Block.hay, 0, "stepStraw").setStepSound(Block.soundGrassFootstep);
@@ -2867,31 +2860,29 @@ public class Mho
 		GameRegistry.registerBlock(stepWoodSpruce, "MHOstepWoodSpruce");
 		GameRegistry.registerBlock(stepWoodBirch, "MHOstepWoodBirch");
 		GameRegistry.registerBlock(stepWoodJungle, "MHOstepWoodJungle");
-		GameRegistry.registerBlock(stepObsidian, "MHOstepObsidian");
 		GameRegistry.registerBlock(stepCobbleMossy, "MHOstepCobbleMossy");
+		GameRegistry.registerBlock(stepObsidian, "MHOstepObsidian");
 		GameRegistry.registerBlock(stepIce, "MHOstepIce");
 		GameRegistry.registerBlock(stepSnow, "MHOstepSnow");
 		GameRegistry.registerBlock(stepStonebrickMossy, "MHOstepStonebrickMossy");
 		GameRegistry.registerBlock(stepStonebrickCracked, "MHOstepStonebrickCracked");
-		GameRegistry.registerBlock(stepNetherbrick, "MHOstepNetherbrick");
 		GameRegistry.registerBlock(stepEnderstone, "MHOstepEnderstone");
 		GameRegistry.registerBlock(stepSand, "MHOstepSand");
 		GameRegistry.registerBlock(stepStraw, "MHOstepStraw");
 		
 		LanguageRegistry.addName(stepGrass, "Demi-dalle d'herbe");
-		LanguageRegistry.addName(stepDirt, "Demi-dalle de terre");
-		LanguageRegistry.addName(stepGravel, "Demi-dalle de gravier");
+		LanguageRegistry.addName(stepDirt, "Demi-dalle en terre");
+		LanguageRegistry.addName(stepGravel, "Demi-dalle en gravier");
 		LanguageRegistry.addName(stepWoodOak, "Demi-dalle en bois de ch\u00eane");
 		LanguageRegistry.addName(stepWoodSpruce, "Demi-dalle en bois de pin");
 		LanguageRegistry.addName(stepWoodBirch, "Demi-dalle en bois de bouleau");
 		LanguageRegistry.addName(stepWoodJungle, "Demi-dalle en bois de la jungle");
-		LanguageRegistry.addName(stepObsidian, "Demi-dalle en obsidienne");
 		LanguageRegistry.addName(stepCobbleMossy, "Demi-dalle en pierre moussue");
+		LanguageRegistry.addName(stepObsidian, "Demi-dalle en obsidienne");
 		LanguageRegistry.addName(stepIce, "Demi-dalle en glace");
 		LanguageRegistry.addName(stepSnow, "Demi-dalle en neige");
 		LanguageRegistry.addName(stepStonebrickMossy, "Demi-dalle en stonebrick moussue");
 		LanguageRegistry.addName(stepStonebrickCracked, "Demi-dalle en stonebrick craquel\u00e9e");
-		LanguageRegistry.addName(stepNetherbrick, "Demi-dalle en briques du nether");
 		LanguageRegistry.addName(stepEnderstone, "Demi-dalle en pierre du n\u00e9ant");
 		LanguageRegistry.addName(stepSand, "Demi-dalle en sable");
 		LanguageRegistry.addName(stepStraw, "Demi-dalle en paille");
@@ -2932,11 +2923,11 @@ public class Mho
 		GameRegistry.registerBlock(stepWoolBlack, "MHOstepWoolBlack");
 
 		LanguageRegistry.addName(stepWoolWhite, "Demi-dalle en laine blanche");
-		LanguageRegistry.addName(stepWoolOrange, "Demi-dalle de laine orange");
-		LanguageRegistry.addName(stepWoolMagenta, "Demi-dalle de laine magenta");
-		LanguageRegistry.addName(stepWoolLightBlue, "Demi-dalle de laine bleu claire");
-		LanguageRegistry.addName(stepWoolYellow, "Demi-dalle de laine jaune");
-		LanguageRegistry.addName(stepWoolLightGreen, "Demi-dalle de laine verte claire");
+		LanguageRegistry.addName(stepWoolOrange, "Demi-dalle en laine orange");
+		LanguageRegistry.addName(stepWoolMagenta, "Demi-dalle en laine magenta");
+		LanguageRegistry.addName(stepWoolLightBlue, "Demi-dalle en laine bleu claire");
+		LanguageRegistry.addName(stepWoolYellow, "Demi-dalle en laine jaune");
+		LanguageRegistry.addName(stepWoolLightGreen, "Demi-dalle en laine verte claire");
 		LanguageRegistry.addName(stepWoolPink, "Demi-dalle en laine rose");
 		LanguageRegistry.addName(stepWoolGray, "Demi-dalle en laine grise");
 		LanguageRegistry.addName(stepWoolLightGray, "Demi-dalle en laine grise claire");
@@ -3001,63 +2992,66 @@ public class Mho
 		LanguageRegistry.addName(stepWoolBlackLight, "Demi-dalle en laine noire lumineuse");
 
 		/** Sets of materials **/
-		stepWhiteStone = new BlockStepMho(cc.stepWhiteStoneID, Mho.whiteStone, 0, "stepWhiteStone");
-		stepWhiteCobblestone = new BlockStepMho(cc.stepWhiteCobblestoneID, Mho.whiteCobblestone, 0, "stepWhiteCobblestone");
-		stepWhiteStonebrick = new BlockStepMho(cc.stepWhiteStonebrickID, Mho.whiteStonebrick, 0, "stepWhiteStonebrick");
-		stepWhiteDoubleSlab = new BlockStepMho(cc.stepWhiteDoubleSlabID, Mho.whiteStoneDoubleSlab, 0, "stepWhiteDoubleSlab");
-		stepWhiteColumn = new BlockStepMho(cc.stepWhiteColumnID, Mho.whiteStoneColumn, 0, "stepWhiteColumn");
-		stepWhiteColumnHead = new BlockStepMho(cc.stepWhiteColumnHeadID, Mho.whiteStoneColumnHead, 0, "stepWhiteColumnHead");
+		stepStoneColumn = new BlockStepMho(cc.stoneID + cc.stepColumnRank, Mho.stoneColumn, 0, "stepStoneColumn");
+		stepStoneColumnHead = new BlockStepMho(cc.stoneID + cc.stepColumnHeadRank, Mho.stoneColumnHead, 0, "stepStoneColumnHead");
 		
-		stepStoneColumn = new BlockStepMho(cc.stepStoneColumnID, Mho.stoneColumn, 0, "stepStoneColumn");
-		stepStoneColumnHead = new BlockStepMho(cc.stepStoneColumnHeadID, Mho.stoneColumnHead, 0, "stepStoneColumnHead");
-		
-		stepSandstoneDoubleSlab = new BlockStepMho(cc.stepSandstoneDoubleSlabID, Mho.sandstoneDoubleSlab, 0, "stepSandstoneDoubleSlab");
-		stepSandstoneColumn = new BlockStepMho(cc.stepSandstoneColumnID, Mho.sandstoneColumn, 0, "stepSandstoneColumn");
-		stepSandstoneColumnHead = new BlockStepMho(cc.stepSandstoneColumnHeadID, Mho.sandstoneColumnHead, 0, "stepSandstoneColumnHead");
-		stepSandstoneStonebrick = new BlockStepMho(cc.stepSandstoneStonebrickID, Mho.sandstoneStonebrick, 0, "stepSandstoneStonebrick");
+		stepWhiteStone = new BlockStepMho(cc.whiteStoneID + cc.stepStoneRank, Mho.whiteStone, 0, "stepWhiteStone");
+		stepWhiteCobblestone = new BlockStepMho(cc.whiteStoneID + cc.stepCobblestoneRank, Mho.whiteCobblestone, 0, "stepWhiteCobblestone");
+		stepWhiteStonebrick = new BlockStepMho(cc.whiteStoneID + cc.stepStonebrickRank, Mho.whiteStonebrick, 0, "stepWhiteStonebrick");
+		stepWhiteDoubleSlab = new BlockStepMho(cc.whiteStoneID + cc.stepDoubleSlabRank, Mho.whiteStoneDoubleSlab, 0, "stepWhiteDoubleSlab");
+		stepWhiteColumn = new BlockStepMho(cc.whiteStoneID + cc.stepColumnRank, Mho.whiteStoneColumn, 0, "stepWhiteColumn");
+		stepWhiteColumnHead = new BlockStepMho(cc.whiteStoneID + cc.stepColumnHeadRank, Mho.whiteStoneColumnHead, 0, "stepWhiteColumnHead");
 
-		stepMarbleBlackCobblestone = new BlockStepMho(cc.stepMarbleBlackCobblestoneID, Mho.marbleBlackCobblestone, 0, "stepMarbleBlackCobblestone");
-		stepMarbleBlackStone = new BlockStepMho(cc.stepMarbleBlackStoneID, Mho.marbleBlackStone, 0, "stepMarbleBlackStone");
-		stepMarbleBlackStonebrick = new BlockStepMho(cc.stepMarbleBlackStonebrickID, Mho.marbleBlackStonebrick, 0, "stepMarbleBlackStonebrick");
-		stepMarbleBlackDoubleSlab = new BlockStepMho(cc.stepMarbleBlackDoubleSlabID, Mho.marbleBlackDoubleSlab, 0, "stepMarbleBlackDoubleSlab");
-		stepMarbleBlackColumn = new BlockStepMho(cc.stepMarbleBlackColumnID, Mho.marbleBlackColumn, 0, "stepMarbleBlackColumn");
-		stepMarbleBlackColumnHead = new BlockStepMho(cc.stepMarbleBlackColumnHeadID, Mho.marbleBlackColumnHead, 0, "stepMarbleBlackColumnHead");
+		stepSandstoneStonebrick = new BlockStepMho(cc.sandstoneID + cc.stepStonebrickRank, Mho.sandstoneStonebrick, 0, "stepSandstoneStonebrick");
+		stepSandstoneDoubleSlab = new BlockStepMho(cc.sandstoneID + cc.stepDoubleSlabRank, Mho.sandstoneDoubleSlab, 0, "stepSandstoneDoubleSlab");
+		stepSandstoneColumn = new BlockStepMho(cc.sandstoneID + cc.stepColumnRank, Mho.sandstoneColumn, 0, "stepSandstoneColumn");
+		stepSandstoneColumnHead = new BlockStepMho(cc.sandstoneID + cc.stepColumnHeadRank, Mho.sandstoneColumnHead, 0, "stepSandstoneColumnHead");
 
-		stepMarbleWhiteCobblestone = new BlockStepMho(cc.stepMarbleWhiteCobblestoneID, Mho.marbleWhiteCobblestone, 0, "stepMarbleWhiteCobblestone");
-		stepMarbleWhiteStone = new BlockStepMho(cc.stepMarbleWhiteStoneID, Mho.marbleWhiteStone, 0, "stepMarbleWhiteStone");
-		stepMarbleWhiteStonebrick = new BlockStepMho(cc.stepMarbleWhiteStonebrickID, Mho.marbleWhiteStonebrick, 0, "stepMarbleWhiteStonebrick");
-		stepMarbleWhiteDoubleSlab = new BlockStepMho(cc.stepMarbleWhiteDoubleSlabID, Mho.marbleWhiteDoubleSlab, 0, "stepMarbleWhiteDoubleSlab");
-		stepMarbleWhiteColumn = new BlockStepMho(cc.stepMarbleWhiteColumnID, Mho.marbleWhiteColumn, 0, "stepMarbleWhiteColumn");
-		stepMarbleWhiteColumnHead = new BlockStepMho(cc.stepMarbleWhiteColumnHeadID, Mho.marbleWhiteColumnHead, 0, "stepMarbleWhiteColumnHead");
+		stepAncientStone = new BlockStepMho(cc.ancientStoneID + cc.stepStoneRank, Mho.ancientStone, 0, "stepAncientStone");
+		stepAncientCobblestone = new BlockStepMho(cc.ancientStoneID + cc.stepCobblestoneRank, Mho.ancientCobblestone, 0, "stepAncientCobblestone");
+		stepAncientStonebrick = new BlockStepMho(cc.ancientStoneID + cc.stepStonebrickRank, Mho.ancientStonebrick, 0, "stepAncientStonebrick");
+		stepAncientDoubleSlab = new BlockStepMho(cc.ancientStoneID + cc.stepDoubleSlabRank, Mho.ancientDoubleSlab, 0, "stepAncientDoubleSlab");
+		stepAncientColumn = new BlockStepMho(cc.ancientStoneID + cc.stepColumnRank, Mho.ancientColumn, 0, "stepAncientColumn");
+		stepAncientColumnHead = new BlockStepMho(cc.ancientStoneID + cc.stepColumnHeadRank, Mho.ancientColumnHead, 0, "stepAncientColumnHead");
 
-		stepMarbleCheck = new BlockStepMho(cc.stepMarbleCheckID, Mho.marbleCheck, 0, "stepMarbleCheck");
+		stepIceCobblestone = new BlockStepMho(cc.iceID + cc.stepCobblestoneRank, Mho.iceCobblestone, 0, "stepIceCobblestone").setStepSound(Block.soundGlassFootstep);
+		stepIceStonebrick = new BlockStepMho(cc.iceID + cc.stepStonebrickRank, Mho.iceStonebrick, 0, "stepIceStonebrick").setStepSound(Block.soundGlassFootstep);
+		stepIceDoubleSlab = new BlockStepMho(cc.iceID + cc.stepDoubleSlabRank, Mho.iceDoubleSlab, 0, "stepIceDoubleSlab").setStepSound(Block.soundGlassFootstep);
+		stepIceColumn = new BlockStepMho(cc.iceID + cc.stepColumnRank, Mho.iceColumn, 0, "stepIceColumn").setStepSound(Block.soundGlassFootstep);
+		stepIceColumnHead = new BlockStepMho(cc.iceID + cc.stepColumnHeadRank, Mho.iceColumnHead, 0, "stepIceColumnHead").setStepSound(Block.soundGlassFootstep);
 
-		stepAncientCobblestone = new BlockStepMho(cc.stepAncientCobblestoneID, Mho.ancientCobblestone, 0, "stepAncientCobblestone");
-		stepAncientStone = new BlockStepMho(cc.stepAncientStoneID, Mho.ancientStone, 0, "stepAncientStone");
-		stepAncientStonebrick = new BlockStepMho(cc.stepAncientStonebrickID, Mho.ancientStonebrick, 0, "stepAncientStonebrick");
-		stepAncientDoubleSlab = new BlockStepMho(cc.stepAncientDoubleSlabID, Mho.ancientDoubleSlab, 0, "stepAncientDoubleSlab");
-		stepAncientColumn = new BlockStepMho(cc.stepAncientColumnID, Mho.ancientColumn, 0, "stepAncientColumn");
-		stepAncientColumnHead = new BlockStepMho(cc.stepAncientColumnHeadID, Mho.ancientColumnHead, 0, "stepAncientColumnHead");
+		stepMarbleWhiteStone = new BlockStepMho(cc.marbleWhiteID + cc.stepStoneRank, Mho.marbleWhiteStone, 0, "stepMarbleWhiteStone");
+		stepMarbleWhiteCobblestone = new BlockStepMho(cc.marbleWhiteID + cc.stepCobblestoneRank, Mho.marbleWhiteCobblestone, 0, "stepMarbleWhiteCobblestone");
+		stepMarbleWhiteStonebrick = new BlockStepMho(cc.marbleWhiteID + cc.stepStonebrickRank, Mho.marbleWhiteStonebrick, 0, "stepMarbleWhiteStonebrick");
+		stepMarbleWhiteDoubleSlab = new BlockStepMho(cc.marbleWhiteID + cc.stepDoubleSlabRank, Mho.marbleWhiteDoubleSlab, 0, "stepMarbleWhiteDoubleSlab");
+		stepMarbleWhiteColumn = new BlockStepMho(cc.marbleWhiteID + cc.stepColumnRank, Mho.marbleWhiteColumn, 0, "stepMarbleWhiteColumn");
+		stepMarbleWhiteColumnHead = new BlockStepMho(cc.marbleWhiteID + cc.stepColumnHeadRank, Mho.marbleWhiteColumnHead, 0, "stepMarbleWhiteColumnHead");
 
-		stepIceCobblestone = new BlockStepMho(cc.stepIceCobblestoneID, Mho.iceCobblestone, 0, "stepIceCobblestone").setStepSound(Block.soundGlassFootstep);
-		stepIceStonebrick = new BlockStepMho(cc.stepIceStonebrickID, Mho.iceStonebrick, 0, "stepIceStonebrick").setStepSound(Block.soundGlassFootstep);
-		stepIceDoubleSlab = new BlockStepMho(cc.stepIceDoubleSlabID, Mho.iceDoubleSlab, 0, "stepIceDoubleSlab").setStepSound(Block.soundGlassFootstep);
-		stepIceColumn = new BlockStepMho(cc.stepIceColumnID, Mho.iceColumn, 0, "stepIceColumn").setStepSound(Block.soundGlassFootstep);
-		stepIceColumnHead = new BlockStepMho(cc.stepIceColumnHeadID, Mho.iceColumnHead, 0, "stepIceColumnHead").setStepSound(Block.soundGlassFootstep);
+		stepMarbleBlackStone = new BlockStepMho(cc.marbleBlackID + cc.stepStoneRank, Mho.marbleBlackStone, 0, "stepMarbleBlackStone");
+		stepMarbleBlackCobblestone = new BlockStepMho(cc.marbleBlackID + cc.stepCobblestoneRank, Mho.marbleBlackCobblestone, 0, "stepMarbleBlackCobblestone");
+		stepMarbleBlackStonebrick = new BlockStepMho(cc.marbleBlackID + cc.stepStonebrickRank, Mho.marbleBlackStonebrick, 0, "stepMarbleBlackStonebrick");
+		stepMarbleBlackDoubleSlab = new BlockStepMho(cc.marbleBlackID + cc.stepDoubleSlabRank, Mho.marbleBlackDoubleSlab, 0, "stepMarbleBlackDoubleSlab");
+		stepMarbleBlackColumn = new BlockStepMho(cc.marbleBlackID + cc.stepColumnRank, Mho.marbleBlackColumn, 0, "stepMarbleBlackColumn");
+		stepMarbleBlackColumnHead = new BlockStepMho(cc.marbleBlackID + cc.stepColumnHeadRank, Mho.marbleBlackColumnHead, 0, "stepMarbleBlackColumnHead");
 
-		stepWoodenStone = new BlockStepMho(cc.stepWoodenStoneID, Mho.woodenStone, 0, "stepWoodenStone").setStepSound(Block.soundWoodFootstep);
-		stepWoodenStonebrick = new BlockStepMho(cc.stepWoodenStonebrickID, Mho.woodenStonebrick, 0, "stepWoodenStonebrick").setStepSound(Block.soundWoodFootstep);
-		stepWoodenDoubleSlab = new BlockStepMho(cc.stepWoodenDoubleSlabID, Mho.woodenDoubleSlab, 0, "stepWoodenDoubleSlab").setStepSound(Block.soundWoodFootstep);
-		stepWoodenColumn = new BlockStepMho(cc.stepWoodenColumnID, Mho.woodenColumn, 0, "stepWoodenColumn").setStepSound(Block.soundWoodFootstep);
-		stepWoodenColumnHead = new BlockStepMho(cc.stepWoodenColumnHeadID, Mho.woodenColumnHead, 0, "stepWoodenColumnHead").setStepSound(Block.soundWoodFootstep);
+		stepMarbleCheck = new BlockStepMho(cc.marbleBlackID + cc.stepCheckRank, Mho.marbleCheck, 0, "stepMarbleCheck");
 
-		stepWoodenLightStone = new BlockStepMho(cc.stepWoodenLightStoneID, Mho.woodenLightStone, 0, "stepWoodenLightStone").setStepSound(Block.soundWoodFootstep);
-		stepWoodenLightStonebrick = new BlockStepMho(cc.stepWoodenLightStonebrickID, Mho.woodenLightStonebrick, 0, "stepWoodenLightStonebrick").setStepSound(Block.soundWoodFootstep);
-		stepWoodenLightDoubleSlab = new BlockStepMho(cc.stepWoodenLightDoubleSlabID, Mho.woodenLightDoubleSlab, 0, "stepWoodenLightDoubleSlab").setStepSound(Block.soundWoodFootstep);
-		stepWoodenLightColumn = new BlockStepMho(cc.stepWoodenLightColumnID, Mho.woodenLightColumn, 0, "stepWoodenLightColumn").setStepSound(Block.soundWoodFootstep);
-		stepWoodenLightColumnHead = new BlockStepMho(cc.stepWoodenLightColumnHeadID, Mho.woodenLightColumnHead, 0, "stepWoodenLightColumnHead").setStepSound(Block.soundWoodFootstep);
+		stepWoodenStone = new BlockStepMho(cc.woodenDarkID + cc.stepStoneRank, Mho.woodenStone, 0, "stepWoodenStone").setStepSound(Block.soundWoodFootstep);
+		stepWoodenStonebrick = new BlockStepMho(cc.woodenDarkID + cc.stepStonebrickRank, Mho.woodenStonebrick, 0, "stepWoodenStonebrick").setStepSound(Block.soundWoodFootstep);
+		stepWoodenDoubleSlab = new BlockStepMho(cc.woodenDarkID + cc.stepDoubleSlabRank, Mho.woodenDoubleSlab, 0, "stepWoodenDoubleSlab").setStepSound(Block.soundWoodFootstep);
+		stepWoodenColumn = new BlockStepMho(cc.woodenDarkID + cc.stepColumnRank, Mho.woodenColumn, 0, "stepWoodenColumn").setStepSound(Block.soundWoodFootstep);
+		stepWoodenColumnHead = new BlockStepMho(cc.woodenDarkID + cc.stepColumnHeadRank, Mho.woodenColumnHead, 0, "stepWoodenColumnHead").setStepSound(Block.soundWoodFootstep);
 
-		stepMetal = new BlockStepMho(cc.stepMetalID, Mho.metalDoubleSlab, 0, "stepMetal").setStepSound(Block.soundMetalFootstep);
+		stepWoodenLightStone = new BlockStepMho(cc.woodenLightID + cc.stepStoneRank, Mho.woodenLightStone, 0, "stepWoodenLightStone").setStepSound(Block.soundWoodFootstep);
+		stepWoodenLightStonebrick = new BlockStepMho(cc.woodenLightID + cc.stepStonebrickRank, Mho.woodenLightStonebrick, 0, "stepWoodenLightStonebrick").setStepSound(Block.soundWoodFootstep);
+		stepWoodenLightDoubleSlab = new BlockStepMho(cc.woodenLightID + cc.stepDoubleSlabRank, Mho.woodenLightDoubleSlab, 0, "stepWoodenLightDoubleSlab").setStepSound(Block.soundWoodFootstep);
+		stepWoodenLightColumn = new BlockStepMho(cc.woodenLightID + cc.stepColumnRank, Mho.woodenLightColumn, 0, "stepWoodenLightColumn").setStepSound(Block.soundWoodFootstep);
+		stepWoodenLightColumnHead = new BlockStepMho(cc.woodenLightID + cc.stepColumnHeadRank, Mho.woodenLightColumnHead, 0, "stepWoodenLightColumnHead").setStepSound(Block.soundWoodFootstep);
+
+		stepMetal = new BlockStepMho(cc.metalID + cc.stepDoubleSlabRank, Mho.metalDoubleSlab, 0, "stepMetal").setStepSound(Block.soundMetalFootstep);
+
+		GameRegistry.registerBlock(stepStoneColumn, "MHOstepStoneColumn");
+		GameRegistry.registerBlock(stepStoneColumnHead, "MHOstepStoneColumnHead");
 
 		GameRegistry.registerBlock(stepWhiteStone, "MHOstepWhiteStone");
 		GameRegistry.registerBlock(stepWhiteCobblestone, "MHOstepWhiteCobblestone");
@@ -3066,32 +3060,13 @@ public class Mho
 		GameRegistry.registerBlock(stepWhiteColumn, "MHOstepWhiteColumn");
 		GameRegistry.registerBlock(stepWhiteColumnHead, "MHOstepWhiteColumnHead");
 
-		GameRegistry.registerBlock(stepStoneColumn, "MHOstepStoneColumn");
-		GameRegistry.registerBlock(stepStoneColumnHead, "MHOstepStoneColumnHead");
-
+		GameRegistry.registerBlock(stepSandstoneStonebrick, "MHOstepSandstoneStonebrick");
 		GameRegistry.registerBlock(stepSandstoneDoubleSlab, "MHOstepSandstoneDoubleSlab");
 		GameRegistry.registerBlock(stepSandstoneColumn, "MHOstepSandstoneColumn");
 		GameRegistry.registerBlock(stepSandstoneColumnHead, "MHOstepSandstoneColumnHead");
-		GameRegistry.registerBlock(stepSandstoneStonebrick, "MHOstepSandstoneStonebrick");
 
-		GameRegistry.registerBlock(stepMarbleBlackCobblestone, "MHOstepMarbleBlackCobblestone");
-		GameRegistry.registerBlock(stepMarbleBlackStone, "MHOstepMarbleBlackStone");
-		GameRegistry.registerBlock(stepMarbleBlackStonebrick, "MHOstepMarbleBlackStonebrick");
-		GameRegistry.registerBlock(stepMarbleBlackDoubleSlab, "MHOstepMarbleBlackDoubleSlab");
-		GameRegistry.registerBlock(stepMarbleBlackColumn, "MHOstepMarbleBlackColumn");
-		GameRegistry.registerBlock(stepMarbleBlackColumnHead, "MHOstepMarbleBlackColumnHead");
-
-		GameRegistry.registerBlock(stepMarbleWhiteCobblestone, "MHOstepMarbleWhiteCobblestone");
-		GameRegistry.registerBlock(stepMarbleWhiteStone, "MHOstepMarbleWhiteStone");
-		GameRegistry.registerBlock(stepMarbleWhiteStonebrick, "MHOstepMarbleWhiteStonebrick");
-		GameRegistry.registerBlock(stepMarbleWhiteDoubleSlab, "MHOstepMarbleWhiteDoubleSlab");
-		GameRegistry.registerBlock(stepMarbleWhiteColumn, "MHOstepMarbleWhiteColumn");
-		GameRegistry.registerBlock(stepMarbleWhiteColumnHead, "MHOstepMarbleWhiteColumnHead");
-
-		GameRegistry.registerBlock(stepMarbleCheck, "MHOstepMarbleCheck");
-
-		GameRegistry.registerBlock(stepAncientCobblestone, "MHOstepAncientCobblestone");
 		GameRegistry.registerBlock(stepAncientStone, "MHOstepAncientStone");
+		GameRegistry.registerBlock(stepAncientCobblestone, "MHOstepAncientCobblestone");
 		GameRegistry.registerBlock(stepAncientStonebrick, "MHOstepAncientStonebrick");
 		GameRegistry.registerBlock(stepAncientDoubleSlab, "MHOstepAncientDoubleSlab");
 		GameRegistry.registerBlock(stepAncientColumn, "MHOstepAncientColumn");
@@ -3102,6 +3077,22 @@ public class Mho
 		GameRegistry.registerBlock(stepIceDoubleSlab, "MHOstepIceDoubleSlab");
 		GameRegistry.registerBlock(stepIceColumn, "MHOstepIceColumn");
 		GameRegistry.registerBlock(stepIceColumnHead, "MHOstepIceColumnHead");
+
+		GameRegistry.registerBlock(stepMarbleWhiteStone, "MHOstepMarbleWhiteStone");
+		GameRegistry.registerBlock(stepMarbleWhiteCobblestone, "MHOstepMarbleWhiteCobblestone");
+		GameRegistry.registerBlock(stepMarbleWhiteStonebrick, "MHOstepMarbleWhiteStonebrick");
+		GameRegistry.registerBlock(stepMarbleWhiteDoubleSlab, "MHOstepMarbleWhiteDoubleSlab");
+		GameRegistry.registerBlock(stepMarbleWhiteColumn, "MHOstepMarbleWhiteColumn");
+		GameRegistry.registerBlock(stepMarbleWhiteColumnHead, "MHOstepMarbleWhiteColumnHead");
+
+		GameRegistry.registerBlock(stepMarbleBlackStone, "MHOstepMarbleBlackStone");
+		GameRegistry.registerBlock(stepMarbleBlackCobblestone, "MHOstepMarbleBlackCobblestone");
+		GameRegistry.registerBlock(stepMarbleBlackStonebrick, "MHOstepMarbleBlackStonebrick");
+		GameRegistry.registerBlock(stepMarbleBlackDoubleSlab, "MHOstepMarbleBlackDoubleSlab");
+		GameRegistry.registerBlock(stepMarbleBlackColumn, "MHOstepMarbleBlackColumn");
+		GameRegistry.registerBlock(stepMarbleBlackColumnHead, "MHOstepMarbleBlackColumnHead");
+
+		GameRegistry.registerBlock(stepMarbleCheck, "MHOstepMarbleCheck");
 
 		GameRegistry.registerBlock(stepWoodenStone, "MHOstepWoodenStone");
 		GameRegistry.registerBlock(stepWoodenStonebrick, "MHOstepWoodenStonebrick");
@@ -3117,61 +3108,61 @@ public class Mho
 
 		GameRegistry.registerBlock(stepMetal, "MHOstepMetal");
 
-		LanguageRegistry.addName(stepWhiteStone, "Demi-dalle de pierre blanche");
-		LanguageRegistry.addName(stepWhiteCobblestone, "Demi-dalle de pierre blanche fragment\u00e9e");
-		LanguageRegistry.addName(stepWhiteStonebrick, "Demi-dalle de briques blanches");
-		LanguageRegistry.addName(stepWhiteDoubleSlab, "Demi-dalle de dalle blanche");
-		LanguageRegistry.addName(stepWhiteColumn, "Demi-dalle de colonne blanche");
-		LanguageRegistry.addName(stepWhiteColumnHead, "Demi-dalle de chapeau de colonne blanche");
-		
-		LanguageRegistry.addName(stepStoneColumn, "Demi-dalle de colonne en pierre");
-		LanguageRegistry.addName(stepStoneColumnHead, "Demi-dalle de chapeau de colonne en pierre");
+		LanguageRegistry.addName(stepStoneColumn, "Demi-dalle en colonne de pierre");
+		LanguageRegistry.addName(stepStoneColumnHead, "Demi-dalle en chapeau de colonne de pierre");
 
-		LanguageRegistry.addName(stepSandstoneDoubleSlab, "Demi-dalle de dalle de sandstone");
-		LanguageRegistry.addName(stepSandstoneColumn, "Demi-dalle de colonne de sandstone");
-		LanguageRegistry.addName(stepSandstoneColumnHead, "Demi-dalle de chapeau de colonne de sandstone");
-		LanguageRegistry.addName(stepSandstoneStonebrick, "Demi-dalle de briques de sandstone");
+		LanguageRegistry.addName(stepWhiteStone, "Demi-dalle en pierre blanche");
+		LanguageRegistry.addName(stepWhiteCobblestone, "Demi-dalle en pierre blanche fragment\u00e9e");
+		LanguageRegistry.addName(stepWhiteStonebrick, "Demi-dalle en briques de pierre blanche");
+		LanguageRegistry.addName(stepWhiteDoubleSlab, "Demi-dalle en dalle de pierre blanche");
+		LanguageRegistry.addName(stepWhiteColumn, "Demi-dalle en colonne de pierre blanche");
+		LanguageRegistry.addName(stepWhiteColumnHead, "Demi-dalle en chapeau de colonne de pierre blanche");
 
-		LanguageRegistry.addName(stepMarbleBlackCobblestone, "Demi-dalle de marbre noir fragment\u00e9");
-		LanguageRegistry.addName(stepMarbleBlackStone, "Demi-dalle de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackStonebrick, "Demi-dalle de briques de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackDoubleSlab, "Demi-dalle de dalle de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackColumn, "Demi-dalle de colonne de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackColumnHead, "Demi-dalle de chapeau de colonne de marbre noir");
+		LanguageRegistry.addName(stepSandstoneStonebrick, "Demi-dalle en briques de sandstone");
+		LanguageRegistry.addName(stepSandstoneDoubleSlab, "Demi-dalle en dalle de sandstone");
+		LanguageRegistry.addName(stepSandstoneColumn, "Demi-dalle en colonne de sandstone");
+		LanguageRegistry.addName(stepSandstoneColumnHead, "Demi-dalle en chapeau de colonne de sandstone");
 
-		LanguageRegistry.addName(stepMarbleWhiteCobblestone, "Demi-dalle de marbre blanc fragment\u00e9");
-		LanguageRegistry.addName(stepMarbleWhiteStone, "Demi-dalle de marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteStonebrick, "Demi-dalle de briques de marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteDoubleSlab, "Demi-dalle de dalle en marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteColumn, "Demi-dalle de colonne en marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteColumnHead, "Demi-dalle de chapeau de colonne en marbre blanc");
+		LanguageRegistry.addName(stepAncientStone, "Demi-dalle en pierre ancienne");
+		LanguageRegistry.addName(stepAncientCobblestone, "Demi-dalle en pierre ancienne fragment\u00e9e");
+		LanguageRegistry.addName(stepAncientStonebrick, "Demi-dalle en brique de pierre ancienne");
+		LanguageRegistry.addName(stepAncientDoubleSlab, "Demi-dalle en dalle de pierre ancienne");
+		LanguageRegistry.addName(stepAncientColumn, "Demi-dalle en colonne de pierre ancienne");
+		LanguageRegistry.addName(stepAncientColumnHead, "Demi-dalle en chapeau de colonne de pierre ancienne");
 
-		LanguageRegistry.addName(stepMarbleCheck, "Demi-dalle de marbre en check");
+		LanguageRegistry.addName(stepIceCobblestone, "Demi-dalle en glace fragment\u00e9e");
+		LanguageRegistry.addName(stepIceStonebrick, "Demi-dalle en briques de glace");
+		LanguageRegistry.addName(stepIceDoubleSlab, "Demi-dalle en dalle de glace");
+		LanguageRegistry.addName(stepIceColumn, "Demi-dalle en colonne de glace");
+		LanguageRegistry.addName(stepIceColumnHead, "Demi-dalle en chapeau de colonne de glace");
 
-		LanguageRegistry.addName(stepAncientCobblestone, "Demi-dalle de pierre ancienne fragment\u00e9e");
-		LanguageRegistry.addName(stepAncientStone, "Demi-dalle de pierre ancienne");
-		LanguageRegistry.addName(stepAncientStonebrick, "Demi-dalle de brique en pierre ancienne");
-		LanguageRegistry.addName(stepAncientDoubleSlab, "Demi-dalle de dalle en pierre ancienne");
-		LanguageRegistry.addName(stepAncientColumn, "Demi-dalle de colonne en pierre ancienne");
-		LanguageRegistry.addName(stepAncientColumnHead, "Demi-dalle de chapeau de colonne en pierre ancienne");
+		LanguageRegistry.addName(stepMarbleWhiteStone, "Demi-dalle en marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteCobblestone, "Demi-dalle en marbre blanc fragment\u00e9");
+		LanguageRegistry.addName(stepMarbleWhiteStonebrick, "Demi-dalle en briques de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteDoubleSlab, "Demi-dalle en dalle de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteColumn, "Demi-dalle en colonne de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteColumnHead, "Demi-dalle en chapeau de colonne de marbre blanc");
 
-		LanguageRegistry.addName(stepIceCobblestone, "Demi-dalle de glace fragment\u00e9e");
-		LanguageRegistry.addName(stepIceStonebrick, "Demi-dalle de briques de glace");
-		LanguageRegistry.addName(stepIceDoubleSlab, "Demi-dalle de dalle de glace");
-		LanguageRegistry.addName(stepIceColumn, "Demi-dalle de colonne de glace");
-		LanguageRegistry.addName(stepIceColumnHead, "Demi-dalle de chapeau de colonne de glace");
+		LanguageRegistry.addName(stepMarbleBlackStone, "Demi-dalle en marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackCobblestone, "Demi-dalle en marbre noir fragment\u00e9");
+		LanguageRegistry.addName(stepMarbleBlackStonebrick, "Demi-dalle en briques de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackDoubleSlab, "Demi-dalle en dalle de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackColumn, "Demi-dalle en colonne de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackColumnHead, "Demi-dalle en chapeau de colonne de marbre noir");
 
-		LanguageRegistry.addName(stepWoodenStone, "Demi-dalle de bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenStonebrick, "Demi-dalle de briques en bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenDoubleSlab, "Demi-dalle de dalle en bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenColumn, "Demi-dalle de colonne en bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenColumnHead, "Demi-dalle de chapeau de colonne en bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepMarbleCheck, "Demi-dalle en damier de marbre");
 
-		LanguageRegistry.addName(stepWoodenLightStone, "Demi-dalle de bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightStonebrick, "Demi-dalle de briques en bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightDoubleSlab, "Demi-dalle de dalle en bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightColumn, "Demi-dalle de colonne en bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightColumnHead, "Demi-dalle de chapeau de colonne en bois lisse clair");
+		LanguageRegistry.addName(stepWoodenStone, "Demi-dalle en bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenStonebrick, "Demi-dalle en briques de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenDoubleSlab, "Demi-dalle en dalle de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenColumn, "Demi-dalle en colonne de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenColumnHead, "Demi-dalle en chapeau de colonne de bois lisse fonc\u00e9");
+
+		LanguageRegistry.addName(stepWoodenLightStone, "Demi-dalle en bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightStonebrick, "Demi-dalle en briques de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightDoubleSlab, "Demi-dalle en dalle de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightColumn, "Demi-dalle en colonne de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightColumnHead, "Demi-dalle en chapeau de colonne de bois lisse clair");
 
 		LanguageRegistry.addName(stepMetal, "Demi-dalle en acier");
 
@@ -3194,14 +3185,14 @@ public class Mho
 		GameRegistry.registerBlock(stepTileBlackBig, "MHOstepTileBlackBig");
 		GameRegistry.registerBlock(stepTileBlackAlt, "MHOstepTileBlackAlt");
 
-		LanguageRegistry.addName(stepArdoise, "Demi-dalle en ardoise");
-		LanguageRegistry.addName(stepTileRed, "Demi-dalle de tuile rouge");
-		LanguageRegistry.addName(stepTileBlue, "Demi-dalle de tuile bleu");
-		LanguageRegistry.addName(stepTileBlack, "Demi-dalle de tuile noire");
-		LanguageRegistry.addName(stepTileRedBig, "Demi-dalle de grande tuile rouge");
-		LanguageRegistry.addName(stepTileBlueBig, "Demi-dalle de grande tuile bleu");
-		LanguageRegistry.addName(stepTileBlackBig, "Demi-dalle de grande tuile noire");
-		LanguageRegistry.addName(stepTileBlackAlt, "Demi-dalle de tuile noire dechauss\u00e9e");
+		LanguageRegistry.addName(stepArdoise, "Demi-dalle d'ardoises");
+		LanguageRegistry.addName(stepTileRed, "Demi-dalle de tuiles rouges");
+		LanguageRegistry.addName(stepTileBlue, "Demi-dalle de tuiles bleues");
+		LanguageRegistry.addName(stepTileBlack, "Demi-dalle de tuiles noires");
+		LanguageRegistry.addName(stepTileRedBig, "Demi-dalle de grandes tuiles rouges");
+		LanguageRegistry.addName(stepTileBlueBig, "Demi-dalle de grandes tuiles bleues");
+		LanguageRegistry.addName(stepTileBlackBig, "Demi-dalle de grandes tuiles noires");
+		LanguageRegistry.addName(stepTileBlackAlt, "Demi-dalle de tuiles noires d\u00e9chauss\u00e9es");
 
 		/** Others **/
 		stepLanternWood = new BlockStepMho(cc.stepLanternWoodID, Mho.lanternWood, 0, "stepLanternWood").setLightValue(1.0F).setStepSound(Block.soundGlassFootstep);
@@ -3226,7 +3217,7 @@ public class Mho
 		wallStonebrick = new BlockWallMho(cc.wallStonebrickID, Block.stoneBrick, 0, "wallStonebrick");
 		wallNetherbrick = new BlockWallMho(cc.wallNetherbrickID, Block.netherBrick, 0, "wallNetherbrick");
 		wallWoodOak = new BlockWallMho(cc.wallWoodOakID, Block.wood, 0, "wallWoodOak");
-		wallWoodSpruce = new BlockWallMho(cc.wallWoodFirID, Block.wood, 1, "wallWoodSpruce");
+		wallWoodSpruce = new BlockWallMho(cc.wallWoodSpruceID, Block.wood, 1, "wallWoodSpruce");
 		wallWoodBirch = new BlockWallMho(cc.wallWoodBirchID, Block.wood, 2, "wallWoodBirch");
 		wallWoodJungle = new BlockWallMho(cc.wallWoodJungleID, Block.wood, 3, "wallWoodJungle");
 		
@@ -3241,44 +3232,51 @@ public class Mho
 		GameRegistry.registerBlock(wallWoodJungle, "MHOwallWoodJungle");
 
 		LanguageRegistry.addName(wallSandstone, "Muret en sandstone");
-		LanguageRegistry.addName(wallPlankOak, "Muret en planche de ch\u00eane");
-		LanguageRegistry.addName(wallBrick, "Muret en brique");
-		LanguageRegistry.addName(wallStonebrick, "Muret en stonebrick");
-		LanguageRegistry.addName(wallNetherbrick, "Muret en netherbrick");
+		LanguageRegistry.addName(wallPlankOak, "Muret en planches de ch\u00eane");
+		LanguageRegistry.addName(wallBrick, "Muret en briques");
+		LanguageRegistry.addName(wallStonebrick, "Muret en briques de pierre");
+		LanguageRegistry.addName(wallNetherbrick, "Muret en briques du Nether");
 		LanguageRegistry.addName(wallWoodOak, "Muret en bois de ch\u00eane");
 		LanguageRegistry.addName(wallWoodSpruce, "Muret en bois de sapin");
 		LanguageRegistry.addName(wallWoodBirch, "Muret en bois de bouleau");
 		LanguageRegistry.addName(wallWoodJungle, "Muret en bois de la jungle");
 
 		/** Sets of materials **/
-		wallWhiteStone = new BlockWallMho(cc.wallWhiteStoneID, Mho.whiteStone, 0, "wallWhiteStone");
-		wallWhiteCobblestone = new BlockWallMho(cc.wallWhiteCobblestoneID, Mho.whiteCobblestone, 0, "wallWhiteCobblestone");
-		wallWhiteStonebrick = new BlockWallMho(cc.wallWhiteStonebrickID, Mho.whiteStonebrick, 0, "wallWhiteStonebrick");
+		wallWhiteStone = new BlockWallMho(cc.whiteStoneID + cc.wallStoneRank, Mho.whiteStone, 0, "wallWhiteStone");
+		wallWhiteCobblestone = new BlockWallMho(cc.whiteStoneID + cc.wallCobblestoneRank, Mho.whiteCobblestone, 0, "wallWhiteCobblestone");
+		wallWhiteStonebrick = new BlockWallMho(cc.whiteStoneID + cc.wallStonebrickRank, Mho.whiteStonebrick, 0, "wallWhiteStonebrick");
 
-		wallMarbleWhiteStone = new BlockWallMho(cc.wallMarbleWhiteStoneID, Mho.marbleWhiteStone, 0, "wallMarbleWhiteStone");
-		wallMarbleWhiteCobblestone = new BlockWallMho(cc.wallMarbleWhiteCobblestoneID, Mho.marbleWhiteCobblestone, 0, "wallMarbleWhiteCobblestone");
-		wallMarbleWhiteStonebrick = new BlockWallMho(cc.wallMarbleWhiteStonebrickID, Mho.marbleWhiteStonebrick, 0, "wallMarbleWhiteStonebrick");
+		wallAncientStone = new BlockWallMho(cc.ancientStoneID + cc.wallStoneRank, Mho.ancientStone, 0, "wallAncientStone");
+		wallAncientCobblestone = new BlockWallMho(cc.ancientStoneID + cc.wallCobblestoneRank, Mho.ancientCobblestone, 0, "wallAncientCobblestone");
+		wallAncientStonebrick = new BlockWallMho(cc.ancientStoneID + cc.wallStonebrickRank, Mho.ancientStonebrick, 0, "wallAncientStonebrick");
 
-		wallMarbleBlackStone = new BlockWallMho(cc.wallMarbleBlackStoneID, Mho.marbleBlackStone, 0, "wallMarbleBlackStone");
-		wallMarbleBlackCobblestone = new BlockWallMho(cc.wallMarbleBlackCobblestoneID, Mho.marbleBlackCobblestone, 0, "wallMarbleBlackCobblestone");
-		wallMarbleBlackStonebrick = new BlockWallMho(cc.wallMarbleBlackStonebrickID, Mho.marbleBlackStonebrick, 0, "wallMarbleBlackStonebrick");
+		wallIceCobblestone = new BlockWallMho(cc.iceID + cc.wallCobblestoneRank, Mho.iceCobblestone, 0, "wallIceCobblestone");
+		wallIceStonebrick = new BlockWallMho(cc.iceID + cc.wallStonebrickRank, Mho.iceStonebrick, 0, "wallIceStonebrick");
 
-		wallAncientStone = new BlockWallMho(cc.wallAncientStoneID, Mho.ancientStone, 0, "wallAncientStone");
-		wallAncientCobblestone = new BlockWallMho(cc.wallAncientCobblestoneID, Mho.ancientCobblestone, 0, "wallAncientCobblestone");
-		wallAncientStonebrick = new BlockWallMho(cc.wallAncientStonebrickID, Mho.ancientStonebrick, 0, "wallAncientStonebrick");
+		wallMarbleWhiteStone = new BlockWallMho(cc.marbleWhiteID + cc.wallStoneRank, Mho.marbleWhiteStone, 0, "wallMarbleWhiteStone");
+		wallMarbleWhiteCobblestone = new BlockWallMho(cc.marbleWhiteID + cc.wallCobblestoneRank, Mho.marbleWhiteCobblestone, 0, "wallMarbleWhiteCobblestone");
+		wallMarbleWhiteStonebrick = new BlockWallMho(cc.marbleWhiteID + cc.wallStonebrickRank, Mho.marbleWhiteStonebrick, 0, "wallMarbleWhiteStonebrick");
 
-		wallWoodenStone = new BlockWallMho(cc.wallWoodenStoneID, Mho.woodenStone, 0, "wallWoodenStone");
-		wallWoodenStonebrick = new BlockWallMho(cc.wallWoodenStonebrickID, Mho.woodenStonebrick, 0, "wallWoodenStonebrick");
+		wallMarbleBlackStone = new BlockWallMho(cc.marbleBlackID + cc.wallStoneRank, Mho.marbleBlackStone, 0, "wallMarbleBlackStone");
+		wallMarbleBlackCobblestone = new BlockWallMho(cc.marbleBlackID + cc.wallCobblestoneRank, Mho.marbleBlackCobblestone, 0, "wallMarbleBlackCobblestone");
+		wallMarbleBlackStonebrick = new BlockWallMho(cc.marbleBlackID + cc.wallStonebrickRank, Mho.marbleBlackStonebrick, 0, "wallMarbleBlackStonebrick");
 
-		wallWoodenLightStone = new BlockWallMho(cc.wallWoodenLightStoneID, Mho.woodenLightStone, 0, "wallWoodenLightStone");
-		wallWoodenLightStonebrick = new BlockWallMho(cc.wallWoodenLightStonebrickID, Mho.woodenLightStonebrick, 0, "wallWoodenLightStonebrick");
+		wallWoodenStone = new BlockWallMho(cc.woodenDarkID + cc.wallStoneRank, Mho.woodenStone, 0, "wallWoodenStone");
+		wallWoodenStonebrick = new BlockWallMho(cc.woodenDarkID + cc.wallStonebrickRank, Mho.woodenStonebrick, 0, "wallWoodenStonebrick");
 
-		wallIceCobblestone = new BlockWallMho(cc.wallIceCobblestoneID, Mho.iceCobblestone, 0, "wallIceCobblestone");
-		wallIceStonebrick = new BlockWallMho(cc.wallIceStonebrickID, Mho.iceStonebrick, 0, "wallIceStonebrick");
+		wallWoodenLightStone = new BlockWallMho(cc.woodenLightID + cc.wallStoneRank, Mho.woodenLightStone, 0, "wallWoodenLightStone");
+		wallWoodenLightStonebrick = new BlockWallMho(cc.woodenLightID + cc.wallStonebrickRank, Mho.woodenLightStonebrick, 0, "wallWoodenLightStonebrick");
 
 		GameRegistry.registerBlock(wallWhiteStone, "MHOwallWhiteStone");
 		GameRegistry.registerBlock(wallWhiteCobblestone, "MHOwallWhiteCobblestone");
 		GameRegistry.registerBlock(wallWhiteStonebrick, "MHOwallWhiteStonebrick");
+
+		GameRegistry.registerBlock(wallAncientStone, "MHOwallAncientStone");
+		GameRegistry.registerBlock(wallAncientCobblestone, "MHOwallAncientCobblestone");
+		GameRegistry.registerBlock(wallAncientStonebrick, "MHOwallAncientStonebrick");
+
+		GameRegistry.registerBlock(wallIceCobblestone, "MHOwallIceCobblestone");
+		GameRegistry.registerBlock(wallIceStonebrick, "MHOwallIceStonebrick");
 
 		GameRegistry.registerBlock(wallMarbleWhiteStone, "MHOwallMarbleWhiteStone");
 		GameRegistry.registerBlock(wallMarbleWhiteCobblestone, "MHOwallMarbleWhiteCobblestone");
@@ -3288,23 +3286,23 @@ public class Mho
 		GameRegistry.registerBlock(wallMarbleBlackCobblestone, "MHOwallMarbleBlackCobblestone");
 		GameRegistry.registerBlock(wallMarbleBlackStonebrick, "MHOwallMarbleBlackStonebrick");
 
-		GameRegistry.registerBlock(wallAncientStone, "MHOwallAncientStone");
-		GameRegistry.registerBlock(wallAncientCobblestone, "MHOwallAncientCobblestone");
-		GameRegistry.registerBlock(wallAncientStonebrick, "MHOwallAncientStonebrick");
-
 		GameRegistry.registerBlock(wallWoodenStone, "MHOwallWoodenStone");
 		GameRegistry.registerBlock(wallWoodenStonebrick, "MHOwallWoodenStonebrick");
 
 		GameRegistry.registerBlock(wallWoodenLightStone, "MHOwallWoodenLightStone");
 		GameRegistry.registerBlock(wallWoodenLightStonebrick, "MHOwallWoodenLightStonebrick");
 
-		GameRegistry.registerBlock(wallIceCobblestone, "MHOwallIceCobblestone");
-		GameRegistry.registerBlock(wallIceStonebrick, "MHOwallIceStonebrick");
-
 		LanguageRegistry.addName(wallWhiteStone, "Muret en pierre blanche");
 		LanguageRegistry.addName(wallWhiteCobblestone, "Muret en pierre blanche fragment\u00e9e");
 		LanguageRegistry.addName(wallWhiteStonebrick, "Muret en briques de pierre blanche");
 
+		LanguageRegistry.addName(wallAncientStone, "Muret en pierre ancienne");
+		LanguageRegistry.addName(wallAncientCobblestone, "Muret en pierre ancienne fragment\u00e9e");
+		LanguageRegistry.addName(wallAncientStonebrick, "Muret en briques de pierre ancienne");
+
+		LanguageRegistry.addName(wallIceCobblestone, "Muret en glace fragment\u00e9e");
+		LanguageRegistry.addName(wallIceStonebrick, "Muret en briques de glace");
+		
 		LanguageRegistry.addName(wallMarbleWhiteStone, "Muret en marbre blanc");
 		LanguageRegistry.addName(wallMarbleWhiteCobblestone, "Muret en marbre blanc fragment\u00e9");
 		LanguageRegistry.addName(wallMarbleWhiteStonebrick, "Muret en briques de marbre blanc");
@@ -3313,18 +3311,11 @@ public class Mho
 		LanguageRegistry.addName(wallMarbleBlackCobblestone, "Muret en marbre noir fragment\u00e9");
 		LanguageRegistry.addName(wallMarbleBlackStonebrick, "Muret en briques de marbre noir");
 
-		LanguageRegistry.addName(wallAncientStone, "Muret en pierre ancienne");
-		LanguageRegistry.addName(wallAncientCobblestone, "Muret en pierre ancienne fragment\u00e9e");
-		LanguageRegistry.addName(wallAncientStonebrick, "Muret en briques de pierre ancienne");
-
 		LanguageRegistry.addName(wallWoodenStone, "Muret en bois lisse fonc\u00e9");
 		LanguageRegistry.addName(wallWoodenStonebrick, "Muret en briques de bois lisse fonc\u00e9");
 
 		LanguageRegistry.addName(wallWoodenLightStone, "Muret en bois lisse clair");
 		LanguageRegistry.addName(wallWoodenLightStonebrick, "Muret en briques de bois lisse clair");
-
-		LanguageRegistry.addName(wallIceCobblestone, "Muret en glace fragment\u00e9e");
-		LanguageRegistry.addName(wallIceStonebrick, "Muret en briques de glace");
 	}
 	
 	public void initFences(ConfigCore cc)
@@ -3333,35 +3324,42 @@ public class Mho
 		Block.fence.setCreativeTab(Mho.tabMhoFences);
 		
 		/** Sets of materials **/
-		fenceWhiteStone = new BlockFenceMho(cc.fenceWhiteStoneID, Mho.whiteStone, 0, "fenceWhiteStone");
-		fenceWhiteCobblestone = new BlockFenceMho(cc.fenceWhiteCobblestoneID, Mho.whiteCobblestone, 0, "fenceWhiteCobblestone");
-		fenceWhiteStonebrick = new BlockFenceMho(cc.fenceWhiteStonebrickID, Mho.whiteStonebrick, 0, "fenceWhiteStonebrick");
+		fenceWhiteStone = new BlockFenceMho(cc.whiteStoneID + cc.fenceStoneRank, Mho.whiteStone, 0, "fenceWhiteStone");
+		fenceWhiteCobblestone = new BlockFenceMho(cc.whiteStoneID + cc.fenceCobblestoneRank, Mho.whiteCobblestone, 0, "fenceWhiteCobblestone");
+		fenceWhiteStonebrick = new BlockFenceMho(cc.whiteStoneID + cc.fenceStonebrickRank, Mho.whiteStonebrick, 0, "fenceWhiteStonebrick");
 
-		fenceMarbleWhiteStone = new BlockFenceMho(cc.fenceMarbleWhiteStoneID, Mho.marbleWhiteStone, 0, "fenceMarbleWhiteStone");
-		fenceMarbleWhiteCobblestone = new BlockFenceMho(cc.fenceMarbleWhiteCobblestoneID, Mho.marbleWhiteCobblestone, 0, "fenceMarbleWhiteCobblestone");
-		fenceMarbleWhiteStonebrick = new BlockFenceMho(cc.fenceMarbleWhiteStonebrickID, Mho.marbleWhiteStonebrick, 0, "fenceMarbleWhiteStonebrick");
+		fenceAncientStone = new BlockFenceMho(cc.ancientStoneID + cc.fenceStoneRank, Mho.ancientStone, 0, "fenceAncientStone");
+		fenceAncientCobblestone = new BlockFenceMho(cc.ancientStoneID + cc.fenceCobblestoneRank, Mho.ancientCobblestone, 0, "fenceAncientCobblestone");
+		fenceAncientStonebrick = new BlockFenceMho(cc.ancientStoneID + cc.fenceStonebrickRank, Mho.ancientStonebrick, 0, "fenceAncientStonebrick");
 
-		fenceMarbleBlackStone = new BlockFenceMho(cc.fenceMarbleBlackStoneID, Mho.marbleBlackStone, 0, "fenceMarbleBlackStone");
-		fenceMarbleBlackCobblestone = new BlockFenceMho(cc.fenceMarbleBlackCobblestoneID, Mho.marbleBlackCobblestone, 0, "fenceMarbleBlackCobblestone");
-		fenceMarbleBlackStonebrick = new BlockFenceMho(cc.fenceMarbleBlackStonebrickID, Mho.marbleBlackStonebrick, 0, "fenceMarbleBlackStonebrick");
+		fenceIceCobblestone = new BlockFenceMho(cc.iceID + cc.fenceCobblestoneRank, Mho.iceCobblestone, 0, "fenceIceCobblestone");
+		fenceIceStonebrick = new BlockFenceMho(cc.iceID + cc.fenceStonebrickRank, Mho.iceStonebrick, 0, "fenceIceStonebrick");
 
-		fenceAncientStone = new BlockFenceMho(cc.fenceAncientStoneID, Mho.ancientStone, 0, "fenceAncientStone");
-		fenceAncientCobblestone = new BlockFenceMho(cc.fenceAncientCobblestoneID, Mho.ancientCobblestone, 0, "fenceAncientCobblestone");
-		fenceAncientStonebrick = new BlockFenceMho(cc.fenceAncientStonebrickID, Mho.ancientStonebrick, 0, "fenceAncientStonebrick");
+		fenceMarbleWhiteStone = new BlockFenceMho(cc.marbleWhiteID + cc.fenceStoneRank, Mho.marbleWhiteStone, 0, "fenceMarbleWhiteStone");
+		fenceMarbleWhiteCobblestone = new BlockFenceMho(cc.marbleWhiteID + cc.fenceCobblestoneRank, Mho.marbleWhiteCobblestone, 0, "fenceMarbleWhiteCobblestone");
+		fenceMarbleWhiteStonebrick = new BlockFenceMho(cc.marbleWhiteID + cc.fenceStonebrickRank, Mho.marbleWhiteStonebrick, 0, "fenceMarbleWhiteStonebrick");
 
-		fenceWoodenStone = new BlockFenceMho(cc.fenceWoodenStoneID, Mho.woodenStone, 0, "fenceWoodenStone");
-		fenceWoodenStonebrick = new BlockFenceMho(cc.fenceWoodenStonebrickID, Mho.woodenStonebrick, 0, "fenceWoodenStonebrick");
+		fenceMarbleBlackStone = new BlockFenceMho(cc.marbleBlackID + cc.fenceStoneRank, Mho.marbleBlackStone, 0, "fenceMarbleBlackStone");
+		fenceMarbleBlackCobblestone = new BlockFenceMho(cc.marbleBlackID + cc.fenceCobblestoneRank, Mho.marbleBlackCobblestone, 0, "fenceMarbleBlackCobblestone");
+		fenceMarbleBlackStonebrick = new BlockFenceMho(cc.marbleBlackID + cc.fenceStonebrickRank, Mho.marbleBlackStonebrick, 0, "fenceMarbleBlackStonebrick");
 
-		fenceWoodenLightStone = new BlockFenceMho(cc.fenceWoodenLightStoneID, Mho.woodenLightStone, 0, "fenceWoodenLightStone");
-		fenceWoodenLightStonebrick = new BlockFenceMho(cc.fenceWoodenLightStonebrickID, Mho.woodenLightStonebrick, 0, "fenceWoodenLightStonebrick");
+		fenceWoodenStone = new BlockFenceMho(cc.woodenDarkID + cc.fenceStoneRank, Mho.woodenStone, 0, "fenceWoodenStone");
+		fenceWoodenStonebrick = new BlockFenceMho(cc.woodenDarkID + cc.fenceStonebrickRank, Mho.woodenStonebrick, 0, "fenceWoodenStonebrick");
 
-		fenceIceCobblestone = new BlockFenceMho(cc.fenceIceCobblestoneID, Mho.iceCobblestone, 0, "fenceIceCobblestone");
-		fenceIceStonebrick = new BlockFenceMho(cc.fenceIceStonebrickID, Mho.iceStonebrick, 0, "fenceIceStonebrick");
+		fenceWoodenLightStone = new BlockFenceMho(cc.woodenLightID + cc.fenceStoneRank, Mho.woodenLightStone, 0, "fenceWoodenLightStone");
+		fenceWoodenLightStonebrick = new BlockFenceMho(cc.woodenLightID + cc.fenceStonebrickRank, Mho.woodenLightStonebrick, 0, "fenceWoodenLightStonebrick");
 
 		GameRegistry.registerBlock(fenceWhiteStone, "MHOfenceWhiteStone");
 		GameRegistry.registerBlock(fenceWhiteCobblestone, "MHOfenceWhiteCobblestone");
 		GameRegistry.registerBlock(fenceWhiteStonebrick, "MHOfenceWhiteStonebrick");
 
+		GameRegistry.registerBlock(fenceAncientStone, "MHOfenceAncientStone");
+		GameRegistry.registerBlock(fenceAncientCobblestone, "MHOfenceAncientCobblestone");
+		GameRegistry.registerBlock(fenceAncientStonebrick, "MHOfenceAncientStonebrick");
+
+		GameRegistry.registerBlock(fenceIceCobblestone, "MHOfenceIceCobblestone");
+		GameRegistry.registerBlock(fenceIceStonebrick, "MHOfenceIceStonebrick");
+		
 		GameRegistry.registerBlock(fenceMarbleWhiteStone, "MHOfenceMarbleWhiteStone");
 		GameRegistry.registerBlock(fenceMarbleWhiteCobblestone, "MHOfenceMarbleWhiteCobblestone");
 		GameRegistry.registerBlock(fenceMarbleWhiteStonebrick, "MHOfenceMarbleWhiteStonebrick");
@@ -3370,22 +3368,22 @@ public class Mho
 		GameRegistry.registerBlock(fenceMarbleBlackCobblestone, "MHOfenceMarbleBlackCobblestone");
 		GameRegistry.registerBlock(fenceMarbleBlackStonebrick, "MHOfenceMarbleBlackStonebrick");
 
-		GameRegistry.registerBlock(fenceAncientStone, "MHOfenceAncientStone");
-		GameRegistry.registerBlock(fenceAncientCobblestone, "MHOfenceAncientCobblestone");
-		GameRegistry.registerBlock(fenceAncientStonebrick, "MHOfenceAncientStonebrick");
-
 		GameRegistry.registerBlock(fenceWoodenStone, "MHOfenceWoodenStone");
 		GameRegistry.registerBlock(fenceWoodenStonebrick, "MHOfenceWoodenStonebrick");
 
 		GameRegistry.registerBlock(fenceWoodenLightStone, "MHOfenceWoodenLightStone");
 		GameRegistry.registerBlock(fenceWoodenLightStonebrick, "MHOfenceWoodenLightStonebrick");
 
-		GameRegistry.registerBlock(fenceIceCobblestone, "MHOfenceIceCobblestone");
-		GameRegistry.registerBlock(fenceIceStonebrick, "MHOfenceIceStonebrick");
-		
 		LanguageRegistry.addName(fenceWhiteStone, "Barri\u00e8re en pierre blanche");
 		LanguageRegistry.addName(fenceWhiteCobblestone, "Barri\u00e8re en pierre blanche fractur\u00e9e");
 		LanguageRegistry.addName(fenceWhiteStonebrick, "Barri\u00e8re en briques de pierre blanche");
+
+		LanguageRegistry.addName(fenceAncientStone, "Barri\u00e8re en pierre ancienne");
+		LanguageRegistry.addName(fenceAncientCobblestone, "Barri\u00e8re en pierre ancienne fractur\u00e9e");
+		LanguageRegistry.addName(fenceAncientStonebrick, "Barri\u00e8re en briques de pierre ancienne");
+
+		LanguageRegistry.addName(fenceIceCobblestone, "Barri\u00e8re en glace fractur\u00e9e");
+		LanguageRegistry.addName(fenceIceStonebrick, "Barri\u00e8re en briques de glace");
 
 		LanguageRegistry.addName(fenceMarbleWhiteStone, "Barri\u00e8re en marbre blanc");
 		LanguageRegistry.addName(fenceMarbleWhiteCobblestone, "Barri\u00e8re en marbre blanc fractur\u00e9");
@@ -3395,18 +3393,11 @@ public class Mho
 		LanguageRegistry.addName(fenceMarbleBlackCobblestone, "Barri\u00e8re en marbre noir fractur\u00e9");
 		LanguageRegistry.addName(fenceMarbleBlackStonebrick, "Barri\u00e8re en briques de marbre noir");
 
-		LanguageRegistry.addName(fenceAncientStone, "Barri\u00e8re en pierre ancienne");
-		LanguageRegistry.addName(fenceAncientCobblestone, "Barri\u00e8re en pierre ancienne fractur\u00e9e");
-		LanguageRegistry.addName(fenceAncientStonebrick, "Barri\u00e8re en briques de pierre ancienne");
-
 		LanguageRegistry.addName(fenceWoodenStone, "Barri\u00e8re en bois lisse fonc\u00e9");
 		LanguageRegistry.addName(fenceWoodenStonebrick, "Barri\u00e8re en briques de bois lisse fonc\u00e9");
 
 		LanguageRegistry.addName(fenceWoodenLightStone, "Barri\u00e8re en bois lisse clair");
 		LanguageRegistry.addName(fenceWoodenLightStonebrick, "Barri\u00e8re en briques de bois lisse clair");
-
-		LanguageRegistry.addName(fenceIceCobblestone, "Barri\u00e8re en glace fractur\u00e9e");
-		LanguageRegistry.addName(fenceIceStonebrick, "Barri\u00e8re en briques de glace");
 	}
 	
 	public void initAnvils(ConfigCore cc)
@@ -3425,55 +3416,65 @@ public class Mho
 		GameRegistry.registerBlock(anvilPlankJungle, "MHOanvilPlankJungle");
 		
 		LanguageRegistry.addName(anvilWoodOak, "Balustrade en bois de ch\u00eane");
-		LanguageRegistry.addName(anvilPlankOak, "Balustrade en planche de ch\u00eane");
-		LanguageRegistry.addName(anvilPlankSpruce, "Balustrade en planche de pin");
-		LanguageRegistry.addName(anvilPlankBirch, "Balustrade en planche de bouleau");
-		LanguageRegistry.addName(anvilPlankJungle, "Balustrade en planche de la jungle");
+		LanguageRegistry.addName(anvilPlankOak, "Balustrade en planches de ch\u00eane");
+		LanguageRegistry.addName(anvilPlankSpruce, "Balustrade en planches de pin");
+		LanguageRegistry.addName(anvilPlankBirch, "Balustrade en planches de bouleau");
+		LanguageRegistry.addName(anvilPlankJungle, "Balustrade en planches de la jungle");
 		
 		/** Sets of materials **/
-		anvilMarbleWhite = new BlockAnvilMho(cc.anvilMarbleWhiteID, Mho.marbleWhiteStone, 0, "anvilMarbleWhite");
-		anvilMarbleWhiteStonebrick = new BlockAnvilMho(cc.anvilMarbleWhiteStonebrickID, Mho.marbleWhiteStonebrick, 0, "anvilMarbleWhiteStonebrick");
+		anvilWhiteStone = new BlockAnvilMho(cc.whiteStoneID + cc.anvilStoneRank, Mho.whiteStone, 0, "anvilWhiteStone");
+		anvilWhiteStonebrick = new BlockAnvilMho(cc.whiteStoneID + cc.anvilStonebrickRank, Mho.whiteStonebrick, 0, "anvilWhiteStonebrick");
+
+		anvilSandstoneStonebrick = new BlockAnvilMho(cc.sandstoneID + cc.anvilStonebrickRank, Mho.sandstoneStonebrick, 0, "anvilSandstoneStonebrick");
 		
-		anvilMarbleBlack = new BlockAnvilMho(cc.anvilMarbleBlackID, Mho.marbleBlackStone, 0, "anvilMarbleBlack");
-		anvilMarbleBlackStonebrick = new BlockAnvilMho(cc.anvilMarbleBlackStonebrickID, Mho.marbleBlackStonebrick, 0, "anvilMarbleBlackStonebrick");
+		anvilAncientStone = new BlockAnvilMho(cc.ancientStoneID + cc.anvilStoneRank, Mho.ancientStone, 0, "anvilAncientStone");
+		anvilAncientStonebrick = new BlockAnvilMho(cc.ancientStoneID + cc.anvilStonebrickRank, Mho.ancientStonebrick, 0, "anvilAncientStonebrick");
 		
-		anvilWhiteStone = new BlockAnvilMho(cc.anvilWhiteStoneID, Mho.whiteStone, 0, "anvilWhiteStone");
-		anvilWhiteStonebrick = new BlockAnvilMho(cc.anvilWhiteStonebrickID, Mho.whiteStonebrick, 0, "anvilWhiteStonebrick");
+		anvilIceStonebrick = new BlockAnvilMho(cc.iceID + cc.anvilStonebrickRank, Mho.iceStonebrick, 0, "anvilIceStonebrick");
 		
-		anvilAncientStone = new BlockAnvilMho(cc.anvilAncientStoneID, Mho.ancientStone, 0, "anvilAncientStone");
-		anvilAncientStonebrick = new BlockAnvilMho(cc.anvilAncientStonebrickID, Mho.ancientStonebrick, 0, "anvilAncientStonebrick");
+		anvilMarbleWhite = new BlockAnvilMho(cc.marbleWhiteID + cc.anvilStoneRank, Mho.marbleWhiteStone, 0, "anvilMarbleWhite");
+		anvilMarbleWhiteStonebrick = new BlockAnvilMho(cc.marbleWhiteID + cc.anvilStonebrickRank, Mho.marbleWhiteStonebrick, 0, "anvilMarbleWhiteStonebrick");
 		
-		anvilSandstoneStonebrick = new BlockAnvilMho(cc.anvilSandstoneStonebrickID, Mho.sandstoneStonebrick, 0, "anvilSandstoneStonebrick");
+		anvilMarbleBlack = new BlockAnvilMho(cc.marbleBlackID + cc.anvilStoneRank, Mho.marbleBlackStone, 0, "anvilMarbleBlack");
+		anvilMarbleBlackStonebrick = new BlockAnvilMho(cc.marbleBlackID + cc.anvilStonebrickRank, Mho.marbleBlackStonebrick, 0, "anvilMarbleBlackStonebrick");
 		
-		anvilIceStonebrick = new BlockAnvilMho(cc.anvilIceStonebrickID, Mho.iceStonebrick, 0, "anvilIceStonebrick");
+		anvilWoodenStone = new BlockAnvilMho(cc.woodenDarkID + cc.anvilStoneRank, Mho.woodenStone, 0, "anvilWoodenStone");
+		anvilWoodenStonebrick = new BlockAnvilMho(cc.woodenDarkID + cc.anvilStonebrickRank, Mho.woodenStonebrick, 0, "anvilWoodenStonebrick");
 		
-		anvilWoodenStone = new BlockAnvilMho(cc.anvilWoodenStoneID, Mho.woodenStone, 0, "anvilWoodenStone");
-		anvilWoodenStonebrick = new BlockAnvilMho(cc.anvilWoodenStonebrickID, Mho.woodenStonebrick, 0, "anvilWoodenStonebrick");
-		
-		anvilWoodenLightStone = new BlockAnvilMho(cc.anvilWoodenLightStoneID, Mho.woodenLightStone, 0, "anvilWoodenLightStone");
-		anvilWoodenLightStonebrick = new BlockAnvilMho(cc.anvilWoodenLightStonebrickID, Mho.woodenLightStonebrick, 0, "anvilWoodenLightStonebrick");
-		
+		anvilWoodenLightStone = new BlockAnvilMho(cc.woodenLightID + cc.anvilStoneRank, Mho.woodenLightStone, 0, "anvilWoodenLightStone");
+		anvilWoodenLightStonebrick = new BlockAnvilMho(cc.woodenLightID + cc.anvilStonebrickRank, Mho.woodenLightStonebrick, 0, "anvilWoodenLightStonebrick");
+
+		GameRegistry.registerBlock(anvilWhiteStone, "MHOanvilWhiteStone");
+		GameRegistry.registerBlock(anvilWhiteStonebrick, "MHOanvilWhiteStonebrick");
+
+		GameRegistry.registerBlock(anvilSandstoneStonebrick, "MHOanvilSandstoneStonebrick");
+
+		GameRegistry.registerBlock(anvilAncientStone, "MHOanvilAncientStone");
+		GameRegistry.registerBlock(anvilAncientStonebrick, "MHOanvilAncientStonebrick");
+
+		GameRegistry.registerBlock(anvilIceStonebrick, "MHOanvilIceStonebrick");
+
 		GameRegistry.registerBlock(anvilMarbleWhite, "MHOanvilMarbleWhite");
 		GameRegistry.registerBlock(anvilMarbleWhiteStonebrick, "MHOanvilMarbleWhiteStonebrick");
 
 		GameRegistry.registerBlock(anvilMarbleBlack, "MHOanvilMarbleBlack");
 		GameRegistry.registerBlock(anvilMarbleBlackStonebrick, "MHOanvilMarbleBlackStonebrick");
 
-		GameRegistry.registerBlock(anvilWhiteStone, "MHOanvilWhiteStone");
-		GameRegistry.registerBlock(anvilWhiteStonebrick, "MHOanvilWhiteStonebrick");
-
-		GameRegistry.registerBlock(anvilAncientStone, "MHOanvilAncientStone");
-		GameRegistry.registerBlock(anvilAncientStonebrick, "MHOanvilAncientStonebrick");
-
-		GameRegistry.registerBlock(anvilSandstoneStonebrick, "MHOanvilSandstoneStonebrick");
-
-		GameRegistry.registerBlock(anvilIceStonebrick, "MHOanvilIceStonebrick");
-
 		GameRegistry.registerBlock(anvilWoodenStone, "MHOanvilWoodenStone");
 		GameRegistry.registerBlock(anvilWoodenStonebrick, "MHOanvilWoodenStonebrick");
 
 		GameRegistry.registerBlock(anvilWoodenLightStone, "MHOanvilWoodenLightStone");
 		GameRegistry.registerBlock(anvilWoodenLightStonebrick, "MHOanvilWoodenLightStonebrick");
+
+		LanguageRegistry.addName(anvilWhiteStone, "Balustrade en pierre blanche");
+		LanguageRegistry.addName(anvilWhiteStonebrick, "Balustrade en briques de pierre blanche");
+
+		LanguageRegistry.addName(anvilSandstoneStonebrick, "Balustrade en briques de sandstone");
+		
+		LanguageRegistry.addName(anvilAncientStone, "Balustrade en pierre ancienne");
+		LanguageRegistry.addName(anvilAncientStonebrick, "Balustrade en briques de pierre ancienne");
+		
+		LanguageRegistry.addName(anvilIceStonebrick, "Balustrade en briques de glace");
 		
 		LanguageRegistry.addName(anvilMarbleWhite, "Balustrade en marbre blanc");
 		LanguageRegistry.addName(anvilMarbleWhiteStonebrick, "Balustarde en briques de marbre blanc");
@@ -3481,18 +3482,8 @@ public class Mho
 		LanguageRegistry.addName(anvilMarbleBlack, "Balustrade en marbre noir");
 		LanguageRegistry.addName(anvilMarbleBlackStonebrick, "Balustrade en briques de marbre noir");
 		
-		LanguageRegistry.addName(anvilWhiteStone, "Balustrade en pierre blanche");
-		LanguageRegistry.addName(anvilWhiteStonebrick, "Balustrade en briques de pierre blanche");
-		
-		LanguageRegistry.addName(anvilAncientStone, "Balustrade en pierre ancienne");
-		LanguageRegistry.addName(anvilAncientStonebrick, "Balustrade en briques de pierre ancienne");
-		
-		LanguageRegistry.addName(anvilSandstoneStonebrick, "Balustrade en briques de sandstone");
-		
-		LanguageRegistry.addName(anvilIceStonebrick, "Balustrade en briques de glace");
-		
-		LanguageRegistry.addName(anvilWoodenStone, "Balustrade en bois lisse foncé");
-		LanguageRegistry.addName(anvilWoodenStonebrick, "Balustrade en briques de bois lisse foncé");
+		LanguageRegistry.addName(anvilWoodenStone, "Balustrade en bois lisse fonc\u00e9");
+		LanguageRegistry.addName(anvilWoodenStonebrick, "Balustrade en briques de bois lisse fonc\u00e9");
 
 		LanguageRegistry.addName(anvilWoodenLightStone, "Balustrade en bois lisse clair");
 		LanguageRegistry.addName(anvilWoodenLightStonebrick, "Balustrade en briques de bois lisse clair");
@@ -3504,8 +3495,7 @@ public class Mho
 		carpetGravel = new BlockCarpet(cc.carpetGravelID, Block.gravel, "carpetGravel").setTextureName("gravel");
 		carpetStone = new BlockCarpet(cc.carpetStoneID, Block.stone, "carpetStone").setTextureName("stone");
 		carpetStonebrick = new BlockCarpet(cc.carpetStonebrickID, Block.stoneBrick, "carpetStonebrick").setTextureName("stonebrick");
-		//TODO : 1 carpetPlank à supprimer
-		carpetPlankOakTemp = new BlockCarpet(cc.carpetPlankOakTempID, Block.planks, "carpetPlankOakTemp").setTextureName("planks_oak");
+
 		carpetPlankOak = new BlockCarpet(cc.carpetPlankOakID, Block.planks, "carpetPlankOak").setTextureName("planks_oak");
 		carpetPlankSpruce = new BlockCarpet(cc.carpetPlankSpruceID, Block.planks, "carpetPlankSpruce").setTextureName("planks_spruce");
 		carpetLogOakTop = new BlockCarpet(cc.carpetLogOakTopID, Block.wood, "carpetLogOakTop").setTextureName("log_oak_top");
@@ -3517,7 +3507,6 @@ public class Mho
 		GameRegistry.registerBlock(carpetStone, "MHOcarpetStone");
 		GameRegistry.registerBlock(carpetStonebrick, "MHOcarpetStonebrick");
 
-		GameRegistry.registerBlock(carpetPlankOakTemp, "MHOcarpetPlankOakTemp");
 		GameRegistry.registerBlock(carpetPlankOak, "MHOcarpetPlankOak");
 		GameRegistry.registerBlock(carpetPlankSpruce, "MHOcarpetPlankSpruce");
 		GameRegistry.registerBlock(carpetLogOakTop, "MHOcarpetLogOakTop");
@@ -3529,12 +3518,11 @@ public class Mho
 		LanguageRegistry.addName(new ItemStack(Mho.carpetStone), "Tapis en pierre");
 		LanguageRegistry.addName(new ItemStack(Mho.carpetStonebrick), "Tapis en stonebrick");
 		
-		LanguageRegistry.addName(new ItemStack(Mho.carpetPlankOakTemp), "Tapis en planches de ch\u00eane (temp)");
 		LanguageRegistry.addName(new ItemStack(Mho.carpetPlankOak), "Tapis en planches de ch\u00eane");
 		LanguageRegistry.addName(new ItemStack(Mho.carpetPlankSpruce), "Tapis en planches de pin");
-		LanguageRegistry.addName(new ItemStack(Mho.carpetLogOakTop), "Tapis en bois de ch\u00eane");
-		LanguageRegistry.addName(new ItemStack(Mho.carpetLogOak), "Tapis en b\u00fbche de ch\u00eane");
-		LanguageRegistry.addName(new ItemStack(Mho.carpetLogSpruce), "Tapis en b\u00fbche de pin");
+		LanguageRegistry.addName(new ItemStack(Mho.carpetLogOakTop), "Tapis en b\u00fbche de ch\u00eane");
+		LanguageRegistry.addName(new ItemStack(Mho.carpetLogOak), "Tapis en bois de ch\u00eane");
+		LanguageRegistry.addName(new ItemStack(Mho.carpetLogSpruce), "Tapis en bois de pin");
 	}
 
 /** ==================== Recipe Items ==================== **/
@@ -3617,7 +3605,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(whiteStoneDoubleSlab, 1), "X", "X", 'X', Mho.stepWhiteDoubleSlab);
 		GameRegistry.addRecipe(new ItemStack(whiteStoneColumnHead, 1), "X", "Y", 'X', Mho.stepWhiteDoubleSlab, 'Y', Mho.stepWhiteColumn);
 
-		GameRegistry.addSmelting(ConfigCore.whiteCobblestoneID, new ItemStack(Mho.whiteStone, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.whiteStoneID + ConfigCore.cobblestoneRank, new ItemStack(Mho.whiteStone, 1, 0), 0);
 
 		/** Stone **/
 		GameRegistry.addRecipe(new ItemStack(stoneColumn, 3), "X", "X", "X", 'X', Block.stone);
@@ -3653,7 +3641,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(ancientDoubleSlab, 1), "X", "X", 'X', Mho.stepAncientDoubleSlab);
 		GameRegistry.addRecipe(new ItemStack(ancientColumnHead, 1), "X", "Y", 'X', Mho.stepAncientDoubleSlab, 'Y', Mho.stepAncientColumn);
 
-		GameRegistry.addSmelting(ConfigCore.ancientCobblestoneID, new ItemStack(Block.stone, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.ancientStoneID + ConfigCore.cobblestoneRank, new ItemStack(Block.stone, 1, 0), 0);
 
 		/** Ice blocks **/
 		GameRegistry.addShapelessRecipe(new ItemStack(iceCobblestone, 1, 0), Block.ice);
@@ -3683,7 +3671,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteDoubleSlab, 1), "X", "X", 'X', Mho.stepMarbleWhiteDoubleSlab);
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteColumnHead, 1), "X", "Y", 'X', Mho.stepMarbleWhiteDoubleSlab, 'Y', Mho.stepMarbleWhiteColumn);
 
-		GameRegistry.addSmelting(ConfigCore.marbleWhiteCobblestoneID, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.marbleWhiteID + ConfigCore.cobblestoneRank, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
 
 		/** Marble black **/
 		GameRegistry.addShapelessRecipe(new ItemStack(marbleBlackStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,0));
@@ -3702,7 +3690,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(marbleBlackColumnHead, 1), "X", "Y", 'X', Mho.stepMarbleBlackDoubleSlab, 'Y', Mho.stepMarbleBlackColumn);
 		GameRegistry.addRecipe(new ItemStack(marbleCheck, 1), "X", "X", 'X', Mho.stepMarbleCheck);
 
-		GameRegistry.addSmelting(ConfigCore.marbleBlackCobblestoneID, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.marbleBlackID + ConfigCore.cobblestoneRank, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
 
 		/** Wood **/
 		GameRegistry.addRecipe(new ItemStack(woodenStone, 8), "XXX", "XYX", "XXX", 'X', new ItemStack(Block.planks, 1, 1), 'Y', Mho.beer);
@@ -3743,7 +3731,7 @@ public class Mho
 		
 		GameRegistry.addRecipe(new ItemStack(basaltStonebrick, 4), "XX", "XX", 'X', Mho.basalt);
 
-		GameRegistry.addSmelting(ConfigCore.basaltCobblestoneID, new ItemStack(Mho.basalt, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.basaltID + ConfigCore.cobblestoneRank, new ItemStack(Mho.basalt, 1, 0), 0);
 	}
 
 	public void addRecipeSetsOfNaturalBlocks()
@@ -3811,7 +3799,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(Mho.timberedLeft, 4), "XYY", "YXY", "YYX", 'X', new ItemStack(Block.planks,1,0), 'Y', Mho.whiteStone);
 		GameRegistry.addRecipe(new ItemStack(Mho.timberedRight, 4), "YYX", "YXY", "XYY", 'X', new ItemStack(Block.planks,1,0), 'Y', Mho.whiteStone);
 
-		/** Colombages foncés **/
+		/** Colombages fonces **/
 		GameRegistry.addRecipe(new ItemStack(Mho.timberedSquareDark, 4), "XXX", "XYX", "XXX", 'X', new ItemStack(Block.planks,1,1), 'Y', Mho.whiteStone);
 		GameRegistry.addRecipe(new ItemStack(Mho.timberedCrossDark, 4), "XYX", "YXY", "XYX", 'X', new ItemStack(Block.planks,1,1), 'Y', Mho.whiteStone);
 		GameRegistry.addRecipe(new ItemStack(Mho.timberedVerticalDark, 4), "YXY", "YXY", "YXY", 'X', new ItemStack(Block.planks,1,1), 'Y', Mho.whiteStone);
@@ -3822,15 +3810,16 @@ public class Mho
 
 	public void addRecipeDoubleBlocks()
 	{
-		//GameRegistry.addRecipe(new ItemStack(doubleCrateItemBlock, 1), "X", "X", 'X', Mho.barredCrate);
+		GameRegistry.addRecipe(new ItemStack(doubleCrateItemBlock, 1), "X", "X", 'X', Mho.barredCrate);
 
 		GameRegistry.addRecipe(new ItemStack(doubleTorchUpper, 1), "X", "Y", "Y", 'X', Block.torchWood, 'Y', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(doubleCandleUpper, 1), "X", "Y", "Y", 'X', Mho.lightCandle, 'Y', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(doubleLanternUpper, 1), "X", "Y", "Y", 'X', Mho.lightLantern, 'Y', Item.ingotIron);
-// TODO modifier le craft savanaDoubleGrassUpper
-		GameRegistry.addShapelessRecipe(new ItemStack(normalDoubleGrassUpper, 1, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Item.dyePowder,1,15));
-		GameRegistry.addShapelessRecipe(new ItemStack(savanaDoubleGrassUpper, 1, 0), new ItemStack(Block.tallGrass, 1, 1), Item.stick, new ItemStack(Item.dyePowder,1,15));
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDoubleGrassUpper, 1, 0), new ItemStack(Block.tallGrass, 1, 1), magicDust, new ItemStack(Item.dyePowder,1,15));
+
+		GameRegistry.addShapelessRecipe(new ItemStack(normalDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Item.dyePowder,1,15));
+		GameRegistry.addShapelessRecipe(new ItemStack(savanaDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), Item.coal, new ItemStack(Item.dyePowder,1,15));
+		GameRegistry.addShapelessRecipe(new ItemStack(savanaDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Item.coal, 1, 1), new ItemStack(Item.dyePowder,1,15));
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), magicDust, new ItemStack(Item.dyePowder,1,15));
 	}
 
 	public void addRecipeMetaBlocks()
@@ -3928,6 +3917,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(cristalBlock, 1), "XX", "XX", 'X', Mho.cristalBig);
 		//GameRegistry.addRecipe(new ItemStack(cakeLieBlock, 1), "X X", "X X", "X X", 'X', Block.);
 		//GameRegistry.addRecipe(new ItemStack(meatCakeBlock, 1), "X X", "X X", "X X", 'X', Block.);
+		//GameRegistry.addRecipe(new ItemStack(eternalIceBlock, 1), "X X", "X X", "X X", 'X', Block.);
 
 		/** Secret **/
         GameRegistry.addRecipe(new ItemStack(itemBlockSecretDoorWood, 1), "XXG", "XDG", "XXG", 'X', Block.bookShelf, 'D', Item.doorWood, 'G', Block.leaves);
@@ -4113,7 +4103,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(stepWoodenLightColumn, 6), "XXX", 'X', Mho.woodenLightColumn);
 		GameRegistry.addRecipe(new ItemStack(stepWoodenLightColumnHead, 6), "XXX", 'X', Mho.woodenLightColumnHead);
 
-		/** Metal **/
+		/** Step Metal **/
 		GameRegistry.addRecipe(new ItemStack(stepMetal, 6), "XXX", 'X', Mho.metalDoubleSlab);
 		
 		/** Step Tuiles **/
@@ -4126,7 +4116,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(stepTileBlackBig, 6), "XXX", 'X', Mho.tileBlackBig);
 		GameRegistry.addRecipe(new ItemStack(stepTileBlackAlt, 6), "XXX", 'X', Mho.tileBlackAlt);
 
-		/** Step Lumières **/
+		/** Step Lanternes **/
 		GameRegistry.addRecipe(new ItemStack(Mho.stepLanternWood, 6), "XXX", 'X', Mho.lanternWood);
 		GameRegistry.addRecipe(new ItemStack(Mho.stepLanternIron, 6), "XXX", 'X', Mho.lanternIron);
 	}
