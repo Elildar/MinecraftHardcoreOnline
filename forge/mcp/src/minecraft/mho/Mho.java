@@ -372,6 +372,7 @@ public class Mho
 	public static Item goldKey;
 	public static Item silverKey;
 	public static Item bronzeKey;
+	public static Item neptuniumSmallKey;
 	public static Item goldSmallKey;
 	public static Item silverSmallKey;
 	public static Item bronzeSmallKey;
@@ -398,7 +399,7 @@ public class Mho
 	/** Classics **/
 	public static Item diamondShine;
 	public static Item cards;
-	public static Item magicDust;
+	public static Item mysteriousDust;
 
 	/** ==================== Blocks ==================== **/
 	
@@ -1675,13 +1676,15 @@ public class Mho
 		goldKey = new ItemMho(cc.goldKeyID, "goldKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
 		silverKey = new ItemMho(cc.silverKeyID, "silverKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
 		bronzeKey = new ItemMho(cc.bronzeKeyID, "bronzeKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
-		goldSmallKey = new ItemMho(cc.goldSmallKeyID, "goldSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
-		silverSmallKey = new ItemMho(cc.silverSmallKeyID, "silverSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
-		bronzeSmallKey = new ItemMho(cc.bronzeSmallKeyID, "bronzeSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
+		neptuniumSmallKey = new ItemMho(cc.neptuniumSmallKeyID, "neptuniumSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
+		goldSmallKey = new ItemMho(cc.goldSmallKeyID, "goldSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
+		silverSmallKey = new ItemMho(cc.silverSmallKeyID, "silverSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
+		bronzeSmallKey = new ItemMho(cc.bronzeSmallKeyID, "bronzeSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
 
 		LanguageRegistry.addName(goldKey, "Cl\u00E9 de donjon en or");
 		LanguageRegistry.addName(silverKey, "Cl\u00E9 de donjon en argent");
 		LanguageRegistry.addName(bronzeKey, "Cl\u00E9 de donjon en bronze");
+		LanguageRegistry.addName(neptuniumSmallKey, "Cl\u00E9 en neptunium");
 		LanguageRegistry.addName(goldSmallKey, "Cl\u00E9 en or");
 		LanguageRegistry.addName(silverSmallKey, "Cl\u00E9 en argent");
 		LanguageRegistry.addName(bronzeSmallKey, "Cl\u00E9 en bronze");
@@ -1722,11 +1725,11 @@ public class Mho
 		/**Classics**/
 		diamondShine = new ItemMho(cc.diamondShineID, "diamondShine", 64, null, 2, false);
 		cards = new ItemMho(cc.cardsID, "cards", 1, null, 2, false);
-		magicDust = new ItemMho(cc.magicDustID, "magicDust", 64, null, 2, false);
+		mysteriousDust = new ItemMho(cc.mysteriousDustID, "mysteriousDust", 64, null, 2, false);
 
 		LanguageRegistry.addName(diamondShine, "\u00C9clat de diamant");
 		LanguageRegistry.addName(cards, "Cartes de jeu");
-		LanguageRegistry.addName(magicDust, "Poussi\u00e8re magique");
+		LanguageRegistry.addName(mysteriousDust, "Poussi\u00e8re mysterieuse");
 	}
 	
 	
@@ -3578,11 +3581,11 @@ public class Mho
 	
 	public void addRecipeOtherItems()
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(magicDust, 9, 0), Mho.magicPowder);
+		//GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDust, 9, 0), Mho.magicPowder);
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(diamondShine, 9), Item.diamond);
 		GameRegistry.addRecipe(new ItemStack(Item.diamond, 1), "XXX", "XXX", "XXX", 'X', Mho.diamondShine);
-		GameRegistry.addRecipe(new ItemStack(Mho.magicPowder, 1), "XXX", "XXX", "XXX", 'X', Mho.magicDust);
+		//GameRegistry.addRecipe(new ItemStack(Mho.magicPowder, 1), "XXX", "XXX", "XXX", 'X', Mho.mysteriousDust);
 	}
 	
 /** ==================== Recipe Blocks ==================== **/
@@ -3740,7 +3743,7 @@ public class Mho
 		//iceLog
 		//iceLeaves
 		//iceLeavesLight
-		GameRegistry.addShapelessRecipe(new ItemStack(icePlank, 4, 0), iceLog);
+		GameRegistry.addShapelessRecipe(new ItemStack(icePlank, 1, 0), iceLog);
 
 		/** Dark Blocks **/
 		//GameRegistry.addRecipe(new ItemStack(darkStone, 1), "X X", "X X", "X X", 'X', Block.);
@@ -3751,20 +3754,20 @@ public class Mho
 		//darkLeaves
 
 		/** Mysterious Blocks **/
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousStone, 1, 0), Block.stone, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDirt, 1, 0), Block.dirt, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousGrassBlock, 1, 0), Block.grass, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLog, 1, 0), Block.wood, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLeaves, 1, 0), Block.leaves, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLeavesPurple, 1, 0), Block.leaves, magicDust, magicDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousStone, 1, 0), Block.stone, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDirt, 1, 0), Block.dirt, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousGrassBlock, 1, 0), Block.grass, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLog, 10, 0), Block.wood, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLeaves, 1, 0), Block.leaves, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLeavesPurple, 1, 0), Block.leaves, mysteriousDust, mysteriousDust);
 
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousFlower, 1, 0), Block.plantYellow, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousPlantPurple, 1, 0), Block.plantRed, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousCoral, 1, 0), Mho.coralOrange, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousAlgue, 1, 0), Mho.coralRose, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousPlant, 1, 0), new ItemStack(Block.tallGrass, 1, 2), magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousReed, 1, 0), Item.reed, magicDust);
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousGrass, 1, 0), new ItemStack(Block.tallGrass, 1, 1), magicDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousFlower, 1, 0), Block.plantYellow, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousPlantPurple, 1, 0), Block.plantRed, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousCoral, 1, 0), Mho.coralOrange, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousAlgue, 1, 0), Mho.coralRose, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousPlant, 1, 0), new ItemStack(Block.tallGrass, 1, 2), mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousReed, 1, 0), Item.reed, mysteriousDust);
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousGrass, 1, 0), new ItemStack(Block.tallGrass, 1, 1), mysteriousDust);
 
 		/** Red Rock **/
 		//GameRegistry.addRecipe(new ItemStack(redGrassBlock, 1), "X X", "X X", "X X", 'X', Block.);
@@ -3819,7 +3822,7 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(normalDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Item.dyePowder,1,15));
 		GameRegistry.addShapelessRecipe(new ItemStack(savanaDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), Item.coal, new ItemStack(Item.dyePowder,1,15));
 		GameRegistry.addShapelessRecipe(new ItemStack(savanaDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Item.coal, 1, 1), new ItemStack(Item.dyePowder,1,15));
-		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), magicDust, new ItemStack(Item.dyePowder,1,15));
+		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousDoubleGrassUpper, 2, 0), new ItemStack(Block.tallGrass, 1, 1), new ItemStack(Block.tallGrass, 1, 1), mysteriousDust, new ItemStack(Item.dyePowder,1,15));
 	}
 
 	public void addRecipeMetaBlocks()
