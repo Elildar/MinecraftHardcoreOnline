@@ -229,6 +229,7 @@ public class ConfigCore {
 	public static int goldKeyID;
 	public static int silverKeyID;
 	public static int bronzeKeyID;
+	public static int neptuniumSmallKeyID;
 	public static int goldSmallKeyID;
 	public static int silverSmallKeyID;
 	public static int bronzeSmallKeyID;
@@ -254,7 +255,7 @@ public class ConfigCore {
 	/** Classics **/
 	public static int diamondShineID;
 	public static int cardsID;
-	public static int magicDustID;
+	public static int mysteriousDustID;
 
 	
 	/** ==================== Blocks ==================== **/
@@ -934,6 +935,7 @@ public class ConfigCore {
 		goldKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en or", 30145).getInt();
 		silverKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en argent", 30146).getInt();
 		bronzeKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en bronze", 30147).getInt();
+		neptuniumSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en neptunium", 30157).getInt();
 		goldSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en or", 30148).getInt();
 		silverSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en argent", 30149).getInt();
 		bronzeSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en bronze", 30150).getInt();
@@ -959,7 +961,7 @@ public class ConfigCore {
 		/** Classics **/
 		diamondShineID = config.get("Item IDs - 9 : Others", "Eclat de diamant", 30155).getInt();
 		cardsID = config.get("Item IDs - 9 : Others", "Cartes de jeu", 30237).getInt();
-		magicDustID = config.get("Item IDs - 9 : Others", "Poussiere magique", 30004).getInt();
+		mysteriousDustID = config.get("Item IDs - 9 : Others", "Poussiere mysterieuse", 30004).getInt();
 
 		
 		/** ==================== Blocks ==================== **/
