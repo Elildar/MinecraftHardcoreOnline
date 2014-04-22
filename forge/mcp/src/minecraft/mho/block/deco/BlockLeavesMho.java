@@ -1,8 +1,10 @@
 package mho.block.deco;
 
 import java.util.List;
+import java.util.Random;
 
 import mho.Mho;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,6 +16,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLeavesMho extends BlockLeaves {
 
+	private int saplingId = Block.sapling.blockID;
+	
 	public BlockLeavesMho(int id, String name) {
 		super(id);
 		this.setHardness(0.2F);
@@ -24,6 +28,15 @@ public class BlockLeavesMho extends BlockLeaves {
 		this.setTextureName(name);
 	}
 
+    public int idDropped(int par1, Random par2Random, int par3)
+    {
+        return saplingId;
+    }
+
+    public void setSaplingId(int saplingId) {
+    	this.saplingId = saplingId;
+    }
+    
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
@@ -86,11 +99,10 @@ public class BlockLeavesMho extends BlockLeaves {
         return new ItemStack(this.blockID, 1, 0);
     }
 
-    @SideOnly(Side.CLIENT)
-
     /**
      * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
      */
+    @SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
         par3List.add(new ItemStack(par1, 1, 0));

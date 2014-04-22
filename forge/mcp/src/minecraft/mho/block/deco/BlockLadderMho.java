@@ -20,7 +20,7 @@ public class BlockLadderMho extends BlockLadder
 
     @SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)
-	    {
-	        this.blockIcon = par1IconRegister.registerIcon(Mho.modid + ":" + this.getTextureName());
-	    }
+    {
+        this.blockIcon = par1IconRegister.registerIcon(Mho.modid + ":" + this.getTextureName());
+    }
 }

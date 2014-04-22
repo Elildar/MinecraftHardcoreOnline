@@ -164,6 +164,7 @@ public class ConfigCore {
 	public static int badgeVictoireID;
 	public static int badgeParticipationID;
 	public static int badgeMagieID;
+	public static int badgeFossoyeurID;
 	
 	/** Food **/
 	public static int mugID;
@@ -226,19 +227,19 @@ public class ConfigCore {
 	public static int majorValysScrollID;
 
 	/** Key **/
-	public static int goldKeyID;
-	public static int silverKeyID;
-	public static int bronzeKeyID;
-	public static int neptuniumSmallKeyID;
-	public static int goldSmallKeyID;
-	public static int silverSmallKeyID;
-	public static int bronzeSmallKeyID;
+	public static int keyDonjonGoldID;
+	public static int keyDonjonSilverID;
+	public static int keyDonjonBronzeID;
+	public static int keySmallNeptuniumID;
+	public static int keySmallGoldID;
+	public static int keySmallSilverID;
+	public static int keySmallBronzeID;
 
 	/** Coin **/
-	public static int bronzeCoinID;
-	public static int silverCoinID;
-	public static int goldCoinID;
-	public static int diamondCoinID;
+	public static int coinBronzeID;
+	public static int coinSilverID;
+	public static int coinGoldID;
+	public static int coinDiamondID;
 
 	/** Trophee **/
 	public static int trophyGoldID;
@@ -328,6 +329,7 @@ public class ConfigCore {
 	public static int mysteriousLogID;
 	public static int mysteriousLeavesID;
 	public static int mysteriousLeavesPurpleID;
+	public static int mysteriousSaplingID;
 	
 	public static int mysteriousFlowerID;
 	public static int mysteriousPlantPurpleID;
@@ -868,6 +870,7 @@ public class ConfigCore {
 		badgeVictoireID = config.get("Item IDs - 5 : Insignes", "Insigne de victoire", 30142).getInt();
 		badgeParticipationID = config.get("Item IDs - 5 : Insignes", "Insigne de participation", 30143).getInt();
 		badgeMagieID = config.get("Item IDs - 5 : Insignes", "Insigne de magie", 30144).getInt();
+		badgeFossoyeurID = config.get("Item IDs - 5 : Insignes", "Insigne de fossoyeur", 30145).getInt();
 
 		
 		/** Food **/
@@ -932,19 +935,19 @@ public class ConfigCore {
 		majorValysScrollID = config.get("Item IDs - 9 : Others", "Parchemin de teleportation majeur (Valys)", 10002).getInt();
 
 		/** Key **/
-		goldKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en or", 30145).getInt();
-		silverKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en argent", 30146).getInt();
-		bronzeKeyID = config.get("Item IDs - 9 : Others", "Cle de donjon en bronze", 30147).getInt();
-		neptuniumSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en neptunium", 30157).getInt();
-		goldSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en or", 30148).getInt();
-		silverSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en argent", 30149).getInt();
-		bronzeSmallKeyID = config.get("Item IDs - 9 : Others", "Cle en bronze", 30150).getInt();
+		keyDonjonGoldID = config.get("Item IDs - 9 : Others", "Cle de donjon en or_", 30412).getInt();
+		keyDonjonSilverID = config.get("Item IDs - 9 : Others", "Cle de donjon en argent_", 30411).getInt();
+		keyDonjonBronzeID = config.get("Item IDs - 9 : Others", "Cle de donjon en bronze_", 30410).getInt();
+		keySmallNeptuniumID = config.get("Item IDs - 9 : Others", "Petite cle en neptunium", 30418).getInt();
+		keySmallGoldID = config.get("Item IDs - 9 : Others", "Petite cle en or", 30417).getInt();
+		keySmallSilverID = config.get("Item IDs - 9 : Others", "Petite cle en argent", 30416).getInt();
+		keySmallBronzeID = config.get("Item IDs - 9 : Others", "Petite cle en bronze", 30415).getInt();
 
 		/** Coin **/
-		bronzeCoinID = config.get("Item IDs - 9 : Others", "Hardcoin de bronze", 30151).getInt();
-		silverCoinID = config.get("Item IDs - 9 : Others", "Hardcoin d'argent", 30152).getInt();
-		goldCoinID = config.get("Item IDs - 9 : Others", "Hardcoin d'or", 30153).getInt();
-		diamondCoinID = config.get("Item IDs - 9 : Others", "Hardcoin de diamant", 30154).getInt();
+		coinBronzeID = config.get("Item IDs - 9 : Others", "Hardcoin de bronze", 30151).getInt();
+		coinSilverID = config.get("Item IDs - 9 : Others", "Hardcoin d'argent", 30152).getInt();
+		coinGoldID = config.get("Item IDs - 9 : Others", "Hardcoin d'or", 30153).getInt();
+		coinDiamondID = config.get("Item IDs - 9 : Others", "Hardcoin de diamant", 30154).getInt();
 		
 		/** Trophee **/
 		trophyGoldID = config.get("Item IDs - 9 : Others", "Trophee en or", 30400).getInt();
@@ -957,6 +960,7 @@ public class ConfigCore {
 		pocketCraftingTableID = config.get("Item IDs - 9 : Others", "Table de craft portable", 30156).getInt();
 		magicPowderID = config.get("Item IDs - 9 : Others", "Poudre de magie", 30003).getInt();
 		teddyBearID = config.get("Item IDs - 9 : Others", "Ours en peluche", 30102).getInt();
+		rotatorID = config.get("Item IDs - 9 : Others", "Le Rotationnator", 30159).getInt();
 
 		/** Classics **/
 		diamondShineID = config.get("Item IDs - 9 : Others", "Eclat de diamant", 30155).getInt();
@@ -1007,6 +1011,8 @@ public class ConfigCore {
 		mysteriousLogID = naturalMysteriousID + 3;
 		mysteriousLeavesID = naturalMysteriousID + 4;
 		mysteriousLeavesPurpleID = naturalMysteriousID + 5;
+		//mysteriousPlanksID = naturalMysteriousID + 6;
+		mysteriousSaplingID = naturalMysteriousID + 7;
 
 		mysteriousFlowerID = naturalMysteriousID + 10;
 		mysteriousPlantPurpleID = naturalMysteriousID + 11;
@@ -1377,7 +1383,6 @@ public class ConfigCore {
 		//seedHoublonID = config.get("Block IDs - 99 : Unused", "Graine de houblon", 30220).getInt();
 		//houblonID = config.get("Block IDs - 99 : Unused", "Houblon", 30221).getInt();
 		//cropHoublonID = config.get("Block IDs - 99 : Unused", "Pousse de houblon", 3820).getInt();
-		//rotatorID = config.get("Block IDs - 99 : Unused", "Le Rotationnator", 30159).getInt();
 		//cannepecheID = config.get("Block IDs - 99 : Unused", "Canne a peche", 30157).getInt();
 		//liquideVertFlowingID = config.get("Block IDs - 99 : Unused", "Liquide vert", 3300).getInt();
 		//liquideVertStillID = config.get("Block IDs - 99 : Unused", "Liquide vert (stationnaire)", 3301).getInt();

@@ -1,8 +1,10 @@
 package mho.block.generic;
 
 import java.util.List;
+import java.util.Random;
 
 import mho.Mho;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,11 +20,19 @@ public class BlockLogMho extends BlockLog {
 	
 	public BlockLogMho(int par1, String name) {
 		super(par1);
+		this.setHardness(2.0F);
+		this.setStepSound(soundWoodFootstep);
 		this.setCreativeTab(Mho.tabMhoBlocks);
 		this.setUnlocalizedName("MHO"+name);
 		this.setTextureName(name);
 	}
-	
+
+    @Override
+    public int idDropped(int par1, Random par2Random, int par3)
+    {
+        return this.blockID;
+    }
+    
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
         par3List.add(new ItemStack(par1, 1, 0));

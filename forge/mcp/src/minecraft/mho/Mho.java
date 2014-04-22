@@ -32,10 +32,12 @@ import mho.block.deco.BlockDragonPortal;
 import mho.block.deco.BlockFlowerMho;
 import mho.block.deco.BlockLadderMho;
 import mho.block.deco.BlockLeavesMho;
+import mho.block.deco.BlockLeavesMyst;
 import mho.block.deco.BlockPaneMho;
 import mho.block.deco.BlockPike;
 import mho.block.deco.BlockReedMho;
 import mho.block.deco.BlockRopeRail;
+import mho.block.deco.BlockSaplingMho;
 import mho.block.deco.BlockSecretDoor;
 import mho.block.deco.BlockSecretTrapDoor;
 import mho.block.deco.BlockSign;
@@ -71,6 +73,7 @@ import mho.item.ItemGrey;
 import mho.item.ItemMagicPowder;
 import mho.item.ItemMho;
 import mho.item.ItemPocketCraftingTable;
+import mho.item.ItemRotator;
 import mho.item.ItemScrollTpValys;
 import mho.item.ItemTeddyBear;
 import mho.item.combat.ItemArmorMho;
@@ -115,7 +118,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.4")
+@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.5")
 
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
@@ -294,6 +297,7 @@ public class Mho
 	public static Item badgeVictoire;
 	public static Item badgeParticipation;
 	public static Item badgeMagie;
+	public static Item badgeFossoyeur;
 
 	/** Food **/
 	public static Item mug;
@@ -369,19 +373,19 @@ public class Mho
 	public static Item majorValysScroll;
 
 	/** Key **/
-	public static Item goldKey;
-	public static Item silverKey;
-	public static Item bronzeKey;
-	public static Item neptuniumSmallKey;
-	public static Item goldSmallKey;
-	public static Item silverSmallKey;
-	public static Item bronzeSmallKey;
+	public static Item keyDonjonGold;
+	public static Item keyDonjonSilver;
+	public static Item keyDonjonBronze;
+	public static Item keySmallNeptunium;
+	public static Item keySmallGold;
+	public static Item keySmallSilver;
+	public static Item keySmallBronze;
 
 	/** Coin **/
-	public static Item bronzeCoin;
-	public static Item silverCoin;
-	public static Item goldCoin;
-	public static Item diamondCoin;
+	public static Item coinBronze;
+	public static Item coinSilver;
+	public static Item coinGold;
+	public static Item coinDiamond;
 
 	/** Trophee **/
 	public static Item trophyGold;
@@ -395,6 +399,7 @@ public class Mho
 	public static Item pocketCraftingTable;
 	public static Item magicPowder;
 	public static Item teddyBear;
+	public static Item rotator;
 
 	/** Classics **/
 	public static Item diamondShine;
@@ -509,6 +514,7 @@ public class Mho
 	public static Block mysteriousLog;
 	public static Block mysteriousLeaves;
 	public static Block mysteriousLeavesPurple;
+	public static Block mysteriousSapling;
 	
 	public static Block mysteriousFlower;
 	public static Block mysteriousPlantPurple;
@@ -997,7 +1003,6 @@ public class Mho
 	public static Item seedHoublon;
 	public static Item houblon;
 	public static Block cropHoublon;
-	public static Item rotator;
 	public static Item cannePeche;
 	public static Block liquideVertFlowing;
 	public static Block liquideVertStill;
@@ -1167,7 +1172,7 @@ public class Mho
 		((TabMho) tabMhoStairs).setIconItem(Mho.stairWhiteStonebrick.blockID);
 		((TabMho) tabMhoFences).setIconItem(Mho.wallWhiteStonebrick.blockID);
 		((TabMho) tabMhoDecorations).setIconItem(Mho.lightLantern.blockID);
-		((TabMho) tabMhoItems).setIconItem(Mho.goldKey.itemID);
+		((TabMho) tabMhoItems).setIconItem(Mho.keyDonjonGold.itemID);
 		((TabMho) tabMhoPotions).setIconItem(Mho.potionCustomEffectLavaWalk.itemID);
 		((TabMho) tabMhoQuest).setIconItem(Mho.grimoireSeth.itemID);
 		((TabMho) tabMhoCombat).setIconItem(Mho.stove.itemID);
@@ -1529,6 +1534,7 @@ public class Mho
 		badgeVictoire = new ItemBadge(cc.badgeVictoireID, "badgeVictoire");
 		badgeParticipation = new ItemBadge(cc.badgeParticipationID, "badgeParticipation");
 		badgeMagie = new ItemBadge(cc.badgeMagieID, "badgeMagie");
+		badgeFossoyeur = new ItemBadge(cc.badgeFossoyeurID, "badgeFossoyeur");
 
 		LanguageRegistry.addName(badgeValys, "Insigne de Valys");
 		LanguageRegistry.addName(badgeChasse, "Insigne de chasse");
@@ -1545,6 +1551,7 @@ public class Mho
 		LanguageRegistry.addName(badgeVictoire, "Insigne de victoire");
 		LanguageRegistry.addName(badgeParticipation, "Insigne de participation");
 		LanguageRegistry.addName(badgeMagie, "Insigne de magie");
+		LanguageRegistry.addName(badgeFossoyeur, "Insigne de fossoyeur");
 	}
 	
 	public void initFoods(ConfigCore cc)
@@ -1673,32 +1680,32 @@ public class Mho
 		LanguageRegistry.addName(majorValysScroll, "Parchemin de t\u00E9l\u00E9portation majeur (Valys)");
 
 		/**Key**/
-		goldKey = new ItemMho(cc.goldKeyID, "goldKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
-		silverKey = new ItemMho(cc.silverKeyID, "silverKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
-		bronzeKey = new ItemMho(cc.bronzeKeyID, "bronzeKey", 64, "S\u00E9sam, ouvre-toi !", 7, true);
-		neptuniumSmallKey = new ItemMho(cc.neptuniumSmallKeyID, "neptuniumSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
-		goldSmallKey = new ItemMho(cc.goldSmallKeyID, "goldSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
-		silverSmallKey = new ItemMho(cc.silverSmallKeyID, "silverSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
-		bronzeSmallKey = new ItemMho(cc.bronzeSmallKeyID, "bronzeSmallKey", 64, "S\u00E9sam, ouvre-toi !", 7, false);
+		keyDonjonGold = new ItemMho(cc.keyDonjonGoldID, "keyDonjonGold", 64, "S\u00E9sam, ouvre-toi !", 7, false);
+		keyDonjonSilver = new ItemMho(cc.keyDonjonSilverID, "keyDonjonSilver", 64, "S\u00E9sam, ouvre-toi !", 6, false);
+		keyDonjonBronze = new ItemMho(cc.keyDonjonBronzeID, "keyDonjonBronze", 64, "S\u00E9sam, ouvre-toi !", 5, false);
+		keySmallNeptunium = new ItemMho(cc.keySmallNeptuniumID, "keySmallNeptunium", 64, "Ouvre un coffre en neptunium.", 5, false);
+		keySmallGold = new ItemMho(cc.keySmallGoldID, "keySmallGold", 64, "Ouvre un coffre au tr\u00E9sor.", 4, false);
+		keySmallSilver = new ItemMho(cc.keySmallSilverID, "keySmallSilver", 64, "Ouvre un coffre verrouill\u00E9.", 3, false);
+		keySmallBronze = new ItemMho(cc.keySmallBronzeID, "keySmallBronze", 64, "Ouvre un simple coffre.", 2, false);
 
-		LanguageRegistry.addName(goldKey, "Cl\u00E9 de donjon en or");
-		LanguageRegistry.addName(silverKey, "Cl\u00E9 de donjon en argent");
-		LanguageRegistry.addName(bronzeKey, "Cl\u00E9 de donjon en bronze");
-		LanguageRegistry.addName(neptuniumSmallKey, "Cl\u00E9 en neptunium");
-		LanguageRegistry.addName(goldSmallKey, "Cl\u00E9 en or");
-		LanguageRegistry.addName(silverSmallKey, "Cl\u00E9 en argent");
-		LanguageRegistry.addName(bronzeSmallKey, "Cl\u00E9 en bronze");
+		LanguageRegistry.addName(keyDonjonGold, "Cl\u00E9 de donjon en or");
+		LanguageRegistry.addName(keyDonjonSilver, "Cl\u00E9 de donjon en argent");
+		LanguageRegistry.addName(keyDonjonBronze, "Cl\u00E9 de donjon en bronze");
+		LanguageRegistry.addName(keySmallNeptunium, "Petite cl\u00E9 en neptunium");
+		LanguageRegistry.addName(keySmallGold, "Petite cl\u00E9 en or");
+		LanguageRegistry.addName(keySmallSilver, "Petite cl\u00E9 en argent");
+		LanguageRegistry.addName(keySmallBronze, "Petite cl\u00E9 en bronze");
 		
 		/**Coin**/
-		bronzeCoin = new ItemMho(cc.bronzeCoinID, "bronzeCoin", 64, null, 2, false);
-		silverCoin = new ItemMho(cc.silverCoinID, "silverCoin", 64, null, 2, false);
-		goldCoin = new ItemMho(cc.goldCoinID, "goldCoin", 64, null, 2, false);
-		diamondCoin = new ItemMho(cc.diamondCoinID, "diamondCoin", 64, null, 2, false);
+		coinBronze = new ItemMho(cc.coinBronzeID, "coinBronze", 64, "10HB = 1HA", 2, false);
+		coinSilver = new ItemMho(cc.coinSilverID, "coinSilver", 64, "10HA = 1HO", 2, false);
+		coinGold = new ItemMho(cc.coinGoldID, "coinGold", 64, "10HO = 1HD", 2, false);
+		coinDiamond = new ItemMho(cc.coinDiamondID, "coinDiamond", 64, "10HD = 10HD", 2, false);
 
-		LanguageRegistry.addName(bronzeCoin, "Hardcoin de bronze");
-		LanguageRegistry.addName(silverCoin, "Hardcoin d\u0027argent");
-		LanguageRegistry.addName(goldCoin, "Hardcoin d\u0027or");
-		LanguageRegistry.addName(diamondCoin, "Hardcoin de diamant");
+		LanguageRegistry.addName(coinBronze, "H\u00e9lion de bronze");
+		LanguageRegistry.addName(coinSilver, "H\u00e9lion d\u0027argent");
+		LanguageRegistry.addName(coinGold, "H\u00e9lion d\u0027or");
+		LanguageRegistry.addName(coinDiamond, "H\u00e9lion de diamant");
 
 		/**Trophee**/
 		trophyGold = new ItemMho(cc.trophyGoldID, "trophyGold", 64, "I wiiiiiin", 2, true);
@@ -1716,11 +1723,13 @@ public class Mho
 		pocketCraftingTable = new ItemPocketCraftingTable(cc.pocketCraftingTableID, "pocketCraftingTable", "(usage unique)");
 		magicPowder = new ItemMagicPowder(cc.magicPowderID, "magicPowder", "Soigne les bobos !");
 		teddyBear = new ItemTeddyBear(cc.teddyBearID, "teddyBear");
+		rotator = new ItemRotator(cc.rotatorID, "rotator", "Ca va rotationner !");
 
 		LanguageRegistry.addName(eyeCover, "Cache Oeil");
 		LanguageRegistry.addName(pocketCraftingTable, "Table de craft portable");
 		LanguageRegistry.addName(magicPowder, "Poudre de magie");
 		LanguageRegistry.addName(teddyBear, "Ours en peluche");
+		LanguageRegistry.addName(rotator, "Le Rotationnator");
 		
 		/**Classics**/
 		diamondShine = new ItemMho(cc.diamondShineID, "diamondShine", 64, null, 2, false);
@@ -1729,7 +1738,7 @@ public class Mho
 
 		LanguageRegistry.addName(diamondShine, "\u00C9clat de diamant");
 		LanguageRegistry.addName(cards, "Cartes de jeu");
-		LanguageRegistry.addName(mysteriousDust, "Poussi\u00e8re mysterieuse");
+		LanguageRegistry.addName(mysteriousDust, "Poussi\u00e8re myst\u00E9rieuse");
 	}
 	
 	
@@ -2008,7 +2017,10 @@ public class Mho
 		mysteriousGrassBlock = new BlockGrassMho(cc.mysteriousGrassBlockID, "mysterious");
 		mysteriousLog = new BlockLogMho(cc.mysteriousLogID, "mysteriousLog");
 		mysteriousLeaves = new BlockLeavesMho(cc.mysteriousLeavesID, "mysteriousLeaves");
-		mysteriousLeavesPurple = new BlockLeavesMho(cc.mysteriousLeavesPurpleID, "mysteriousLeavesPurple").setLightValue(0.3F);
+		mysteriousLeavesPurple = new BlockLeavesMyst(cc.mysteriousLeavesPurpleID, "mysteriousLeavesPurple");
+		mysteriousSapling = new BlockSaplingMho(cc.mysteriousSaplingID, "mysteriousSapling", new int[]{mysteriousLog.blockID}, new int[]{mysteriousLeaves.blockID, mysteriousLeavesPurple.blockID});
+		((BlockLeavesMho) mysteriousLeaves).setSaplingId(mysteriousSapling.blockID);
+		((BlockLeavesMho) mysteriousLeavesPurple).setSaplingId(mysteriousSapling.blockID);
 
 		mysteriousFlower = new BlockFlowerMho(cc.mysteriousFlowerID, "mysteriousFlower").setLightValue(0.2F);
 		mysteriousPlantPurple = new BlockFlowerMho(cc.mysteriousPlantPurpleID, "mysteriousPlantPurple").setLightValue(0.2F);
@@ -2024,6 +2036,7 @@ public class Mho
 		GameRegistry.registerBlock(mysteriousLog, "MHOmysteriousLog");
 		GameRegistry.registerBlock(mysteriousLeaves, "MHOmysteriousLeaves");
 		GameRegistry.registerBlock(mysteriousLeavesPurple, "MHOmysteriousLeavesPurple");
+		GameRegistry.registerBlock(mysteriousSapling, "MHOmysteriousSapling");
 
 		GameRegistry.registerBlock(mysteriousFlower, "MHOmysteriousFlower");
 		GameRegistry.registerBlock(mysteriousPlantPurple, "MHOmysteriousPlantPurple");
@@ -2039,6 +2052,7 @@ public class Mho
 		LanguageRegistry.addName(mysteriousLog, "B\u00fbche myst\u00e9rieuse");
 		LanguageRegistry.addName(mysteriousLeaves, "Feuilles myst\u00e9rieuses");
 		LanguageRegistry.addName(mysteriousLeavesPurple, "Feuilles myst\u00e9rieuses violettes");
+		LanguageRegistry.addName(mysteriousSapling, "Pousse d'arbre myst\u00e9rieux");
 
 		LanguageRegistry.addName(mysteriousFlower, "Fleur myst\u00e9rieuse");
 		LanguageRegistry.addName(mysteriousPlantPurple, "Plante myst\u00e9rieuse violette");
@@ -3783,7 +3797,7 @@ public class Mho
 		//GameRegistry.addRecipe(new ItemStack(brownRock, 1), "X X", "X X", "X X", 'X', Block.);
 		//GameRegistry.addRecipe(new ItemStack(brownRockGrass, 1), "X X", "X X", "X X", 'X', Block.);
 
-		//GameRegistry.addRecipe(new ItemStack(brownRockGrass, 1), "X X", "X X", "X X", 'X', Block.);
+		//GameRegistry.addRecipe(new ItemStack(darkRock, 1), "X X", "X X", "X X", 'X', Block.);
 		//GameRegistry.addRecipe(new ItemStack(darkRockGrass, 1), "X X", "X X", "X X", 'X', Block.);
 
 		//GameRegistry.addRecipe(new ItemStack(blackRock, 1), "X X", "X X", "X X", 'X', Block.);
