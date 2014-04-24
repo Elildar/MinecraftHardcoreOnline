@@ -1,5 +1,8 @@
 package mho.core;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -712,6 +715,8 @@ public class ConfigCore {
 	public static int onFrigoID;
 	public static int bannerID;
 
+	/** ==================== Rotator allowed blocks ==================== **/
+	public static Map<Integer, String> rotatorAllowedBlocks = new HashMap<Integer, String>();
 	
 	public static void loadConfig(FMLPreInitializationEvent e){
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile()); //Gets the file
@@ -1388,7 +1393,17 @@ public class ConfigCore {
 		//liquideVertStillID = config.get("Block IDs - 99 : Unused", "Liquide vert (stationnaire)", 3301).getInt();
 		//liquideVioletFlowingID = config.get("Block IDs - 99 : Unused", "Liquide violet", 3302).getInt();
 		//liquideVioletStillID = config.get("Block IDs - 99 : Unused", "Liquide violet (stationnaire)", 3303).getInt();
-		
+
+		/** ==================== Rotator allowed blocks ==================== **/
+
+		int[] rotatorAllowedIds = config.get("Rotator allowed blocks", "List of IDs", new int[0]).getIntList();
+		String rotatorAllowedMetadatas;
+		for(int i=0; i<rotatorAllowedIds.length; i++) {
+			rotatorAllowedMetadatas = config.get("Rotator allowed blocks metadatas", "Block " + rotatorAllowedIds[i], "").getString();
+			if(rotatorAllowedMetadatas != null)
+				rotatorAllowedBlocks.put(rotatorAllowedIds[i], rotatorAllowedMetadatas);
+		}
+			
 		config.save();
 	}
 }

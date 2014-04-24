@@ -118,7 +118,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.5")
+@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.6")
 
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
@@ -1238,6 +1238,9 @@ public class Mho
 
 		/** Carpet **/
 		addRecipeCarpets();
+
+		/** Autres **/
+		addRecipeOthers();
 	}
 
 /** ==================== Init Items ==================== **/
@@ -1556,18 +1559,18 @@ public class Mho
 	
 	public void initFoods(ConfigCore cc)
 	{
-		mug = new ItemMho(cc.mugID, "mug", 1, null, 2, false).setCreativeTab(CreativeTabs.tabFood);
+		mug = new ItemMho(cc.mugID, "mug", 16, null, 2, false).setCreativeTab(CreativeTabs.tabFood);
 		beer = new ItemFoodBeer(cc.beerID, 0, 0.5F, false, "beer", "El' ai fraiche !");
-		foodHamburger = new ItemFoodMho(cc.foodHamburgerID, 12, 1.0F, true, "hamburger", null);
+		foodHamburger = new ItemFoodMho(cc.foodHamburgerID, 14, 1.0F, true, "hamburger", null);
 		foodFries = new ItemFoodMho(cc.foodFriesID, 8, 0.6F, false, "fries", null);
-		foodKfc = new ItemFoodMho(cc.foodKfcID, 12, 0.7F, false, "kfc", null);
-		foodEgg = new ItemFoodMho(cc.foodEggID, 8, 0.5F, false, "egg", null);
-		foodBacon = new ItemFoodMho(cc.foodBaconID, 4, 0.2F, true, "bacon", null);
+		foodKfc = new ItemFoodMho(cc.foodKfcID, 8, 0.7F, false, "kfc", null);
+		foodEgg = new ItemFoodMho(cc.foodEggID, 6, 0.5F, false, "egg", null);
+		foodBacon = new ItemFoodMho(cc.foodBaconID, 2, 0.2F, true, "bacon", null);
 		foodCheese = new ItemFoodMho(cc.foodCheeseID, 10, 0.8F, false, "cheese", null);
-		foodMaki = new ItemFoodMho(cc.foodMakiID, 6, 0.4F, false, "maki", null);
-		foodSushi = new ItemFoodMho(cc.foodSushiID, 6, 0.4F, false, "sushi", null);
+		foodMaki = new ItemFoodMho(cc.foodMakiID, 4, 0.4F, false, "maki", null);
+		foodSushi = new ItemFoodMho(cc.foodSushiID, 4, 0.4F, false, "sushi", null);
 		foodSkewer = new ItemFoodMho(cc.foodSkewerID, 8, 0.6F, true, "skewer", null);
-		rhum = new ItemFoodRhum(cc.rhumID, 0 , 0.5F, false, "rhum", "Outch cay for !");
+		rhum = new ItemFoodRhum(cc.rhumID, 0, 0.5F, false, "rhum", "Outch cay for !");
 
 		LanguageRegistry.addName(mug, "Chope vide");
 		LanguageRegistry.addName(beer, "Chope de bi\u00E8re");
@@ -1723,7 +1726,7 @@ public class Mho
 		pocketCraftingTable = new ItemPocketCraftingTable(cc.pocketCraftingTableID, "pocketCraftingTable", "(usage unique)");
 		magicPowder = new ItemMagicPowder(cc.magicPowderID, "magicPowder", "Soigne les bobos !");
 		teddyBear = new ItemTeddyBear(cc.teddyBearID, "teddyBear");
-		rotator = new ItemRotator(cc.rotatorID, "rotator", "Ca va rotationner !");
+		rotator = new ItemRotator(cc.rotatorID, "rotator", "Ca va rotationner !", cc.rotatorAllowedBlocks);
 
 		LanguageRegistry.addName(eyeCover, "Cache Oeil");
 		LanguageRegistry.addName(pocketCraftingTable, "Table de craft portable");
@@ -3578,16 +3581,16 @@ public class Mho
 	
 	public void addRecipeFoods()
 	{
-		GameRegistry.addRecipe(new ItemStack(mug, 1), "X X", "X X", " X ", 'X', Block.glass);
+		GameRegistry.addRecipe(new ItemStack(mug, 4), "X X", "X X", " X ", 'X', Block.glass);
 		//GameRegistry.addRecipe(new ItemStack(beer, 1), "X X", "X X", "X X", 'X', Item.);
-		GameRegistry.addRecipe(new ItemStack(foodHamburger, 2), "X", "Y", "X", 'X', Item.bread, 'Y', Item.beefCooked);
-		GameRegistry.addRecipe(new ItemStack(foodFries, 2), " X ", "YXY", "YYY", 'X', Item.bakedPotato, 'Y', Item.paper);
-		//GameRegistry.addRecipe(new ItemStack(foodKfc, 1), "X X", "X X", "X X", 'X', Item.);
+		GameRegistry.addRecipe(new ItemStack(foodHamburger, 1), "X", "Y", "X", 'X', Item.bread, 'Y', Item.beefCooked);
+		GameRegistry.addRecipe(new ItemStack(foodFries, 2), "X", "X", "Y", 'X', Item.bakedPotato, 'Y', Item.paper);
+		GameRegistry.addRecipe(new ItemStack(foodKfc, 1), "X", "Y", "Z", 'X', Item.wheat, 'Y', Item.chickenCooked, 'Z', Item.paper);
 		//GameRegistry.addRecipe(new ItemStack(foodEgg, 1), "X X", "X X", "X X", 'X', Item.);
-		GameRegistry.addRecipe(new ItemStack(foodBacon, 4), "XX", 'X', Item.porkCooked);
+		GameRegistry.addRecipe(new ItemStack(foodBacon, 8), "XX", 'X', Item.porkCooked);
 		//GameRegistry.addRecipe(new ItemStack(foodCheese, 1), "X X", "X X", "X X", 'X', Item.);
-		//GameRegistry.addRecipe(new ItemStack(foodMaki, 1), "X X", "X X", "X X", 'X', Item.);
-		//GameRegistry.addRecipe(new ItemStack(foodSushi, 1), "X X", "X X", "X X", 'X', Item.);
+		GameRegistry.addShapelessRecipe(new ItemStack(foodMaki, 2, 0), new ItemStack(22266, 1, 1), Item.fishRaw, Item.carrot);
+		GameRegistry.addRecipe(new ItemStack(foodSushi, 1), "X", "Y", 'X', Item.fishRaw, 'Y', Item.wheat);
 		GameRegistry.addShapelessRecipe(new ItemStack(foodSkewer, 1, 0), Item.beefCooked, Item.stick);
 		GameRegistry.addShapelessRecipe(new ItemStack(foodSkewer, 1, 0), Item.porkCooked, Item.stick);
 		//GameRegistry.addRecipe(new ItemStack(rhum, 1), "X X", "X X", "X X", 'X', Item.);
@@ -3645,7 +3648,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(sandstoneColumnHead, 1), "X", "Y", 'X', Mho.stepSandstoneDoubleSlab, 'Y', Mho.stepSandstoneColumn);
 
 		/** Ancient **/
-		GameRegistry.addRecipe(new ItemStack(ancientStone, 8), "XXX", "XYX", "XXX", 'X', Block.stone, 'Y', Item.compass);
+		//GameRegistry.addRecipe(new ItemStack(ancientStone, 8), "XXX", "XYX", "XXX", 'X', Block.stone, 'Y', Item.compass);
 
 		GameRegistry.addRecipe(new ItemStack(ancientStonebrick, 4), "XX", "XX", 'X', Mho.ancientStone);
 		GameRegistry.addRecipe(new ItemStack(ancientDoubleSlab, 2), "X", "X", 'X', Mho.ancientStonebrick);
@@ -3675,7 +3678,7 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(iceColumnHead, 1), "X", "Y", 'X', Mho.stepIceDoubleSlab, 'Y', Mho.stepIceColumn);
 
 		/** Marble white **/
-		GameRegistry.addShapelessRecipe(new ItemStack(marbleWhiteStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,15));
+		//GameRegistry.addShapelessRecipe(new ItemStack(marbleWhiteStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,15));
 		
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteStonebrick, 4), "XX", "XX", 'X', Mho.marbleWhiteStone);
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteDoubleSlab, 2), "X", "X", 'X', Mho.marbleWhiteStonebrick);
@@ -3688,10 +3691,11 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteDoubleSlab, 1), "X", "X", 'X', Mho.stepMarbleWhiteDoubleSlab);
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteColumnHead, 1), "X", "Y", 'X', Mho.stepMarbleWhiteDoubleSlab, 'Y', Mho.stepMarbleWhiteColumn);
 
-		GameRegistry.addSmelting(ConfigCore.marbleWhiteID + ConfigCore.cobblestoneRank, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
+		//GameRegistry.addSmelting(ConfigCore.marbleWhiteID + ConfigCore.cobblestoneRank, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.marbleWhiteID + ConfigCore.cobblestoneRank, new ItemStack(Mho.marbleWhiteStone, 1, 0), 0);
 
 		/** Marble black **/
-		GameRegistry.addShapelessRecipe(new ItemStack(marbleBlackStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,0));
+		//GameRegistry.addShapelessRecipe(new ItemStack(marbleBlackStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,0));
 		
 		GameRegistry.addRecipe(new ItemStack(marbleBlackStonebrick, 4), "XX", "XX", 'X', Mho.marbleBlackStone);
 		GameRegistry.addRecipe(new ItemStack(marbleBlackDoubleSlab, 2), "X", "X", 'X', Mho.marbleBlackStonebrick);
@@ -3707,10 +3711,12 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(marbleBlackColumnHead, 1), "X", "Y", 'X', Mho.stepMarbleBlackDoubleSlab, 'Y', Mho.stepMarbleBlackColumn);
 		GameRegistry.addRecipe(new ItemStack(marbleCheck, 1), "X", "X", 'X', Mho.stepMarbleCheck);
 
-		GameRegistry.addSmelting(ConfigCore.marbleBlackID + ConfigCore.cobblestoneRank, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
+		//GameRegistry.addSmelting(ConfigCore.marbleBlackID + ConfigCore.cobblestoneRank, new ItemStack(Mho.obsidianBlock, 1, 0), 0);
+		GameRegistry.addSmelting(ConfigCore.marbleBlackID + ConfigCore.cobblestoneRank, new ItemStack(Mho.marbleBlackStone, 1, 0), 0);
 
 		/** Wood **/
-		GameRegistry.addRecipe(new ItemStack(woodenStone, 8), "XXX", "XYX", "XXX", 'X', new ItemStack(Block.planks, 1, 1), 'Y', Mho.beer);
+		//GameRegistry.addRecipe(new ItemStack(woodenStone, 8), "XXX", "XYX", "XXX", 'X', new ItemStack(Block.planks, 1, 1), 'Y', Mho.beer);
+		GameRegistry.addShapelessRecipe(new ItemStack(woodenStone, 1, 0), new ItemStack(Block.planks, 1, 1), Item.slimeBall);
 		
 		GameRegistry.addRecipe(new ItemStack(woodenStonebrick, 4), "XX", "XX", 'X', Mho.woodenStone);
 		GameRegistry.addRecipe(new ItemStack(woodenDoubleSlab, 2), "X", "X", 'X', Mho.woodenStonebrick);
@@ -3723,7 +3729,8 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(woodenColumnHead, 1), "X", "Y", 'X', Mho.stepWoodenDoubleSlab, 'Y', Mho.stepWoodenColumn);
 
 		/** Wood light **/
-		GameRegistry.addRecipe(new ItemStack(woodenLightStone, 8), "XXX", "XYX", "XXX", 'X', new ItemStack(Block.planks, 1, 2), 'Y', Mho.beer);
+		//GameRegistry.addRecipe(new ItemStack(woodenLightStone, 8), "XXX", "XYX", "XXX", 'X', new ItemStack(Block.planks, 1, 2), 'Y', Mho.beer);
+		GameRegistry.addShapelessRecipe(new ItemStack(woodenLightStone, 1, 0), new ItemStack(Block.planks, 1, 2), Item.slimeBall);
 		
 		GameRegistry.addRecipe(new ItemStack(woodenLightStonebrick, 4), "XX", "XX", 'X', Mho.woodenLightStone);
 		GameRegistry.addRecipe(new ItemStack(woodenLightDoubleSlab, 2), "X", "X", 'X', Mho.woodenLightStonebrick);
@@ -3736,8 +3743,8 @@ public class Mho
 		GameRegistry.addRecipe(new ItemStack(woodenLightColumnHead, 1), "X", "Y", 'X', Mho.stepWoodenLightDoubleSlab, 'Y', Mho.stepWoodenLightColumn);
 
 		/** Metal **/
-		GameRegistry.addRecipe(new ItemStack(metalDoubleSlab, 4), "XYX", "XYX", 'X', Block.blockIron, 'Y', Item.coal);
-		GameRegistry.addRecipe(new ItemStack(metalStonebrickRound, 8), "XXX", "XYX", "XXX", 'X', Block.blockIron, 'Y', Block.coalBlock);
+		GameRegistry.addRecipe(new ItemStack(metalDoubleSlab, 1), "XXX", "YYY", "XXX", 'X', Item.ingotIron, 'Y', Item.coal);
+		GameRegistry.addRecipe(new ItemStack(metalStonebrickRound, 1), "XXX", "XYX", "XXX", 'X', Item.ingotIron, 'Y', Item.coal);
 		GameRegistry.addRecipe(new ItemStack(metalCheck, 2), "XX", 'X', Mho.metalDoubleSlab);
 
 		GameRegistry.addRecipe(new ItemStack(metalDoubleSlab, 1), "X", "X", 'X', Mho.stepMetal);
@@ -3757,13 +3764,13 @@ public class Mho
 		//iceLog
 		//iceLeaves
 		//iceLeavesLight
-		GameRegistry.addShapelessRecipe(new ItemStack(icePlank, 1, 0), iceLog);
+		GameRegistry.addShapelessRecipe(new ItemStack(icePlank, 4, 0), iceLog);
 
 		/** Dark Blocks **/
-		//GameRegistry.addRecipe(new ItemStack(darkStone, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addShapelessRecipe(new ItemStack(darkStone, 1), Block.stone, new ItemStack(Item.dyePowder,1,0));
 		//darkCobblestone
-		//GameRegistry.addRecipe(new ItemStack(darkDirt, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(darkGrassBlock, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addShapelessRecipe(new ItemStack(darkDirt, 1), Block.dirt, new ItemStack(Item.dyePowder,1,0));
+		//GameRegistry.addRecipe(new ItemStack(darkGrassBlock, 1), "X", "Y", 'X', darkDirt, 'Y', Block.tallGrass);
 		//darkLog
 		//darkLeaves
 
@@ -3784,26 +3791,26 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousGrass, 1, 0), new ItemStack(Block.tallGrass, 1, 1), mysteriousDust);
 
 		/** Red Rock **/
-		//GameRegistry.addRecipe(new ItemStack(redGrassBlock, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(redGravel, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(redRockBigLine, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(redRockLines, 1), "X X", "X X", "X X", 'X', Block.);
+		//GameRegistry.addRecipe(new ItemStack(redGrassBlock, 1), "X", "Y", 'X', new ItemStack(254, 1, 0), 'Y', Block.grass);
+		GameRegistry.addShapelessRecipe(new ItemStack(redGravel, 2), new ItemStack(254, 1, 1), Block.gravel);
+		GameRegistry.addRecipe(new ItemStack(redRockBigLine, 3), "X", "Y", "X", 'X', new ItemStack(254, 1, 0), 'Y', new ItemStack(Block.sandStone, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(redRockLines, 2), "X", "X", 'X', redRockBigLine);
 		//redSilver
 
 		/** Rocks **/
-		//GameRegistry.addRecipe(new ItemStack(greyRock, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(greyRockGrass, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addRecipe(new ItemStack(greyRock, 2), "X", "X", 'X', Block.stone);
+		//GameRegistry.addRecipe(new ItemStack(greyRockGrass, 1), "X", "Y", 'X', greyRock, 'Y', Block.tallGrass);
 
-		//GameRegistry.addRecipe(new ItemStack(brownRock, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(brownRockGrass, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addShapelessRecipe(new ItemStack(brownRock, 2), Block.stone, Block.dirt);
+		//GameRegistry.addRecipe(new ItemStack(brownRockGrass, 1), "X", "Y", 'X', brownRock, 'Y', Block.tallGrass);
 
-		//GameRegistry.addRecipe(new ItemStack(darkRock, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(darkRockGrass, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addShapelessRecipe(new ItemStack(darkRock, 2), brownRock, Block.coalBlock);
+		//GameRegistry.addRecipe(new ItemStack(darkRockGrass, 1), "X", "Y", 'X', darkRock, 'Y', Block.tallGrass);
 
-		//GameRegistry.addRecipe(new ItemStack(blackRock, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addShapelessRecipe(new ItemStack(blackRock, 2), Block.stone, Block.coalBlock);
 
-		//GameRegistry.addRecipe(new ItemStack(lavaRock, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(lavaRockRed, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addShapelessRecipe(new ItemStack(lavaRock, 2), Block.stone, obsidianBlock);
+		GameRegistry.addShapelessRecipe(new ItemStack(lavaRockRed, 2), lavaRock, obsidianBlock);
 	}
 	
 	public void addRecipeTimbereds()
@@ -3896,16 +3903,16 @@ public class Mho
 	public void addRecipeSpecialBlocks()
 	{
 		GameRegistry.addRecipe(new ItemStack(meatBlock, 1), "XXX", "XXX", "XXX", 'X', Item.beefRaw);
-		//fossileBlock
+		GameRegistry.addShapelessRecipe(new ItemStack(fossileBlock, 1), Block.stone, Item.bone);
 
-		//simpleDirtBlock
+		GameRegistry.addShapelessRecipe(new ItemStack(simpleDirtBlock, 1), Block.dirt);
 		//completeLogOak
 		//completeLogSpruce
 
 		//vaillantCrate
 
 		GameRegistry.addRecipe(new ItemStack(ironWindow, 6), "XXX", "X X", "XXX", 'X', Block.fenceIron);
-		GameRegistry.addRecipe(new ItemStack(metalGrid, 2), "XXX", "XYX", "XXX", 'X', Item.ingotIron, 'Y', Item.coal);
+		GameRegistry.addRecipe(new ItemStack(metalGrid, 1), "X X", " Y ", "X X", 'X', Item.ingotIron, 'Y', Item.coal);
 		
 		//woeBlock
 		
@@ -3923,11 +3930,11 @@ public class Mho
 		//invisibleBlock
 		//portalPurple
 		//GameRegistry.addRecipe(new ItemStack(bookBlock, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(chainIron, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(chainRope, 1), "X X", "X X", "X X", 'X', Block.);
-		//GameRegistry.addRecipe(new ItemStack(ropeRail, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addRecipe(new ItemStack(chainIron, 2), "X", "X", 'X', new ItemStack(26458, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(chainRope, 2), "XX", "XX", "XX", 'X', Item.silk);
+		GameRegistry.addRecipe(new ItemStack(ropeRail, 2), "XXX", "XXX", 'X', Item.silk);
 		//spikes
-		//GameRegistry.addRecipe(new ItemStack(climbingLadder, 1), "X X", "X X", "X X", 'X', Block.);
+		GameRegistry.addRecipe(new ItemStack(climbingLadder, 1), " XX", "   ", "XX ", 'X', Item.ingotIron);
 		GameRegistry.addShapelessRecipe(new ItemStack(roseVines, 1, 0), Block.plantRed, Block.vine);
 		//GameRegistry.addRecipe(new ItemStack(cristalLittle, 1), "X X", "X X", "X X", 'X', Block.);
 		GameRegistry.addRecipe(new ItemStack(cristalBig, 1), "XX", "XX", 'X', Mho.cristalLittle);
@@ -4243,15 +4250,21 @@ public class Mho
 	{
 		GameRegistry.addRecipe(new ItemStack (carpetDirt, 3), "XX", 'X', Block.dirt);
 		GameRegistry.addRecipe(new ItemStack (carpetGravel, 3), "XX", 'X', Block.gravel);
-		//GameRegistry.addRecipe(new ItemStack (carpetStone, 3), "XX", 'X', Block.stone);
+		GameRegistry.addRecipe(new ItemStack (carpetStone, 2), "XX", 'X', Block.pressurePlateStone);
 		GameRegistry.addRecipe(new ItemStack (carpetStonebrick, 3), "XX", 'X', Block.stoneBrick);
-		//GameRegistry.addRecipe(new ItemStack (carpetPlankOak, 3), "XX", 'X', new ItemStack(Block.planks,1,0));
+		GameRegistry.addRecipe(new ItemStack (carpetPlankOak, 2), "XX", 'X', Block.pressurePlatePlanks);
 		//GameRegistry.addRecipe(new ItemStack (carpetPlankSpruce, 3), "XX", 'X', new ItemStack(Block.planks,1,1));
 		//GameRegistry.addRecipe(new ItemStack (carpetLogOakTop, 3), "XX", 'X', Block.);
 		GameRegistry.addRecipe(new ItemStack (carpetLogOak, 3), "XX", 'X', new ItemStack(Block.wood,1,0));
 		GameRegistry.addRecipe(new ItemStack (carpetLogSpruce, 3), "XX", 'X', new ItemStack(Block.wood,1,1));
 	}
-	
+
+	public void addRecipeOthers()
+	{
+		//GameRegistry.addRecipe(new ItemStack(Block.stoneBrick, 2, 1), "XX", 'X', Block.stoneBrick); //Mossy Stone Bricks
+		//GameRegistry.addRecipe(new ItemStack(Block.stoneBrick, 2, 2), "XX", 'X', Block.stoneBrick); //Cracked Stone Bricks
+		//GameRegistry.addRecipe(new ItemStack(Block.stoneBrick, 2, 3), "XX", 'X', Block.stoneBrick); //Chiseled Stone Bricks
+	}
 	
 /** ==========4========== serverStarting ==========4========== **/
 	@EventHandler
