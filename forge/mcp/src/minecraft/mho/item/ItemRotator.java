@@ -18,7 +18,7 @@ public class ItemRotator extends ItemMho {
 	public ItemRotator(int id, String name, String info, Map<Integer, String> rotatorAllowedBlocks) {
 		super(id, name, 1, info, 3, false);
 		this.allowedBlocks = rotatorAllowedBlocks;
-        this.setMaxDamage(64);
+        this.setMaxDamage(128);
 	}
 
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)

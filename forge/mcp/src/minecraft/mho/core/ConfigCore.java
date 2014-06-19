@@ -324,6 +324,8 @@ public class ConfigCore {
 	public static int darkGrassID;
 	public static int darkLogID;
 	public static int darkLeavesID;
+	public static int darkPlanksID;
+	public static int darkSaplingID;
 	
 	/* Mysterious */
 	public static int mysteriousStoneID;
@@ -507,6 +509,7 @@ public class ConfigCore {
 	public static int cakeLieBlockID;
 	public static int meatCakeBlockID;
 	public static int eternalIceBlockID;
+	public static int invisibleWaterID;
 
 	/** Secret **/ 
     public static int secretDoorWoodBlockID;
@@ -547,7 +550,7 @@ public class ConfigCore {
 	public static int stairGrassID;
 	public static int stairDirtID;
 	public static int stairGravelID;
-	public static int stairMossyCobbleID;
+	public static int stairCobbleMossyID;
 	public static int stairObsidianID;
 	public static int stairIceID;
 	public static int stairSnowID;
@@ -1008,6 +1011,8 @@ public class ConfigCore {
 		darkGrassID = naturalDarkID + 3;
 		darkLogID = naturalDarkID + 4;
 		darkLeavesID = naturalDarkID + 5;
+		darkPlanksID = naturalDarkID + 6;
+		darkSaplingID = naturalDarkID + 7;
 		
 		/* Mysterious */
 		mysteriousStoneID = naturalMysteriousID;
@@ -1192,6 +1197,7 @@ public class ConfigCore {
 		cakeLieBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Cake (def:3147)", 3147).getInt();
 		meatCakeBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Viande (def:3148)", 3148).getInt();
 		eternalIceBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Glace eternelle (def:3154)", 3154).getInt();
+		invisibleWaterID = config.get("Block IDs - 10 : Blocs speciaux", "Bloc d'eau invisible (def:3155)", 3155).getInt();
 
 		/** Secret **/ 
 		secretDoorWoodBlockID = config.get("Block IDs - 10 : Blocs speciaux", "Porte secrete en bois (bloc, def:3150)", 3150).getInt();
@@ -1326,7 +1332,7 @@ public class ConfigCore {
 		stairDirtID = setDirt;
 		stairGravelID = setGravel;
 		stairSandID = setSand;
-		stairMossyCobbleID = setMossyCobble;
+		stairCobbleMossyID = setMossyCobble;
 		stairStonebrickMossyID = setStonebrickMossy;
 		stairStonebrickCrackedID = setStonebrickCracked;
 		stairObsidianID = setObsidian;

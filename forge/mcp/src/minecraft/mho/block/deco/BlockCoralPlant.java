@@ -30,9 +30,7 @@ public class BlockCoralPlant extends Block
 	
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
-		boolean result;
-		result = canBlockStay(par1World, par2, par3, par4);
-		return result;
+		return canBlockStay(par1World, par2, par3, par4);
     }
 	
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4)

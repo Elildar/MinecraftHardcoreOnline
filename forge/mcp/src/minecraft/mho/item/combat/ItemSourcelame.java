@@ -35,7 +35,8 @@ public class ItemSourcelame extends ItemSwordMho {
      */
     public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase target, EntityLivingBase player)
     {
-    	target.clearActivePotions();
+    	target.removePotionEffect(Potion.fireResistance.id);
+    	//target.clearActivePotions();
     	target.setFire(5);
         par1ItemStack.damageItem(1, player);
         return true;

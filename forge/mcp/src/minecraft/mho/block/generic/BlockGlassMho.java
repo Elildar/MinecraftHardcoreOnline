@@ -1,5 +1,7 @@
 package mho.block.generic;
 
+import java.util.Random;
+
 import mho.Mho;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGlass;
@@ -23,6 +25,11 @@ public class BlockGlassMho extends BlockGlass {
 		this.setUnlocalizedName("MHO"+name);
 		this.setTextureName(name);
 	}
+
+    public int quantityDropped(Random par1Random)
+    {
+        return this.blockMaterial == Material.iron ? 1 : 0;
+    }
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)

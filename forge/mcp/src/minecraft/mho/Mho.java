@@ -9,6 +9,7 @@ import mho.block.build.BlockDoubleCrate;
 import mho.block.build.BlockGrisou;
 import mho.block.build.BlockIceMho;
 import mho.block.build.BlockInvisible;
+import mho.block.build.BlockInvisibleWater;
 import mho.block.build.BlockMetaWoolLight;
 import mho.block.build.BlockRedRockLines;
 import mho.block.build.BlockRockGrass;
@@ -63,6 +64,7 @@ import mho.block.generic.BlockWallMho;
 import mho.core.ConfigCore;
 import mho.core.TabMho;
 import mho.core.command.CommandHandler;
+import mho.core.event.BonemealEventHandler;
 import mho.core.event.CraftEventHandler;
 import mho.core.event.PotionEventHandler;
 import mho.core.sound.SoundHandler;
@@ -118,7 +120,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.6")
+@Mod(modid = "MMHO", name = "MMHO's mod", version = "1.0.8")
 
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 
@@ -497,7 +499,7 @@ public class Mho
 	public static Block iceLog;
 	public static Block iceLeavesLight;
 	public static Block iceLeaves;
-	public static Block icePlank;
+	public static Block icePlanks;
 
 	/** Dark **/
 	public static Block darkStone;
@@ -506,6 +508,8 @@ public class Mho
 	public static Block darkGrassBlock;
 	public static Block darkLog;
 	public static Block darkLeaves;
+	public static Block darkPlanks;
+	public static Block darkSapling;
 
 	/** Mysterious **/
 	public static Block mysteriousStone;
@@ -686,6 +690,7 @@ public class Mho
 	public static Block cakeLieBlock;
 	public static Block meatCakeBlock;
 	public static Block eternalIceBlock;
+	public static Block invisibleWater;
 
 	/** Secret **/ 
     public static Block blockSecretDoorWood;
@@ -700,7 +705,7 @@ public class Mho
 	public static Block stairGrass;
 	public static Block stairDirt;
 	public static Block stairGravel;
-	public static Block stairMossyCobble;
+	public static Block stairCobbleMossy;
 	public static Block stairObsidian;
 	public static Block stairIce;
 	public static Block stairSnow;
@@ -1011,7 +1016,7 @@ public class Mho
 
 	// TODO Presentoire de vitrine 197
 	
-	/**Achievement**/
+	/** Achievement **/
 	public static CraftEventHandler craftHandler = new CraftEventHandler();
 
 
@@ -1023,6 +1028,7 @@ public class Mho
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		/**Load Custom Event**/
 		MinecraftForge.EVENT_BUS.register(new PotionEventHandler());
+		MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
 
 		ConfigCore cc = new ConfigCore();
 		ConfigCore.loadConfig(event);
@@ -1780,7 +1786,7 @@ public class Mho
 		LanguageRegistry.addName(whiteCobblestone, "Pierre blanche fragment\u00e9e");
 		LanguageRegistry.addName(whiteStonebrick, "Briques en pierre blanche");
 		LanguageRegistry.addName(whiteStonebrickRound, "Brique taill\u00e9e en pierre blanche");
-		LanguageRegistry.addName(whiteStoneDoubleSlab, "Dalle en pierre blanche");
+		LanguageRegistry.addName(whiteStoneDoubleSlab, "Double dalle en pierre blanche");
 		LanguageRegistry.addName(whiteStoneColumn, "Colonne en pierre blanche");
 		LanguageRegistry.addName(whiteStoneColumnHead, "Chapeau de colonne en pierre blanche");
 		
@@ -1799,7 +1805,7 @@ public class Mho
 		
 		LanguageRegistry.addName(sandstoneStonebrick, "Briques en sandstone");
 		LanguageRegistry.addName(sandstoneStonebrickRound, "Brique taill\u00e9e en sandstone");
-		LanguageRegistry.addName(sandstoneDoubleSlab, "Dalle en sandstone");
+		LanguageRegistry.addName(sandstoneDoubleSlab, "Double dalle en sandstone");
 		LanguageRegistry.addName(sandstoneColumn, "Colonne en sandstone");
 		LanguageRegistry.addName(sandstoneColumnHead, "Chapeau de colonne en sandstone");
 
@@ -1824,7 +1830,7 @@ public class Mho
 		LanguageRegistry.addName(ancientCobblestone, "Pierre ancienne fragment\u00e9e");
 		LanguageRegistry.addName(ancientStonebrick, "Briques en pierre ancienne");
 		LanguageRegistry.addName(ancientStonebrickRound, "Brique taill\u00e9e en pierre ancienne");
-		LanguageRegistry.addName(ancientDoubleSlab, "Dalle en pierre ancienne");
+		LanguageRegistry.addName(ancientDoubleSlab, "Double dalle en pierre ancienne");
 		LanguageRegistry.addName(ancientColumn, "Colonne en pierre ancienne");
 		LanguageRegistry.addName(ancientColumnHead, "Chapeau de colonne en pierre ancienne");
 
@@ -1846,7 +1852,7 @@ public class Mho
 		LanguageRegistry.addName(iceCobblestone, "Glace fragment\u00e9e");
 		LanguageRegistry.addName(iceStonebrick, "Briques en glace");
 		LanguageRegistry.addName(iceStonebrickRound, "Brique taill\u00e9e en glace");
-		LanguageRegistry.addName(iceDoubleSlab, "Dalle en glace");
+		LanguageRegistry.addName(iceDoubleSlab, "Double dalle en glace");
 		LanguageRegistry.addName(iceColumn, "Colonne en glace");
 		LanguageRegistry.addName(iceColumnHead, "Chapeau de colonne en glace");
 
@@ -1871,7 +1877,7 @@ public class Mho
 		LanguageRegistry.addName(marbleWhiteCobblestone, "Marbre blanc fragment\u00e9");
 		LanguageRegistry.addName(marbleWhiteStonebrick, "Briques en marbre blanc");
 		LanguageRegistry.addName(marbleWhiteStonebrickRound, "Brique taill\u00e9e en marbre blanc");
-		LanguageRegistry.addName(marbleWhiteDoubleSlab, "Dalle en marbre blanc");
+		LanguageRegistry.addName(marbleWhiteDoubleSlab, "Double dalle en marbre blanc");
 		LanguageRegistry.addName(marbleWhiteColumn, "Colonne en marbre blanc");
 		LanguageRegistry.addName(marbleWhiteColumnHead, "Chapeau de colonne en marbre blanc");
 		
@@ -1898,7 +1904,7 @@ public class Mho
 		LanguageRegistry.addName(marbleBlackCobblestone, "Marbre noir fragment\u00e9");
 		LanguageRegistry.addName(marbleBlackStonebrick, "Briques en marbre noir");
 		LanguageRegistry.addName(marbleBlackStonebrickRound, "Brique taill\u00e9e en marbre noir");
-		LanguageRegistry.addName(marbleBlackDoubleSlab, "Dalle en marbre noir");
+		LanguageRegistry.addName(marbleBlackDoubleSlab, "Double dalle en marbre noir");
 		LanguageRegistry.addName(marbleBlackColumn, "Colonne en marbre noir");
 		LanguageRegistry.addName(marbleBlackColumnHead, "Chapeau de colonne en marbre noir");
 		LanguageRegistry.addName(marbleCheck, "Damier en marbre");
@@ -1921,7 +1927,7 @@ public class Mho
 		LanguageRegistry.addName(woodenStone, "Bois lisse fonc\u00e9");
 		LanguageRegistry.addName(woodenStonebrick, "Briques en bois lisse fonc\u00e9");
 		LanguageRegistry.addName(woodenStonebrickRound, "Brique taill\u00e9e en bois lisse fonc\u00e9");
-		LanguageRegistry.addName(woodenDoubleSlab, "Dalle en bois lisse fonc\u00e9");
+		LanguageRegistry.addName(woodenDoubleSlab, "Double dalle en bois lisse fonc\u00e9");
 		LanguageRegistry.addName(woodenColumn, "Colonne en bois lisse fonc\u00e9");
 		LanguageRegistry.addName(woodenColumnHead, "Chapeau de colonne en bois lisse fonc\u00e9");
 		
@@ -1943,7 +1949,7 @@ public class Mho
 		LanguageRegistry.addName(woodenLightStone, "Bois lisse clair");
 		LanguageRegistry.addName(woodenLightStonebrick, "Briques en bois lisse clair");
 		LanguageRegistry.addName(woodenLightStonebrickRound, "Brique taill\u00e9e en bois lisse clair");
-		LanguageRegistry.addName(woodenLightDoubleSlab, "Dalle en bois lisse clair");
+		LanguageRegistry.addName(woodenLightDoubleSlab, "Double dalle en bois lisse clair");
 		LanguageRegistry.addName(woodenLightColumn, "Colonne en bois lisse clair");
 		LanguageRegistry.addName(woodenLightColumnHead, "Chapeau de colonne en bois lisse clair");
 		
@@ -1958,7 +1964,7 @@ public class Mho
 		
 		LanguageRegistry.addName(metalCheck, "Damier en acier");
 		LanguageRegistry.addName(metalStonebrickRound, "Acier taill\u00e9");
-		LanguageRegistry.addName(metalDoubleSlab, "Dalle en acier");
+		LanguageRegistry.addName(metalDoubleSlab, "Double dalle en acier");
 		
 		/** Basalt **/
 		basalt = new BlockStoneMho(cc.basaltID, Material.rock, "basalt", cc.basaltID + cc.cobblestoneRank);
@@ -1980,17 +1986,17 @@ public class Mho
 		iceLog = new BlockLogMho(cc.iceLogID, "iceLog");
 		iceLeaves = new BlockLeavesMho(cc.iceLeavesID, "iceLeaves");
 		iceLeavesLight = new BlockLeavesMho(cc.iceLeavesLightID, "iceLeavesLight");
-		icePlank = new BlockMho(cc.icePlankID, Material.wood, "icePlank").setStepSound(Block.soundWoodFootstep);
+		icePlanks = new BlockMho(cc.icePlankID, Material.wood, "icePlank").setStepSound(Block.soundWoodFootstep);
 
 		GameRegistry.registerBlock(iceLog, "MHOiceLog");
 		GameRegistry.registerBlock(iceLeaves, "MHOiceLeaves");
 		GameRegistry.registerBlock(iceLeavesLight, "MHOiceLeavesLight");
-		GameRegistry.registerBlock(icePlank, "MHOicePlank");
+		GameRegistry.registerBlock(icePlanks, "MHOicePlank");
 		
 		LanguageRegistry.addName(iceLog, "B\u00fbche glac\u00E9e");
 		LanguageRegistry.addName(iceLeaves, "Feuilles glac\u00E9es");
 		LanguageRegistry.addName(iceLeavesLight, "Feuilles claires glac\u00E9es");
-		LanguageRegistry.addName(icePlank, "Planche glac\u00E9e");
+		LanguageRegistry.addName(icePlanks, "Planche glac\u00E9e");
 		
 		/** Dark Blocks **/
 		darkStone = new BlockStoneMho(cc.darkStoneID, Material.rock, "darkStone", cc.darkCobblestoneID);
@@ -1999,6 +2005,9 @@ public class Mho
 		darkGrassBlock = new BlockGrassMho(cc.darkGrassID, "dark");
 		darkLog = new BlockLogMho(cc.darkLogID, "darkLog");
 		darkLeaves = new BlockLeavesMho(cc.darkLeavesID, "darkLeaves");
+		darkPlanks = new BlockMho(cc.darkPlanksID, Material.wood, "darkPlanks").setStepSound(Block.soundWoodFootstep);
+		darkSapling = new BlockSaplingMho(cc.darkSaplingID, "darkSapling", new int[]{darkLog.blockID}, new int[]{darkLeaves.blockID});
+		((BlockLeavesMho) darkLeaves).setSaplingId(darkSapling.blockID);
 
 		GameRegistry.registerBlock(darkStone, "MHOdarkStone");
 		GameRegistry.registerBlock(darkCobblestone, "MHOdarkCobblestone");
@@ -2006,13 +2015,17 @@ public class Mho
 		GameRegistry.registerBlock(darkGrassBlock, "MHOdarkGrassBlock");
 		GameRegistry.registerBlock(darkLog, "MHOdarkLog");
 		GameRegistry.registerBlock(darkLeaves, "MHOdarkLeaves");
+		GameRegistry.registerBlock(darkPlanks, "MHOdarkPlanks");
+		GameRegistry.registerBlock(darkSapling, "MHOdarkSapling");
 		
 		LanguageRegistry.addName(darkStone, "Pierre sombre");
 		LanguageRegistry.addName(darkCobblestone, "Pierre sombre fragment\u00e9e");
 		LanguageRegistry.addName(darkDirt, "Terre sombre");
 		LanguageRegistry.addName(darkGrassBlock, "Bloc d'herbe sombre");
 		LanguageRegistry.addName(darkLog, "B\u00fbche sombre");
-		LanguageRegistry.addName(darkLeaves, "Feuilles sombre");
+		LanguageRegistry.addName(darkLeaves, "Feuilles sombres");
+		LanguageRegistry.addName(darkPlanks, "Planches sombres");
+		LanguageRegistry.addName(darkSapling, "Pousse d'arbre sombre");
 
 		/** Mysterious Blocks **/
 		mysteriousStone = new BlockMho(cc.mysteriousStoneID, Material.rock, "mysteriousStone");
@@ -2494,7 +2507,7 @@ public class Mho
 		LanguageRegistry.addName(logRed, "B\u00fbche rouge");
 		LanguageRegistry.addName(barrel, "Tonneau");
 		
-		ironWindowPane = new BlockPaneMho(cc.ironWindowPaneID, "ironWindow", "ironWindowPane");
+		ironWindowPane = new BlockPaneMho(cc.ironWindowPaneID, Material.iron, "ironWindow", "ironWindowPane", true).setStepSound(Block.soundMetalFootstep);
 
 		GameRegistry.registerBlock(ironWindowPane, "MHOironWindowPane");
 		
@@ -2517,6 +2530,7 @@ public class Mho
 		cakeLieBlock = new BlockCakeLie(cc.cakeLieBlockID, Material.cake, "cakeLieBlock");
 		meatCakeBlock = new BlockCake(cc.meatCakeBlockID, "meatBlock");
 		eternalIceBlock = new BlockIceMho(cc.eternalIceBlockID, "eternalIce");
+		invisibleWater = new BlockInvisibleWater(cc.invisibleWaterID, "invisible");
 
 		GameRegistry.registerBlock(grisouBlock, "MHOgrisouBlock");
 		GameRegistry.registerBlock(slimeBlock, "MHOslimeBlock");
@@ -2535,6 +2549,7 @@ public class Mho
 		GameRegistry.registerBlock(cakeLieBlock, "MHOcakeLieBlock");
 		GameRegistry.registerBlock(meatCakeBlock, "MHOmeatCakeBlock");
 		GameRegistry.registerBlock(eternalIceBlock, "MHOeternalIceBlock");
+		GameRegistry.registerBlock(invisibleWater, "MHOinvisibleWater");
 		
 		LanguageRegistry.addName(grisouBlock, "Bloc de grisou");
 		LanguageRegistry.addName(slimeBlock, "Bloc de slime");
@@ -2553,6 +2568,7 @@ public class Mho
 		LanguageRegistry.addName(cakeLieBlock, "Cake");
 		LanguageRegistry.addName(meatCakeBlock, "Viande");
 		LanguageRegistry.addName(eternalIceBlock, "Glace \u00e9ternelle");
+		LanguageRegistry.addName(invisibleWater, "Bloc d'eau invisible");
 
 		/** Secret **/ 
     	blockSecretDoorWood = new BlockSecretDoor(cc.secretDoorWoodBlockID, Material.wood, "secretDoorWood").setHardness(1.2F).setStepSound(Block.soundWoodFootstep);
@@ -2590,7 +2606,7 @@ public class Mho
 		stairGrass = new BlockStairsMho(cc.stairGrassID, Block.grass, 0, "stairGrass");
 		stairDirt = new BlockStairsMho(cc.stairDirtID, Block.dirt, 0, "stairDirt");
 		stairGravel = new BlockStairsMho(cc.stairGravelID, Block.gravel, 0, "stairGravel");
-		stairMossyCobble = new BlockStairsMho(cc.stairMossyCobbleID, Block.cobblestoneMossy, 0, "stairMossyCobble");
+		stairCobbleMossy = new BlockStairsMho(cc.stairCobbleMossyID, Block.cobblestoneMossy, 0, "stairMossyCobble");
 		stairObsidian = new BlockStairsMho(cc.stairObsidianID, Block.obsidian, 0, "stairObsidian");
 		stairIce = new BlockStairsMho(cc.stairIceID, Block.ice, 0, "stairIce").setLightOpacity(3);
 		stairSnow = new BlockStairsMho(cc.stairSnowID, Block.blockSnow, 0, "stairSnow");
@@ -2604,7 +2620,7 @@ public class Mho
 		GameRegistry.registerBlock(stairGrass, "MHOstairGrass");
 		GameRegistry.registerBlock(stairDirt, "MHOstairDirt");
 		GameRegistry.registerBlock(stairGravel, "MHOstairGravel");
-		GameRegistry.registerBlock(stairMossyCobble, "MHOstairMossyCobble");
+		GameRegistry.registerBlock(stairCobbleMossy, "MHOstairMossyCobble");
 		GameRegistry.registerBlock(stairObsidian, "MHOstairObsidian");
 		GameRegistry.registerBlock(stairIce, "MHOstairIce");
 		GameRegistry.registerBlock(stairSnow, "MHOstairSnow");
@@ -2618,7 +2634,7 @@ public class Mho
 		LanguageRegistry.addName(stairGrass, "Escalier d'herbe");
 		LanguageRegistry.addName(stairDirt, "Escalier en terre");
 		LanguageRegistry.addName(stairGravel, "Escalier en gravier");
-		LanguageRegistry.addName(stairMossyCobble, "Escalier en pierre moussue");
+		LanguageRegistry.addName(stairCobbleMossy, "Escalier en pierre moussue");
 		LanguageRegistry.addName(stairObsidian, "Escalier en obsidienne");
 		LanguageRegistry.addName(stairIce, "Escalier en glace");
 		LanguageRegistry.addName(stairSnow, "Escalier en neige");
@@ -2890,22 +2906,22 @@ public class Mho
 		GameRegistry.registerBlock(stepSand, "MHOstepSand");
 		GameRegistry.registerBlock(stepStraw, "MHOstepStraw");
 		
-		LanguageRegistry.addName(stepGrass, "Demi-dalle d'herbe");
-		LanguageRegistry.addName(stepDirt, "Demi-dalle en terre");
-		LanguageRegistry.addName(stepGravel, "Demi-dalle en gravier");
-		LanguageRegistry.addName(stepWoodOak, "Demi-dalle en bois de ch\u00eane");
-		LanguageRegistry.addName(stepWoodSpruce, "Demi-dalle en bois de pin");
-		LanguageRegistry.addName(stepWoodBirch, "Demi-dalle en bois de bouleau");
-		LanguageRegistry.addName(stepWoodJungle, "Demi-dalle en bois de la jungle");
-		LanguageRegistry.addName(stepCobbleMossy, "Demi-dalle en pierre moussue");
-		LanguageRegistry.addName(stepObsidian, "Demi-dalle en obsidienne");
-		LanguageRegistry.addName(stepIce, "Demi-dalle en glace");
-		LanguageRegistry.addName(stepSnow, "Demi-dalle en neige");
-		LanguageRegistry.addName(stepStonebrickMossy, "Demi-dalle en stonebrick moussue");
-		LanguageRegistry.addName(stepStonebrickCracked, "Demi-dalle en stonebrick craquel\u00e9e");
-		LanguageRegistry.addName(stepEnderstone, "Demi-dalle en pierre du n\u00e9ant");
-		LanguageRegistry.addName(stepSand, "Demi-dalle en sable");
-		LanguageRegistry.addName(stepStraw, "Demi-dalle en paille");
+		LanguageRegistry.addName(stepGrass, "Dalle d'herbe");
+		LanguageRegistry.addName(stepDirt, "Dalle en terre");
+		LanguageRegistry.addName(stepGravel, "Dalle en gravier");
+		LanguageRegistry.addName(stepWoodOak, "Dalle en bois de ch\u00eane");
+		LanguageRegistry.addName(stepWoodSpruce, "Dalle en bois de pin");
+		LanguageRegistry.addName(stepWoodBirch, "Dalle en bois de bouleau");
+		LanguageRegistry.addName(stepWoodJungle, "Dalle en bois de la jungle");
+		LanguageRegistry.addName(stepCobbleMossy, "Dalle en pierre moussue");
+		LanguageRegistry.addName(stepObsidian, "Dalle en obsidienne");
+		LanguageRegistry.addName(stepIce, "Dalle en glace");
+		LanguageRegistry.addName(stepSnow, "Dalle en neige");
+		LanguageRegistry.addName(stepStonebrickMossy, "Dalle en stonebrick moussue");
+		LanguageRegistry.addName(stepStonebrickCracked, "Dalle en stonebrick craquel\u00e9e");
+		LanguageRegistry.addName(stepEnderstone, "Dalle en pierre du n\u00e9ant");
+		LanguageRegistry.addName(stepSand, "Dalle en sable");
+		LanguageRegistry.addName(stepStraw, "Dalle en paille");
 		
 		/** Wool **/
 		stepWoolWhite = new BlockStepMho(cc.stepWoolWhiteID, Block.cloth, 0, "stepWoolWhite").setStepSound(Block.soundClothFootstep);
@@ -2942,22 +2958,22 @@ public class Mho
 		GameRegistry.registerBlock(stepWoolRed, "MHOstepWoolRed");
 		GameRegistry.registerBlock(stepWoolBlack, "MHOstepWoolBlack");
 
-		LanguageRegistry.addName(stepWoolWhite, "Demi-dalle en laine blanche");
-		LanguageRegistry.addName(stepWoolOrange, "Demi-dalle en laine orange");
-		LanguageRegistry.addName(stepWoolMagenta, "Demi-dalle en laine magenta");
-		LanguageRegistry.addName(stepWoolLightBlue, "Demi-dalle en laine bleu claire");
-		LanguageRegistry.addName(stepWoolYellow, "Demi-dalle en laine jaune");
-		LanguageRegistry.addName(stepWoolLightGreen, "Demi-dalle en laine verte claire");
-		LanguageRegistry.addName(stepWoolPink, "Demi-dalle en laine rose");
-		LanguageRegistry.addName(stepWoolGray, "Demi-dalle en laine grise");
-		LanguageRegistry.addName(stepWoolLightGray, "Demi-dalle en laine grise claire");
-		LanguageRegistry.addName(stepWoolCyan, "Demi-dalle en laine cyan");
-		LanguageRegistry.addName(stepWoolPurple, "Demi-dalle en laine violette");
-		LanguageRegistry.addName(stepWoolBlue, "Demi-dalle en laine bleu");
-		LanguageRegistry.addName(stepWoolBrown, "Demi-dalle en laine marron");
-		LanguageRegistry.addName(stepWoolGreen, "Demi-dalle en laine verte");
-		LanguageRegistry.addName(stepWoolRed, "Demi-dalle en laine rouge");
-		LanguageRegistry.addName(stepWoolBlack, "Demi-dalle en laine noire");
+		LanguageRegistry.addName(stepWoolWhite, "Dalle en laine blanche");
+		LanguageRegistry.addName(stepWoolOrange, "Dalle en laine orange");
+		LanguageRegistry.addName(stepWoolMagenta, "Dalle en laine magenta");
+		LanguageRegistry.addName(stepWoolLightBlue, "Dalle en laine bleu claire");
+		LanguageRegistry.addName(stepWoolYellow, "Dalle en laine jaune");
+		LanguageRegistry.addName(stepWoolLightGreen, "Dalle en laine verte claire");
+		LanguageRegistry.addName(stepWoolPink, "Dalle en laine rose");
+		LanguageRegistry.addName(stepWoolGray, "Dalle en laine grise");
+		LanguageRegistry.addName(stepWoolLightGray, "Dalle en laine grise claire");
+		LanguageRegistry.addName(stepWoolCyan, "Dalle en laine cyan");
+		LanguageRegistry.addName(stepWoolPurple, "Dalle en laine violette");
+		LanguageRegistry.addName(stepWoolBlue, "Dalle en laine bleu");
+		LanguageRegistry.addName(stepWoolBrown, "Dalle en laine marron");
+		LanguageRegistry.addName(stepWoolGreen, "Dalle en laine verte");
+		LanguageRegistry.addName(stepWoolRed, "Dalle en laine rouge");
+		LanguageRegistry.addName(stepWoolBlack, "Dalle en laine noire");
 
 		/** Wool light **/
 		stepWoolWhiteLight = new BlockStepMho(cc.stepWoolWhiteLightID, Block.cloth, 0, "stepWoolWhiteLight").setLightValue(1.0F).setStepSound(Block.soundClothFootstep);
@@ -2994,22 +3010,22 @@ public class Mho
 		GameRegistry.registerBlock(stepWoolRedLight, "MHOstepWoolRedLight");
 		GameRegistry.registerBlock(stepWoolBlackLight, "MHOstepWoolBlackLight");
 		
-		LanguageRegistry.addName(stepWoolWhiteLight, "Demi-dalle en laine blanche lumineuse");
-		LanguageRegistry.addName(stepWoolOrangeLight, "Demi-dalle en laine orange lumineuse");
-		LanguageRegistry.addName(stepWoolMagentaLight, "Demi-dalle en laine magenta lumineuse");
-		LanguageRegistry.addName(stepWoolLightBlueLight, "Demi-dalle en laine bleu claire lumineuse");
-		LanguageRegistry.addName(stepWoolYellowLight, "Demi-dalle en laine jaune lumineuse");
-		LanguageRegistry.addName(stepWoolLightGreenLight, "Demi-dalle en laine verte claire lumineuse");
-		LanguageRegistry.addName(stepWoolPinkLight, "Demi-dalle en laine rose lumineuse");
-		LanguageRegistry.addName(stepWoolGrayLight, "Demi-dalle en laine grise lumineuse");
-		LanguageRegistry.addName(stepWoolLightGrayLight, "Demi-dalle en laine grise claire lumineuse");
-		LanguageRegistry.addName(stepWoolCyanLight, "Demi-dalle en laine cyan lumineuse");
-		LanguageRegistry.addName(stepWoolPurpleLight, "Demi-dalle en laine violette lumineuse");
-		LanguageRegistry.addName(stepWoolBlueLight, "Demi-dalle en laine bleu lumineuse");
-		LanguageRegistry.addName(stepWoolBrownLight, "Demi-dalle en laine marron lumineuse");
-		LanguageRegistry.addName(stepWoolGreenLight, "Demi-dalle en laine verte lumineuse");
-		LanguageRegistry.addName(stepWoolRedLight, "Demi-dalle en laine rouge lumineuse");
-		LanguageRegistry.addName(stepWoolBlackLight, "Demi-dalle en laine noire lumineuse");
+		LanguageRegistry.addName(stepWoolWhiteLight, "Dalle en laine blanche lumineuse");
+		LanguageRegistry.addName(stepWoolOrangeLight, "Dalle en laine orange lumineuse");
+		LanguageRegistry.addName(stepWoolMagentaLight, "Dalle en laine magenta lumineuse");
+		LanguageRegistry.addName(stepWoolLightBlueLight, "Dalle en laine bleu claire lumineuse");
+		LanguageRegistry.addName(stepWoolYellowLight, "Dalle en laine jaune lumineuse");
+		LanguageRegistry.addName(stepWoolLightGreenLight, "Dalle en laine verte claire lumineuse");
+		LanguageRegistry.addName(stepWoolPinkLight, "Dalle en laine rose lumineuse");
+		LanguageRegistry.addName(stepWoolGrayLight, "Dalle en laine grise lumineuse");
+		LanguageRegistry.addName(stepWoolLightGrayLight, "Dalle en laine grise claire lumineuse");
+		LanguageRegistry.addName(stepWoolCyanLight, "Dalle en laine cyan lumineuse");
+		LanguageRegistry.addName(stepWoolPurpleLight, "Dalle en laine violette lumineuse");
+		LanguageRegistry.addName(stepWoolBlueLight, "Dalle en laine bleu lumineuse");
+		LanguageRegistry.addName(stepWoolBrownLight, "Dalle en laine marron lumineuse");
+		LanguageRegistry.addName(stepWoolGreenLight, "Dalle en laine verte lumineuse");
+		LanguageRegistry.addName(stepWoolRedLight, "Dalle en laine rouge lumineuse");
+		LanguageRegistry.addName(stepWoolBlackLight, "Dalle en laine noire lumineuse");
 
 		/** Sets of materials **/
 		stepStoneColumn = new BlockStepMho(cc.stoneID + cc.stepColumnRank, Mho.stoneColumn, 0, "stepStoneColumn");
@@ -3128,63 +3144,63 @@ public class Mho
 
 		GameRegistry.registerBlock(stepMetal, "MHOstepMetal");
 
-		LanguageRegistry.addName(stepStoneColumn, "Demi-dalle en colonne de pierre");
-		LanguageRegistry.addName(stepStoneColumnHead, "Demi-dalle en chapeau de colonne de pierre");
+		LanguageRegistry.addName(stepStoneColumn, "Dalle en colonne de pierre");
+		LanguageRegistry.addName(stepStoneColumnHead, "Dalle en chapeau de colonne de pierre");
 
-		LanguageRegistry.addName(stepWhiteStone, "Demi-dalle en pierre blanche");
-		LanguageRegistry.addName(stepWhiteCobblestone, "Demi-dalle en pierre blanche fragment\u00e9e");
-		LanguageRegistry.addName(stepWhiteStonebrick, "Demi-dalle en briques de pierre blanche");
-		LanguageRegistry.addName(stepWhiteDoubleSlab, "Demi-dalle en dalle de pierre blanche");
-		LanguageRegistry.addName(stepWhiteColumn, "Demi-dalle en colonne de pierre blanche");
-		LanguageRegistry.addName(stepWhiteColumnHead, "Demi-dalle en chapeau de colonne de pierre blanche");
+		LanguageRegistry.addName(stepWhiteStone, "Dalle en pierre blanche");
+		LanguageRegistry.addName(stepWhiteCobblestone, "Dalle en pierre blanche fragment\u00e9e");
+		LanguageRegistry.addName(stepWhiteStonebrick, "Dalle en briques de pierre blanche");
+		LanguageRegistry.addName(stepWhiteDoubleSlab, "Dalle de pierre blanche");
+		LanguageRegistry.addName(stepWhiteColumn, "Dalle en colonne de pierre blanche");
+		LanguageRegistry.addName(stepWhiteColumnHead, "Dalle en chapeau de colonne de pierre blanche");
 
-		LanguageRegistry.addName(stepSandstoneStonebrick, "Demi-dalle en briques de sandstone");
-		LanguageRegistry.addName(stepSandstoneDoubleSlab, "Demi-dalle en dalle de sandstone");
-		LanguageRegistry.addName(stepSandstoneColumn, "Demi-dalle en colonne de sandstone");
-		LanguageRegistry.addName(stepSandstoneColumnHead, "Demi-dalle en chapeau de colonne de sandstone");
+		LanguageRegistry.addName(stepSandstoneStonebrick, "Dalle en briques de sandstone");
+		LanguageRegistry.addName(stepSandstoneDoubleSlab, "Dalle de sandstone");
+		LanguageRegistry.addName(stepSandstoneColumn, "Dalle en colonne de sandstone");
+		LanguageRegistry.addName(stepSandstoneColumnHead, "Dalle en chapeau de colonne de sandstone");
 
-		LanguageRegistry.addName(stepAncientStone, "Demi-dalle en pierre ancienne");
-		LanguageRegistry.addName(stepAncientCobblestone, "Demi-dalle en pierre ancienne fragment\u00e9e");
-		LanguageRegistry.addName(stepAncientStonebrick, "Demi-dalle en brique de pierre ancienne");
-		LanguageRegistry.addName(stepAncientDoubleSlab, "Demi-dalle en dalle de pierre ancienne");
-		LanguageRegistry.addName(stepAncientColumn, "Demi-dalle en colonne de pierre ancienne");
-		LanguageRegistry.addName(stepAncientColumnHead, "Demi-dalle en chapeau de colonne de pierre ancienne");
+		LanguageRegistry.addName(stepAncientStone, "Dalle en pierre ancienne");
+		LanguageRegistry.addName(stepAncientCobblestone, "Dalle en pierre ancienne fragment\u00e9e");
+		LanguageRegistry.addName(stepAncientStonebrick, "Dalle en brique de pierre ancienne");
+		LanguageRegistry.addName(stepAncientDoubleSlab, "Dalle de pierre ancienne");
+		LanguageRegistry.addName(stepAncientColumn, "Dalle en colonne de pierre ancienne");
+		LanguageRegistry.addName(stepAncientColumnHead, "Dalle en chapeau de colonne de pierre ancienne");
 
-		LanguageRegistry.addName(stepIceCobblestone, "Demi-dalle en glace fragment\u00e9e");
-		LanguageRegistry.addName(stepIceStonebrick, "Demi-dalle en briques de glace");
-		LanguageRegistry.addName(stepIceDoubleSlab, "Demi-dalle en dalle de glace");
-		LanguageRegistry.addName(stepIceColumn, "Demi-dalle en colonne de glace");
-		LanguageRegistry.addName(stepIceColumnHead, "Demi-dalle en chapeau de colonne de glace");
+		LanguageRegistry.addName(stepIceCobblestone, "Dalle en glace fragment\u00e9e");
+		LanguageRegistry.addName(stepIceStonebrick, "Dalle en briques de glace");
+		LanguageRegistry.addName(stepIceDoubleSlab, "Dalle de glace");
+		LanguageRegistry.addName(stepIceColumn, "Dalle en colonne de glace");
+		LanguageRegistry.addName(stepIceColumnHead, "Dalle en chapeau de colonne de glace");
 
-		LanguageRegistry.addName(stepMarbleWhiteStone, "Demi-dalle en marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteCobblestone, "Demi-dalle en marbre blanc fragment\u00e9");
-		LanguageRegistry.addName(stepMarbleWhiteStonebrick, "Demi-dalle en briques de marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteDoubleSlab, "Demi-dalle en dalle de marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteColumn, "Demi-dalle en colonne de marbre blanc");
-		LanguageRegistry.addName(stepMarbleWhiteColumnHead, "Demi-dalle en chapeau de colonne de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteStone, "Dalle en marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteCobblestone, "Dalle en marbre blanc fragment\u00e9");
+		LanguageRegistry.addName(stepMarbleWhiteStonebrick, "Dalle en briques de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteDoubleSlab, "Dalle de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteColumn, "Dalle en colonne de marbre blanc");
+		LanguageRegistry.addName(stepMarbleWhiteColumnHead, "Dalle en chapeau de colonne de marbre blanc");
 
-		LanguageRegistry.addName(stepMarbleBlackStone, "Demi-dalle en marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackCobblestone, "Demi-dalle en marbre noir fragment\u00e9");
-		LanguageRegistry.addName(stepMarbleBlackStonebrick, "Demi-dalle en briques de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackDoubleSlab, "Demi-dalle en dalle de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackColumn, "Demi-dalle en colonne de marbre noir");
-		LanguageRegistry.addName(stepMarbleBlackColumnHead, "Demi-dalle en chapeau de colonne de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackStone, "Dalle en marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackCobblestone, "Dalle en marbre noir fragment\u00e9");
+		LanguageRegistry.addName(stepMarbleBlackStonebrick, "Dalle en briques de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackDoubleSlab, "Dalle de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackColumn, "Dalle en colonne de marbre noir");
+		LanguageRegistry.addName(stepMarbleBlackColumnHead, "Dalle en chapeau de colonne de marbre noir");
 
-		LanguageRegistry.addName(stepMarbleCheck, "Demi-dalle en damier de marbre");
+		LanguageRegistry.addName(stepMarbleCheck, "Dalle en damier de marbre");
 
-		LanguageRegistry.addName(stepWoodenStone, "Demi-dalle en bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenStonebrick, "Demi-dalle en briques de bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenDoubleSlab, "Demi-dalle en dalle de bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenColumn, "Demi-dalle en colonne de bois lisse fonc\u00e9");
-		LanguageRegistry.addName(stepWoodenColumnHead, "Demi-dalle en chapeau de colonne de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenStone, "Dalle en bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenStonebrick, "Dalle en briques de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenDoubleSlab, "Dalle de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenColumn, "Dalle en colonne de bois lisse fonc\u00e9");
+		LanguageRegistry.addName(stepWoodenColumnHead, "Dalle en chapeau de colonne de bois lisse fonc\u00e9");
 
-		LanguageRegistry.addName(stepWoodenLightStone, "Demi-dalle en bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightStonebrick, "Demi-dalle en briques de bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightDoubleSlab, "Demi-dalle en dalle de bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightColumn, "Demi-dalle en colonne de bois lisse clair");
-		LanguageRegistry.addName(stepWoodenLightColumnHead, "Demi-dalle en chapeau de colonne de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightStone, "Dalle en bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightStonebrick, "Dalle en briques de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightDoubleSlab, "Dalle de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightColumn, "Dalle en colonne de bois lisse clair");
+		LanguageRegistry.addName(stepWoodenLightColumnHead, "Dalle en chapeau de colonne de bois lisse clair");
 
-		LanguageRegistry.addName(stepMetal, "Demi-dalle en acier");
+		LanguageRegistry.addName(stepMetal, "Dalle en acier");
 
 		/** Tiles **/
 		stepArdoise = new BlockStepMho(cc.stepArdoiseID, Mho.tileArdoise, 0, "stepArdoise");
@@ -3205,14 +3221,14 @@ public class Mho
 		GameRegistry.registerBlock(stepTileBlackBig, "MHOstepTileBlackBig");
 		GameRegistry.registerBlock(stepTileBlackAlt, "MHOstepTileBlackAlt");
 
-		LanguageRegistry.addName(stepArdoise, "Demi-dalle d'ardoises");
-		LanguageRegistry.addName(stepTileRed, "Demi-dalle de tuiles rouges");
-		LanguageRegistry.addName(stepTileBlue, "Demi-dalle de tuiles bleues");
-		LanguageRegistry.addName(stepTileBlack, "Demi-dalle de tuiles noires");
-		LanguageRegistry.addName(stepTileRedBig, "Demi-dalle de grandes tuiles rouges");
-		LanguageRegistry.addName(stepTileBlueBig, "Demi-dalle de grandes tuiles bleues");
-		LanguageRegistry.addName(stepTileBlackBig, "Demi-dalle de grandes tuiles noires");
-		LanguageRegistry.addName(stepTileBlackAlt, "Demi-dalle de tuiles noires d\u00e9chauss\u00e9es");
+		LanguageRegistry.addName(stepArdoise, "Dalle d'ardoises");
+		LanguageRegistry.addName(stepTileRed, "Dalle de tuiles rouges");
+		LanguageRegistry.addName(stepTileBlue, "Dalle de tuiles bleues");
+		LanguageRegistry.addName(stepTileBlack, "Dalle de tuiles noires");
+		LanguageRegistry.addName(stepTileRedBig, "Dalle de grandes tuiles rouges");
+		LanguageRegistry.addName(stepTileBlueBig, "Dalle de grandes tuiles bleues");
+		LanguageRegistry.addName(stepTileBlackBig, "Dalle de grandes tuiles noires");
+		LanguageRegistry.addName(stepTileBlackAlt, "Dalle de tuiles noires d\u00e9chauss\u00e9es");
 
 		/** Others **/
 		stepLanternWood = new BlockStepMho(cc.stepLanternWoodID, Mho.lanternWood, 0, "stepLanternWood").setLightValue(1.0F).setStepSound(Block.soundGlassFootstep);
@@ -3221,8 +3237,8 @@ public class Mho
 		GameRegistry.registerBlock(stepLanternWood, "MHOstepLanternWood");
 		GameRegistry.registerBlock(stepLanternIron, "MHOstepLanternIron");
 
-		LanguageRegistry.addName(stepLanternWood, "Demi-dalle de lanterne en bois");
-		LanguageRegistry.addName(stepLanternIron, "Demi-dalle de lanterne en fer");
+		LanguageRegistry.addName(stepLanternWood, "Dalle de lanterne en bois");
+		LanguageRegistry.addName(stepLanternIron, "Dalle de lanterne en fer");
 	}
 	
 	public void initWalls(ConfigCore cc)
@@ -3616,7 +3632,7 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(whiteStonebrickRound, 1, 0), new ItemStack(Block.stoneBrick,1,3), new ItemStack(Item.dyePowder,1,15));
 		
 		GameRegistry.addRecipe(new ItemStack(whiteStonebrick, 4), "XX", "XX", 'X', Mho.whiteStone);
-		GameRegistry.addRecipe(new ItemStack(whiteStoneDoubleSlab, 2), "X", "X", 'X', Mho.whiteStonebrick);
+		GameRegistry.addRecipe(new ItemStack(whiteStoneDoubleSlab, 2), "X", "X", 'X', Mho.whiteStone);
 		GameRegistry.addRecipe(new ItemStack(whiteStoneColumn, 3), "X", "X", "X", 'X', Mho.whiteStone);
 		GameRegistry.addRecipe(new ItemStack(whiteStoneColumnHead, 2), "X", "Y", 'X', Mho.whiteStoneDoubleSlab, 'Y', Mho.whiteStoneColumn);
 
@@ -3638,7 +3654,7 @@ public class Mho
 		
 		/** Sandstone **/
 		GameRegistry.addRecipe(new ItemStack(sandstoneStonebrick, 4), "XX", "XX", 'X', Block.sandStone);
-		GameRegistry.addRecipe(new ItemStack(sandstoneDoubleSlab, 2), "X", "X", 'X', Mho.sandstoneStonebrick);
+		GameRegistry.addRecipe(new ItemStack(sandstoneDoubleSlab, 2), "X", "X", 'X', Block.sandStone);
 		GameRegistry.addRecipe(new ItemStack(sandstoneStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Block.sandStone);
 		GameRegistry.addRecipe(new ItemStack(sandstoneColumn, 3), "X", "X", "X", 'X', Block.sandStone);
 		GameRegistry.addRecipe(new ItemStack(sandstoneColumnHead, 2), "X", "Y", 'X', Mho.sandstoneDoubleSlab, 'Y', Mho.sandstoneColumn);
@@ -3651,7 +3667,7 @@ public class Mho
 		//GameRegistry.addRecipe(new ItemStack(ancientStone, 8), "XXX", "XYX", "XXX", 'X', Block.stone, 'Y', Item.compass);
 
 		GameRegistry.addRecipe(new ItemStack(ancientStonebrick, 4), "XX", "XX", 'X', Mho.ancientStone);
-		GameRegistry.addRecipe(new ItemStack(ancientDoubleSlab, 2), "X", "X", 'X', Mho.ancientStonebrick);
+		GameRegistry.addRecipe(new ItemStack(ancientDoubleSlab, 2), "X", "X", 'X', Mho.ancientStone);
 		GameRegistry.addRecipe(new ItemStack(ancientStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Mho.ancientStone);
 		GameRegistry.addRecipe(new ItemStack(ancientColumn, 3), "X", "X", "X", 'X', Mho.ancientStone);
 		GameRegistry.addRecipe(new ItemStack(ancientColumnHead, 2), "X", "Y", 'X', Mho.ancientDoubleSlab, 'Y', Mho.ancientColumn);
@@ -3667,7 +3683,7 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(iceCobblestone, 1, 0), Block.ice);
 		
 		GameRegistry.addRecipe(new ItemStack(iceStonebrick, 4), "XX", "XX", 'X', Block.ice);
-		GameRegistry.addRecipe(new ItemStack(iceDoubleSlab, 2), "X", "X", 'X', Mho.iceStonebrick);
+		GameRegistry.addRecipe(new ItemStack(iceDoubleSlab, 2), "X", "X", 'X', Block.ice);
 		GameRegistry.addRecipe(new ItemStack(iceStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Block.ice);
 		GameRegistry.addRecipe(new ItemStack(iceColumn, 3), "X", "X", "X", 'X', Block.ice);
 		GameRegistry.addRecipe(new ItemStack(iceColumnHead, 2), "X", "Y", 'X', Mho.iceDoubleSlab, 'Y', Mho.iceColumn);
@@ -3681,7 +3697,7 @@ public class Mho
 		//GameRegistry.addShapelessRecipe(new ItemStack(marbleWhiteStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,15));
 		
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteStonebrick, 4), "XX", "XX", 'X', Mho.marbleWhiteStone);
-		GameRegistry.addRecipe(new ItemStack(marbleWhiteDoubleSlab, 2), "X", "X", 'X', Mho.marbleWhiteStonebrick);
+		GameRegistry.addRecipe(new ItemStack(marbleWhiteDoubleSlab, 2), "X", "X", 'X', Mho.marbleWhiteStone);
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Mho.marbleWhiteStone);
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteColumn, 3), "X", "X", "X", 'X', Mho.marbleWhiteStone);
 		GameRegistry.addRecipe(new ItemStack(marbleWhiteColumnHead, 2), "X", "Y", 'X', Mho.marbleWhiteDoubleSlab, 'Y', Mho.marbleWhiteColumn);
@@ -3698,7 +3714,7 @@ public class Mho
 		//GameRegistry.addShapelessRecipe(new ItemStack(marbleBlackStone, 1, 0), Mho.obsidianBlock, new ItemStack(Item.dyePowder,1,0));
 		
 		GameRegistry.addRecipe(new ItemStack(marbleBlackStonebrick, 4), "XX", "XX", 'X', Mho.marbleBlackStone);
-		GameRegistry.addRecipe(new ItemStack(marbleBlackDoubleSlab, 2), "X", "X", 'X', Mho.marbleBlackStonebrick);
+		GameRegistry.addRecipe(new ItemStack(marbleBlackDoubleSlab, 2), "X", "X", 'X', Mho.marbleBlackStone);
 		GameRegistry.addRecipe(new ItemStack(marbleBlackStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Mho.marbleBlackStone);
 		GameRegistry.addRecipe(new ItemStack(marbleBlackColumn, 3), "X", "X", "X", 'X', Mho.marbleBlackStone);
 		GameRegistry.addRecipe(new ItemStack(marbleBlackColumnHead, 2), "X", "Y", 'X', Mho.marbleBlackDoubleSlab, 'Y', Mho.marbleBlackColumn);
@@ -3719,7 +3735,7 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(woodenStone, 1, 0), new ItemStack(Block.planks, 1, 1), Item.slimeBall);
 		
 		GameRegistry.addRecipe(new ItemStack(woodenStonebrick, 4), "XX", "XX", 'X', Mho.woodenStone);
-		GameRegistry.addRecipe(new ItemStack(woodenDoubleSlab, 2), "X", "X", 'X', Mho.woodenStonebrick);
+		GameRegistry.addRecipe(new ItemStack(woodenDoubleSlab, 2), "X", "X", 'X', Mho.woodenStone);
 		GameRegistry.addRecipe(new ItemStack(woodenStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Mho.woodenStone);
 		GameRegistry.addRecipe(new ItemStack(woodenColumn, 3), "X", "X", "X", 'X', Mho.woodenStone);
 		GameRegistry.addRecipe(new ItemStack(woodenColumnHead, 2), "X", "Y", 'X', Mho.woodenDoubleSlab, 'Y', Mho.woodenColumn);
@@ -3733,7 +3749,7 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(woodenLightStone, 1, 0), new ItemStack(Block.planks, 1, 2), Item.slimeBall);
 		
 		GameRegistry.addRecipe(new ItemStack(woodenLightStonebrick, 4), "XX", "XX", 'X', Mho.woodenLightStone);
-		GameRegistry.addRecipe(new ItemStack(woodenLightDoubleSlab, 2), "X", "X", 'X', Mho.woodenLightStonebrick);
+		GameRegistry.addRecipe(new ItemStack(woodenLightDoubleSlab, 2), "X", "X", 'X', Mho.woodenLightStone);
 		GameRegistry.addRecipe(new ItemStack(woodenLightStonebrickRound, 8), "XXX", "X X", "XXX", 'X', Mho.woodenLightStone);
 		GameRegistry.addRecipe(new ItemStack(woodenLightColumn, 3), "X", "X", "X", 'X', Mho.woodenLightStone);
 		GameRegistry.addRecipe(new ItemStack(woodenLightColumnHead, 2), "X", "Y", 'X', Mho.woodenLightDoubleSlab, 'Y', Mho.woodenLightColumn);
@@ -3764,7 +3780,7 @@ public class Mho
 		//iceLog
 		//iceLeaves
 		//iceLeavesLight
-		GameRegistry.addShapelessRecipe(new ItemStack(icePlank, 4, 0), iceLog);
+		GameRegistry.addShapelessRecipe(new ItemStack(icePlanks, 4, 0), iceLog);
 
 		/** Dark Blocks **/
 		GameRegistry.addShapelessRecipe(new ItemStack(darkStone, 1), Block.stone, new ItemStack(Item.dyePowder,1,0));
@@ -3773,6 +3789,8 @@ public class Mho
 		//GameRegistry.addRecipe(new ItemStack(darkGrassBlock, 1), "X", "Y", 'X', darkDirt, 'Y', Block.tallGrass);
 		//darkLog
 		//darkLeaves
+		GameRegistry.addShapelessRecipe(new ItemStack(darkPlanks, 4, 0), darkLog);
+		//darkSapling
 
 		/** Mysterious Blocks **/
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousStone, 1, 0), Block.stone, mysteriousDust);
@@ -3781,6 +3799,7 @@ public class Mho
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLog, 10, 0), Block.wood, mysteriousDust);
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLeaves, 1, 0), Block.leaves, mysteriousDust);
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousLeavesPurple, 1, 0), Block.leaves, mysteriousDust, mysteriousDust);
+		//mysteriousSapling
 
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousFlower, 1, 0), Block.plantYellow, mysteriousDust);
 		GameRegistry.addShapelessRecipe(new ItemStack(mysteriousPlantPurple, 1, 0), Block.plantRed, mysteriousDust);
@@ -3960,6 +3979,18 @@ public class Mho
 	
 	public void addRecipeStairs()
 	{
+		/** Stair base **/
+		GameRegistry.addRecipe(new ItemStack(Mho.stairGrass, 6), "X  ", "XX ", "XXX", 'X', Block.grass);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairDirt, 6), "X  ", "XX ", "XXX", 'X', Block.dirt);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairGravel, 6), "X  ", "XX ", "XXX", 'X', Block.gravel);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairCobbleMossy, 6), "X  ", "XX ", "XXX", 'X', Block.cobblestoneMossy);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairObsidian, 6), "X  ", "XX ", "XXX", 'X', Block.obsidian);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairIce, 6), "X  ", "XX ", "XXX", 'X', Block.ice);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairSnow, 6), "X  ", "XX ", "XXX", 'X', Block.snow);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairStonebrickMossy, 6), "X  ", "XX ", "XXX", 'X', new ItemStack(Block.stoneBrick,1,1));
+		GameRegistry.addRecipe(new ItemStack(Mho.stairStonebrickCracked, 6), "X  ", "XX ", "XXX", 'X', new ItemStack(Block.stoneBrick,1,2));
+		GameRegistry.addRecipe(new ItemStack(Mho.stairEnderstone, 6), "X  ", "XX ", "XXX", 'X', Block.whiteStone);
+		GameRegistry.addRecipe(new ItemStack(Mho.stairSand, 6), "X  ", "XX ", "XXX", 'X', Block.sand);
 		GameRegistry.addRecipe(new ItemStack(Mho.stairStraw, 4), "X  ", "XX ", "XXX", 'X', Block.hay);
 		
 		/** Stair white **/
@@ -4149,7 +4180,7 @@ public class Mho
 	{
 		/** Mc new **/
 		GameRegistry.addRecipe(new ItemStack (wallSandstone, 6), "XXX", "XXX", 'X', Block.sandStone);
-		GameRegistry.addRecipe(new ItemStack (wallPlankOak, 6), "XXX", "XXX", 'X', Block.planks);
+		GameRegistry.addRecipe(new ItemStack (wallPlankOak, 6), "XXX", "X X", 'X', new ItemStack(Block.planks,1,0));
 		GameRegistry.addRecipe(new ItemStack (wallBrick, 6), "XXX", "XXX", 'X', Block.brick);
 		GameRegistry.addRecipe(new ItemStack (wallStonebrick, 6), "XXX", "XXX", 'X', Block.stoneBrick);
 		GameRegistry.addRecipe(new ItemStack (wallNetherbrick, 6), "XXX", "XXX", 'X', Block.netherBrick);
