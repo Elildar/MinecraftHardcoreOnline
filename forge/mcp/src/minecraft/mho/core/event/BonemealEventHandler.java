@@ -90,7 +90,7 @@ public class BonemealEventHandler {
 				}
 			}
 		}
-		else if (event.ID == Mho.greyRockGrass.blockID || event.ID == Mho.brownRockGrass.blockID || event.ID == Mho.darkRockGrass.blockID)
+		else if (event.ID == Mho.greyRockGrass.blockID || event.ID == Mho.brownRockGrass.blockID || event.ID == Mho.darkRockGrass.blockID || event.ID == Mho.redGrassBlock.blockID)
 		{
             label102:
             for (int i1 = 0; i1 < 128; ++i1)
@@ -108,6 +108,7 @@ public class BonemealEventHandler {
                     if ((event.world.getBlockId(j1, k1 - 1, l1) != Block.grass.blockID &&
                        	 event.world.getBlockId(j1, k1 - 1, l1) != Mho.greyRockGrass.blockID &&
                     	 event.world.getBlockId(j1, k1 - 1, l1) != Mho.brownRockGrass.blockID &&
+                    	 event.world.getBlockId(j1, k1 - 1, l1) != Mho.redGrassBlock.blockID &&
                     	 event.world.getBlockId(j1, k1 - 1, l1) != Mho.darkRockGrass.blockID) || event.world.isBlockNormalCube(j1, k1, l1))
                     {
                         continue label102;
@@ -159,6 +160,11 @@ public class BonemealEventHandler {
 		{
 			event.setResult(Result.ALLOW);
         	event.world.setBlock(event.X, event.Y, event.Z, Mho.darkRockGrass.blockID, 1, 3);
+		}
+		else if (event.ID == Mho.redRockBigLine.blockID || event.ID == Mho.redRockLines.blockID)
+		{
+			event.setResult(Result.ALLOW);
+			event.world.setBlock(event.X, event.Y, event.Z, Mho.redGrassBlock.blockID, 1, 3);
 		}
 	}
 }

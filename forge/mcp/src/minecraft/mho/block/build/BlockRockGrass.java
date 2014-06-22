@@ -21,7 +21,7 @@ public class BlockRockGrass extends Block {
 	private Icon topIcon;
 	private Icon botIcon;
 	private Icon faceIcon;
-	
+		
 	public BlockRockGrass(int par1, String name) {
 		super(par1, Material.rock);
         this.setTickRandomly(true);
@@ -41,7 +41,7 @@ public class BlockRockGrass extends Block {
             {
                 par1World.setBlock(par2, par3, par4, this.blockID == Mho.greyRockGrass.blockID ? Mho.greyRock.blockID :
               	  (this.blockID == Mho.brownRockGrass.blockID ? Mho.brownRock.blockID :
-                	  (this.blockID == Mho.darkRockGrass.blockID ? Mho.darkRock.blockID : this.blockID)));
+              		  (this.blockID == Mho.darkRockGrass.blockID ? Mho.darkRock.blockID : this.blockID)));
             }
             else if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9)
             {
@@ -55,20 +55,20 @@ public class BlockRockGrass extends Block {
                     if (par1World.getBlockLightValue(i1, j1 + 1, k1) >= 4 && par1World.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
                         int m1 = par1World.getBlockId(i1, j1, k1);
-                    	if(m1 == Block.dirt.blockID)
+                    	if (m1 == Block.dirt.blockID)
                             par1World.setBlock(i1, j1, k1, Block.grass.blockID);
-                    	if(m1 == Mho.greyRock.blockID)
+                    	if (m1 == Mho.greyRock.blockID)
                             par1World.setBlock(i1, j1, k1, Mho.greyRockGrass.blockID);
-                    	if(m1 == Mho.greyRock.blockID)
-                            par1World.setBlock(i1, j1, k1, Mho.greyRockGrass.blockID);
-                    	if(m1 == Mho.brownRock.blockID)
+                    	if (m1 == Mho.brownRock.blockID)
                             par1World.setBlock(i1, j1, k1, Mho.brownRockGrass.blockID);
-                    	if(m1 == Mho.darkRock.blockID)
+                    	if (m1 == Mho.darkRock.blockID)
                             par1World.setBlock(i1, j1, k1, Mho.darkRockGrass.blockID);
-                    	if(m1 == Mho.mysteriousDirt.blockID)
+                    	if (m1 == Mho.mysteriousDirt.blockID)
                             par1World.setBlock(i1, j1, k1, Mho.mysteriousGrassBlock.blockID);
-                    	if(m1 == Mho.darkDirt.blockID)
+                    	if (m1 == Mho.darkDirt.blockID)
                             par1World.setBlock(i1, j1, k1, Mho.darkGrassBlock.blockID);
+                    	if (m1 == Mho.redRockBigLine.blockID || m1 == Mho.redRockLines.blockID)
+                    		par1World.setBlock(i1, j1, k1, Mho.redGrassBlock.blockID);
                     }
                 }
             }

@@ -13,6 +13,7 @@ import mho.block.build.BlockInvisibleWater;
 import mho.block.build.BlockMetaWoolLight;
 import mho.block.build.BlockRedRockLines;
 import mho.block.build.BlockRockGrass;
+import mho.block.build.BlockRockGrassOneIcon;
 import mho.block.build.BlockSlime;
 import mho.block.build.BlockStainedGlass;
 import mho.block.build.BlockTimbered;
@@ -2079,7 +2080,7 @@ public class Mho
 		LanguageRegistry.addName(mysteriousGrass, "Herbe myst\u00e9rieuse");
 
 		/** Red Rock **/
-		redGrassBlock = new BlockMho(cc.redGrassBlockID, Material.grass, "redGrassBlock").setStepSound(Block.soundGrassFootstep);
+		redGrassBlock = new BlockRockGrassOneIcon(cc.redGrassBlockID, "redGrassBlock").setStepSound(Block.soundGrassFootstep);
 		redGravel = new BlockMho(cc.redGravelID, Material.ground, "redGravel").setStepSound(Block.soundGravelFootstep);
 		redRockBigLine = new BlockRedRockLines(cc.redRockBigLineID, "redRockBigLine");
 		redRockLines = new BlockRedRockLines(cc.redRockLinesID, "redRockLines");
