@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import mho.Mho;
+import mho.world.WorldGenBigTreeMho;
 import mho.world.WorldGenTreesMho;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -46,12 +47,12 @@ public class BlockSaplingMho extends BlockSapling {
 
         int meta = par1World.getBlockMetadata(par2, par3, par4) & 3;
         WorldGenerator object = new WorldGenTreesMho(true, 5,  this.woodIds, this.leaveIds);
-/*
+
         if (par5Random.nextInt(10) == 0)
         {
             object = new WorldGenBigTreeMho(true, 5,  this.woodIds, this.leaveIds);
         }
-*/
+
         par1World.setBlock(par2, par3, par4, 0, 0, 4);
         if (!object.generate(par1World, par5Random, par2, par3, par4))
         {
