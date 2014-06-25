@@ -67,7 +67,7 @@ public class BlockGrassMho extends Block {
                             par1World.setBlock(i1, j1, k1, Mho.mysteriousGrassBlock.blockID);
                     	if (m1 == Mho.darkDirt.blockID)
                             par1World.setBlock(i1, j1, k1, Mho.darkGrassBlock.blockID);
-                    	if (m1 == Mho.redRockBigLine.blockID || m1 == Mho.redRockLines.blockID)
+                    	if (m1 == Mho.redRock.blockID)
                     		par1World.setBlock(i1, j1, k1, Mho.redGrassBlock.blockID);
                     }
                 }

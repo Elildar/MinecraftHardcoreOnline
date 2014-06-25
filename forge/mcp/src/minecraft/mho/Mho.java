@@ -2,6 +2,7 @@ package mho;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 
 import mho.block.build.BlockColumnHead;
 import mho.block.build.BlockCristalMho;
@@ -65,6 +66,7 @@ import mho.block.generic.BlockWallMho;
 import mho.core.ConfigCore;
 import mho.core.TabMho;
 import mho.core.command.CommandHandler;
+import mho.core.common.TeleportInformation;
 import mho.core.event.BonemealEventHandler;
 import mho.core.event.CraftEventHandler;
 import mho.core.event.PotionEventHandler;
@@ -134,6 +136,11 @@ public class Mho
 	public static ClientProxy proxya;
 
 	//////////////////// DECLARATION ////////////////////
+	
+	/** ================= Teleporters ================= **/
+
+	public static ArrayList teleportersList;
+	private int curArray = 0;
 	
 	/** ==================== Tabs ==================== **/
 	public static CreativeTabs tabMhoBlocks = new TabMho(CreativeTabs.getNextID(),"Mho : Blocs");
@@ -532,6 +539,7 @@ public class Mho
 	/** Red Rock **/
 	public static Block redGrassBlock;
 	public static Block redGravel;
+	public static Block redRock;
 	public static Block redRockLines;
 	public static Block redRockBigLine;
 	public static Block redSilver;
@@ -1034,6 +1042,10 @@ public class Mho
 		ConfigCore cc = new ConfigCore();
 		ConfigCore.loadConfig(event);
 
+		/** ================= Teleporters ================= **/
+
+		teleportersList = cc.teleportersList;
+		
 		/** ==================== Items ==================== **/
 
 		/** Item Quest **/
@@ -1681,9 +1693,10 @@ public class Mho
 	public void initOtherItems(ConfigCore cc)
 	{
 		/** Scroll **/
-		minorValysScroll = new ItemScrollTpValys(cc.minorValysScrollID, "minorValysScroll", "Vous t\u00E9l\u00E9porte \u00e0 Valys. Une fois sur deux !", 50);
-		mediumValysScroll = new ItemScrollTpValys(cc.mediumValysScrollID, "mediumValysScroll", "Vous t\u00E9l\u00E9porte \u00e0 Valys. Trois fois sur quatre !", 75);
-		majorValysScroll = new ItemScrollTpValys(cc.majorValysScrollID, "majorValysScroll", "Vous t\u00E9l\u00E9porte \u00e0 Valys !", 100);
+		/* Le get de l'arraylist est en dur pour optimiser la chose, si besoin est on peut changer en generique et recuperer l'index en faisant une comparaison sur le name et Valys. Sinon on place les autres scroll en bas et curArray++ */ 
+		minorValysScroll = new ItemScrollTpValys(cc.minorValysScrollID, "minorValysScroll", "Vous t\u00E9l\u00E9porte \u00e0 Valys. Une fois sur deux !", 50, (TeleportInformation) teleportersList.get(curArray));
+		mediumValysScroll = new ItemScrollTpValys(cc.mediumValysScrollID, "mediumValysScroll", "Vous t\u00E9l\u00E9porte \u00e0 Valys. Trois fois sur quatre !", 75, (TeleportInformation) teleportersList.get(curArray));
+		majorValysScroll = new ItemScrollTpValys(cc.majorValysScrollID, "majorValysScroll", "Vous t\u00E9l\u00E9porte \u00e0 Valys !", 100, (TeleportInformation) teleportersList.get(curArray++));
 
 		LanguageRegistry.addName(minorValysScroll, "Parchemin de t\u00E9l\u00E9portation mineur (Valys)");
 		LanguageRegistry.addName(mediumValysScroll, "Parchemin de t\u00E9l\u00E9portation moyen (Valys)");
@@ -2085,18 +2098,21 @@ public class Mho
 		redRockBigLine = new BlockRedRockLines(cc.redRockBigLineID, "redRockBigLine");
 		redRockLines = new BlockRedRockLines(cc.redRockLinesID, "redRockLines");
 		redSilver = new BlockMho(cc.redSilverID, Material.rock, "redSilver");
+		redRock = new BlockMho(cc.redRockID, Material.rock, "redRockLinesTop").setStepSound(Block.soundStoneFootstep);
 
 		GameRegistry.registerBlock(redGrassBlock, "MHOredGrassBlock");
 		GameRegistry.registerBlock(redGravel, "MHOredGravel");
 		GameRegistry.registerBlock(redRockBigLine, "MHOredRockBigLine");
 		GameRegistry.registerBlock(redRockLines, "MHOredRockLines");
 		GameRegistry.registerBlock(redSilver, "MHOredSilver");
+		GameRegistry.registerBlock(redRock, "MHOredRock");
 		
 		LanguageRegistry.addName(redGrassBlock, "Roche rouge herbeuse");
 		LanguageRegistry.addName(redGravel, "Gravier de pierre rouge");
 		LanguageRegistry.addName(redRockBigLine, "Pierre rouge \u00e0 strate calcaire");
 		LanguageRegistry.addName(redRockLines, "Pierre rouge \u00e0 strates fines calcaire");
 		LanguageRegistry.addName(redSilver, "Minerai d'argent");
+		LanguageRegistry.addName(redRock, "Roche rouge");
 
 		/** Rocks **/
 		greyRock = new BlockDirectionalTopBot(cc.greyRockID, Material.rock, "greyRock");

@@ -161,7 +161,7 @@ public class BonemealEventHandler {
 			event.setResult(Result.ALLOW);
         	event.world.setBlock(event.X, event.Y, event.Z, Mho.darkRockGrass.blockID, 1, 3);
 		}
-		else if (event.ID == Mho.redRockBigLine.blockID || event.ID == Mho.redRockLines.blockID)
+		else if (event.ID == Mho.redRock.blockID)
 		{
 			event.setResult(Result.ALLOW);
 			event.world.setBlock(event.X, event.Y, event.Z, Mho.redGrassBlock.blockID, 1, 3);

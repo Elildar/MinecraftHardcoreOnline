@@ -1,8 +1,10 @@
 package mho.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import mho.core.common.TeleportInformation;
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -14,6 +16,10 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ConfigCore {
 
+	/** ================= Teleporters ================= **/
+
+	public static ArrayList teleportersList = new ArrayList();
+	
 	/** ==================== Items ==================== **/
 
 	/** Item Quest **/
@@ -350,6 +356,7 @@ public class ConfigCore {
 	public static int redRockLinesID;
 	public static int redRockBigLineID;
 	public static int redSilverID;
+	public static int redRockID;
 
 	/* Rocks */
 	public static int greyRockID;
@@ -725,6 +732,19 @@ public class ConfigCore {
 		Configuration config = new Configuration(e.getSuggestedConfigurationFile()); //Gets the file
 		config.load(); //Loads it
 
+		/** ================= Teleporters ================= **/
+		
+		String tpName;
+		
+		{ /* Valys. Default : -233 / 91 / 130 */
+			tpName = "Valys";
+			teleportersList.add(new TeleportInformation(tpName,
+					config.get("Teleporter - " + tpName, "Activate", true).getBoolean(true),
+					config.get("Teleporter - " + tpName, "X Coordinate", -233).getInt(),
+					config.get("Teleporter - " + tpName, "Y Coordinate", 91).getInt(),
+					config.get("Teleporter - " + tpName, "Z Coordinate", 130).getInt()));
+		}
+		
 		/** ==================== Items ==================== **/
 
 		/** Item Quest **/
@@ -1038,6 +1058,7 @@ public class ConfigCore {
 		redRockBigLineID = naturalRedRockID + 2;
 		redRockLinesID = naturalRedRockID + 3;
 		redSilverID = naturalRedRockID + 4;
+		redRockID = naturalRedRockID + 6;
 		
 		/* Rocks */
 		greyRockID = naturalRocksID;
