@@ -40,17 +40,43 @@ public class BlockSaplingMho extends BlockSapling {
         return this.blockIcon;
     }
 
+    /**
+     * Determine if saplings is in a 1*1 or 2*2 pattern.
+     * @param inOutParam [x, y, z, outX, outY, outZ]
+     * @param par5 Metadata
+     * @return trunkSize.
+     */
+    public int saplingInSquarePattern(World par1World, int[] param, int par5)
+    {
+        for (int i1 = 0; i1 >= -1; --i1)
+        {
+            for (int j1 = 0; j1 >= -1; --j1)
+            {
+                if (this.isSameSapling(par1World, param[0] + i1, param[1], param[2] + j1, par5) && this.isSameSapling(par1World, param[0] + i1 + 1, param[1], param[2] + j1, par5) && this.isSameSapling(par1World, param[0] + i1, param[1], param[2] + j1 + 1, par5) && this.isSameSapling(par1World, param[0] + i1 + 1, param[1], param[2] + j1 + 1, par5))
+                {
+                	param[3] += i1;
+                	param[5] += j1;
+                	return (2);
+                }
+            }
+        }
+        return (1);
+    }
+    
     @Override
     public void growTree(World par1World, int par2, int par3, int par4, Random par5Random)
     {
         if (!TerrainGen.saplingGrowTree(par1World, par5Random, par2, par3, par4)) return;
-
+        int[] inOutParam = {par2, par3, par4, par2, par3, par4};
+        int trunkSize = saplingInSquarePattern(par1World, inOutParam, 0);
+        par2 = inOutParam[3]; par3 = inOutParam[4]; par4 = inOutParam[5];
+        
         int meta = par1World.getBlockMetadata(par2, par3, par4) & 3;
         WorldGenerator object = new WorldGenTreesMho(true, 5,  this.woodIds, this.leaveIds);
 
-        if (par5Random.nextInt(10) == 0)
+        if (trunkSize > 1 || par5Random.nextInt(10) == 0)
         {
-            object = new WorldGenBigTreeMho(true, 5,  this.woodIds, this.leaveIds);
+            object = new WorldGenBigTreeMho(true, 5,  this.woodIds, this.leaveIds, trunkSize);
         }
 
         par1World.setBlock(par2, par3, par4, 0, 0, 4);

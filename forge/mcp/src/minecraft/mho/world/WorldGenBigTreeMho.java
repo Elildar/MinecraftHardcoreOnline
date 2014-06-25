@@ -41,7 +41,7 @@ public class WorldGenBigTreeMho extends WorldGenBigTree
     /**
      * Currently always 1, can be set to 2 in the class constructor to generate a double-sized tree trunk for big trees.
      */
-    int trunkSize = 1;
+    int trunkSize;
 
     /**
      * Sets the limit of the random value used to initialize the height limit.
@@ -56,12 +56,13 @@ public class WorldGenBigTreeMho extends WorldGenBigTree
     /** Contains a list of a points at which to generate groups of leaves. */
     int[][] leafNodes;
 
-    public WorldGenBigTreeMho(boolean par1, int minTreeHeight, int[] woodIds, int[] leaveIds)
+    public WorldGenBigTreeMho(boolean par1, int minTreeHeight, int[] woodIds, int[] leaveIds, int trunkSize)
     {
         super(par1);
         this.minTreeHeight = minTreeHeight;
         this.woodIds = woodIds;
         this.leaveIds = leaveIds;
+        this.trunkSize = trunkSize;
     }
 
     /**
