@@ -20,7 +20,7 @@ public class ItemScrollTpValys extends ItemMho {
 	{
 		String thisworld = player.worldObj.getWorldInfo().getWorldName();
 		
-		if (this.data.activate == true && thisworld == "world") {
+		if (this.data.activate == true && thisworld.equals("world")) {
 			int random = (int)(Math.random() * (100-0)) + 0;
 			if (random >= 100 - chance) {
 				player.setPosition(this.data.x, this.data.y, this.data.z);
